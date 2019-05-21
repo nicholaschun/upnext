@@ -4,12 +4,20 @@
   "description": "api for creating event lineups",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nicholas Mamiya",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^5.16.0"
+    "eslint": "^5.16.0",
+    "husky": "^2.3.0",
+    "nodemon": "^1.19.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "eslint src --fix"
+    }
   }
 }
