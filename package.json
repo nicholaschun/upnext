@@ -4,13 +4,18 @@
   "description": "api for creating event lineups",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "dev": "nodemon --exec 'babel-node server.js'",
+    "start": "babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
   "author": "Nicholas Mamiya",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "eslint": "^5.16.0",
     "husky": "^2.3.0",
     "nodemon": "^1.19.0"
@@ -19,5 +24,8 @@
     "hooks": {
       "pre-commit": "eslint src --fix"
     }
+  },
+  "dependencies": {
+    "express": "^4.17.0"
   }
 }
