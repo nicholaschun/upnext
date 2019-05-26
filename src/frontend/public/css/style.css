@@ -1,0 +1,107 @@
+@font-face {
+    font-family:GillSans;
+    src: url('./../fonts/GillSans.otf');
+  }
+@font-face {
+    font-family:GillSansBold;
+    src: url('./../fonts/gillsansstd-bold.otf');
+  }
+@font-face {
+    font-family:GillSansRegular;
+    src: url('./../fonts/gillsansstd.otf');
+}
+@font-face {
+    font-family:GillSansUltraBold;
+    src: url('./assets/fonts/gillsansstd-extrabold.otf');
+}
+@font-face {
+    font-family:"GillSansLight";
+    src: url('./../fonts/gillsansstd-light.otf');
+}
+
+  body{
+    font-family: GillSansRegular;
+  }
+  p,a,ul,li,h1,h2,h3,h4,h5,h6,label,input,button{
+    font-family: GillSansRegular;
+  }
+
+:root{
+    --upnext-blue: #25a8c0;
+    --upnext-hover-blue: #2fcae6;
+    --upnext-yellow: #ffaa00;
+}
+.full-container{
+    height: 100vh;
+    width: 100%;
+}
+
+.left-container{
+    background-color:white;
+    height: 100%;
+}
+
+.right-container{
+    background-color: var(--upnext-blue);
+    height: 100%;
+}
+
+.navigation-container{
+    padding-top: 20px;
+}
+
+.navigation-container ul{
+    padding: 0 !important;
+    list-style: none;
+}
+
+.navigation-container ul li a{
+    display: block;
+    color: var(--upnext-blue);
+    padding: 12px 10px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: .3s;
+}
+
+.navigation-container ul li a:hover{
+    color: var(--upnext-hover-blue)
+}
+
+
+.social-media{
+    position: absolute;
+    bottom: 20px;
+}
+
+.social-media ul{
+    list-style: none;
+    padding: 0 !important;
+}
+
+.social-media ul li{
+    display: inline-block;
+    padding: 0;
+}
+
+.social-media ul li a{
+    font-size: 1em;
+    color: var(--upnext-blue);
+    padding: 5px;
+}
+
+.header-container{
+    /* background: red; */
+    /* height: 100px; */
+}
+
+.logo-container{
+    /* background: blue; */
+    /* height: 100px; */
+    padding: 25px 0 25px 0;
+}
+
+.login-container{
+    /* background: green; */
+    /* height: 100px; */
+}

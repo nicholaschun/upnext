@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title up-next
-        link(rel="stylesheet", href="./css/bootstrap.min.css")
-        link(rel="stylesheet", href="./css/style.css")
-        link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
-
+    include ./includes/head.pug
     body
-        div.container
-            h1 welcome to my homepage
+        #app
+            div(class="full-container")
+                div(class="col-md-1 left-container")
+                    div(class="navigation-container")
+                        include ./includes/navigation.pug       
+                div(class="col-md-11 right-container")
+                    div(class="header-container container")
+                        div(class="logo-container col-md-4")
+                            img(src="./img/logo.png", alt="Reader")
+                        div(class="search-container col-md-4")
+                            test-component
+                        div(class="login-container col-md-4")
+        script(src="./../js/bundle.js")
+                
