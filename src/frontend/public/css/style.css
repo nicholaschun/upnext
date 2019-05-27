@@ -30,6 +30,8 @@
     --upnext-blue: #25a8c0;
     --upnext-hover-blue: #2fcae6;
     --upnext-yellow: #ffaa00;
+    --upnext-input-border: #e0e0e0;
+    --upnext-input-addon: #7e7e7e;
 }
 .full-container{
     height: 100vh;
@@ -91,17 +93,45 @@
 }
 
 .header-container{
-    /* background: red; */
-    /* height: 100px; */
+    padding: 25px 0 25px 0;
 }
 
 .logo-container{
     /* background: blue; */
     /* height: 100px; */
-    padding: 25px 0 25px 0;
+    /* padding: 25px 0 25px 0; */
 }
 
 .login-container{
     /* background: green; */
     /* height: 100px; */
 }
+
+.register-container{
+    width: 60%;
+    margin:100px auto;
+    background: white;
+    padding: 25px 40px 30px 40px;
+    -moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.46);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.46);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.46);
+    border-radius: 5px;
+}
+.register-container h4{
+    color: var(--upnext-blue);
+    margin-left: 15px;
+}
+.register-container-big{
+    width: 80%;
+    margin:15px auto;
+    background: white;
+    padding: 25px 40px 30px 40px;
+    -moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.46);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.46);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.46);
+    border-radius: 5px;
+}
+.no-padding{
+    padding: 0 !important;
+}
+

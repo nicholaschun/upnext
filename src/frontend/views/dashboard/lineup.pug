@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+html(lang="en")
+    include ./../includes/head.pug
+    title up-next -  Event Lineup
+    body
+        #app
+            div(class="full-container")
+                div(class="col-md-1 left-container")
+                    div(class="navigation-container")
+                        include ./../includes/navigation.pug       
+                div(class="col-md-11 right-container")
+                    div(class="header-container container")
+                        include ./../includes/header.pug
+                    div(class="register-container-big container")
+                        lineup-component
+        include ./../includes/scripts.pug
+                
