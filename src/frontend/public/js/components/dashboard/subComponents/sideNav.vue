@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="side-bar-container">
         <h4 style="text-align: center">{{title}}</h4>
         <div class="user-info" style="text-align: center">
             <div class="profile-image profile-pic">
@@ -50,5 +50,11 @@ module.exports =  {
 }
 .my-event-nav .active{
   color: var(--upnext-yellow)
+}
+.side-bar-container{
+  border-right: 1px solid var(--upnext-ash)
+}
+.side-bar-container h4{
+  color: var(--upnext-blue)
 }
 </style>

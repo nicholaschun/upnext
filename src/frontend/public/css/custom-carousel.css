@@ -1,0 +1,39 @@
+.owl-theme .owl-dots {
+    text-align: center;
+    position: absolute !important;
+    top: 200px !important;
+    left: 10px !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.owl-theme .owl-dots .owl-dot {
+    display: block !important;
+    outline: none !important;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    background: transparent !important;
+    border: 1px solid white;
+}
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
+    background: var(--upnext-yellow)!important;
+    border: 1px solid var(--upnext-yellow)!important;
+}
+
+.item-carousel-caption{
+    position: absolute;
+    top: 150px;
+    left: 80px;
+    color: white;
+}
+.item-carousel-caption h1{
+    font-size: 5em;
+}
+
+.item-carousel-caption p{
+    width: 350px;
+    font-family: GillSansLight;
+    font-size: 1.4em;
+}
+

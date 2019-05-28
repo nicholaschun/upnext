@@ -5,6 +5,8 @@ Vue.component('searchComponent', require('./components/search.vue'))
 Vue.component('registerHeaderComponent', require('./components/registerHeader.vue'))
 Vue.component('createLineupComponent', require('./components/createLineupButton.vue'))
 Vue.component('registerComponent', require('./components/register.vue'))
+Vue.component('carouselComponent', require('./components/carousel.vue'))
+Vue.component('resetPasswordComponent', require('./components/resetPassword.vue'))
 
 /* Dashboard components */
 Vue.component('createEventComponent', require('./components/dashboard/createEvent.vue'))

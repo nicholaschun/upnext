@@ -32,10 +32,12 @@
     --upnext-yellow: #ffaa00;
     --upnext-input-border: #e0e0e0;
     --upnext-input-addon: #7e7e7e;
+    --upnext-ash: #dddddd;
 }
 .full-container{
     height: 100vh;
     width: 100%;
+    overflow: hidden;
 }
 
 .left-container{
@@ -96,17 +98,6 @@
     padding: 25px 0 25px 0;
 }
 
-.logo-container{
-    /* background: blue; */
-    /* height: 100px; */
-    /* padding: 25px 0 25px 0; */
-}
-
-.login-container{
-    /* background: green; */
-    /* height: 100px; */
-}
-
 .register-container{
     width: 60%;
     margin:100px auto;
@@ -116,6 +107,19 @@
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.46);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.46);
     border-radius: 5px;
+}
+.register-container-small{
+    width: 40%;
+    margin:100px auto;
+    background: white;
+    padding: 25px 40px 30px 40px;
+    -moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.46);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.46);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.46);
+    border-radius: 5px;
+}
+.register-container-small h4{
+    color: var(--upnext-blue);
 }
 .register-container h4{
     color: var(--upnext-blue);
@@ -133,5 +137,22 @@
 }
 .no-padding{
     padding: 0 !important;
+}
+
+/* input Styles */
+.input-group-addon{
+    background-color: white !important;
+    color: var(--upnext-input-addon);
+}
+.register-form input{
+    display: block;
+    border-radius: 6px;
+    border:1px solid var(--upnext-input-border);
+    width: 100%;
+    outline: none;
+}
+
+.input-container{
+    margin-top: 15px;
 }
 

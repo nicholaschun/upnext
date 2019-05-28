@@ -7,6 +7,7 @@ const userController = require('./../../backend/controllers/userController')
 
 
 routes.get('/', siteController.homePage)
+routes.get('/changepassword', siteController.changePassPage)
 routes.get('/register', authController.signUpPage)
 routes.get('/dashboard', userController.dashboard)
 routes.get('/dashboard/profile', userController.profile)

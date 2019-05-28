@@ -10,12 +10,45 @@
                 <u-button class="transparent-button" :onClick="testButton">
                     Login
                 </u-button>
+                <div class="login-container animated fadeInUp2">
+                    <div class="show-angle-up"><span class="fa fa-caret-up fa-2x"></span></div>
+                    <div class="main-form">
+                        <h4>Login</h4>
+                        <div class="col-md-12 input-container">
+                            <label for="Email">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <u-input type="email" placeholder="kofi@example.com"/> 
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 input-container">
+                            <label for="Email">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                <u-input type="password" placeholder="•••••••"/> 
+                            </div>
+                        </div>
+                        <div class="col-md-12 input-container">
+                            <div class="input-group">
+                            <u-button class="default-button" :onClick="callRegister">
+                                Sign in
+                            </u-button> 
+                            </div>
+                        </div>
+                         <div class="col-md-12 recover-text">
+                           <a href="/changepassword">Lost your password?</a>
+                         </div>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
 </template>
 <script>
 const registerButton = require('./ui/button.vue')
+const inputField = require('./ui/input.vue')
+
 module.exports =  {
  
  methods: {
@@ -24,7 +57,8 @@ module.exports =  {
      }
  },
  components: {
-     'u-button': registerButton
+     'u-button': registerButton,
+     'u-input': inputField
  }
 }
 </script>
@@ -40,6 +74,49 @@ module.exports =  {
 
 .register-header ul li:last-child {
     margin-left: 10px;
+}
+
+.register-header ul li:last-child:hover .login-container{
+    display: block;
+  }
+
+.login-container{
+    position: absolute;
+    width: 300px;
+    border-radius: 5px;
+    background: #ffffff;
+    top: 78%;
+    padding: 15px 8px 25px 8px;
+    right: 10px;
+    display: none;
+    z-index: 10;
+    -moz-box-shadow:0 1px 5px rgba(0, 0, 0, 0.46);
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+  }
+.show-angle-up{
+    position: absolute;
+    top: -15px;
+    color: white;
+    right: 10px;
+  }
+.show-angle-up span{
+    width: 30px;
+    height: 50px;
+}
+.main-form h4{
+    color: var(--upnext-blue);
+    font-weight:bold;
+    margin-left: 15px;
+}
+
+.recover-text{
+    margin-top: 10px;
+}
+.recover-text a{
+    color: #2e2e2e !important;
+    cursor: pointer;
+    font-size: .8em !important;
 }
 
 

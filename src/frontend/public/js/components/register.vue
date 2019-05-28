@@ -65,21 +65,7 @@ module.exports = {
 }
 </script>
 <style scoped>
-.input-group-addon{
-    background-color: white !important;
-    color: var(--upnext-input-addon);
-}
-.register-form input{
-    display: block;
-    border-radius: 6px;
-    border:1px solid var(--upnext-input-border);
-    width: 100%;
-    outline: none;
-}
 
-.input-container{
-    margin-top: 15px;
-}
 </style>
 
 

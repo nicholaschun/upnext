@@ -1,12 +1,13 @@
 <template>
     <div>
-        <input :type="type" class="form-control">
+        <input :type="type" :placeholder="placeholder" class="form-control">
     </div>
 </template>
 <script>
 module.exports = {
     props: {
         type: String,
+        placeholder: String
     }
 }
 </script>
