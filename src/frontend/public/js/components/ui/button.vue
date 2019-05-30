@@ -1,5 +1,5 @@
 <template>
-    <button @click="onClick">
+    <button @click="onClick" :type="type">
         <slot>Button</slot>
     </button>
 </template>
@@ -7,9 +7,13 @@
 module.exports = {
     props: {
         onClick: {
-            required: true
-        } 
+            required: false
+        },
+        type: {
+            required: false
+        }
     }
+    // props: ['type',{onClick:{required: true}}] 
 }
 </script>
 <style scoped>

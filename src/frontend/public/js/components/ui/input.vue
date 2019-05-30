@@ -1,13 +1,15 @@
 <template>
     <div>
-        <input :type="type" :placeholder="placeholder" class="form-control">
+        <input :type="type" :name="name" :value="value" @input="updateInput($event.target.value)" :placeholder="placeholder" class="form-control">
     </div>
 </template>
 <script>
 module.exports = {
-    props: {
-        type: String,
-        placeholder: String
+    props: ['value', 'type', 'placeholder', 'name'],
+    methods: {
+        updateInput (value) {
+            this.$emit('input', value)
+        }
     }
 }
 </script>

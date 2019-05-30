@@ -1,4 +1,6 @@
 const Vue = require('vue/dist/vue.js')
+const Veevalidate = require('vee-validate')
+Vue.use(Veevalidate)
 
 Vue.component('testComponent', require('./components/test.vue'))
 Vue.component('searchComponent', require('./components/search.vue'))
