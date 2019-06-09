@@ -7,7 +7,7 @@ import web from './src/frontend/routes/index'
 import constants from './constants'
 
 const app = express()
-const port = process.env.port || constants.DEFAULT_PORT
+const port = process.env.PORT || constants.DEFAULT_PORT
 const hostname = constants.DEFAULT_HOST
 
 app.set('views', './src/frontend/views')
