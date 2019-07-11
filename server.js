@@ -13,11 +13,9 @@ const hostname = constants.DEFAULT_HOST
 app.set('views', './src/frontend/views')
 app.set('view engine', 'pug')
 app.use(express.static('./src/frontend/public'))
-app.use(`${url.users}`, users)
-app.use(`${url.events}`, events)
-
-
 app.use('/', web)
+app.use('/api/v1', users)
+app.use(`${url.events}`, events)
 
 app.listen(port, () => {
     console.log(`Running on http://${hostname}:${port}`)

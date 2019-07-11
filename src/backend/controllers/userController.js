@@ -1,11 +1,15 @@
 module.exports = {
-    dashboard (req, res) {
-        res.render('dashboard/index')
+
+    createUser(req, res){
+        res.send('create new user')
     },
-    profile (req, res) {
-        res.render('dashboard/profile')
+    getAUser(req, res){
+        res.send('get a single user')
     },
-    feedbackPage (req, res) {
-        res.render('dashboard/feedback')
+    updateUser(req, res){
+        res.send('update a user')
+    },
+    deleteUser(req, res){
+        res.send('delete a user')
     }
 }
