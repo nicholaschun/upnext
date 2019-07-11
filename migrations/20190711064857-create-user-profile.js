@@ -1,35 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable('UserProfiles', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      email: {
-        type: Sequelize.STRING
-      },
-      password: {
-        type: Sequelize.STRING
-      },
-      status: {
-        type: Sequelize.BOOLEAN
-      },
-      verified: {
-        type: Sequelize.BOOLEAN
-      },
-      verify_token: {
-        type: Sequelize.BOOLEAN
-      },
-      type: {
+      user_id: {
         type: Sequelize.INTEGER
       },
-      login_provider: {
-        type: Sequelize.INTEGER
+      first_name: {
+        type: Sequelize.STRING
       },
-      login_provider_token: {
+      last_name: {
+        type: Sequelize.STRING
+      },
+      full_name: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -43,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('UserProfiles');
   }
 };
