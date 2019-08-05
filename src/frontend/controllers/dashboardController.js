@@ -19,5 +19,8 @@ module.exports = {
     },
     feedbackPage (req, res) {
         res.render('dashboard/feedback')
+    },
+    changePassPage (req, res) {
+        res.render('dashboard/changepassword')
     }
 }

@@ -12,14 +12,14 @@
   "author": "Nicholas Mamiya",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/node": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "eslint": "^5.16.0",
-    "husky": "^2.3.0",
-    "nodemon": "^1.19.0",
-    "vee-validate": "^2.2.8"
+    "husky": "^2.7.0",
+    "nodemon": "^1.19.1",
+    "vee-validate": "^2.2.13"
   },
   "husky": {
     "hooks": {
@@ -27,13 +27,13 @@
     }
   },
   "dependencies": {
-    "browserify": "^16.2.3",
+    "browserify": "^16.3.0",
     "browserify-hmr": "^0.3.7",
     "dotenv": "^8.0.0",
-    "express": "^4.17.0",
+    "express": "^4.17.1",
     "mysql2": "^1.6.5",
-    "pug": "^2.0.3",
-    "sequelize": "^5.8.6",
+    "pug": "^2.0.4",
+    "sequelize": "^5.12.3",
     "vue": "^2.6.10",
     "vue-owl-carousel": "^2.0.3",
     "vueify": "^9.4.1",

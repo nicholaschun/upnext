@@ -5,7 +5,7 @@ module.exports = {
     signUpPage (req, res) {
         res.render('register')
     },
-    changePassPage (req, res) {
+    resetPassPage (req, res) {
         res.render('resetpassword')
     }
 }
