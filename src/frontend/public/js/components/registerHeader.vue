@@ -14,11 +14,18 @@
                     <div class="show-angle-up"><span class="fa fa-caret-up fa-2x"></span></div>
                     <div class="main-form">
                         <h4>Login</h4>
+                        <form @submit.prevent="loginUser('user_login')" auto-complete="off" data-vv-scope="user_login">
                         <div class="col-md-12 input-container">
                             <label for="Email">Email</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                <u-input type="email" placeholder="kofi@example.com"/> 
+                                <u-input 
+                                    type="email" 
+                                    name="email"
+                                    v-model="login.email"
+                                    v-validate="'required|email'"
+                                    className="form-control custom-input"
+                                    placeholder="kofi@example.com"/> 
                             </div>
                         </div>
                         
@@ -26,18 +33,27 @@
                             <label for="Email">Password</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                <u-input type="password" placeholder="•••••••"/> 
+                                <u-input 
+                                    name="password"
+                                    v-validate="'required'"
+                                    className="form-control custom-input"
+                                    type="password" 
+                                    v-model="login.password"
+                                    placeholder="•••••••"/>
                             </div>
                         </div>
                         <div class="col-md-12 input-container">
                             <div class="input-group">
-                            <u-button class="default-button" :onClick="callRegister">
+                            <u-button 
+                                class="default-button" 
+                                type="submit">
                                 Sign in
                             </u-button> 
                             </div>
                         </div>
+                        </form>
                          <div class="col-md-12 recover-text">
-                           <a href="/changepassword">Lost your password?</a>
+                           <a href="/resetpassword">Lost your password?</a>
                          </div>
                     </div>
                 </div>
@@ -50,8 +66,16 @@ const registerButton = require('./ui/button.vue')
 const inputField = require('./ui/input.vue')
 
 module.exports =  {
- 
+    data () {
+        return {
+            login: {email: '',password: ''}
+        }
+    },
  methods: {
+     loginUser (scope) {
+        this.$validator.validateAll(scope).then(validate => {
+        })
+        },
      callRegister () {
          location.href="/register"
      }

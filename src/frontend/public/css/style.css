@@ -156,3 +156,12 @@
     margin-top: 15px;
 }
 
+.custom-input{
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+    outline:none;
+}
+
+.form-error{
+  color: #e10858;
+}

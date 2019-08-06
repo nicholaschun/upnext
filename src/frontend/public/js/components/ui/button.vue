@@ -7,13 +7,13 @@
 module.exports = {
     props: {
         onClick: {
-            required: false
+            required: false,
+            default: null
         },
         type: {
             required: false
         }
     }
-    // props: ['type',{onClick:{required: true}}] 
 }
 </script>
 <style scoped>

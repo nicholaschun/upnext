@@ -1,15 +1,53 @@
 <template>
     <div>
-        <input :type="type" :name="name" :value="value" @input="updateInput($event.target.value)" :placeholder="placeholder" class="form-control">
+        <input 
+            :type="type" 
+            :name="name" 
+            :value="value" 
+            :placeholder="placeholder" 
+            :class="className"
+            @blur="$emit('blur')" 
+            @focus="$emit('focus')"
+            @change="updateInput" 
+            @input="updateInput"
+         />
+        <small v-if="error" class="form-error animated fadeInUp2">{{ error }}</small>
     </div>
 </template>
 <script>
 module.exports = {
-    props: ['value', 'type', 'placeholder', 'name'],
-    methods: {
-        updateInput (value) {
-            this.$emit('input', value)
+    $_veeValidate: {
+        name(){
+            return this.name
+        },
+        value(){
+            return this.value
         }
+    },
+    props: {
+        value: String,
+        className: String,
+        placeholder: String,
+        name: String,
+        error: {
+            type: String,
+            required: false
+        },
+        type: {
+            type: String,
+            default: 'text',
+            validator: val => {
+            return (["url", "text", "password", "email", "search"].indexOf(val) !== -1);
+            }
+        },
+    },
+    methods: {
+        updateInput (e) {
+            this.$emit('input', e.target.value)
+        }
+    },
+    mounted(){
+        this.$el.value = this.value
     }
 }
 </script>

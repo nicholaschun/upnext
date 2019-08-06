@@ -78,7 +78,7 @@ module.exports =  {
     border-bottom: none;
   }
   .search-bar{
-    padding-left: 5px;
+    padding-left: 35px;
   }
   .search-bar input{
     background: white;
