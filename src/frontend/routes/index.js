@@ -1,7 +1,10 @@
-const express= require('express')
+import express from 'express'
+
+import  guestController from './../controllers/guestPagesController'
+import dashboardController from './../controllers/dashboardController'
+
 const routes = express.Router()
-const guestController = require('./../controllers/guestPagesController')
-const dashboardController = require('./../controllers/dashboardController')
+
 
 
 routes.get('/', guestController.homePage)

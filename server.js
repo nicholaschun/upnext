@@ -1,4 +1,6 @@
 import express from 'express'
+// import expressValidator from 'express-validator'
+import bodyParser from 'body-parser'
 
 import users from './src/backend/routes/users'
 import events from './src/backend/routes/events'
@@ -12,9 +14,13 @@ const hostname = constants.DEFAULT_HOST
 
 app.set('views', './src/frontend/views')
 app.set('view engine', 'pug')
+
+// app.use(expressValidator)
+app.use(bodyParser.json())
 app.use(express.static('./src/frontend/public'))
 app.use('/', web)
-app.use('/api/v1', users)
+app.use('/api', users)
+// app.use(`/api/${API_VERSION}`, users)
 app.use(`${url.events}`, events)
 
 app.listen(port, () => {
