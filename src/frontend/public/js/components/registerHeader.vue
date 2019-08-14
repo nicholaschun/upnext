@@ -14,6 +14,7 @@
                     <div class="show-angle-up"><span class="fa fa-caret-up fa-2x"></span></div>
                     <div class="main-form">
                         <h4>Login</h4>
+                        <span>{{error}}</span>
                         <form @submit.prevent="loginUser('user_login')" auto-complete="off" data-vv-scope="user_login">
                         <div class="col-md-12 input-container">
                             <label for="Email">Email</label>
@@ -64,16 +65,25 @@
 <script>
 const registerButton = require('./ui/button.vue')
 const inputField = require('./ui/input.vue')
+const userService = require('./../services/user') 
 
 module.exports =  {
     data () {
         return {
-            login: {email: '',password: ''}
+            login: {email: 'nicholas@g.com',password: 'nicholas'},
+            error: ''
         }
     },
  methods: {
-     loginUser (scope) {
+    loginUser (scope) {
         this.$validator.validateAll(scope).then(validate => {
+             userService.loginUser(this.login).then(res => {
+                console.log(res)
+                // redirect to protected dashboard
+            }).catch(error => {
+                console.log(error.response.data.message)
+                this.error = error.response.data.message
+            })
         })
         },
      callRegister () {
