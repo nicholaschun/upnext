@@ -1,6 +1,8 @@
-// import passport from "passport";
+import passport from "passport";
+import localStrategy from "passport-local";
+import bcrypt from "bcrypt";
+
 import db from "./../../database/models/index";
-import localStrategy from 'passport-local'
 
 module.exports = passport => {
   passport.serializeUser((user, done) => {
@@ -17,11 +19,17 @@ module.exports = passport => {
       { usernameField: "email", passwordField: "password" },
       (email, password, done) => {
         // check if user email exists
-        db.User.findOne({ where: { email: email, status: 1 } })
+        db.User.findOne({ where: { email: email } })
           .then(user => {
+            console.log(user);
             if (!user) {
               return done(null, false, {
                 message: "Username / Password incorrect"
+              });
+            }
+            if (!user.status) {
+              return done(null, false, {
+                message: "Kindly activate your account to start your session"
               });
             }
             // Match passwords
@@ -42,5 +50,5 @@ module.exports = passport => {
       }
     )
   );
-  // require('./../src/backend/app/auth/strategies/local-strategy')
+  // require('./strategies/local-strategy')
 };

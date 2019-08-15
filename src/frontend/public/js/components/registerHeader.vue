@@ -81,7 +81,7 @@ module.exports =  {
                 console.log(res)
                 // redirect to protected dashboard
             }).catch(error => {
-                console.log(error.response.data.message)
+                console.log(error.response)
                 this.error = error.response.data.message
             })
         })
