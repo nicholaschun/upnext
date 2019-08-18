@@ -6,13 +6,12 @@ import db from "./../../database/models/index";
 
 module.exports = passport => {
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    let userSession = {id: user.id, email: user.email}
+    done(null, userSession);
   });
 
-  passport.deserializeUser((id, done) => {
-    db.User.findById(id, (err, user) => {
-      done(err, user);
-    });
+  passport.deserializeUser((userSession, done) => {
+    done(null, userSession);
   });
   passport.use(
     new localStrategy.Strategy(

@@ -78,8 +78,8 @@ module.exports =  {
     loginUser (scope) {
         this.$validator.validateAll(scope).then(validate => {
              userService.loginUser(this.login).then(res => {
-                console.log(res)
                 // redirect to protected dashboard
+                location.href = "/dashboard"
             }).catch(error => {
                 console.log(error.response)
                 this.error = error.response.data.message

@@ -12,7 +12,6 @@ module.exports =  {
           // check if user email exists
           db.User.findOne({ where: { email: email, status: 1 } })
             .then(user => {
-              console.log(user);
               if (!user) {
                 return done(null, false, {
                   message: "Username / Password incorrect"
