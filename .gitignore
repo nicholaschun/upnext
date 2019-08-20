@@ -61,7 +61,7 @@ typings/
 .next
 
 # bundle js
-./src/frontend/public/js/bundle.js
+/src/frontend/public/js/bundle.js
 
 #keys
-./config/keys
+/config/keys
