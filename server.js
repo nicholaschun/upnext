@@ -4,6 +4,7 @@ import session from "express-session";
 import passport from "passport";
 
 import api from "./src/backend/routes/users";
+import providers from "./src/backend/routes/providers";
 import userDashboard from "./src/backend/routes/dashboard";
 import url from "./src/backend/utils/urls";
 import guest from "./src/backend/routes/guest";
@@ -39,6 +40,7 @@ require('./src/backend/app/auth/passport')(passport);
 app.use("/", guest);
 app.use("/dashboard",verifySession, userDashboard);
 app.use("/api", api);
+app.use("/auth",providers)
 
 /* Start express server */
 

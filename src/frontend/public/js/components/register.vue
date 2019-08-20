@@ -1,5 +1,13 @@
 <template>
     <div class="register-form">
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <a href="/auth/google">Login with google</a>
+        </div>
+        <div class="col-md-6">
+            <a href="/auth/facebook">Login with facebook</a>
+        </div>
+    </div>
         <form @submit.prevent="registerUser('user_register')" data-vv-scope="user_register">
             <div class="col-md-12 no-padding">
                 <div class="col-md-12 input-container no-padding">

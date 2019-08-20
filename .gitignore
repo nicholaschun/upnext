@@ -62,3 +62,6 @@ typings/
 
 # bundle js
 src/frontend/public/js/bundle.js
+
+#keys
+./config/keys

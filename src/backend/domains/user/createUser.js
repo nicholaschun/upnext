@@ -1,20 +1,18 @@
 import db from "./../../database/models/index";
-import bcrypt from "bcrypt";
-import crypto from "crypto";
+import {genToken, encryptPass} from "./../../utils/genRandom";
+
 
 module.exports = {
-  createUser(body) {
-    const verifyToken = crypto
-      .createHash("sha256")
-      .update(body.email)
-      .digest("hex");
-    return db.User.create({
+  async createUser(body) {
+    const verifyToken = genToken(body.email)
+    return await db.User.create({
       email: body.email,
-      status: 0,
-      verified: 0,
+      status: body.status,
+      verified: body.verified,
       verify_token: verifyToken,
-      login_provider: 1,
-      password: bcrypt.hashSync(body.password, 10)
+      login_provider: body.loginProvider,
+      password: encryptPass(body.password),
+      sub_id: body.sub_id
     });
   },
 
@@ -24,7 +22,13 @@ module.exports = {
       first_name: body.firstName,
       last_name: body.lastName,
       full_name: `${body.firstName} ${body.lastName}`,
-      organization: body.organization
+      organization: body.organization,
+      profile: body.profile
     });
+  },
+
+  async ifUserExists(email){
+    return  await db.User.findOne({where: {email: email}, include: [{model: db.UserProfile}]})
   }
+
 };
