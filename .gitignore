@@ -64,4 +64,4 @@ typings/
 /src/frontend/public/js/bundle.js
 
 #keys
-/config/keys
+config/keys
