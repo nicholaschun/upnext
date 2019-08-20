@@ -65,3 +65,4 @@ typings/
 
 #keys
 /config/keys.js
+/src/backend/app/auth/jwt/keys/
