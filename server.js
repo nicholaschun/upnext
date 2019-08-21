@@ -3,13 +3,12 @@ import bodyParser from "body-parser";
 import session from "express-session";
 import passport from "passport";
 
-import api from "./src/backend/routes/users";
+import api from "./src/backend/routes/api";
 import providers from "./src/backend/routes/providers";
 import userDashboard from "./src/backend/routes/dashboard";
 import url from "./src/backend/utils/urls";
 import guest from "./src/backend/routes/guest";
 import constants from "./constants";
-import verifyToken from './src/backend/app/auth/jwt/verifyToken'
 import verifySession from './src/backend/app/auth/verifySession'
 
 const app = express();

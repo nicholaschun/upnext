@@ -10,4 +10,5 @@ module.exports = passport => {
   require("./strategies/local-strategy");
   require("./strategies/google-strategy");
   require("./strategies/facebook-strategy");
+  require("./strategies/jwt-strategy");
 };

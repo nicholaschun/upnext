@@ -10,7 +10,6 @@ module.exports = {
     checkPass(password, userPassword){
         bcrypt.compare(password, userPassword, (err, isMatched) => {
             if(err) throw err
-            return (isMatched)
             if(isMatched){
                 return true
             } else {

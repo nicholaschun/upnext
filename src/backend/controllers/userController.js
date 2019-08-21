@@ -5,7 +5,7 @@ import {
   createUserProfile,
   ifUserExists
 } from "./../domains/user/createUser";
-import { issueToken, verifyToken } from "./../app/auth/jwt/issueToken";
+import { issueToken } from "./../app/auth/jwt/issueToken";
 
 module.exports = {
   async createUser(req, res, next) {
@@ -54,23 +54,26 @@ module.exports = {
       console.log(error);
     }
   },
-  loginUserJWT(req, res, next) {
-    try {
-      validate(req, res);
-      passport.authenticate("local", (err, user, info) => {
-        if (err || !user) {
-          console.log("Error1", info);
-          return res.status(400).send(info);
+  tokenLogin(req, res, next){
+    passport.authenticate('local', {session: false}, (err, user, info) => {
+      if(err || !user){
+        return res.status(400).json({
+          message: info.message
+        })
+      }
+      req.logIn(user, {session:false}, (err) => {
+        if(err){
+          return res.status(400).json({
+            message: 'Something went wrong. Try again'
+          })
         }
-        const body = { iq: user.id, ie: user.email };
+        //generate a signed token for the user
+        const body = { iq: user.id, ie: user.email }
+        // const privateKey  = fs.readFileSync(path.resolve(__dirname, '../app/auth/jwt/keys/private.key')).toString('utf8')
         const token = issueToken(body);
-        const data = {
-          data: token,
-          expiresIn: "365 days"
-        };
-        res.status(200).json({ data });
-      })(req, res, next);
-    } catch (error) {}
+        return res.json({token:token})
+      })
+    })(req, res, next)
   },
   async sendPasswordEmail(req, res) {
     try {
