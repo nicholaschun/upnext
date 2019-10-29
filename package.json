@@ -44,7 +44,7 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pug": "^2.0.4",
-    "sequelize": "^5.12.3",
+    "sequelize": "^5.15.1",
     "vue": "^2.6.10",
     "vue-owl-carousel": "^2.0.3",
     "vueify": "^9.4.1",
