@@ -1,11 +1,11 @@
 module.exports = {
   homePage(req, res) {
-    res.render("index");
+    res.render('index')
   },
   signUpPage(req, res) {
-    res.render("register");
+    res.render('register')
   },
   resetPassPage(req, res) {
-    res.render("resetpassword");
+    res.render('resetpassword')
   }
-};
+}

@@ -1,37 +1,37 @@
-import { body } from "express-validator";
+import { body } from 'express-validator'
 
 module.exports = {
   validateUser(method) {
     switch (method) {
-      case "createUser": {
+      case 'createUser': {
         return [
-          body("firstName", "first name field is required").exists(),
-          body("lastName", "last name field is required").exists(),
-          body("email", "invalid email")
+          body('firstName', 'first name field is required').exists(),
+          body('lastName', 'last name field is required').exists(),
+          body('email', 'invalid email')
             .exists()
             .isEmail(),
-          body("password", "password field is required").exists(),
-          body("organization").optional()
-        ];
+          body('password', 'password field is required').exists(),
+          body('organization').optional()
+        ]
       }
-      case "loginUser": {
+      case 'loginUser': {
         return [
-          body("email", "invalid email")
+          body('email', 'invalid email')
             .exists()
             .isEmail(),
-          body("password", "password field is required").exists()
-        ];
+          body('password', 'password field is required').exists()
+        ]
       }
-      case "sendPassEmail": {
+      case 'sendPassEmail': {
         return [
-          body("email", "invalid email")
+          body('email', 'invalid email')
             .exists()
             .isEmail()
-        ];
+        ]
       }
-      case "resetPassword": {
-        return [body("newPassword", "password field is required").exists()];
+      case 'resetPassword': {
+        return [body('newPassword', 'password field is required').exists()]
       }
     }
   }
-};
+}

@@ -1,14 +1,14 @@
 'use strict'
 module.exports = (sequelize, DataTypes) => {
-  const LoginProvider = sequelize.define(
-    'LoginProvider',
+  const EventCategory = sequelize.define(
+    'EventCategory',
     {
       name: DataTypes.STRING
     },
     {}
   )
-  LoginProvider.associate = function(models) {
+  EventCategory.associate = function(models) {
     // associations can be defined here
   }
-  return LoginProvider
+  return EventCategory
 }

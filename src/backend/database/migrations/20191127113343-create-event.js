@@ -1,44 +1,48 @@
 'use strict'
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable('Events', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      event_id: {
+        type: Sequelize.STRING
+      },
+      event_name: {
+        type: Sequelize.STRING
+      },
+      event_days: {
+        type: Sequelize.INTEGER
+      },
+      event_category: {
+        type: Sequelize.INTEGER
+      },
+      event_status: {
+        type: Sequelize.BOOLEAN
+      },
+      event_image: {
+        type: Sequelize.STRING
+      },
+      has_feedback: {
+        type: Sequelize.BOOLEAN
+      },
+      has_questions: {
+        type: Sequelize.BOOLEAN
+      },
       user_id: {
-        type: Sequelize.STRING,
-        unique: true
-      },
-      sub_id: {
-        type: Sequelize.STRING
-      },
-      email: {
-        type: Sequelize.STRING,
-        unique: true
-      },
-      password: {
-        type: Sequelize.STRING
-      },
-      status: {
-        type: Sequelize.BOOLEAN
-      },
-      verified: {
-        type: Sequelize.BOOLEAN
-      },
-      verify_token: {
-        type: Sequelize.BOOLEAN
-      },
-      type: {
         type: Sequelize.INTEGER
       },
-      login_provider: {
+      event_url: {
         type: Sequelize.INTEGER
       },
-      login_provider_token: {
+      url_snippet: {
         type: Sequelize.STRING
+      },
+      additional_info: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
@@ -51,6 +55,6 @@ module.exports = {
     })
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('users')
+    return queryInterface.dropTable('Events')
   }
 }

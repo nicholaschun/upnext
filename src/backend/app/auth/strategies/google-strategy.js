@@ -1,23 +1,23 @@
-import passport from "passport";
-import googleStrategy from "passport-google-oauth20";
+import passport from 'passport'
+import googleStrategy from 'passport-google-oauth20'
 
 import {
   createUserProfile,
   ifUserExists,
   createUser
-} from "./../../../domains/user/createUser";
-import keys from "./../../../../../config/keys";
+} from '../../../domains/user'
+import { config } from 'dotenv'
 
 passport.use(
   new googleStrategy.Strategy(
     {
-      clientID: keys.google.clientID,
-      clientSecret: keys.google.clientSecret,
-      callbackURL: "/auth/google/redirect"
+      clientID: config().parsed.google_client_id,
+      clientSecret: config().parsed.google_secret,
+      callbackURL: config().parsed.google_callback
     },
     async (accessToken, refreshToken, profile, done) => {
       //check if the user already exists and return it
-      const result = await ifUserExists(profile.emails[0].value);
+      const result = await ifUserExists(profile.emails[0].value)
       if (!result) {
         const userBody = {
           sub_id: profile.id,
@@ -26,31 +26,34 @@ passport.use(
           loginProvider: 1,
           status: 1,
           verified: 1
-        };
+        }
+        let profile_image = profile.photos[0].value
         const userProfile = {
-          firstName: profile.name.givenName,
-          lastName: profile.name.familyName,
-          profile: profile.photos[0].value
-        };
-        const user = await createUser(userBody);
-        userProfile.user_id = user.id;
-        const userP = await createUserProfile(userProfile);
+          profile: {
+            firstName: profile.name.givenName,
+            lastName: profile.name.familyName,
+            profile: profile_image
+          }
+        }
+        const user = await createUser(userBody)
+        userProfile.id = user.id
+        const userP = await createUserProfile(userProfile)
         const userData = {
           id: user.id,
           email: user.email,
           dp: userP.profile,
           user: userP.first_name
-        };
-        return done(null, userData);
+        }
+        return done(null, userData)
       } else {
         const resultData = {
           id: result.id,
           email: result.email,
           dp: result.UserProfile.profile,
           user: result.UserProfile.first_name
-        };
-        return done(null, resultData);
+        }
+        return done(null, resultData)
       }
     }
   )
-);
+)
