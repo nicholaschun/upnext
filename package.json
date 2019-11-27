@@ -4,7 +4,7 @@
   "description": "api for creating event lineups",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec 'babel-node server.js' & watchify -vd -p browserify-hmr -t vueify -e  src/frontend/public/js/main.js -o src/frontend/public/js/bundle.js",
+    "dev": "./node_modules/.bin/nodemon --exec 'babel-node server.js' & watchify -vd -p browserify-hmr -t vueify -e  src/frontend/public/js/main.js -o src/frontend/public/js/bundle.js",
     "start": "babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
