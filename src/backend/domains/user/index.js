@@ -3,6 +3,7 @@ import util from '../../utils/index'
 
 module.exports = {
   async createUser(body) {
+    console.log(body)
     const verifyToken = util.genToken(body.email)
     return await db.User.create({
       email: body.email,
