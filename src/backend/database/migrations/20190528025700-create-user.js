@@ -29,7 +29,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       verify_token: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       },
       type: {
         type: Sequelize.INTEGER

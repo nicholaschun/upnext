@@ -8,14 +8,18 @@ import eventController from '../controllers/eventController'
 import { validateEvent } from '../request/validation/validateEvent'
 
 routes.post(
-  '/createEvent',
+  '/createevent',
   validateEvent('createEvent'),
   eventController.createEvent
 )
-routes.put('/editEvent', validateEvent('editEvent'), eventController.editEvent)
-routes.get('/getAllEvents', eventController.getAllEvents)
-routes.get('/getEvent', eventController.getEventById)
-routes.get('/getUser', eventController.getUserEvents)
-routes.delete('/deleteEvent', eventController.deleteEvent)
+routes.put(
+  '/editevent/:event_id',
+  validateEvent('editEvent'),
+  eventController.editEvent
+)
+routes.get('/getallevents', eventController.getAllEvents)
+routes.get('/getevent/:event_id', eventController.getEventById)
+routes.get('/getuserevents/:user_id', eventController.getUserEvents)
+routes.delete('/deleteevent/:event_id', eventController.deleteEvent)
 
 module.exports = routes

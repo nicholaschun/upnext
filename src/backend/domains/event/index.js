@@ -1,6 +1,6 @@
 /*  run all database queries for events here */
 
-import db from '../../database/models/event'
+import db from '../../database/models/index'
 import util from '../../utils/index'
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
   },
 
   async getEventByDate(date) {
-    return await db.Event.findOne({
+    return await db.Event.findAll({
       where: { createdAt: date }
     })
   },
@@ -34,34 +34,34 @@ module.exports = {
 
   async createEvent(data) {
     return await db.Event.create({
-      event_id: data.event_id,
-      event_name: data.eventName,
-      event_days: data.eventDays,
-      event_category: data.eventCategory,
-      event_status: data.eventStatus,
-      event_image: data.eventImage,
-      has_feedback: data.hasFeedback,
-      has_questions: data.hasQuestions,
+      event_id: util.genuuid(),
+      event_name: data.event_name,
+      event_days: data.event_days,
+      event_category: data.event_category,
+      event_status: data.event_status,
+      event_image: data.event_image,
+      has_feedback: data.has_feedback,
+      has_questions: data.has_questions,
       user_id: data.user_id,
-      event_url: data.eventUrl,
-      url_snippet: data.urlSnippet,
-      additional_info: data.additionalInfo
+      event_url: data.event_url,
+      url_snippet: data.url_snippet,
+      additional_info: data.additional_info
     })
   },
 
-  async editEvent(data) {
+  async editEvent(data, event_id) {
     return await db.Event.update(
       {
-        event_name: data.eventName,
-        event_days: data.eventDays,
-        event_category: data.eventCategory,
-        event_status: data.eventStatus,
-        event_image: data.eventImage,
-        has_feedback: data.hasFeedback,
-        has_questions: data.hasQuestions,
-        event_url: data.eventUrl,
-        url_snippet: data.urlSnippet,
-        additional_info: data.additionalInfo
+        event_name: data.event_name,
+        event_days: data.event_days,
+        event_category: data.event_category,
+        event_status: data.event_status,
+        event_image: data.event_image,
+        has_feedback: data.has_feedback,
+        has_questions: data.has_questions,
+        event_url: data.event_url,
+        url_snippet: data.url_snippet,
+        additional_info: data.additional_info
       },
       { where: { event_id: event_id } }
     )
