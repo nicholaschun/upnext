@@ -5,30 +5,36 @@ import util from '../../utils/index'
 
 module.exports = {
   async getAllEvents() {
-    return await db.Event.findAll()
+    return await db.Event.findAll({
+      include: [{ model: db.Lineup }]
+    })
   },
 
   async getEventById(id) {
     return await db.Event.findOne({
-      where: { event_id: id }
+      where: { event_id: id },
+      include: [{ model: db.Lineup }]
     })
   },
 
   async getEventByDate(date) {
     return await db.Event.findAll({
-      where: { createdAt: date }
+      where: { createdAt: date },
+      include: [{ model: db.Lineup }]
     })
   },
 
   async getEventByName(name) {
     return await db.Event.findOne({
-      where: { event_name: name }
+      where: { event_name: name },
+      include: [{ model: db.Lineup }]
     })
   },
 
   async getUserEvents(user_id) {
     return await db.Event.findOne({
-      where: { user_id: user_id }
+      where: { user_id: user_id },
+      include: [{ model: db.Lineup }]
     })
   },
 
@@ -38,7 +44,7 @@ module.exports = {
       event_name: data.event_name,
       event_days: data.event_days,
       event_category: data.event_category,
-      event_status: data.event_status,
+      event_status: 0,
       event_image: data.event_image,
       has_feedback: data.has_feedback,
       has_questions: data.has_questions,
@@ -55,7 +61,6 @@ module.exports = {
         event_name: data.event_name,
         event_days: data.event_days,
         event_category: data.event_category,
-        event_status: data.event_status,
         event_image: data.event_image,
         has_feedback: data.has_feedback,
         has_questions: data.has_questions,

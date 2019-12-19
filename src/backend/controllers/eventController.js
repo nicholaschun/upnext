@@ -10,23 +10,12 @@ import {
 module.exports = {
   async createEvent(req, res) {
     try {
-      // const body = {
-      //   event_name: req.body.eventName,
-      //   event_days: req.body.eventDays,
-      //   event_category: req.body.eventCategory,
-      //   event_status: req.body.eventStatus,
-      //   event_image: req.body.eventImage,
-      //   has_feedback: req.body.hasFeedback,
-      //   has_questions: req.body.hasQuestions,
-      //   user_id: req.body.user_id,
-      //   event_url: req.body.eventUrl,
-      //   url_snippet: req.body.urlSnippet,
-      //   additional_info: req.body.additionalInfo
-      // }
       const event = await createEvent(req.body)
       return res.json(event)
     } catch (error) {
-      console.log(error)
+      res.status(500).send({
+        message: error.message || 'Something went wrong'
+      })
     }
   },
   async editEvent(req, res) {
@@ -46,7 +35,9 @@ module.exports = {
       const event = await editEvent(body, req.params.event_id)
       return res.json(event)
     } catch (error) {
-      console.log(error)
+      res.status(500).send({
+        message: error.message || 'Something went wrong'
+      })
     }
   },
   async getAllEvents(req, res) {
@@ -54,7 +45,9 @@ module.exports = {
       const events = await getAllEvents()
       return res.json(events)
     } catch (error) {
-      console.log(error)
+      res.status(500).send({
+        message: error.message || 'Something went wrong'
+      })
     }
   },
   async getEventById(req, res) {
@@ -63,7 +56,9 @@ module.exports = {
       if (!event) return res.status(404).send('event with given id not found')
       return res.json(event)
     } catch (error) {
-      console.log(error)
+      res.status(500).send({
+        message: error.message || 'Something went wrong'
+      })
     }
   },
   async deleteEvent(req, res) {
@@ -72,7 +67,9 @@ module.exports = {
       if (!event) return res.status(404).send('event with given id not found')
       return res.json(event)
     } catch (error) {
-      console.log(error)
+      res.status(500).send({
+        message: error.message || 'Something went wrong'
+      })
     }
   },
   async getUserEvents(req, res) {
@@ -81,7 +78,9 @@ module.exports = {
       if (!user) return res.status(404).send('user with given id not found')
       return res.json(user)
     } catch (error) {
-      console.log(error)
+      res.status(500).send({
+        message: error.message || 'Something went wrong'
+      })
     }
   }
 }
