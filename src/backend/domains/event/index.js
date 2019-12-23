@@ -72,6 +72,15 @@ module.exports = {
     )
   },
 
+  async publishEvent(data, event_id) {
+    return await db.Event.update(
+      {
+        event_status: data.event_status
+      },
+      { where: { event_id: event_id } }
+    )
+  },
+
   async deleteEvent(id) {
     return await db.Event.destroy({
       where: { event_id: id }

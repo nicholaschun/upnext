@@ -4,8 +4,9 @@ import {
   getUserEvents,
   createEvent,
   editEvent,
+  publishEvent,
   deleteEvent
-} from '../domains/event'
+} from '../domains/event/index'
 
 module.exports = {
   async createEvent(req, res) {
@@ -18,6 +19,7 @@ module.exports = {
       })
     }
   },
+
   async editEvent(req, res) {
     try {
       const body = {
@@ -33,6 +35,7 @@ module.exports = {
         additional_info: req.body.additional_info
       }
       const event = await editEvent(body, req.params.event_id)
+      if (!event) return res.status(404).send('event with given id not found')
       return res.json(event)
     } catch (error) {
       res.status(500).send({
@@ -40,6 +43,22 @@ module.exports = {
       })
     }
   },
+
+  async publishEvent(req, res) {
+    try {
+      const body = {
+        event_status: req.body.event_status
+      }
+      const event = await publishEvent(body, req.params.event_id)
+      if (!event) return res.status(404).send('event with given id not found')
+      return res.json(event)
+    } catch (error) {
+      res.status(500).send({
+        message: error.message || 'Something went wrong'
+      })
+    }
+  },
+
   async getAllEvents(req, res) {
     try {
       const events = await getAllEvents()
@@ -50,6 +69,7 @@ module.exports = {
       })
     }
   },
+
   async getEventById(req, res) {
     try {
       const event = await getEventById(req.params.event_id)
@@ -61,6 +81,7 @@ module.exports = {
       })
     }
   },
+
   async deleteEvent(req, res) {
     try {
       const event = await deleteEvent(req.params.event_id)
@@ -72,6 +93,7 @@ module.exports = {
       })
     }
   },
+
   async getUserEvents(req, res) {
     try {
       const user = await getUserEvents(req.params.user_id)

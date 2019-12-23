@@ -23,12 +23,12 @@ routes.get('/getallevents', eventController.getAllEvents)
 routes.get('/getevent/:event_id', eventController.getEventById)
 routes.get('/getuserevents/:user_id', eventController.getUserEvents)
 routes.delete('/deleteevent/:event_id', eventController.deleteEvent)
-//add publish event route here  (takes event_id as a parameter )should a patch method and changes the status of an event 1
+routes.patch('/publishevent/:event_id', eventController.publishEvent)
 
 /* event line up routes appear here */
 routes.post('/:event_id/createlineup', lineupController.createLineup)
 routes.get('/:event_id/geteventlineup', lineupController.getEventLineup)
-routes.put('/editeventlineup/:lineup_id', lineupController.editEveintLineup)
+routes.put('/editeventlineup/:lineup_id', lineupController.editEventLineup)
 routes.delete(
   '/deleteeventlineup/:lineup_id',
   lineupController.deleteEventLineup
