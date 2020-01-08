@@ -5,6 +5,7 @@ import {
   deleteLineup
 } from '../domains/event/lineup'
 
+import { getEventById } from '../domains/event/index'
 module.exports = {
   async createLineup(req, res) {
     try {
@@ -19,9 +20,8 @@ module.exports = {
 
   async getEventLineup(req, res) {
     try {
-      const lineup = await getLineup(req.params.event_id)
-      if (!lineup) return res.status(404).send('lineup with given id not found')
-      return res.json(lineup)
+      const event = await getEventById(req.params.event_id)
+      return res.json(event)
     } catch (error) {
       res.status(500).send({
         message: error.message || 'Something went wrong'
@@ -39,7 +39,6 @@ module.exports = {
         facilitator: req.body.facilitator
       }
       const lineup = await editLineup(body, req.params.lineup_id)
-      if (!lineup) return res.status(404).send('lineup with given id not found')
       return res.json(lineup)
     } catch (error) {
       res.status(500).send({
@@ -51,7 +50,6 @@ module.exports = {
   async deleteEventLineup(req, res) {
     try {
       const lineup = await deleteLineup(req.params.lineup_id)
-      if (!lineup) return res.status(404).send('lineup with given id not found')
       return res.json(lineup)
     } catch (error) {
       res.status(500).send({
