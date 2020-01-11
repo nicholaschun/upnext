@@ -6,6 +6,7 @@ const routes = express.Router()
 
 import eventController from '../controllers/eventController'
 import lineupController from '../controllers/lineupController'
+import feedbackController from '../controllers/feedbackController'
 
 import { validateEvent } from '../request/validation/validateEvent'
 
@@ -33,4 +34,34 @@ routes.delete(
   '/deleteeventlineup/:lineup_id',
   lineupController.deleteEventLineup
 )
+
+/* event feedback and quetions */
+routes.post(
+  '/feedback/createfeedback/:event_id',
+  feedbackController.createFeedback
+)
+routes.get('/feedback/getfeedbacks/:event_id', feedbackController.getFeedback)
+routes.put(
+  '/feedback/editfeedback/:feedback_id',
+  feedbackController.editFeedback
+)
+routes.delete(
+  '/feedback/deletefeedback/:feedback_id',
+  feedbackController.deleteFeedback
+)
+
+routes.post(
+  '/questions/createquestions/:event_id',
+  feedbackController.createQuestion
+)
+routes.get('/feedback/getquestions/:event_id', feedbackController.getQuestions)
+routes.put(
+  '/feedback/editquestion/:question_id',
+  feedbackController.editQuestion
+)
+routes.delete(
+  '/feedback/deletequestion/:question_id',
+  feedbackController.deleteQuestion
+)
+
 module.exports = routes
