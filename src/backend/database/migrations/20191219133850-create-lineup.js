@@ -1,51 +1,33 @@
 'use strict'
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Events', {
+    return queryInterface.createTable('Lineups', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      lineup_id: {
+        type: Sequelize.STRING
+      },
       event_id: {
         type: Sequelize.STRING
       },
-      event_name: {
+      start_time: {
         type: Sequelize.STRING
       },
-      event_days: {
-        type: Sequelize.INTEGER
-      },
-      event_category: {
-        type: Sequelize.INTEGER
-      },
-      event_status: {
-        type: Sequelize.BOOLEAN
-      },
-      event_image: {
+      end_time: {
         type: Sequelize.STRING
       },
-      event_image_thumb: {
-        type: Sequelize.STRING
-      },
-      has_feedback: {
-        type: Sequelize.BOOLEAN
-      },
-      has_questions: {
-        type: Sequelize.BOOLEAN
-      },
-      user_id: {
-        type: Sequelize.INTEGER
-      },
-      event_url: {
-        type: Sequelize.STRING
-      },
-      url_snippet: {
-        type: Sequelize.STRING
-      },
-      additional_info: {
+      description: {
         type: Sequelize.TEXT
+      },
+      duration: {
+        type: Sequelize.STRING
+      },
+      facilitator: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -58,6 +40,6 @@ module.exports = {
     })
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Events')
+    return queryInterface.dropTable('Lineups')
   }
 }

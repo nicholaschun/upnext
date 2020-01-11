@@ -38,7 +38,7 @@ require('./src/backend/app/auth/passport')(passport)
 /* App routes */
 
 app.use('/', guest)
-app.use('/dashboard', verifySession, userDashboard)
+app.use('/dashboard', userDashboard)
 app.use(`${configure.parsed.api_base_url}/users`, users)
 app.use(`${configure.parsed.api_base_url}/events`, events)
 app.use('/auth', providers)

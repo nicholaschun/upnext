@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       event_category: DataTypes.INTEGER,
       event_status: DataTypes.BOOLEAN,
       event_image: DataTypes.STRING,
+      event_image_thumb: DataTypes.STRING,
       has_feedback: DataTypes.BOOLEAN,
       has_questions: DataTypes.BOOLEAN,
       user_id: DataTypes.INTEGER,
@@ -25,7 +26,14 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'id',
       targetKey: 'event_category'
     })
-    Event.belongsTo(models.User, { foreignKey: 'user_id', targetKey: 'id' })
+    Event.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      targetKey: 'user_id'
+    })
+    Event.hasMany(models.Lineup, {
+      foreignKey: 'event_id',
+      targetKey: 'eventid'
+    })
   }
   return Event
 }
