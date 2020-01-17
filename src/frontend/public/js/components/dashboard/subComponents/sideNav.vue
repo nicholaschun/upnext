@@ -46,7 +46,7 @@ module.exports = {
 .my-event-nav ul li {
   display: block;
   margin-left: 10px;
-  border-top: 1px solid var(--upnext-input-border);
+  border-top: 1px solid var(--upnext-light-ash);
   padding: 10px;
 }
 .my-event-nav ul li a {
@@ -61,7 +61,7 @@ module.exports = {
   color: var(--upnext-yellow);
 }
 .side-bar-container {
-  border-right: 1px solid var(--upnext-ash);
+  border-right: 1px solid var(--upnext-light-ash);
   height: 500px;
 }
 .side-bar-container h4 {

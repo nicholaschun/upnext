@@ -23,13 +23,14 @@
               @submit.prevent="loginUser('user_login')"
               auto-complete="off"
               data-vv-scope="user_login"
+              autocomplete="off"
             >
               <div class="col-md-12 input-container">
                 <label for="Email">Email</label>
-                <div class="input-group">
-                  <span class="input-group-addon"
+                <div class="">
+                  <!-- <span class="input-group-addon"
                     ><i class="fa fa-envelope"></i
-                  ></span>
+                  ></span> -->
                   <u-input
                     type="email"
                     name="email"
@@ -46,10 +47,10 @@
 
               <div class="col-md-12 input-container">
                 <label for="Email">Password</label>
-                <div class="input-group">
-                  <span class="input-group-addon"
+                <div class="">
+                  <!-- <span class="input-group-addon"
                     ><i class="fa fa-key"></i
-                  ></span>
+                  ></span> -->
                   <u-input
                     name="password"
                     v-validate="'required'"

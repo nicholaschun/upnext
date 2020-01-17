@@ -8,15 +8,15 @@
     >
       <div class="col-md-12 no-padding">
         <div class="col-md-12 input-container no-padding">
-          <div class="col-md-6 ">
+          <div class="col-md-6">
             <label for="firstname">First Name</label>
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <div class="">
+              <!-- <span class="input-group-addon"><i class="fa fa-user"></i></span> -->
               <u-input
                 type="text"
                 name="first name"
                 v-validate="'required'"
-                v-model="register.firstname"
+                v-model="user.firstname"
                 className="form-control custom-input"
               />
             </div>
@@ -26,13 +26,13 @@
           </div>
           <div class="col-md-6 ">
             <label for="firstname">Last Name</label>
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <div class="">
+              <!-- <span class="input-group-addon"><i class="fa fa-user"></i></span> -->
               <u-input
                 type="text"
                 name="last name"
                 v-validate="'required'"
-                v-model="register.lastname"
+                v-model="user.lastname"
                 className="form-control custom-input"
               />
             </div>
@@ -44,15 +44,15 @@
         <div class="col-md-12 input-container no-padding">
           <div class="col-md-6">
             <label for="firstname">Email</label>
-            <div class="input-group">
-              <span class="input-group-addon"
+            <div class="">
+              <!-- <span class="input-group-addon"
                 ><i class="fa fa-envelope"></i
-              ></span>
+              ></span> -->
               <u-input
                 type="email"
                 name="email"
                 v-validate="'required|email'"
-                v-model="register.email"
+                v-model="user.email"
                 className="form-control custom-input"
               />
             </div>
@@ -62,12 +62,12 @@
           </div>
           <div class="col-md-6 ">
             <label for="firstname">Organization</label>
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <div class="">
+              <!-- <span class="input-group-addon"><i class="fa fa-user"></i></span> -->
               <u-input
                 type="text"
                 name="password"
-                v-model="register.organization"
+                v-model="user.organization"
                 className="form-control custom-input"
               />
             </div>
@@ -76,11 +76,11 @@
         <div class="col-md-12 input-container no-padding">
           <div class="col-md-6">
             <label for="firstname">Password</label>
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <div class="">
+              <!-- <span class="input-group-addon"><i class="fa fa-key"></i></span> -->
               <u-input
                 type="password"
-                v-model="register.password"
+                v-model="user.password"
                 v-validate="'required'"
                 name="password"
                 className="form-control custom-input"
@@ -110,11 +110,17 @@ const inputField = require('./ui/input.vue')
 const registerButton = require('./ui/button.vue')
 const facebookLoginButton = require('./ui/facebook-login-button.vue')
 const googleLoginButton = require('./ui/google-login-button.vue')
+const { mapState } = require('vuex')
 module.exports = {
   data() {
     return {
       register: { firstname: '', lastname: '', organization: '', password: '' }
     }
+  },
+  computed: {
+    ...mapState({
+      user: state => state.users.createuser
+    })
   },
   methods: {
     registerUser(scope) {
