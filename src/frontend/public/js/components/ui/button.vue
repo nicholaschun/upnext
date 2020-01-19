@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick" :type="type">
+  <button @click="onClick" :type="type" :disabled="disabled">
     <slot>Button</slot>
   </button>
 </template>
@@ -12,6 +12,9 @@ module.exports = {
     },
     type: {
       required: false
+    },
+    disabled: {
+      required: false
     }
   }
 }
@@ -21,9 +24,14 @@ button {
   outline: none;
   border: none;
   background: transparent;
+  transition: 0.3s;
+}
+button[disabled] {
+  background: var(--upnext-disabled-button);
+  border: 1px solid var(--upnext-disabled-button);
 }
 .default-button {
-  background: #ffaa00 !important;
+  background: var(--upnext-yellow);
   color: white;
   padding: 6px 15px 3px 12px;
   border-radius: 15px;

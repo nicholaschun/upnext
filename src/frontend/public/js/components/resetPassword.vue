@@ -13,7 +13,7 @@
             <u-input
               type="email"
               name="email"
-              v-model="reset.email"
+              v-model="resetPasswordState.resetpassword.email"
               v-validate="'required|email'"
               className="form-control custom-input"
               placeholder="Enter your email address"
@@ -29,9 +29,16 @@
         <div class="col-md-12 input-container no-padding">
           <div class="col-md-6 no-padding">
             <div class="input-group">
-              <u-button type="submit" class="default-button"
-                >Reset Password</u-button
-              >
+              <u-button
+                type="submit"
+                class="default-button"
+                :disabled="resetPasswordState.resetpassword.loader"
+                >Send Email
+                <span
+                  v-if="resetPasswordState.resetpassword.loader"
+                  class="fa fa-loader fa-spinner fa-spin"
+                ></span
+              ></u-button>
             </div>
           </div>
         </div>
@@ -42,15 +49,26 @@
 <script>
 const inputField = require('./ui/input.vue')
 const registerButton = require('./ui/button.vue')
+const { mapState } = require('vuex')
+
 module.exports = {
   data() {
     return {
       reset: { email: '' }
     }
   },
+  computed: {
+    ...mapState({
+      resetPasswordState: state => state.users
+    })
+  },
   methods: {
     resetPass(scope) {
-      this.$validator.validateAll(scope).then(validate => {})
+      this.$validator.validateAll(scope).then(validate => {
+        if (validate) {
+          this.$store.dispatch('sendResetPasswordLink')
+        }
+      })
     }
   },
   components: {

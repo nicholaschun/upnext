@@ -46,6 +46,7 @@ button {
   --upnext-input-addon: #7e7e7e;
   --upnext-ash: #ececec;
   --upnext-light-ash: #f3f3f3;
+  --upnext-disabled-button: #cccccc;
 }
 .full-container {
   height: 100vh;

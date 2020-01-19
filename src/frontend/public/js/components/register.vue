@@ -16,7 +16,7 @@
                 type="text"
                 name="first name"
                 v-validate="'required'"
-                v-model="user.firstname"
+                v-model="userState.createuser.firstname"
                 className="form-control custom-input"
               />
             </div>
@@ -32,7 +32,7 @@
                 type="text"
                 name="last name"
                 v-validate="'required'"
-                v-model="user.lastname"
+                v-model="userState.createuser.lastname"
                 className="form-control custom-input"
               />
             </div>
@@ -52,7 +52,7 @@
                 type="email"
                 name="email"
                 v-validate="'required|email'"
-                v-model="user.email"
+                v-model="userState.createuser.email"
                 className="form-control custom-input"
               />
             </div>
@@ -67,7 +67,7 @@
               <u-input
                 type="text"
                 name="password"
-                v-model="user.organization"
+                v-model="userState.createuser.organization"
                 className="form-control custom-input"
               />
             </div>
@@ -80,7 +80,7 @@
               <!-- <span class="input-group-addon"><i class="fa fa-key"></i></span> -->
               <u-input
                 type="password"
-                v-model="user.password"
+                v-model="userState.createuser.password"
                 v-validate="'required'"
                 name="password"
                 className="form-control custom-input"
@@ -95,8 +95,16 @@
         <div class="col-md-12 input-container no-padding">
           <div class="col-md-6">
             <div class="input-group">
-              <u-button class="default-button" type="submit">
+              <u-button
+                :disabled="userState.createuser.loader"
+                class="default-button"
+                type="submit"
+              >
                 Sign Up
+                <span
+                  v-if="userState.createuser.loader"
+                  class="fa fa-loader fa-spinner fa-spin"
+                ></span>
               </u-button>
             </div>
           </div>
@@ -119,16 +127,14 @@ module.exports = {
   },
   computed: {
     ...mapState({
-      user: state => state.users.createuser
+      userState: state => state.users
     })
   },
   methods: {
     registerUser(scope) {
-      console.log(this.$validator)
       this.$validator.validateAll(scope).then(validate => {
-        console.log(validate)
         if (validate) {
-          console.log(this.register)
+          this.$store.dispatch('registerUser')
         }
       })
     }

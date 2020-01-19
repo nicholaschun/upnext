@@ -34,7 +34,7 @@
                   <u-input
                     type="email"
                     name="email"
-                    v-model="login.email"
+                    v-model="loginState.login.email"
                     v-validate="'required|email'"
                     className="form-control custom-input"
                     placeholder="kofi@example.com"
@@ -56,7 +56,7 @@
                     v-validate="'required'"
                     className="form-control custom-input"
                     type="password"
-                    v-model="login.password"
+                    v-model="loginState.login.password"
                     placeholder="•••••••"
                   />
                 </div>
@@ -66,8 +66,16 @@
               </div>
               <div class="col-md-12 input-container">
                 <div class="input-group">
-                  <u-button class="default-button" type="submit">
+                  <u-button
+                    class="default-button"
+                    type="submit"
+                    :disabled="loginState.login.loader"
+                  >
                     Sign in
+                    <span
+                      v-if="loginState.login.loader"
+                      class="fa fa-loader fa-spinner fa-spin"
+                    ></span>
                   </u-button>
                 </div>
               </div>
@@ -87,27 +95,25 @@ const inputField = require('./ui/input.vue')
 const userService = require('./../services/user')
 const facebookLoginButton = require('./ui/facebook-login-button.vue')
 const googleLoginButton = require('./ui/google-login-button.vue')
-
+const { mapState } = require('vuex')
 module.exports = {
   data() {
     return {
-      login: { email: null, password: null },
+      // login: { email: null, password: null },
       error: ''
     }
+  },
+  computed: {
+    ...mapState({
+      loginState: state => state.users
+    })
   },
   methods: {
     loginUser(scope) {
       this.$validator.validateAll(scope).then(validate => {
-        userService
-          .loginUser(this.login)
-          .then(res => {
-            // redirect to protected dashboard
-            location.href = '/dashboard'
-          })
-          .catch(error => {
-            console.log(error.response)
-            this.error = error.response.data.message
-          })
+        if (validate) {
+          this.$store.dispatch('loginUser')
+        }
       })
     },
     callRegister() {
