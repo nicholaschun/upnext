@@ -9,13 +9,15 @@ module.exports = {
       validate(req, res)
       const check = await ifUserExists(req.body.email)
       if (check) {
-        return res.status(401).json({ message: 'User already exists' })
+        return res
+          .status(401)
+          .json({ msg: 'User already exists login to continue your session' })
       }
       const body = {
         email: req.body.email,
         password: req.body.password,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        firstName: req.body.firstname,
+        lastName: req.body.lastname,
         organization: req.body.organization,
         profile: '',
         status: 0,
@@ -28,7 +30,11 @@ module.exports = {
         profile: body
       }
       await createUserProfile(data)
-      return res.json(user)
+      return res.json({
+        data: user,
+        msg:
+          'Account created succusfully. Check your email to verify your account'
+      })
     } catch (error) {
       console.log(error)
     }
@@ -44,7 +50,9 @@ module.exports = {
         const userBody = { id: user.id, email: user.email }
         req.logIn(userBody, err => {
           if (err) {
-            return res.status(404).send('Username or password incorrect')
+            return res
+              .status(404)
+              .json({ message: 'Username or password incorrect' })
           }
         })
         res.status(200).json(req.user)

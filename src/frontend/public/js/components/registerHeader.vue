@@ -16,9 +16,14 @@
           </div>
           <div class="main-form">
             <h4>Login</h4>
+            <div class="col-md-12">
+              <error-box
+                v-if="loginState.login.errors"
+                :messagedata="loginState.login.errors"
+              />
+            </div>
             <facebook-login-button />
             <google-login-button />
-            <span>{{ error }}</span>
             <form
               @submit.prevent="loginUser('user_login')"
               auto-complete="off"
@@ -95,14 +100,10 @@ const inputField = require('./ui/input.vue')
 const userService = require('./../services/user')
 const facebookLoginButton = require('./ui/facebook-login-button.vue')
 const googleLoginButton = require('./ui/google-login-button.vue')
+const errorBox = require('./ui/errorBox.vue')
+
 const { mapState } = require('vuex')
 module.exports = {
-  data() {
-    return {
-      // login: { email: null, password: null },
-      error: ''
-    }
-  },
   computed: {
     ...mapState({
       loginState: state => state.users
@@ -124,7 +125,8 @@ module.exports = {
     'u-button': registerButton,
     'u-input': inputField,
     'facebook-login-button': facebookLoginButton,
-    'google-login-button': googleLoginButton
+    'google-login-button': googleLoginButton,
+    'error-box': errorBox
   }
 }
 </script>

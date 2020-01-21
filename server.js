@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import session from 'express-session'
 import passport from 'passport'
 import { config } from 'dotenv'
+import cors from 'cors'
 
 import users from './src/backend/routes/users'
 import events from './src/backend/routes/events'
@@ -21,6 +22,7 @@ app.set('view engine', 'pug')
 
 app.use(bodyParser.json())
 app.use(express.static('./src/frontend/public'))
+app.use(cors())
 
 app.use(
   session({

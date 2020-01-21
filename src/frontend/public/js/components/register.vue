@@ -1,7 +1,14 @@
 <template>
   <div class="register-form">
+    <div class="col-md-12">
+      <error-box
+        v-if="userState.createuser.messagebox"
+        :messagedata="userState.createuser.messagebox"
+      />
+    </div>
     <facebook-login-button />
     <google-login-button />
+    <br />
     <form
       @submit.prevent="registerUser('user_register')"
       data-vv-scope="user_register"
@@ -9,7 +16,7 @@
       <div class="col-md-12 no-padding">
         <div class="col-md-12 input-container no-padding">
           <div class="col-md-6">
-            <label for="firstname">First Name</label>
+            <label for="firstname">First Name <span>*</span></label>
             <div class="">
               <!-- <span class="input-group-addon"><i class="fa fa-user"></i></span> -->
               <u-input
@@ -25,7 +32,7 @@
             }}</small>
           </div>
           <div class="col-md-6 ">
-            <label for="firstname">Last Name</label>
+            <label for="firstname">Last Name <span>*</span></label>
             <div class="">
               <!-- <span class="input-group-addon"><i class="fa fa-user"></i></span> -->
               <u-input
@@ -43,7 +50,7 @@
         </div>
         <div class="col-md-12 input-container no-padding">
           <div class="col-md-6">
-            <label for="firstname">Email</label>
+            <label for="firstname">Email <span>*</span></label>
             <div class="">
               <!-- <span class="input-group-addon"
                 ><i class="fa fa-envelope"></i
@@ -75,7 +82,7 @@
         </div>
         <div class="col-md-12 input-container no-padding">
           <div class="col-md-6">
-            <label for="firstname">Password</label>
+            <label for="firstname">Password <span>*</span></label>
             <div class="">
               <!-- <span class="input-group-addon"><i class="fa fa-key"></i></span> -->
               <u-input
@@ -118,13 +125,10 @@ const inputField = require('./ui/input.vue')
 const registerButton = require('./ui/button.vue')
 const facebookLoginButton = require('./ui/facebook-login-button.vue')
 const googleLoginButton = require('./ui/google-login-button.vue')
+const errorBox = require('./ui/errorBox.vue')
 const { mapState } = require('vuex')
+
 module.exports = {
-  data() {
-    return {
-      register: { firstname: '', lastname: '', organization: '', password: '' }
-    }
-  },
   computed: {
     ...mapState({
       userState: state => state.users
@@ -143,7 +147,8 @@ module.exports = {
     'u-input': inputField,
     'u-button': registerButton,
     'facebook-login-button': facebookLoginButton,
-    'google-login-button': googleLoginButton
+    'google-login-button': googleLoginButton,
+    'error-box': errorBox
   }
 }
 </script>
