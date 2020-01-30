@@ -8,12 +8,12 @@ import { validateUser } from '../request/validation/validateUser'
 
 routes.post('/register', validateUser('createUser'), userController.createUser)
 routes.post('/login', validateUser('loginUser'), userController.loginUser)
+
 routes.post(
   '/login-token',
   validateUser('loginUser'),
   userController.tokenLogin
 )
-routes.post('/logoutUser', userController.logoutUser)
 routes.post(
   '/resetPassword',
   validateUser('resetPassword'),

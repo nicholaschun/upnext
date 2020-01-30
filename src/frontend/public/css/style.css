@@ -42,9 +42,11 @@ button {
   --upnext-blue: #25a8c0;
   --upnext-hover-blue: #2fcae6;
   --upnext-yellow: #ffaa00;
-  --upnext-input-border: #e0e0e0;
+  --upnext-input-border: #2fcae6;
   --upnext-input-addon: #7e7e7e;
-  --upnext-ash: #dddddd;
+  --upnext-ash: #ececec;
+  --upnext-light-ash: #f3f3f3;
+  --upnext-disabled-button: #cccccc;
 }
 .full-container {
   height: 100vh;
@@ -154,6 +156,8 @@ button {
 .input-group-addon {
   background-color: white !important;
   color: var(--upnext-input-addon);
+  border-radius: 20px !important;
+  margin-left: 20px !important;
 }
 .register-form input {
   display: block;
