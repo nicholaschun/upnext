@@ -18,8 +18,8 @@
             <h4>Login</h4>
             <div class="col-md-12">
               <error-box
-                v-if="loginState.login.errors"
-                :messagedata="loginState.login.errors"
+                v-if="loginState.login.messagebox"
+                :messagedata="loginState.login.messagebox"
               />
             </div>
             <facebook-login-button />

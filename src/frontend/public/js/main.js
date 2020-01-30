@@ -1,8 +1,10 @@
 const Vue = require('vue/dist/vue.js')
 const Veevalidate = require('vee-validate')
+const VueCookies = require('vue-cookies')
 const store = require('./store/index.js')
 Vue.use(Veevalidate)
 Vue.use(store)
+Vue.use(VueCookies)
 
 Vue.component('testComponent', require('./components/test.vue'))
 Vue.component('searchComponent', require('./components/search.vue'))

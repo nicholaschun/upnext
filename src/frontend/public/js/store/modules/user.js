@@ -6,7 +6,7 @@ const state = {
   createuser: {
     firstname: 'Nicholas',
     lastname: 'Mamiya',
-    email: 'nicholas@gmail.com',
+    email: 'nicholaschunryne@gmail.com',
     organization: 'i5',
     password: 'cripx...',
     loader: false,
@@ -43,6 +43,11 @@ const mutations = {
   setMessages(state, data) {
     state[data.state]['messagebox'].message = data.message
     state[data.state]['messagebox'].type = data.type
+  },
+  resetForm(state, object) {
+    Object.keys(state[object]).forEach(key => {
+      state[object][key] = null
+    })
   }
 }
 
@@ -57,6 +62,7 @@ const actions = {
         type: 'success',
         message: result.data
       })
+      // commit('resetForm', 'createuser')
     } catch (error) {
       commit('toggleLoader', 'createuser')
       const errors = utils.generateMessage(error)
@@ -68,17 +74,25 @@ const actions = {
     }
   },
 
-  async loginUser({ commit }) {
+  async loginUser({ commit, state }) {
     commit('toggleLoader', 'login')
     try {
-      await userservice.loginUser(state.login)
+      const result = await userservice.loginUser(state.login)
+      console.log(result)
+      window.location = '/dashboard'
+      // commit('resetForm', 'login')
+      // if (result.status === 200) {
+      // }
       commit('toggleLoader', 'login')
     } catch (error) {
       console.log(error)
-      const errors = error.response ? error.response.data.errors : error.message
-      console.log(errors)
-      commit('setErrorMessages', { state: 'login', message: errors })
       commit('toggleLoader', 'login')
+      const errors = utils.generateMessage(error)
+      commit('setMessages', {
+        state: 'login',
+        type: 'error',
+        message: errors
+      })
     }
   },
 

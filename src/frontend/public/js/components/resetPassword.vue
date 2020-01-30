@@ -33,7 +33,7 @@
                 type="submit"
                 class="default-button"
                 :disabled="resetPasswordState.resetpassword.loader"
-                >Send Email
+                >Send Emails
                 <span
                   v-if="resetPasswordState.resetpassword.loader"
                   class="fa fa-loader fa-spinner fa-spin"

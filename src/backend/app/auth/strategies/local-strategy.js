@@ -11,7 +11,7 @@ passport.use(
       const user = await ifUserExists(email)
       if (!user) {
         return done(null, false, {
-          message: 'Username / password is incorrect'
+          msg: 'User does not exist'
         })
       }
       if (user.status) {
@@ -21,13 +21,13 @@ passport.use(
             return done(null, user)
           } else {
             return done(null, false, {
-              message: 'Username / Password incorrect'
+              msg: 'Username / Password incorrect'
             })
           }
         })
       } else {
         return done(null, false, {
-          message: 'Please verify your aacount to continue your session'
+          msg: 'Please verify your aacount to continue your session'
         })
       }
     }

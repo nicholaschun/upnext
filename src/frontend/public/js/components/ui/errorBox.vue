@@ -43,5 +43,6 @@ module.exports = {
 .custom-error {
   margin-top: 10px;
   transition: 0.3s;
+  font-size: 0.9em;
 }
 </style>

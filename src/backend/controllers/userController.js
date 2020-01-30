@@ -44,18 +44,14 @@ module.exports = {
       validate(req, res)
       passport.authenticate('local', (err, user, info) => {
         if (err || !user) {
-          console.log('Error1', err)
           return res.status(400).send(info)
         }
-        const userBody = { id: user.id, email: user.email }
-        req.logIn(userBody, err => {
-          if (err) {
-            return res
-              .status(404)
-              .json({ message: 'Username or password incorrect' })
-          }
+        // const userBody = { id: user.id, email: user.email }
+        req.logIn(user, err => {
+          // res.send('logged in')
+          console.log(req.user)
+          res.json(req.user)
         })
-        res.status(200).json(req.user)
       })(req, res, next)
     } catch (error) {
       console.log(error)
@@ -100,6 +96,8 @@ module.exports = {
     }
   },
   logoutUser(req, res) {
-    res.send('logout user')
+    req.logout()
+    return res.redirect('/')
+    // res.send('logout user')
   }
 }

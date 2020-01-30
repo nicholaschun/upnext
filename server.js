@@ -4,6 +4,7 @@ import session from 'express-session'
 import passport from 'passport'
 import { config } from 'dotenv'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 import users from './src/backend/routes/users'
 import events from './src/backend/routes/events'
@@ -17,12 +18,13 @@ const configure = config()
 const port = process.env.PORT || configure.parsed.default_port
 const hostname = configure.parsed.default_host
 
+app.use(cors())
+app.use(cookieParser())
 app.set('views', './src/frontend/views')
 app.set('view engine', 'pug')
 
 app.use(bodyParser.json())
 app.use(express.static('./src/frontend/public'))
-app.use(cors())
 
 app.use(
   session({
@@ -30,11 +32,12 @@ app.use(
     secret: configure.parsed.secret_key,
     resave: false,
     expires: false,
-    saveUninitialized: false
+    saveUninitialized: true
   })
 )
 app.use(passport.initialize())
 app.use(passport.session())
+
 require('./src/backend/app/auth/passport')(passport)
 
 /* App routes */
