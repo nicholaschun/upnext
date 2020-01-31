@@ -1,5 +1,5 @@
 import { validationResult } from 'express-validator'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 module.exports = {
   validate(req, res) {
     const errors = validationResult(req)

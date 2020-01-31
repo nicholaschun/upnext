@@ -4,7 +4,7 @@ var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefau
 
 var _crypto = _interopRequireDefault(require('crypto'))
 
-var _bcrypt = _interopRequireDefault(require('bcrypt'))
+var _bcryptjs = _interopRequireDefault(require('bcryptjs'))
 
 var _uuid = _interopRequireDefault(require('uuid'))
 
@@ -16,7 +16,7 @@ module.exports = {
       .digest('hex')
   },
   encryptPass: function encryptPass(password) {
-    return _bcrypt['default'].hashSync(password, 10)
+    return _bcryptjs['default'].hashSync(password, 10)
   },
   genuuid: function genuuid() {
     return (0, _uuid['default'])()

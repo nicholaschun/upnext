@@ -10,7 +10,7 @@ var _asyncToGenerator2 = _interopRequireDefault(
 
 var _passport = _interopRequireDefault(require('passport'))
 
-var _bcrypt = _interopRequireDefault(require('bcrypt'))
+var _bcryptjs = _interopRequireDefault(require('bcryptjs'))
 
 var _passportLocal = _interopRequireDefault(require('passport-local'))
 
@@ -56,20 +56,21 @@ _passport['default'].use(
                     break
                   }
 
-                  _bcrypt['default'].compare(password, user.password, function(
-                    err,
-                    isMatched
-                  ) {
-                    if (err) throw err
+                  _bcryptjs['default'].compare(
+                    password,
+                    user.password,
+                    function(err, isMatched) {
+                      if (err) throw err
 
-                    if (isMatched) {
-                      return done(null, user)
-                    } else {
-                      return done(null, false, {
-                        msg: 'Username / Password incorrect'
-                      })
+                      if (isMatched) {
+                        return done(null, user)
+                      } else {
+                        return done(null, false, {
+                          msg: 'Username / Password incorrect'
+                        })
+                      }
                     }
-                  })
+                  )
 
                   _context.next = 10
                   break

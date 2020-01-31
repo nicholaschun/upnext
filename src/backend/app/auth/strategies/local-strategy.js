@@ -1,5 +1,5 @@
 import passport from 'passport'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import localStrategy from 'passport-local'
 import { ifUserExists } from '../../../domains/user'
 

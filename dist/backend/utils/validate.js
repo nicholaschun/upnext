@@ -4,7 +4,7 @@ var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefau
 
 var _expressValidator = require('express-validator')
 
-var _bcrypt = _interopRequireDefault(require('bcrypt'))
+var _bcryptjs = _interopRequireDefault(require('bcryptjs'))
 
 module.exports = {
   validate: function validate(req, res) {
@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   checkPass: function checkPass(password, userPassword) {
-    _bcrypt['default'].compare(password, userPassword, function(
+    _bcryptjs['default'].compare(password, userPassword, function(
       err,
       isMatched
     ) {
