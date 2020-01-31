@@ -16,7 +16,7 @@ import verifySession from './backend/app/auth/verifySession'
 const app = express()
 const configure = config()
 const port = process.env.PORT || configure.parsed.default_port
-const hostname = process.env.hostname || configure.parsed.default_host
+const hostname = '127.0.0.1'
 
 app.use(cors())
 app.use(cookieParser())
