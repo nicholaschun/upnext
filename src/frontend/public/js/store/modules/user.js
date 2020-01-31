@@ -80,9 +80,6 @@ const actions = {
       const result = await userservice.loginUser(state.login)
       console.log(result)
       window.location = '/dashboard'
-      // commit('resetForm', 'login')
-      // if (result.status === 200) {
-      // }
       commit('toggleLoader', 'login')
     } catch (error) {
       console.log(error)

@@ -4,7 +4,9 @@
   "description": "api for creating event lineups",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/nodemon --exec babel-node server.js & watchify -vd -p browserify-hmr -t vueify -e  src/frontend/public/js/main.js -o src/frontend/public/js/bundle.js",
+    "build": "rimraf dist && babel ./src --out-dir dist/  --ignore ./node_modules",
+    "dev": "./node_modules/.bin/nodemon --exec babel-node src/server.js & watchify -vd -p browserify-hmr -t vueify -e  src/frontend/public/js/main.js -o src/frontend/public/js/bundle.js",
+    "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
@@ -14,6 +16,7 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "babel-loader": "^8.0.6",
     "babel-preset-es2015": "^6.24.1",
@@ -27,6 +30,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.3",
+    "@babel/runtime": "^7.8.4",
     "axios": "^0.19.2",
     "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",

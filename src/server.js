@@ -6,12 +6,12 @@ import { config } from 'dotenv'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
-import users from './src/backend/routes/users'
-import events from './src/backend/routes/events'
-import providers from './src/backend/routes/providers'
-import userDashboard from './src/backend/routes/dashboard'
-import guest from './src/backend/routes/guest'
-import verifySession from './src/backend/app/auth/verifySession'
+import users from './backend/routes/users'
+import events from './backend/routes/events'
+import providers from './backend/routes/providers'
+import userDashboard from './backend/routes/dashboard'
+import guest from './backend/routes/guest'
+import verifySession from './backend/app/auth/verifySession'
 
 const app = express()
 const configure = config()
@@ -20,11 +20,11 @@ const hostname = configure.parsed.default_host
 
 app.use(cors())
 app.use(cookieParser())
-app.set('views', './src/frontend/views')
+app.set('views', './frontend/views')
 app.set('view engine', 'pug')
 
 app.use(bodyParser.json())
-app.use(express.static('./src/frontend/public'))
+app.use(express.static('./frontend/public'))
 
 app.use(
   session({
@@ -38,7 +38,7 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
-require('./src/backend/app/auth/passport')(passport)
+require('./backend/app/auth/passport')(passport)
 
 /* App routes */
 

@@ -1,0 +1,15 @@
+secret_key=322940193832309
+session_key=upnext_session
+facebook_client_id=343852089450392
+facebook_secret=31cae72fda652d4a4b56dca1af30fa5e
+facebook_callback=/auth/facebook/redirect
+google_client_id=1071392861031-qi6s1na0ln08q6cdbrcppf6fld8nme1n.apps.googleusercontent.com
+google_secret=QBEMYgzb-ouUYk6VqVA1Pvhj
+google_callback=/auth/google/redirect	
+local_base_url= http://127.0.0.1:8080/api/v1
+api_base_url= /api/v1
+staging_base=
+default_port=8080
+default_host=127.0.0.1
+
+

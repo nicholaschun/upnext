@@ -1,12 +1,16 @@
-const Vue = require('vue/dist/vue.js')
-const Veevalidate = require('vee-validate')
-const VueCookies = require('vue-cookies')
-const store = require('./store/index.js')
+'use strict'
+
+var Vue = require('vue/dist/vue.js')
+
+var Veevalidate = require('vee-validate')
+
+var VueCookies = require('vue-cookies')
+
+var store = require('./store/index.js')
 
 Vue.use(Veevalidate)
 Vue.use(store)
 Vue.use(VueCookies)
-
 Vue.component('testComponent', require('./components/test.vue'))
 Vue.component('searchComponent', require('./components/search.vue'))
 Vue.component(
@@ -23,8 +27,8 @@ Vue.component(
   'resetPasswordComponent',
   require('./components/resetPassword.vue')
 )
-
 /* Dashboard components */
+
 Vue.component(
   'createEventComponent',
   require('./components/dashboard/createEvent.vue')
@@ -47,8 +51,7 @@ Vue.component(
   require('./components/dashboard/questions.vue')
 )
 Vue.component('profileComponent', require('./components/dashboard/profile.vue'))
-
-const app = new Vue({
+var app = new Vue({
   el: '#app',
-  store
+  store: store
 })

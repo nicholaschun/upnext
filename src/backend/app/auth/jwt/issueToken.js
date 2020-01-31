@@ -7,10 +7,10 @@ let s = 'admin@up-next.co'
 let a = 'up-next.co/apps'
 let expire = '365d'
 const publicKey = fs
-  .readFileSync(path.resolve(__dirname, 'keys/public.key'))
+  .readFileSync(path.resolve('./config/keys/public.key'))
   .toString('utf8')
 const privateKey = fs
-  .readFileSync(path.resolve(__dirname, 'keys/private.key'))
+  .readFileSync(path.resolve('./config/keys/private.key'))
   .toString('utf8')
 module.exports = {
   issueToken(body) {
