@@ -10,7 +10,7 @@ var _expressSession = _interopRequireDefault(require('express-session'))
 
 var _passport = _interopRequireDefault(require('passport'))
 
-var _dotenv = require('dotenv')
+var _dotenv = _interopRequireDefault(require('dotenv'))
 
 var _cors = _interopRequireDefault(require('cors'))
 
@@ -31,19 +31,21 @@ var _verifySession = _interopRequireDefault(
 )
 
 var app = (0, _express['default'])()
-var configure = (0, _dotenv.config)()
-var port = process.env.PORT || configure.parsed.default_port
+
+_dotenv['default'].config()
+
+var port = process.env.PORT || process.env.default_port
 var hostname = '127.0.0.1'
 app.use((0, _cors['default'])())
 app.use((0, _cookieParser['default'])())
-app.set('views', './frontend/views')
+app.set('views', './src/frontend/views')
 app.set('view engine', 'pug')
 app.use(_bodyParser['default'].json())
-app.use(_express['default']['static']('./frontend/public'))
+app.use(_express['default']['static']('./src/frontend/public'))
 app.use(
   (0, _expressSession['default'])({
-    key: configure.parsed.session_key,
-    secret: configure.parsed.secret_key,
+    key: process.env.session_key,
+    secret: process.env.secret_key,
     resave: false,
     expires: false,
     saveUninitialized: true
@@ -57,8 +59,8 @@ require('./backend/app/auth/passport')(_passport['default'])
 
 app.use('/', _guest['default'])
 app.use('/dashboard', _dashboard['default'])
-app.use(''.concat(configure.parsed.api_base_url, '/users'), _users['default'])
-app.use(''.concat(configure.parsed.api_base_url, '/events'), _events['default'])
+app.use(''.concat(process.env.api_base_url, '/users'), _users['default'])
+app.use(''.concat(process.env.api_base_url, '/events'), _events['default'])
 app.use('/auth', _providers['default'])
 /* Start express server */
 
