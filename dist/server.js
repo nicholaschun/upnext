@@ -36,10 +36,10 @@ var port = process.env.PORT || configure.parsed.default_port
 var hostname = configure.parsed.default_host
 app.use((0, _cors['default'])())
 app.use((0, _cookieParser['default'])())
-app.set('views', 'frontend/views')
+app.set('views', './frontend/views')
 app.set('view engine', 'pug')
 app.use(_bodyParser['default'].json())
-app.use(_express['default']['static']('frontend/public'))
+app.use(_express['default']['static']('./frontend/public'))
 app.use(
   (0, _expressSession['default'])({
     key: configure.parsed.session_key,

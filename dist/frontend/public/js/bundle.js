@@ -67089,13 +67089,18 @@ function _objectSpread(target) {
         ;(function(global, _main, moduleDefs, cachedModules, _entries) {
           'use strict'
           var moduleMeta = {
-            'node_modules/parseuri/index.js': {
-              index: 209,
-              hash: 'EzACpgP8IC8rgl7aVyRs',
+            'node_modules/browserify-hmr/lib/has.js': {
+              index: 36,
+              hash: 'Hky4QYVrU1+kFHIEuxPy',
               parents: [
-                'node_modules/socket.io-client/lib/url.js',
-                'node_modules/engine.io-client/lib/socket.js'
+                'node_modules/browserify-hmr/lib/str-set.js',
+                'node_modules/browserify-hmr/inc/index.js'
               ]
+            },
+            'node_modules/browserify-hmr/lib/str-set.js': {
+              index: 37,
+              hash: 'lcrDmQK4uaqOqN+FV4/9',
+              parents: ['node_modules/browserify-hmr/inc/index.js']
             },
             'node_modules/socket.io-client/lib/on.js': {
               index: 213,
@@ -67103,6 +67108,19 @@ function _objectSpread(target) {
               parents: [
                 'node_modules/socket.io-client/lib/socket.js',
                 'node_modules/socket.io-client/lib/manager.js'
+              ]
+            },
+            'node_modules/process/browser.js': {
+              index: 210,
+              hash: 'oZn5/djw+Uvkv+VAfElp',
+              parents: [
+                'node_modules/socket.io-client/node_modules/debug/src/browser.js',
+                'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/browser.js',
+                'node_modules/vuex/dist/vuex.common.js',
+                'node_modules/vue/dist/vue.runtime.common.js',
+                'node_modules/engine.io-client/node_modules/debug/src/browser.js',
+                'node_modules/timers-browserify/main.js',
+                'node_modules/axios/lib/defaults.js'
               ]
             },
             'node_modules/component-emitter/index.js': {
@@ -67115,6 +67133,29 @@ function _objectSpread(target) {
                 'node_modules/engine.io-client/lib/transports/polling-xhr.js',
                 'node_modules/engine.io-client/lib/socket.js',
                 'node_modules/socket.io-client/lib/manager.js'
+              ]
+            },
+            'node_modules/parseuri/index.js': {
+              index: 209,
+              hash: 'EzACpgP8IC8rgl7aVyRs',
+              parents: [
+                'node_modules/socket.io-client/lib/url.js',
+                'node_modules/engine.io-client/lib/socket.js'
+              ]
+            },
+            'node_modules/socket.io-client/lib/url.js': {
+              index: 215,
+              hash: 'n0UOO3VaMzFsfPFiJFxC',
+              parents: ['node_modules/socket.io-client/lib/index.js']
+            },
+            'node_modules/socket.io-client/node_modules/debug/src/browser.js': {
+              index: 216,
+              hash: 'dnxCviFhnOSF5ZEd3rel',
+              parents: [
+                'node_modules/socket.io-client/lib/url.js',
+                'node_modules/socket.io-client/lib/socket.js',
+                'node_modules/socket.io-client/lib/manager.js',
+                'node_modules/socket.io-client/lib/index.js'
               ]
             },
             'node_modules/component-bind/index.js': {
@@ -67130,8 +67171,8 @@ function _objectSpread(target) {
               hash: 'bFhhlHvfi+om+FJQz11d',
               parents: [
                 'node_modules/socket.io-client/lib/socket.js',
-                'node_modules/engine.io-client/lib/transports/polling.js',
                 'node_modules/engine.io-client/lib/transports/websocket.js',
+                'node_modules/engine.io-client/lib/transports/polling.js',
                 'node_modules/engine.io-client/lib/socket.js'
               ]
             },
@@ -67140,31 +67181,10 @@ function _objectSpread(target) {
               hash: '2EoggafxX+GLXkXiaGjm',
               parents: ['node_modules/socket.io-client/lib/socket.js']
             },
-            'node_modules/socket.io-client/node_modules/isarray/index.js': {
-              index: 218,
-              hash: 'm4xpE3KALaeIycX04cov',
-              parents: [
-                'node_modules/socket.io-client/node_modules/socket.io-parser/binary.js',
-                'node_modules/socket.io-client/node_modules/socket.io-parser/index.js'
-              ]
-            },
-            'node_modules/socket.io-client/node_modules/socket.io-parser/is-buffer.js': {
-              index: 222,
-              hash: '1vOrCizH0KmKfWqMvaQr',
-              parents: [
-                'node_modules/socket.io-client/node_modules/socket.io-parser/binary.js',
-                'node_modules/socket.io-client/node_modules/socket.io-parser/index.js'
-              ]
-            },
-            'node_modules/buffer/index.js': {
-              index: 38,
-              hash: 'hGJxhrL7Ow8RgIpHt0cK',
-              parents: [
-                'node_modules/socket.io-client/node_modules/socket.io-parser/is-buffer.js',
-                'node_modules/buffer/index.js',
-                'node_modules/has-binary2/index.js',
-                'node_modules/engine.io-client/lib/transports/websocket.js'
-              ]
+            'node_modules/backo2/index.js': {
+              index: 30,
+              hash: 'L5ry3mfVEw1wgmx9Sa+q',
+              parents: ['node_modules/socket.io-client/lib/manager.js']
             },
             'node_modules/indexof/index.js': {
               index: 61,
@@ -67174,39 +67194,26 @@ function _objectSpread(target) {
                 'node_modules/socket.io-client/lib/manager.js'
               ]
             },
-            'node_modules/backo2/index.js': {
-              index: 30,
-              hash: 'L5ry3mfVEw1wgmx9Sa+q',
-              parents: ['node_modules/socket.io-client/lib/manager.js']
+            'node_modules/lodash/forOwn.js': {
+              index: 184,
+              hash: 'Phxs3xQLZ6eXpzVwNsD+',
+              parents: ['node_modules/browserify-hmr/inc/index.js']
             },
-            'node_modules/base64-js/index.js': {
-              index: 32,
-              hash: '6dpUkfRUt5+YcmTlzhzr',
-              parents: ['node_modules/buffer/index.js']
-            },
-            'node_modules/ieee754/index.js': {
-              index: 60,
-              hash: 'lpinvuoc6+kFDWfLEBYD',
-              parents: ['node_modules/buffer/index.js']
-            },
-            'node_modules/has-binary2/node_modules/isarray/index.js': {
-              index: 58,
-              hash: 'm4xpE3KALaeIycX04cov',
-              parents: ['node_modules/has-binary2/index.js']
-            },
-            'node_modules/has-binary2/index.js': {
-              index: 57,
-              hash: 'suQ48utREXEFDHiT/ig1',
+            'node_modules/lodash/_baseForOwn.js': {
+              index: 87,
+              hash: 'wsDmgTH4vz3dPZ0ucogL',
               parents: [
-                'node_modules/socket.io-client/lib/socket.js',
-                'node_modules/engine.io-parser/lib/browser.js'
+                'node_modules/lodash/forOwn.js',
+                'node_modules/lodash/_baseEach.js',
+                'node_modules/lodash/mapValues.js'
               ]
             },
-            'node_modules/socket.io-client/node_modules/socket.io-parser/binary.js': {
-              index: 220,
-              hash: 'IRwIakVon3VSPoCR1Xtc',
+            'node_modules/lodash/_castFunction.js': {
+              index: 113,
+              hash: '17Fkqb/JTOTfTCbTGPvs',
               parents: [
-                'node_modules/socket.io-client/node_modules/socket.io-parser/index.js'
+                'node_modules/lodash/forOwn.js',
+                'node_modules/lodash/forEach.js'
               ]
             },
             'node_modules/lodash/isArray.js': {
@@ -67214,31 +67221,31 @@ function _objectSpread(target) {
               hash: 'aaUaNDXWFSVZ5STriBpj',
               parents: [
                 'node_modules/lodash/map.js',
-                'node_modules/lodash/some.js',
+                'node_modules/lodash/filter.js',
                 'node_modules/lodash/forEach.js',
                 'node_modules/lodash/_isKey.js',
-                'node_modules/lodash/_hasPath.js',
                 'node_modules/lodash/_arrayLikeKeys.js',
                 'node_modules/lodash/_baseToString.js',
                 'node_modules/lodash/_baseGetAllKeys.js',
                 'node_modules/lodash/_baseIsEqualDeep.js',
                 'node_modules/lodash/_castPath.js',
+                'node_modules/lodash/_hasPath.js',
                 'node_modules/lodash/_baseIteratee.js',
-                'node_modules/lodash/filter.js'
+                'node_modules/lodash/some.js'
               ]
             },
-            'node_modules/lodash/_arrayFilter.js': {
-              index: 76,
-              hash: 'Ev1suXdgsby5ZCXCkRms',
+            'node_modules/lodash/_arraySome.js': {
+              index: 80,
+              hash: '6MxplN9nt/AmANH1hnTa',
               parents: [
-                'node_modules/lodash/_getSymbols.js',
-                'node_modules/lodash/filter.js'
+                'node_modules/lodash/_equalArrays.js',
+                'node_modules/lodash/some.js'
               ]
             },
-            'node_modules/lodash/_baseZipObject.js': {
-              index: 111,
-              hash: 'YXMcZ83l88xZmDNehDaW',
-              parents: ['node_modules/lodash/zipObject.js']
+            'node_modules/lodash/_arrayEach.js': {
+              index: 75,
+              hash: 'b9UG7X0uCjshbsKWnzke',
+              parents: ['node_modules/lodash/forEach.js']
             },
             'node_modules/lodash/_arrayMap.js': {
               index: 78,
@@ -67248,10 +67255,18 @@ function _objectSpread(target) {
                 'node_modules/lodash/_baseToString.js'
               ]
             },
-            'node_modules/lodash/_arrayEach.js': {
-              index: 75,
-              hash: 'b9UG7X0uCjshbsKWnzke',
-              parents: ['node_modules/lodash/forEach.js']
+            'node_modules/lodash/_arrayFilter.js': {
+              index: 76,
+              hash: 'Ev1suXdgsby5ZCXCkRms',
+              parents: [
+                'node_modules/lodash/filter.js',
+                'node_modules/lodash/_getSymbols.js'
+              ]
+            },
+            'node_modules/lodash/_baseZipObject.js': {
+              index: 111,
+              hash: 'YXMcZ83l88xZmDNehDaW',
+              parents: ['node_modules/lodash/zipObject.js']
             },
             'node_modules/lodash/_isPrototype.js': {
               index: 144,
@@ -67261,12 +67276,32 @@ function _objectSpread(target) {
                 'node_modules/lodash/assign.js'
               ]
             },
-            'node_modules/lodash/_arraySome.js': {
-              index: 80,
-              hash: '6MxplN9nt/AmANH1hnTa',
+            'node_modules/socket.io-client/node_modules/isarray/index.js': {
+              index: 218,
+              hash: 'm4xpE3KALaeIycX04cov',
               parents: [
-                'node_modules/lodash/some.js',
-                'node_modules/lodash/_equalArrays.js'
+                'node_modules/socket.io-client/node_modules/socket.io-parser/binary.js',
+                'node_modules/socket.io-client/node_modules/socket.io-parser/index.js'
+              ]
+            },
+            'node_modules/vue-cookies/vue-cookies.js': {
+              index: 229,
+              hash: 'mrHYnGI3Q2V4nzF0kEmE',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'node_modules/lodash/_baseSome.js': {
+              index: 107,
+              hash: '/fx+wXc48GKu9ngo/G7R',
+              parents: ['node_modules/lodash/some.js']
+            },
+            'node_modules/lodash/_baseEach.js': {
+              index: 84,
+              hash: '1eAUgjpN0REUkkfZ9ZIc',
+              parents: [
+                'node_modules/lodash/_baseSome.js',
+                'node_modules/lodash/_baseMap.js',
+                'node_modules/lodash/_baseFilter.js',
+                'node_modules/lodash/forEach.js'
               ]
             },
             'node_modules/lodash/identity.js': {
@@ -67279,27 +67314,13 @@ function _objectSpread(target) {
                 'node_modules/lodash/_baseIteratee.js'
               ]
             },
-            'node_modules/lodash/_castFunction.js': {
-              index: 113,
-              hash: '17Fkqb/JTOTfTCbTGPvs',
+            'node_modules/lodash/_assignValue.js': {
+              index: 81,
+              hash: 'hmWN1NJKVbGe2ThBbBed',
               parents: [
-                'node_modules/lodash/forOwn.js',
-                'node_modules/lodash/forEach.js'
-              ]
-            },
-            'node_modules/lodash/_baseFilter.js': {
-              index: 85,
-              hash: 'zIF8T84UwJp2X27nHnkJ',
-              parents: ['node_modules/lodash/filter.js']
-            },
-            'node_modules/lodash/_baseEach.js': {
-              index: 84,
-              hash: '1eAUgjpN0REUkkfZ9ZIc',
-              parents: [
-                'node_modules/lodash/_baseFilter.js',
-                'node_modules/lodash/_baseMap.js',
-                'node_modules/lodash/_baseSome.js',
-                'node_modules/lodash/forEach.js'
+                'node_modules/lodash/zipObject.js',
+                'node_modules/lodash/_copyObject.js',
+                'node_modules/lodash/assign.js'
               ]
             },
             'node_modules/lodash/eq.js': {
@@ -67310,15 +67331,6 @@ function _objectSpread(target) {
                 'node_modules/lodash/_isIterateeCall.js',
                 'node_modules/lodash/_equalByTag.js',
                 'node_modules/lodash/_assocIndexOf.js'
-              ]
-            },
-            'node_modules/lodash/_assignValue.js': {
-              index: 81,
-              hash: 'hmWN1NJKVbGe2ThBbBed',
-              parents: [
-                'node_modules/lodash/zipObject.js',
-                'node_modules/lodash/_copyObject.js',
-                'node_modules/lodash/assign.js'
               ]
             },
             'node_modules/lodash/_baseAssignValue.js': {
@@ -67361,37 +67373,33 @@ function _objectSpread(target) {
               hash: 'lFdaZihzm4HNQp2V6Bpv',
               parents: [
                 'node_modules/lodash/map.js',
-                'node_modules/lodash/some.js',
+                'node_modules/lodash/filter.js',
                 'node_modules/lodash/mapValues.js',
-                'node_modules/lodash/filter.js'
+                'node_modules/lodash/some.js'
               ]
+            },
+            'node_modules/lodash/_baseFilter.js': {
+              index: 85,
+              hash: 'zIF8T84UwJp2X27nHnkJ',
+              parents: ['node_modules/lodash/filter.js']
+            },
+            'node_modules/lodash/filter.js': {
+              index: 182,
+              hash: 'xHkJOO00v5Ew3tJEbs2H',
+              parents: ['node_modules/browserify-hmr/inc/index.js']
             },
             'node_modules/lodash/_copyObject.js': {
               index: 115,
               hash: 'VAzIjaU/1tssj67rWjf/',
               parents: ['node_modules/lodash/assign.js']
             },
-            'node_modules/lodash/isLength.js': {
-              index: 193,
-              hash: 'bwSRxcpcTX/CbMowl+qa',
-              parents: [
-                'node_modules/lodash/_hasPath.js',
-                'node_modules/lodash/isArrayLike.js',
-                'node_modules/lodash/_baseIsTypedArray.js'
-              ]
-            },
-            'node_modules/lodash/_baseSome.js': {
-              index: 107,
-              hash: '/fx+wXc48GKu9ngo/G7R',
-              parents: ['node_modules/lodash/some.js']
-            },
             'node_modules/lodash/_isIndex.js': {
               index: 139,
               hash: 'K696JB36F0WOcnTVaGJc',
               parents: [
                 'node_modules/lodash/_isIterateeCall.js',
-                'node_modules/lodash/_hasPath.js',
-                'node_modules/lodash/_arrayLikeKeys.js'
+                'node_modules/lodash/_arrayLikeKeys.js',
+                'node_modules/lodash/_hasPath.js'
               ]
             },
             'node_modules/lodash/isObject.js': {
@@ -67408,61 +67416,83 @@ function _objectSpread(target) {
               index: 140,
               hash: 'Q6Y/4ZLjPN2hD0x360UE',
               parents: [
-                'node_modules/lodash/some.js',
-                'node_modules/lodash/_createAssigner.js'
+                'node_modules/lodash/_createAssigner.js',
+                'node_modules/lodash/some.js'
               ]
             },
-            'node_modules/lodash/some.js': {
-              index: 203,
-              hash: 'o5R2DTe3L0fWtByoF6NK',
-              parents: ['node_modules/browserify-hmr/inc/index.js']
-            },
-            'node_modules/lodash/_createBaseFor.js': {
-              index: 119,
-              hash: 'OeCELp37VytZuCN6Xtr+',
-              parents: ['node_modules/lodash/_baseFor.js']
-            },
-            'node_modules/lodash/_baseFor.js': {
-              index: 86,
-              hash: 'aDRpv9Ysd3A0P68kJrwN',
-              parents: ['node_modules/lodash/_baseForOwn.js']
-            },
-            'node_modules/lodash/_baseForOwn.js': {
-              index: 87,
-              hash: 'wsDmgTH4vz3dPZ0ucogL',
+            'node_modules/lodash/isLength.js': {
+              index: 193,
+              hash: 'bwSRxcpcTX/CbMowl+qa',
               parents: [
-                'node_modules/lodash/forOwn.js',
-                'node_modules/lodash/_baseEach.js',
-                'node_modules/lodash/mapValues.js'
+                'node_modules/lodash/isArrayLike.js',
+                'node_modules/lodash/_baseIsTypedArray.js',
+                'node_modules/lodash/_hasPath.js'
               ]
             },
-            'node_modules/lodash/keys.js': {
-              index: 198,
-              hash: 'AzwEiE+T6QrvlRtU3Z5w',
+            'node_modules/socket.io-client/node_modules/socket.io-parser/binary.js': {
+              index: 220,
+              hash: 'IRwIakVon3VSPoCR1Xtc',
               parents: [
-                'node_modules/lodash/_baseForOwn.js',
-                'node_modules/lodash/_getMatchData.js',
-                'node_modules/lodash/assign.js',
-                'node_modules/lodash/_getAllKeys.js'
+                'node_modules/socket.io-client/node_modules/socket.io-parser/index.js'
               ]
             },
-            'node_modules/lodash/forOwn.js': {
-              index: 184,
-              hash: 'Phxs3xQLZ6eXpzVwNsD+',
-              parents: ['node_modules/browserify-hmr/inc/index.js']
-            },
-            'node_modules/lodash/_baseProperty.js': {
-              index: 103,
-              hash: 'kWjeI0xVLXmi/QD9uMSa',
-              parents: ['node_modules/lodash/property.js']
-            },
-            'node_modules/lodash/_matchesStrictComparable.js': {
-              index: 157,
-              hash: '+OqsD2+K9liTMiGDT3Y4',
+            'node_modules/socket.io-client/node_modules/socket.io-parser/is-buffer.js': {
+              index: 222,
+              hash: '1vOrCizH0KmKfWqMvaQr',
               parents: [
-                'node_modules/lodash/_baseMatchesProperty.js',
-                'node_modules/lodash/_baseMatches.js'
+                'node_modules/socket.io-client/node_modules/socket.io-parser/binary.js',
+                'node_modules/socket.io-client/node_modules/socket.io-parser/index.js'
               ]
+            },
+            'node_modules/has-binary2/node_modules/isarray/index.js': {
+              index: 58,
+              hash: 'm4xpE3KALaeIycX04cov',
+              parents: ['node_modules/has-binary2/index.js']
+            },
+            'node_modules/has-binary2/index.js': {
+              index: 57,
+              hash: 'suQ48utREXEFDHiT/ig1',
+              parents: [
+                'node_modules/socket.io-client/lib/socket.js',
+                'node_modules/engine.io-parser/lib/browser.js'
+              ]
+            },
+            'node_modules/buffer/index.js': {
+              index: 38,
+              hash: 'hGJxhrL7Ow8RgIpHt0cK',
+              parents: [
+                'node_modules/has-binary2/index.js',
+                'node_modules/buffer/index.js',
+                'node_modules/socket.io-client/node_modules/socket.io-parser/is-buffer.js',
+                'node_modules/engine.io-client/lib/transports/websocket.js'
+              ]
+            },
+            'node_modules/socket.io-client/lib/socket.js': {
+              index: 214,
+              hash: 'rdFfPxx+D30PPULBB/zc',
+              parents: [
+                'node_modules/socket.io-client/lib/manager.js',
+                'node_modules/socket.io-client/lib/index.js'
+              ]
+            },
+            'node_modules/socket.io-client/node_modules/socket.io-parser/index.js': {
+              index: 221,
+              hash: '+PwtEidJKbGPZuiwUQ8i',
+              parents: [
+                'node_modules/socket.io-client/lib/socket.js',
+                'node_modules/socket.io-client/lib/manager.js',
+                'node_modules/socket.io-client/lib/index.js'
+              ]
+            },
+            'node_modules/vee-validate/dist/vee-validate.js': {
+              index: 228,
+              hash: 'wUrFBI1SfYyu6XPPXb3A',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'src/frontend/public/js/store/modules/event.js': {
+              index: 267,
+              hash: 'hosILh5sR+HqArVhXvWu',
+              parents: ['src/frontend/public/js/store/index.js']
             },
             'node_modules/lodash/_createBaseEach.js': {
               index: 118,
@@ -67474,19 +67504,89 @@ function _objectSpread(target) {
               hash: 'jIBP8hzrl/TALmTGIzfp',
               parents: ['node_modules/browserify-hmr/inc/index.js']
             },
+            'node_modules/lodash/_matchesStrictComparable.js': {
+              index: 157,
+              hash: '+OqsD2+K9liTMiGDT3Y4',
+              parents: [
+                'node_modules/lodash/_baseMatchesProperty.js',
+                'node_modules/lodash/_baseMatches.js'
+              ]
+            },
             'node_modules/lodash/_baseTimes.js': {
               index: 108,
               hash: 'vQVHAQOeEJCBfl2Pb7SH',
               parents: ['node_modules/lodash/_arrayLikeKeys.js']
             },
+            'node_modules/lodash/_createBaseFor.js': {
+              index: 119,
+              hash: 'OeCELp37VytZuCN6Xtr+',
+              parents: ['node_modules/lodash/_baseFor.js']
+            },
+            'node_modules/lodash/_baseFor.js': {
+              index: 86,
+              hash: 'aDRpv9Ysd3A0P68kJrwN',
+              parents: ['node_modules/lodash/_baseForOwn.js']
+            },
+            'node_modules/lodash/keys.js': {
+              index: 198,
+              hash: 'AzwEiE+T6QrvlRtU3Z5w',
+              parents: [
+                'node_modules/lodash/_baseForOwn.js',
+                'node_modules/lodash/_getMatchData.js',
+                'node_modules/lodash/assign.js',
+                'node_modules/lodash/_getAllKeys.js'
+              ]
+            },
+            'node_modules/lodash/_baseProperty.js': {
+              index: 103,
+              hash: 'kWjeI0xVLXmi/QD9uMSa',
+              parents: ['node_modules/lodash/property.js']
+            },
+            'node_modules/socket.io-client/node_modules/ms/index.js': {
+              index: 219,
+              hash: 'VZhpcvXzyURvh2xXbhzT',
+              parents: [
+                'node_modules/socket.io-client/node_modules/debug/src/common.js'
+              ]
+            },
+            'node_modules/socket.io-client/node_modules/debug/src/common.js': {
+              index: 217,
+              hash: '7srtgs+0UG8MssFA6lAN',
+              parents: [
+                'node_modules/socket.io-client/node_modules/debug/src/browser.js'
+              ]
+            },
+            'node_modules/base64-js/index.js': {
+              index: 32,
+              hash: '6dpUkfRUt5+YcmTlzhzr',
+              parents: ['node_modules/buffer/index.js']
+            },
+            'node_modules/ieee754/index.js': {
+              index: 60,
+              hash: 'lpinvuoc6+kFDWfLEBYD',
+              parents: ['node_modules/buffer/index.js']
+            },
+            'node_modules/lodash/_getMatchData.js': {
+              index: 127,
+              hash: 'QzO7KFepX9S2dqnbKqgt',
+              parents: ['node_modules/lodash/_baseMatches.js']
+            },
+            'node_modules/lodash/_isStrictComparable.js': {
+              index: 145,
+              hash: 'rbCwfHyEpUrj4Z98kqqR',
+              parents: [
+                'node_modules/lodash/_getMatchData.js',
+                'node_modules/lodash/_baseMatchesProperty.js'
+              ]
+            },
             'node_modules/lodash/_toKey.js': {
               index: 177,
               hash: 'Fva7n1CrZYGNyjdfKbt3',
               parents: [
-                'node_modules/lodash/_hasPath.js',
-                'node_modules/lodash/_baseMatchesProperty.js',
+                'node_modules/lodash/property.js',
                 'node_modules/lodash/_baseGet.js',
-                'node_modules/lodash/property.js'
+                'node_modules/lodash/_hasPath.js',
+                'node_modules/lodash/_baseMatchesProperty.js'
               ]
             },
             'node_modules/lodash/isSymbol.js': {
@@ -67498,18 +67598,32 @@ function _objectSpread(target) {
                 'node_modules/lodash/_baseToString.js'
               ]
             },
-            'node_modules/lodash/_isStrictComparable.js': {
-              index: 145,
-              hash: 'rbCwfHyEpUrj4Z98kqqR',
+            'node_modules/lodash/_basePropertyDeep.js': {
+              index: 104,
+              hash: 'Zfrh9AQz1Ry2yPu2pByv',
+              parents: ['node_modules/lodash/property.js']
+            },
+            'node_modules/lodash/_baseGet.js': {
+              index: 88,
+              hash: 'EQWKE8NGYTKR53FHpqW6',
               parents: [
-                'node_modules/lodash/_getMatchData.js',
-                'node_modules/lodash/_baseMatchesProperty.js'
+                'node_modules/lodash/_basePropertyDeep.js',
+                'node_modules/lodash/get.js'
               ]
             },
-            'node_modules/lodash/_baseHasIn.js': {
-              index: 91,
-              hash: '+7Ad7hoG+3kwDHiM0tNn',
-              parents: ['node_modules/lodash/hasIn.js']
+            'node_modules/lodash/property.js': {
+              index: 202,
+              hash: '2hJfadtQXM/U3NbWpzGR',
+              parents: ['node_modules/lodash/_baseIteratee.js']
+            },
+            'node_modules/lodash/_isKey.js': {
+              index: 141,
+              hash: 'D13Ok63JqktDADwmaeBu',
+              parents: [
+                'node_modules/lodash/property.js',
+                'node_modules/lodash/_castPath.js',
+                'node_modules/lodash/_baseMatchesProperty.js'
+              ]
             },
             'node_modules/lodash/isObjectLike.js': {
               index: 195,
@@ -67522,28 +67636,35 @@ function _objectSpread(target) {
                 'node_modules/lodash/_baseIsEqual.js'
               ]
             },
-            'node_modules/lodash/get.js': {
-              index: 185,
-              hash: 'l8Xm0+dbrUDVfD0OVsKH',
-              parents: ['node_modules/lodash/_baseMatchesProperty.js']
-            },
-            'node_modules/lodash/_baseGet.js': {
-              index: 88,
-              hash: 'EQWKE8NGYTKR53FHpqW6',
-              parents: [
-                'node_modules/lodash/get.js',
-                'node_modules/lodash/_basePropertyDeep.js'
-              ]
-            },
-            'node_modules/lodash/_getMatchData.js': {
-              index: 127,
-              hash: 'QzO7KFepX9S2dqnbKqgt',
-              parents: ['node_modules/lodash/_baseMatches.js']
-            },
             'node_modules/lodash/_objectToString.js': {
               index: 162,
               hash: 'gcC0LTB2iC1gNln4H3WI',
               parents: ['node_modules/lodash/_baseGetTag.js']
+            },
+            'node_modules/lodash/_getValue.js': {
+              index: 132,
+              hash: 'ECu3UgrdoHGLOVPWr5mD',
+              parents: ['node_modules/lodash/_getNative.js']
+            },
+            'node_modules/lodash/_shortOut.js': {
+              index: 170,
+              hash: 'IoUeHrEOcxqBK99ieVfK',
+              parents: ['node_modules/lodash/_setToString.js']
+            },
+            'node_modules/lodash/_apply.js': {
+              index: 74,
+              hash: 'XKkzZTghrlK6WTNW2Mdh',
+              parents: ['node_modules/lodash/_overRest.js']
+            },
+            'node_modules/lodash/_overRest.js': {
+              index: 164,
+              hash: 'iDNTQ1nLZv3jwCD1fhKA',
+              parents: ['node_modules/lodash/_baseRest.js']
+            },
+            'node_modules/lodash/_baseHasIn.js': {
+              index: 91,
+              hash: '+7Ad7hoG+3kwDHiM0tNn',
+              parents: ['node_modules/lodash/hasIn.js']
             },
             'node_modules/lodash/_overArg.js': {
               index: 163,
@@ -67560,35 +67681,155 @@ function _objectSpread(target) {
               hash: 'kmg69OeKnhCzjV1WMGzu',
               parents: ['node_modules/lodash/keys.js']
             },
-            'node_modules/lodash/_baseUnary.js': {
-              index: 110,
-              hash: 'cMYMf5ZcCBeLWbK9TQmI',
-              parents: ['node_modules/lodash/isTypedArray.js']
-            },
             'node_modules/lodash/stubFalse.js': {
               index: 205,
               hash: 'bsNH9caMXr7Pdt8ruFJt',
               parents: ['node_modules/lodash/isBuffer.js']
             },
-            'node_modules/lodash/_apply.js': {
-              index: 74,
-              hash: 'XKkzZTghrlK6WTNW2Mdh',
-              parents: ['node_modules/lodash/_overRest.js']
+            'node_modules/lodash/_baseUnary.js': {
+              index: 110,
+              hash: 'cMYMf5ZcCBeLWbK9TQmI',
+              parents: ['node_modules/lodash/isTypedArray.js']
             },
-            'node_modules/lodash/_overRest.js': {
-              index: 164,
-              hash: 'iDNTQ1nLZv3jwCD1fhKA',
-              parents: ['node_modules/lodash/_baseRest.js']
+            'node_modules/engine.io-parser/lib/keys.js': {
+              index: 55,
+              hash: 'oFyKNTA0twlyQVhVzp9n',
+              parents: ['node_modules/engine.io-parser/lib/browser.js']
             },
-            'node_modules/lodash/_shortOut.js': {
-              index: 170,
-              hash: 'IoUeHrEOcxqBK99ieVfK',
-              parents: ['node_modules/lodash/_setToString.js']
+            'node_modules/engine.io-parser/lib/utf8.js': {
+              index: 56,
+              hash: '++espnKbJKFbA3w6+Gd+',
+              parents: ['node_modules/engine.io-parser/lib/browser.js']
             },
-            'node_modules/lodash/_getValue.js': {
-              index: 132,
-              hash: 'ECu3UgrdoHGLOVPWr5mD',
-              parents: ['node_modules/lodash/_getNative.js']
+            'src/frontend/public/js/components/register.vue': {
+              index: 254,
+              hash: 'Ww3zwMgVb2cSc2oSAICJ',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'src/frontend/public/js/components/ui/button.vue': {
+              index: 259,
+              hash: '9SMORMKsItPqI/as5kfr',
+              parents: [
+                'src/frontend/public/js/components/register.vue',
+                'src/frontend/public/js/components/createLineupButton.vue',
+                'src/frontend/public/js/components/resetPassword.vue',
+                'src/frontend/public/js/components/registerHeader.vue'
+              ]
+            },
+            'src/frontend/public/js/components/ui/facebook-login-button.vue': {
+              index: 261,
+              hash: 'veketBSi7U5bS4uEmfnZ',
+              parents: [
+                'src/frontend/public/js/components/register.vue',
+                'src/frontend/public/js/components/registerHeader.vue'
+              ]
+            },
+            'src/frontend/public/js/components/ui/input.vue': {
+              index: 263,
+              hash: 'xqENJnh9tU8zHAhwgEZz',
+              parents: [
+                'src/frontend/public/js/components/register.vue',
+                'src/frontend/public/js/components/resetPassword.vue',
+                'src/frontend/public/js/components/registerHeader.vue'
+              ]
+            },
+            'src/frontend/public/js/components/ui/google-login-button.vue': {
+              index: 262,
+              hash: 'u514WKKUx3mQ9p8u1e9v',
+              parents: [
+                'src/frontend/public/js/components/register.vue',
+                'src/frontend/public/js/components/registerHeader.vue'
+              ]
+            },
+            'src/frontend/public/js/components/ui/errorBox.vue': {
+              index: 260,
+              hash: '32kRkp7+AsG1hXHYDC0I',
+              parents: [
+                'src/frontend/public/js/components/register.vue',
+                'src/frontend/public/js/components/registerHeader.vue'
+              ]
+            },
+            'node_modules/vuex/dist/vuex.common.js': {
+              index: 237,
+              hash: 'LWG9/9BAgVCemGs6ADOp',
+              parents: [
+                'src/frontend/public/js/components/register.vue',
+                'src/frontend/public/js/components/resetPassword.vue',
+                'src/frontend/public/js/store/index.js',
+                'src/frontend/public/js/components/registerHeader.vue'
+              ]
+            },
+            'node_modules/vue-hot-reload-api/dist/index.js': {
+              index: 230,
+              hash: 'BnmVomLE3JKioFJdZND8',
+              parents: [
+                'src/frontend/public/js/components/register.vue',
+                'src/frontend/public/js/components/createLineupButton.vue',
+                'src/frontend/public/js/components/resetPassword.vue',
+                'src/frontend/public/js/components/carousel.vue',
+                'src/frontend/public/js/components/dashboard/lineup.vue',
+                'src/frontend/public/js/components/dashboard/editLineup.vue',
+                'src/frontend/public/js/components/dashboard/profile.vue',
+                'src/frontend/public/js/components/test.vue',
+                'src/frontend/public/js/components/search.vue',
+                'src/frontend/public/js/components/dashboard/createEvent.vue',
+                'src/frontend/public/js/components/ui/input.vue',
+                'src/frontend/public/js/components/ui/errorBox.vue',
+                'src/frontend/public/js/components/ui/button.vue',
+                'src/frontend/public/js/components/ui/facebook-login-button.vue',
+                'src/frontend/public/js/components/ui/google-login-button.vue',
+                'src/frontend/public/js/components/registerHeader.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/questionCard.vue',
+                'src/frontend/public/js/components/dashboard/questions.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/lineupNav.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/feedbackCard.vue',
+                'src/frontend/public/js/components/dashboard/feedback.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/sideNav.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/eventCard.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/events.vue',
+                'src/frontend/public/js/components/dashboard/dashboard.vue'
+              ]
+            },
+            'node_modules/vue/dist/vue.runtime.common.js': {
+              index: 234,
+              hash: '799PTSOMIOGq3tZyX7LA',
+              parents: [
+                'src/frontend/public/js/components/register.vue',
+                'src/frontend/public/js/components/createLineupButton.vue',
+                'src/frontend/public/js/components/resetPassword.vue',
+                'src/frontend/public/js/components/carousel.vue',
+                'src/frontend/public/js/components/dashboard/lineup.vue',
+                'src/frontend/public/js/components/dashboard/editLineup.vue',
+                'src/frontend/public/js/components/dashboard/profile.vue',
+                'src/frontend/public/js/components/test.vue',
+                'src/frontend/public/js/components/search.vue',
+                'src/frontend/public/js/components/dashboard/createEvent.vue',
+                'src/frontend/public/js/components/ui/input.vue',
+                'src/frontend/public/js/components/ui/errorBox.vue',
+                'src/frontend/public/js/components/ui/button.vue',
+                'src/frontend/public/js/components/ui/facebook-login-button.vue',
+                'src/frontend/public/js/components/ui/google-login-button.vue',
+                'src/frontend/public/js/components/registerHeader.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/questionCard.vue',
+                'src/frontend/public/js/components/dashboard/questions.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/lineupNav.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/feedbackCard.vue',
+                'src/frontend/public/js/components/dashboard/feedback.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/sideNav.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/eventCard.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/events.vue',
+                'src/frontend/public/js/components/dashboard/dashboard.vue'
+              ]
+            },
+            'src/frontend/public/js/components/createLineupButton.vue': {
+              index: 240,
+              hash: 'ccADlR1AkT0jzC5dPzAC',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'src/frontend/public/js/components/resetPassword.vue': {
+              index: 256,
+              hash: 'Sh/KQOcMBG8Cu3QFPO+Z',
+              parents: ['src/frontend/public/js/main.js']
             },
             'node_modules/lodash/_baseGetTag.js': {
               index: 90,
@@ -67600,56 +67841,6 @@ function _objectSpread(target) {
                 'node_modules/lodash/_baseIsTypedArray.js',
                 'node_modules/lodash/_getTag.js'
               ]
-            },
-            'node_modules/lodash/_isKey.js': {
-              index: 141,
-              hash: 'D13Ok63JqktDADwmaeBu',
-              parents: [
-                'node_modules/lodash/_baseMatchesProperty.js',
-                'node_modules/lodash/_castPath.js',
-                'node_modules/lodash/property.js'
-              ]
-            },
-            'node_modules/lodash/_hasPath.js': {
-              index: 133,
-              hash: 'H9ddOWkLPRuFYq8fwTEv',
-              parents: ['node_modules/lodash/hasIn.js']
-            },
-            'node_modules/lodash/isArguments.js': {
-              index: 188,
-              hash: 'iJIbQ7nb4q+C1riPMj/b',
-              parents: [
-                'node_modules/lodash/_hasPath.js',
-                'node_modules/lodash/_arrayLikeKeys.js'
-              ]
-            },
-            'node_modules/lodash/_castPath.js': {
-              index: 114,
-              hash: 'GgKBkmr1sBRSb1yd72qJ',
-              parents: [
-                'node_modules/lodash/_hasPath.js',
-                'node_modules/lodash/_baseGet.js'
-              ]
-            },
-            'node_modules/lodash/hasIn.js': {
-              index: 186,
-              hash: 'o6j7gwruD7qKNbgMUe0j',
-              parents: ['node_modules/lodash/_baseMatchesProperty.js']
-            },
-            'node_modules/lodash/_stackDelete.js': {
-              index: 172,
-              hash: 'LXafI5DDGP0wDwfpw8/U',
-              parents: ['node_modules/lodash/_Stack.js']
-            },
-            'node_modules/lodash/_stackGet.js': {
-              index: 173,
-              hash: 'BoHW4uFMtND7Gi+JPdJf',
-              parents: ['node_modules/lodash/_Stack.js']
-            },
-            'node_modules/lodash/_stackHas.js': {
-              index: 174,
-              hash: 'thY5y8jBCnJMfegnSD/V',
-              parents: ['node_modules/lodash/_Stack.js']
             },
             'node_modules/lodash/_Symbol.js': {
               index: 71,
@@ -67667,13 +67858,13 @@ function _objectSpread(target) {
               parents: [
                 'node_modules/lodash/_Symbol.js',
                 'node_modules/lodash/isBuffer.js',
-                'node_modules/lodash/_Uint8Array.js',
                 'node_modules/lodash/_Map.js',
+                'node_modules/lodash/_coreJsData.js',
                 'node_modules/lodash/_DataView.js',
                 'node_modules/lodash/_Promise.js',
-                'node_modules/lodash/_WeakMap.js',
                 'node_modules/lodash/_Set.js',
-                'node_modules/lodash/_coreJsData.js'
+                'node_modules/lodash/_WeakMap.js',
+                'node_modules/lodash/_Uint8Array.js'
               ]
             },
             'node_modules/lodash/_getRawTag.js': {
@@ -67694,6 +67885,37 @@ function _objectSpread(target) {
               hash: 'caWdwJw13ty+5+1x9erg',
               parents: ['node_modules/lodash/isArguments.js']
             },
+            'node_modules/lodash/isArguments.js': {
+              index: 188,
+              hash: 'iJIbQ7nb4q+C1riPMj/b',
+              parents: [
+                'node_modules/lodash/_arrayLikeKeys.js',
+                'node_modules/lodash/_hasPath.js'
+              ]
+            },
+            'node_modules/lodash/_castPath.js': {
+              index: 114,
+              hash: 'GgKBkmr1sBRSb1yd72qJ',
+              parents: [
+                'node_modules/lodash/_baseGet.js',
+                'node_modules/lodash/_hasPath.js'
+              ]
+            },
+            'node_modules/lodash/get.js': {
+              index: 185,
+              hash: 'l8Xm0+dbrUDVfD0OVsKH',
+              parents: ['node_modules/lodash/_baseMatchesProperty.js']
+            },
+            'node_modules/lodash/_baseIsTypedArray.js': {
+              index: 97,
+              hash: 'cPl0GH9tkUCpceUV6gAk',
+              parents: ['node_modules/lodash/isTypedArray.js']
+            },
+            'node_modules/lodash/_nodeUtil.js': {
+              index: 161,
+              hash: 'U3tuQqeqEgCvn7UHnwWx',
+              parents: ['node_modules/lodash/isTypedArray.js']
+            },
             'node_modules/lodash/_freeGlobal.js': {
               index: 124,
               hash: 'XnLH3zOElVb8vOWnDO5f',
@@ -67701,16 +67923,6 @@ function _objectSpread(target) {
                 'node_modules/lodash/_nodeUtil.js',
                 'node_modules/lodash/_root.js'
               ]
-            },
-            'node_modules/lodash/_nodeUtil.js': {
-              index: 161,
-              hash: 'U3tuQqeqEgCvn7UHnwWx',
-              parents: ['node_modules/lodash/isTypedArray.js']
-            },
-            'node_modules/lodash/_baseIsTypedArray.js': {
-              index: 97,
-              hash: 'cPl0GH9tkUCpceUV6gAk',
-              parents: ['node_modules/lodash/isTypedArray.js']
             },
             'node_modules/lodash/isTypedArray.js': {
               index: 197,
@@ -67720,18 +67932,28 @@ function _objectSpread(target) {
                 'node_modules/lodash/_baseIsEqualDeep.js'
               ]
             },
-            'node_modules/lodash/isBuffer.js': {
-              index: 191,
-              hash: 'Uzhm1jNtW1f55Gsz24+8',
-              parents: [
-                'node_modules/lodash/_arrayLikeKeys.js',
-                'node_modules/lodash/_baseIsEqualDeep.js'
-              ]
+            'node_modules/lodash/_stackDelete.js': {
+              index: 172,
+              hash: 'LXafI5DDGP0wDwfpw8/U',
+              parents: ['node_modules/lodash/_Stack.js']
             },
-            'node_modules/lodash/_arrayLikeKeys.js': {
-              index: 77,
-              hash: 'RWu/FT9WAfaDXPoucuiD',
-              parents: ['node_modules/lodash/keys.js']
+            'node_modules/lodash/_stackGet.js': {
+              index: 173,
+              hash: 'BoHW4uFMtND7Gi+JPdJf',
+              parents: ['node_modules/lodash/_Stack.js']
+            },
+            'node_modules/lodash/_stackHas.js': {
+              index: 174,
+              hash: 'thY5y8jBCnJMfegnSD/V',
+              parents: ['node_modules/lodash/_Stack.js']
+            },
+            'node_modules/lodash/_toSource.js': {
+              index: 178,
+              hash: 'qhQsP8sNq2kil796yxWO',
+              parents: [
+                'node_modules/lodash/_baseIsNative.js',
+                'node_modules/lodash/_getTag.js'
+              ]
             },
             'node_modules/lodash/constant.js': {
               index: 180,
@@ -67766,33 +67988,140 @@ function _objectSpread(target) {
               hash: 'JEqSu7xxpSyH40Y4GJ+V',
               parents: ['node_modules/lodash/assign.js']
             },
+            'node_modules/lodash/isBuffer.js': {
+              index: 191,
+              hash: 'Uzhm1jNtW1f55Gsz24+8',
+              parents: [
+                'node_modules/lodash/_arrayLikeKeys.js',
+                'node_modules/lodash/_baseIsEqualDeep.js'
+              ]
+            },
+            'node_modules/lodash/_arrayLikeKeys.js': {
+              index: 77,
+              hash: 'RWu/FT9WAfaDXPoucuiD',
+              parents: ['node_modules/lodash/keys.js']
+            },
             'node_modules/lodash/assign.js': {
               index: 179,
               hash: '6X7UP3eqxcj6o2ias2ID',
               parents: ['node_modules/browserify-hmr/inc/index.js']
             },
-            'node_modules/lodash/_toSource.js': {
-              index: 178,
-              hash: 'qhQsP8sNq2kil796yxWO',
+            'node_modules/vue-owl-carousel/dist/vue-owl-carousel.js': {
+              index: 231,
+              hash: 'bZY0G4qrXkCmnvJTce8k',
+              parents: ['src/frontend/public/js/components/carousel.vue']
+            },
+            'src/frontend/public/js/components/carousel.vue': {
+              index: 239,
+              hash: 'cZU9M6RQeo9SZbiLiF/I',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/ms/index.js': {
+              index: 225,
+              hash: 'S9kiCcudrPPjdz5yWst6',
               parents: [
-                'node_modules/lodash/_getTag.js',
-                'node_modules/lodash/_baseIsNative.js'
+                'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/debug.js'
               ]
             },
-            'node_modules/lodash/_mapToArray.js': {
-              index: 156,
-              hash: 'XUQTl0anVZnXaUOrmxD7',
-              parents: ['node_modules/lodash/_equalByTag.js']
+            'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/debug.js': {
+              index: 224,
+              hash: 'wt9TGc+HaNG7ZPmfdOfc',
+              parents: [
+                'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/browser.js'
+              ]
             },
-            'node_modules/lodash/_setToArray.js': {
-              index: 168,
-              hash: 'gUyAUZoZS3v/gnhOBsLW',
-              parents: ['node_modules/lodash/_equalByTag.js']
+            'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/browser.js': {
+              index: 223,
+              hash: '8qFrBHw0YkjkJpodEIea',
+              parents: [
+                'node_modules/socket.io-client/node_modules/socket.io-parser/index.js'
+              ]
             },
-            'node_modules/lodash/_cacheHas.js': {
-              index: 112,
-              hash: 'zwJaX7fkgHAdYeTtYO2G',
-              parents: ['node_modules/lodash/_equalArrays.js']
+            'node_modules/browser-resolve/empty.js': {
+              index: 34,
+              hash: '47DEQpj8HBSa+/TImW+5',
+              parents: [
+                'node_modules/engine.io-client/lib/transports/websocket.js'
+              ]
+            },
+            'node_modules/engine.io-client/lib/transport.js': {
+              index: 44,
+              hash: 'B8fxSJmXkg6whs3FrBf+',
+              parents: [
+                'node_modules/engine.io-client/lib/transports/websocket.js',
+                'node_modules/engine.io-client/lib/transports/polling.js',
+                'node_modules/engine.io-client/lib/socket.js'
+              ]
+            },
+            'node_modules/engine.io-parser/lib/browser.js': {
+              index: 54,
+              hash: 'qhAEZPFuezpipOtph94H',
+              parents: [
+                'node_modules/engine.io-client/lib/transport.js',
+                'node_modules/engine.io-client/lib/transports/websocket.js',
+                'node_modules/engine.io-client/lib/transports/polling.js',
+                'node_modules/engine.io-client/lib/socket.js',
+                'node_modules/engine.io-client/lib/index.js'
+              ]
+            },
+            'src/frontend/public/js/utils/index.js': {
+              index: 269,
+              hash: 'PGd5vV98RlzS798ypZ8o',
+              parents: ['src/frontend/public/js/store/modules/user.js']
+            },
+            'src/frontend/public/js/store/modules/user.js': {
+              index: 268,
+              hash: 'OVgBV+QQFb/IXOSyE3cK',
+              parents: ['src/frontend/public/js/store/index.js']
+            },
+            'src/frontend/public/js/services/user.js': {
+              index: 265,
+              hash: 'NonGfLbSexRC8Kd0DlCl',
+              parents: [
+                'src/frontend/public/js/store/modules/user.js',
+                'src/frontend/public/js/components/registerHeader.vue'
+              ]
+            },
+            'src/frontend/public/js/components/dashboard/lineup.vue': {
+              index: 245,
+              hash: '4LHl0oMXpOSBfMAij0uj',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'src/frontend/public/js/components/dashboard/subComponents/lineupNav.vue': {
+              index: 251,
+              hash: 'dCtTh+vf9hu6maZlNrLk',
+              parents: [
+                'src/frontend/public/js/components/dashboard/lineup.vue',
+                'src/frontend/public/js/components/dashboard/editLineup.vue',
+                'src/frontend/public/js/components/dashboard/profile.vue',
+                'src/frontend/public/js/components/dashboard/createEvent.vue',
+                'src/frontend/public/js/components/dashboard/questions.vue',
+                'src/frontend/public/js/components/dashboard/feedback.vue',
+                'src/frontend/public/js/components/dashboard/dashboard.vue'
+              ]
+            },
+            'src/frontend/public/js/components/dashboard/subComponents/sideNav.vue': {
+              index: 253,
+              hash: 'lm5L/oE3M++ugvn+wCvB',
+              parents: [
+                'src/frontend/public/js/components/dashboard/lineup.vue',
+                'src/frontend/public/js/components/dashboard/editLineup.vue',
+                'src/frontend/public/js/components/dashboard/profile.vue',
+                'src/frontend/public/js/components/dashboard/createEvent.vue',
+                'src/frontend/public/js/components/dashboard/questions.vue',
+                'src/frontend/public/js/components/dashboard/feedback.vue',
+                'src/frontend/public/js/components/dashboard/dashboard.vue'
+              ]
+            },
+            'src/frontend/public/js/components/dashboard/editLineup.vue': {
+              index: 243,
+              hash: 'xjz6609wKSvY0UkmD1MB',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'src/frontend/public/js/components/dashboard/profile.vue': {
+              index: 246,
+              hash: 'upvNX+lVjG3fdf0drFNy',
+              parents: ['src/frontend/public/js/main.js']
             },
             'node_modules/lodash/_stackClear.js': {
               index: 171,
@@ -67814,6 +68143,147 @@ function _objectSpread(target) {
               hash: 'CHLB/DjalyhgxdfpsCnW',
               parents: ['node_modules/lodash/_ListCache.js']
             },
+            'node_modules/lodash/_cacheHas.js': {
+              index: 112,
+              hash: 'zwJaX7fkgHAdYeTtYO2G',
+              parents: ['node_modules/lodash/_equalArrays.js']
+            },
+            'node_modules/lodash/_setToArray.js': {
+              index: 168,
+              hash: 'gUyAUZoZS3v/gnhOBsLW',
+              parents: ['node_modules/lodash/_equalByTag.js']
+            },
+            'node_modules/lodash/_mapToArray.js': {
+              index: 156,
+              hash: 'XUQTl0anVZnXaUOrmxD7',
+              parents: ['node_modules/lodash/_equalByTag.js']
+            },
+            'node_modules/blob/index.js': {
+              index: 33,
+              hash: 'eV8fDvd1SnVAi1uugDM/',
+              parents: ['node_modules/engine.io-parser/lib/browser.js']
+            },
+            'node_modules/after/index.js': {
+              index: 2,
+              hash: 'NzPfXWECmM8rW/6fdkcj',
+              parents: ['node_modules/engine.io-parser/lib/browser.js']
+            },
+            'node_modules/arraybuffer.slice/index.js': {
+              index: 3,
+              hash: 'RSb5Zx9CgX3adjzbvf/k',
+              parents: ['node_modules/engine.io-parser/lib/browser.js']
+            },
+            'node_modules/base64-arraybuffer/lib/base64-arraybuffer.js': {
+              index: 31,
+              hash: '8XSfHUrJJCZLdLVRE4Xb',
+              parents: ['node_modules/engine.io-parser/lib/browser.js']
+            },
+            'node_modules/has-cors/index.js': {
+              index: 59,
+              hash: 'HwTb4UF/S089ZYA8hrRl',
+              parents: ['node_modules/engine.io-client/lib/xmlhttprequest.js']
+            },
+            'node_modules/engine.io-client/lib/xmlhttprequest.js': {
+              index: 50,
+              hash: 'cTYQRMHLATiENPcOfA4t',
+              parents: [
+                'node_modules/engine.io-client/lib/transports/polling.js',
+                'node_modules/engine.io-client/lib/transports/polling-xhr.js',
+                'node_modules/engine.io-client/lib/transports/index.js'
+              ]
+            },
+            'node_modules/lodash/_listCacheGet.js': {
+              index: 148,
+              hash: 'SZAC3U/+BLssJw9WKbhb',
+              parents: ['node_modules/lodash/_ListCache.js']
+            },
+            'node_modules/lodash/_assocIndexOf.js': {
+              index: 82,
+              hash: '+YtyXqBKKXnwrSmv/2eU',
+              parents: [
+                'node_modules/lodash/_listCacheGet.js',
+                'node_modules/lodash/_listCacheDelete.js',
+                'node_modules/lodash/_listCacheSet.js',
+                'node_modules/lodash/_listCacheHas.js'
+              ]
+            },
+            'node_modules/lodash/_listCacheDelete.js': {
+              index: 147,
+              hash: 'o3YDg6klGWlCS2PgzZy+',
+              parents: ['node_modules/lodash/_ListCache.js']
+            },
+            'node_modules/lodash/_listCacheSet.js': {
+              index: 150,
+              hash: 'dVcwdgHP8vQHHPnX+pql',
+              parents: ['node_modules/lodash/_ListCache.js']
+            },
+            'node_modules/lodash/_Map.js': {
+              index: 65,
+              hash: 'aezyd9/dXR4WmT/cJk4B',
+              parents: [
+                'node_modules/lodash/_getTag.js',
+                'node_modules/lodash/_mapCacheClear.js',
+                'node_modules/lodash/_stackSet.js'
+              ]
+            },
+            'node_modules/lodash/_getNative.js': {
+              index: 128,
+              hash: 'c5Ljj0yzzW4dPj+JomYZ',
+              parents: [
+                'node_modules/lodash/_Map.js',
+                'node_modules/lodash/_defineProperty.js',
+                'node_modules/lodash/_DataView.js',
+                'node_modules/lodash/_Promise.js',
+                'node_modules/lodash/_Set.js',
+                'node_modules/lodash/_WeakMap.js',
+                'node_modules/lodash/_nativeCreate.js'
+              ]
+            },
+            'node_modules/lodash/_coreJsData.js': {
+              index: 116,
+              hash: 'mWDHPw3O0bwyURVR4xz+',
+              parents: ['node_modules/lodash/_isMasked.js']
+            },
+            'node_modules/lodash/_isMasked.js': {
+              index: 143,
+              hash: 'vCLMgg9t+moWMD2eCyQw',
+              parents: ['node_modules/lodash/_baseIsNative.js']
+            },
+            'node_modules/lodash/_baseIsNative.js': {
+              index: 96,
+              hash: 'HplAaZjQs9R/bNG2XV0a',
+              parents: ['node_modules/lodash/_getNative.js']
+            },
+            'node_modules/lodash/mapValues.js': {
+              index: 200,
+              hash: 'wGzYh7rOmnr5NbNf31Xh',
+              parents: ['node_modules/browserify-hmr/inc/index.js']
+            },
+            'node_modules/lodash/_DataView.js': {
+              index: 62,
+              hash: 'N7jUbJyl5TusFXojFUuz',
+              parents: ['node_modules/lodash/_getTag.js']
+            },
+            'node_modules/lodash/_Promise.js': {
+              index: 67,
+              hash: 'T4OR1RtxAOTYyC9xrI13',
+              parents: ['node_modules/lodash/_getTag.js']
+            },
+            'node_modules/lodash/_Set.js': {
+              index: 68,
+              hash: 'BRcgMZjGEVgVhv4GaR6q',
+              parents: ['node_modules/lodash/_getTag.js']
+            },
+            'node_modules/lodash/_WeakMap.js': {
+              index: 73,
+              hash: 'iuNSA30LsHH/h10pNsQ6',
+              parents: ['node_modules/lodash/_getTag.js']
+            },
+            'node_modules/lodash/_getTag.js': {
+              index: 131,
+              hash: 'rZSqomckxeMx8IEK6dQG',
+              parents: ['node_modules/lodash/_baseIsEqualDeep.js']
+            },
             'node_modules/lodash/_Uint8Array.js': {
               index: 72,
               hash: 'Zc6+hCmhnXc0Y6Asmckn',
@@ -67832,52 +68302,30 @@ function _objectSpread(target) {
                 'node_modules/lodash/_baseIsEqualDeep.js'
               ]
             },
-            'node_modules/lodash/_Map.js': {
-              index: 65,
-              hash: 'aezyd9/dXR4WmT/cJk4B',
+            'node_modules/vue/dist/vue.runtime.common.prod.js': {
+              index: 235,
+              hash: 'K0BB29GES5agyJVwTU1N',
+              parents: ['node_modules/vue/dist/vue.runtime.common.js']
+            },
+            'node_modules/timers-browserify/main.js': {
+              index: 226,
+              hash: 'c5BeXolKrszfyGtifZVr',
               parents: [
-                'node_modules/lodash/_getTag.js',
-                'node_modules/lodash/_mapCacheClear.js',
-                'node_modules/lodash/_stackSet.js'
+                'node_modules/vue/dist/vue.runtime.common.prod.js',
+                'node_modules/vue/dist/vue.runtime.common.dev.js',
+                'node_modules/timers-browserify/main.js',
+                'node_modules/vue/dist/vue.js'
               ]
             },
-            'node_modules/lodash/_getNative.js': {
-              index: 128,
-              hash: 'c5Ljj0yzzW4dPj+JomYZ',
-              parents: [
-                'node_modules/lodash/_Map.js',
-                'node_modules/lodash/_DataView.js',
-                'node_modules/lodash/_Promise.js',
-                'node_modules/lodash/_WeakMap.js',
-                'node_modules/lodash/_Set.js',
-                'node_modules/lodash/_defineProperty.js',
-                'node_modules/lodash/_nativeCreate.js'
-              ]
+            'node_modules/vue/dist/vue.runtime.common.dev.js': {
+              index: 233,
+              hash: 'DV7mMInCe62kFg1dyTPa',
+              parents: ['node_modules/vue/dist/vue.runtime.common.js']
             },
-            'node_modules/lodash/_DataView.js': {
-              index: 62,
-              hash: 'N7jUbJyl5TusFXojFUuz',
-              parents: ['node_modules/lodash/_getTag.js']
-            },
-            'node_modules/lodash/_Promise.js': {
-              index: 67,
-              hash: 'T4OR1RtxAOTYyC9xrI13',
-              parents: ['node_modules/lodash/_getTag.js']
-            },
-            'node_modules/lodash/_WeakMap.js': {
-              index: 73,
-              hash: 'iuNSA30LsHH/h10pNsQ6',
-              parents: ['node_modules/lodash/_getTag.js']
-            },
-            'node_modules/lodash/_Set.js': {
-              index: 68,
-              hash: 'BRcgMZjGEVgVhv4GaR6q',
-              parents: ['node_modules/lodash/_getTag.js']
-            },
-            'node_modules/lodash/_getTag.js': {
-              index: 131,
-              hash: 'rZSqomckxeMx8IEK6dQG',
-              parents: ['node_modules/lodash/_baseIsEqualDeep.js']
+            'src/frontend/public/js/components/test.vue': {
+              index: 258,
+              hash: 'zhPYvMeHlgN2vrWFnXLx',
+              parents: ['src/frontend/public/js/main.js']
             },
             'node_modules/lodash/_setCacheAdd.js': {
               index: 166,
@@ -67903,50 +68351,81 @@ function _objectSpread(target) {
                 'node_modules/lodash/_stackSet.js'
               ]
             },
+            'node_modules/yeast/index.js': {
+              index: 238,
+              hash: 'ZM3+5w4l/D2f6x7svySF',
+              parents: [
+                'node_modules/engine.io-client/lib/transports/websocket.js',
+                'node_modules/engine.io-client/lib/transports/polling.js'
+              ]
+            },
+            'node_modules/engine.io-client/lib/transports/websocket.js': {
+              index: 49,
+              hash: 'iBZv11MBmWTH/+PbPnFJ',
+              parents: ['node_modules/engine.io-client/lib/transports/index.js']
+            },
+            'node_modules/engine.io-client/node_modules/debug/src/browser.js': {
+              index: 51,
+              hash: 'WQOMOQpV9lvFHrCSbGL9',
+              parents: [
+                'node_modules/engine.io-client/lib/transports/websocket.js',
+                'node_modules/engine.io-client/lib/transports/polling.js',
+                'node_modules/engine.io-client/lib/transports/polling-xhr.js',
+                'node_modules/engine.io-client/lib/socket.js'
+              ]
+            },
+            'node_modules/component-inherit/index.js': {
+              index: 41,
+              hash: 'T0Fqch4d4akvlr8bh7lc',
+              parents: [
+                'node_modules/engine.io-client/lib/transports/websocket.js',
+                'node_modules/engine.io-client/lib/transports/polling-jsonp.js',
+                'node_modules/engine.io-client/lib/transports/polling.js',
+                'node_modules/engine.io-client/lib/transports/polling-xhr.js'
+              ]
+            },
+            'node_modules/engine.io-client/lib/transports/polling-jsonp.js': {
+              index: 46,
+              hash: 'O1EAD9tSFkm+NOKqKeps',
+              parents: ['node_modules/engine.io-client/lib/transports/index.js']
+            },
+            'node_modules/engine.io-client/lib/transports/polling.js': {
+              index: 48,
+              hash: 'iR9NdLeAEs8vSYk/mMqT',
+              parents: [
+                'node_modules/engine.io-client/lib/transports/polling-jsonp.js',
+                'node_modules/engine.io-client/lib/transports/polling-xhr.js'
+              ]
+            },
             'node_modules/lodash/_listCacheHas.js': {
               index: 149,
               hash: '2tu2JqPxTVjaJm/WbeGw',
               parents: ['node_modules/lodash/_ListCache.js']
             },
-            'node_modules/lodash/_assocIndexOf.js': {
-              index: 82,
-              hash: '+YtyXqBKKXnwrSmv/2eU',
+            'node_modules/lodash/_mapCacheGet.js': {
+              index: 153,
+              hash: 'dglUiNgT6mYn3/TLOqMD',
+              parents: ['node_modules/lodash/_MapCache.js']
+            },
+            'node_modules/lodash/_getMapData.js': {
+              index: 126,
+              hash: 'ZdeLudBY90L64kFsAIQL',
               parents: [
-                'node_modules/lodash/_listCacheHas.js',
-                'node_modules/lodash/_listCacheSet.js',
-                'node_modules/lodash/_listCacheGet.js',
-                'node_modules/lodash/_listCacheDelete.js'
+                'node_modules/lodash/_mapCacheGet.js',
+                'node_modules/lodash/_mapCacheSet.js',
+                'node_modules/lodash/_mapCacheHas.js',
+                'node_modules/lodash/_mapCacheDelete.js'
               ]
             },
-            'node_modules/lodash/_listCacheSet.js': {
-              index: 150,
-              hash: 'dVcwdgHP8vQHHPnX+pql',
-              parents: ['node_modules/lodash/_ListCache.js']
+            'node_modules/lodash/_mapCacheSet.js': {
+              index: 155,
+              hash: 'Rk8Cf6ZeJaOWzM2bXiED',
+              parents: ['node_modules/lodash/_MapCache.js']
             },
-            'node_modules/lodash/_listCacheGet.js': {
-              index: 148,
-              hash: 'SZAC3U/+BLssJw9WKbhb',
-              parents: ['node_modules/lodash/_ListCache.js']
-            },
-            'node_modules/lodash/_coreJsData.js': {
-              index: 116,
-              hash: 'mWDHPw3O0bwyURVR4xz+',
-              parents: ['node_modules/lodash/_isMasked.js']
-            },
-            'node_modules/lodash/_isMasked.js': {
-              index: 143,
-              hash: 'vCLMgg9t+moWMD2eCyQw',
-              parents: ['node_modules/lodash/_baseIsNative.js']
-            },
-            'node_modules/lodash/_baseIsNative.js': {
-              index: 96,
-              hash: 'HplAaZjQs9R/bNG2XV0a',
-              parents: ['node_modules/lodash/_getNative.js']
-            },
-            'node_modules/lodash/mapValues.js': {
-              index: 200,
-              hash: 'wGzYh7rOmnr5NbNf31Xh',
-              parents: ['node_modules/browserify-hmr/inc/index.js']
+            'node_modules/lodash/_mapCacheHas.js': {
+              index: 154,
+              hash: 'S0HdvBVxOySQIIMRmtf0',
+              parents: ['node_modules/lodash/_MapCache.js']
             },
             'node_modules/lodash/_baseToString.js': {
               index: 109,
@@ -68009,284 +68488,6 @@ function _objectSpread(target) {
                 'node_modules/lodash/_baseIsMatch.js'
               ]
             },
-            'node_modules/lodash/_baseMatchesProperty.js': {
-              index: 102,
-              hash: 'JUSg/+I63FvjCRBMWDG8',
-              parents: ['node_modules/lodash/_baseIteratee.js']
-            },
-            'node_modules/lodash/_listCacheDelete.js': {
-              index: 147,
-              hash: 'o3YDg6klGWlCS2PgzZy+',
-              parents: ['node_modules/lodash/_ListCache.js']
-            },
-            'node_modules/lodash/_mapCacheSet.js': {
-              index: 155,
-              hash: 'Rk8Cf6ZeJaOWzM2bXiED',
-              parents: ['node_modules/lodash/_MapCache.js']
-            },
-            'node_modules/lodash/_getMapData.js': {
-              index: 126,
-              hash: 'ZdeLudBY90L64kFsAIQL',
-              parents: [
-                'node_modules/lodash/_mapCacheSet.js',
-                'node_modules/lodash/_mapCacheHas.js',
-                'node_modules/lodash/_mapCacheGet.js',
-                'node_modules/lodash/_mapCacheDelete.js'
-              ]
-            },
-            'node_modules/lodash/_mapCacheHas.js': {
-              index: 154,
-              hash: 'S0HdvBVxOySQIIMRmtf0',
-              parents: ['node_modules/lodash/_MapCache.js']
-            },
-            'node_modules/lodash/_mapCacheGet.js': {
-              index: 153,
-              hash: 'dglUiNgT6mYn3/TLOqMD',
-              parents: ['node_modules/lodash/_MapCache.js']
-            },
-            'node_modules/lodash/memoize.js': {
-              index: 201,
-              hash: 'avTk3nhklvyvSxLNiUwd',
-              parents: ['node_modules/lodash/_memoizeCapped.js']
-            },
-            'node_modules/lodash/_memoizeCapped.js': {
-              index: 158,
-              hash: 'HacnckK3nw4vtSYbX7i/',
-              parents: ['node_modules/lodash/_stringToPath.js']
-            },
-            'node_modules/lodash/_stringToPath.js': {
-              index: 176,
-              hash: 'WduCAHGisFQY91/TpBpr',
-              parents: ['node_modules/lodash/_castPath.js']
-            },
-            'node_modules/lodash/_basePropertyDeep.js': {
-              index: 104,
-              hash: 'Zfrh9AQz1Ry2yPu2pByv',
-              parents: ['node_modules/lodash/property.js']
-            },
-            'node_modules/lodash/property.js': {
-              index: 202,
-              hash: '2hJfadtQXM/U3NbWpzGR',
-              parents: ['node_modules/lodash/_baseIteratee.js']
-            },
-            'node_modules/lodash/_isKeyable.js': {
-              index: 142,
-              hash: 'NQsK9iVUkTA1EsHPdaK1',
-              parents: ['node_modules/lodash/_getMapData.js']
-            },
-            'node_modules/lodash/_mapCacheDelete.js': {
-              index: 152,
-              hash: 'Y2RLt8NGt0Im9c9uXXcS',
-              parents: ['node_modules/lodash/_MapCache.js']
-            },
-            'node_modules/lodash/_hashDelete.js': {
-              index: 135,
-              hash: 'CmVwjIdw4ONOgfUyiaMT',
-              parents: ['node_modules/lodash/_Hash.js']
-            },
-            'node_modules/lodash/_hashHas.js': {
-              index: 137,
-              hash: 'fr70n7H4vKHBcQoEXEpO',
-              parents: ['node_modules/lodash/_Hash.js']
-            },
-            'node_modules/lodash/_nativeCreate.js': {
-              index: 159,
-              hash: 'QnEWfxsVWqcrQRLl5xaD',
-              parents: [
-                'node_modules/lodash/_hashHas.js',
-                'node_modules/lodash/_hashGet.js',
-                'node_modules/lodash/_hashClear.js',
-                'node_modules/lodash/_hashSet.js'
-              ]
-            },
-            'node_modules/lodash/_hashGet.js': {
-              index: 136,
-              hash: 'dc0CR5GuEuyIhxwkyCwj',
-              parents: ['node_modules/lodash/_Hash.js']
-            },
-            'node_modules/lodash/_hashClear.js': {
-              index: 134,
-              hash: '2feZ9hRgUzW8Djw0JrqE',
-              parents: ['node_modules/lodash/_Hash.js']
-            },
-            'node_modules/lodash/_hashSet.js': {
-              index: 138,
-              hash: 'GANy9myYOl9CQUX6Hi+w',
-              parents: ['node_modules/lodash/_Hash.js']
-            },
-            'node_modules/lodash/_Hash.js': {
-              index: 63,
-              hash: 'hTyKHFwLDhT8hzgE2zlD',
-              parents: ['node_modules/lodash/_mapCacheClear.js']
-            },
-            'node_modules/lodash/_mapCacheClear.js': {
-              index: 151,
-              hash: '6D5+Bp90PNozl9Vr8wu2',
-              parents: ['node_modules/lodash/_MapCache.js']
-            },
-            'node_modules/lodash/_stackSet.js': {
-              index: 175,
-              hash: 'rFq/zAhyEaIffTCH45Gf',
-              parents: ['node_modules/lodash/_Stack.js']
-            },
-            'node_modules/lodash/_baseIsMatch.js': {
-              index: 95,
-              hash: 'yrF79Y2F5RiVXHPZgzhK',
-              parents: ['node_modules/lodash/_baseMatches.js']
-            },
-            'node_modules/lodash/_baseMatches.js': {
-              index: 101,
-              hash: 'eM6GzX+YFfSSvWUut1RW',
-              parents: ['node_modules/lodash/_baseIteratee.js']
-            },
-            'node_modules/lodash/filter.js': {
-              index: 182,
-              hash: 'xHkJOO00v5Ew3tJEbs2H',
-              parents: ['node_modules/browserify-hmr/inc/index.js']
-            },
-            'node_modules/process/browser.js': {
-              index: 210,
-              hash: 'oZn5/djw+Uvkv+VAfElp',
-              parents: [
-                'node_modules/socket.io-client/node_modules/debug/src/browser.js',
-                'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/browser.js',
-                'node_modules/engine.io-client/node_modules/debug/src/browser.js',
-                'node_modules/timers-browserify/main.js',
-                'node_modules/vue/dist/vue.runtime.common.js',
-                'node_modules/vuex/dist/vuex.common.js',
-                'node_modules/axios/lib/defaults.js'
-              ]
-            },
-            'node_modules/socket.io-client/lib/socket.js': {
-              index: 214,
-              hash: 'rdFfPxx+D30PPULBB/zc',
-              parents: [
-                'node_modules/socket.io-client/lib/manager.js',
-                'node_modules/socket.io-client/lib/index.js'
-              ]
-            },
-            'node_modules/socket.io-client/node_modules/socket.io-parser/index.js': {
-              index: 221,
-              hash: '+PwtEidJKbGPZuiwUQ8i',
-              parents: [
-                'node_modules/socket.io-client/lib/socket.js',
-                'node_modules/socket.io-client/lib/manager.js',
-                'node_modules/socket.io-client/lib/index.js'
-              ]
-            },
-            'node_modules/socket.io-client/node_modules/debug/src/browser.js': {
-              index: 216,
-              hash: 'dnxCviFhnOSF5ZEd3rel',
-              parents: [
-                'node_modules/socket.io-client/lib/socket.js',
-                'node_modules/socket.io-client/lib/url.js',
-                'node_modules/socket.io-client/lib/manager.js',
-                'node_modules/socket.io-client/lib/index.js'
-              ]
-            },
-            'node_modules/socket.io-client/node_modules/ms/index.js': {
-              index: 219,
-              hash: 'VZhpcvXzyURvh2xXbhzT',
-              parents: [
-                'node_modules/socket.io-client/node_modules/debug/src/common.js'
-              ]
-            },
-            'node_modules/socket.io-client/node_modules/debug/src/common.js': {
-              index: 217,
-              hash: '7srtgs+0UG8MssFA6lAN',
-              parents: [
-                'node_modules/socket.io-client/node_modules/debug/src/browser.js'
-              ]
-            },
-            'node_modules/socket.io-client/lib/url.js': {
-              index: 215,
-              hash: 'n0UOO3VaMzFsfPFiJFxC',
-              parents: ['node_modules/socket.io-client/lib/index.js']
-            },
-            'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/ms/index.js': {
-              index: 225,
-              hash: 'S9kiCcudrPPjdz5yWst6',
-              parents: [
-                'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/debug.js'
-              ]
-            },
-            'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/debug.js': {
-              index: 224,
-              hash: 'wt9TGc+HaNG7ZPmfdOfc',
-              parents: [
-                'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/browser.js'
-              ]
-            },
-            'node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/browser.js': {
-              index: 223,
-              hash: '8qFrBHw0YkjkJpodEIea',
-              parents: [
-                'node_modules/socket.io-client/node_modules/socket.io-parser/index.js'
-              ]
-            },
-            'node_modules/browserify-hmr/lib/has.js': {
-              index: 36,
-              hash: 'Hky4QYVrU1+kFHIEuxPy',
-              parents: [
-                'node_modules/browserify-hmr/lib/str-set.js',
-                'node_modules/browserify-hmr/inc/index.js'
-              ]
-            },
-            'node_modules/browserify-hmr/lib/str-set.js': {
-              index: 37,
-              hash: 'lcrDmQK4uaqOqN+FV4/9',
-              parents: ['node_modules/browserify-hmr/inc/index.js']
-            },
-            'node_modules/browserify-hmr/inc/index.js': {
-              index: 35,
-              hash: 'szQAOWiT0DPGHEwHQCqu',
-              parents: []
-            },
-            'node_modules/engine.io-client/lib/transport.js': {
-              index: 44,
-              hash: 'B8fxSJmXkg6whs3FrBf+',
-              parents: [
-                'node_modules/engine.io-client/lib/transports/polling.js',
-                'node_modules/engine.io-client/lib/transports/websocket.js',
-                'node_modules/engine.io-client/lib/socket.js'
-              ]
-            },
-            'node_modules/engine.io-parser/lib/browser.js': {
-              index: 54,
-              hash: 'qhAEZPFuezpipOtph94H',
-              parents: [
-                'node_modules/engine.io-client/lib/transport.js',
-                'node_modules/engine.io-client/lib/transports/polling.js',
-                'node_modules/engine.io-client/lib/transports/websocket.js',
-                'node_modules/engine.io-client/lib/socket.js',
-                'node_modules/engine.io-client/lib/index.js'
-              ]
-            },
-            'node_modules/engine.io-parser/lib/keys.js': {
-              index: 55,
-              hash: 'oFyKNTA0twlyQVhVzp9n',
-              parents: ['node_modules/engine.io-parser/lib/browser.js']
-            },
-            'node_modules/engine.io-parser/lib/utf8.js': {
-              index: 56,
-              hash: '++espnKbJKFbA3w6+Gd+',
-              parents: ['node_modules/engine.io-parser/lib/browser.js']
-            },
-            'node_modules/after/index.js': {
-              index: 2,
-              hash: 'NzPfXWECmM8rW/6fdkcj',
-              parents: ['node_modules/engine.io-parser/lib/browser.js']
-            },
-            'node_modules/arraybuffer.slice/index.js': {
-              index: 3,
-              hash: 'RSb5Zx9CgX3adjzbvf/k',
-              parents: ['node_modules/engine.io-parser/lib/browser.js']
-            },
-            'node_modules/blob/index.js': {
-              index: 33,
-              hash: 'eV8fDvd1SnVAi1uugDM/',
-              parents: ['node_modules/engine.io-parser/lib/browser.js']
-            },
             'node_modules/engine.io-client/node_modules/ms/index.js': {
               index: 53,
               hash: 'VZhpcvXzyURvh2xXbhzT',
@@ -68301,81 +68502,46 @@ function _objectSpread(target) {
                 'node_modules/engine.io-client/node_modules/debug/src/browser.js'
               ]
             },
-            'node_modules/engine.io-client/node_modules/debug/src/browser.js': {
-              index: 51,
-              hash: 'WQOMOQpV9lvFHrCSbGL9',
+            'node_modules/vue/dist/vue.js': {
+              index: 232,
+              hash: 'MlUf/+T/HoADTNJ/iULB',
               parents: [
-                'node_modules/engine.io-client/lib/transports/polling-xhr.js',
-                'node_modules/engine.io-client/lib/transports/polling.js',
-                'node_modules/engine.io-client/lib/transports/websocket.js',
-                'node_modules/engine.io-client/lib/socket.js'
+                'src/frontend/public/js/store/index.js',
+                'src/frontend/public/js/main.js'
               ]
             },
-            'node_modules/has-cors/index.js': {
-              index: 59,
-              hash: 'HwTb4UF/S089ZYA8hrRl',
-              parents: ['node_modules/engine.io-client/lib/xmlhttprequest.js']
+            'src/frontend/public/js/store/index.js': {
+              index: 266,
+              hash: 'tHEZ2uL/PCKmbcsszeh0',
+              parents: ['src/frontend/public/js/main.js']
             },
-            'node_modules/engine.io-client/lib/xmlhttprequest.js': {
-              index: 50,
-              hash: 'cTYQRMHLATiENPcOfA4t',
+            'node_modules/vueify/lib/insert-css.js': {
+              index: 236,
+              hash: 'oiKAfua2i7DdNH5GB3Qm',
               parents: [
-                'node_modules/engine.io-client/lib/transports/polling-xhr.js',
-                'node_modules/engine.io-client/lib/transports/polling.js',
-                'node_modules/engine.io-client/lib/transports/index.js'
+                'src/frontend/public/js/components/search.vue',
+                'src/frontend/public/js/components/dashboard/createEvent.vue',
+                'src/frontend/public/js/components/ui/input.vue',
+                'src/frontend/public/js/components/ui/errorBox.vue',
+                'src/frontend/public/js/components/ui/button.vue',
+                'src/frontend/public/js/components/ui/facebook-login-button.vue',
+                'src/frontend/public/js/components/ui/google-login-button.vue',
+                'src/frontend/public/js/components/registerHeader.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/questionCard.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/lineupNav.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/feedbackCard.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/sideNav.vue',
+                'src/frontend/public/js/components/dashboard/subComponents/eventCard.vue'
               ]
             },
-            'node_modules/component-inherit/index.js': {
-              index: 41,
-              hash: 'T0Fqch4d4akvlr8bh7lc',
-              parents: [
-                'node_modules/engine.io-client/lib/transports/polling-xhr.js',
-                'node_modules/engine.io-client/lib/transports/polling.js',
-                'node_modules/engine.io-client/lib/transports/polling-jsonp.js',
-                'node_modules/engine.io-client/lib/transports/websocket.js'
-              ]
-            },
-            'node_modules/yeast/index.js': {
-              index: 238,
-              hash: 'ZM3+5w4l/D2f6x7svySF',
-              parents: [
-                'node_modules/engine.io-client/lib/transports/polling.js',
-                'node_modules/engine.io-client/lib/transports/websocket.js'
-              ]
+            'src/frontend/public/js/components/search.vue': {
+              index: 257,
+              hash: 'pYbSCVDXxljDCS8IcQyr',
+              parents: ['src/frontend/public/js/main.js']
             },
             'node_modules/engine.io-client/lib/transports/polling-xhr.js': {
               index: 47,
               hash: 'TL+1mTEJ4L+WqZ55O3mx',
-              parents: ['node_modules/engine.io-client/lib/transports/index.js']
-            },
-            'node_modules/engine.io-client/lib/transports/polling.js': {
-              index: 48,
-              hash: 'iR9NdLeAEs8vSYk/mMqT',
-              parents: [
-                'node_modules/engine.io-client/lib/transports/polling-xhr.js',
-                'node_modules/engine.io-client/lib/transports/polling-jsonp.js'
-              ]
-            },
-            'node_modules/engine.io-client/lib/transports/polling-jsonp.js': {
-              index: 46,
-              hash: 'O1EAD9tSFkm+NOKqKeps',
-              parents: ['node_modules/engine.io-client/lib/transports/index.js']
-            },
-            'node_modules/base64-arraybuffer/lib/base64-arraybuffer.js': {
-              index: 31,
-              hash: '8XSfHUrJJCZLdLVRE4Xb',
-              parents: ['node_modules/engine.io-parser/lib/browser.js']
-            },
-            'node_modules/browser-resolve/empty.js': {
-              index: 34,
-              hash: '47DEQpj8HBSa+/TImW+5',
-              parents: [
-                'node_modules/engine.io-client/lib/transports/websocket.js'
-              ]
-            },
-            'node_modules/engine.io-client/lib/transports/websocket.js': {
-              index: 49,
-              hash: 'iBZv11MBmWTH/+PbPnFJ',
               parents: ['node_modules/engine.io-client/lib/transports/index.js']
             },
             'node_modules/engine.io-client/lib/transports/index.js': {
@@ -68403,372 +68569,76 @@ function _objectSpread(target) {
               hash: '77zpTM5ck9mQrSo8paNO',
               parents: []
             },
-            'node_modules/vue-cookies/vue-cookies.js': {
-              index: 229,
-              hash: 'mrHYnGI3Q2V4nzF0kEmE',
-              parents: ['src/frontend/public/js/main.js']
+            'node_modules/lodash/memoize.js': {
+              index: 201,
+              hash: 'avTk3nhklvyvSxLNiUwd',
+              parents: ['node_modules/lodash/_memoizeCapped.js']
             },
-            'node_modules/vee-validate/dist/vee-validate.js': {
-              index: 228,
-              hash: 'wUrFBI1SfYyu6XPPXb3A',
-              parents: ['src/frontend/public/js/main.js']
+            'node_modules/lodash/_memoizeCapped.js': {
+              index: 158,
+              hash: 'HacnckK3nw4vtSYbX7i/',
+              parents: ['node_modules/lodash/_stringToPath.js']
             },
-            'node_modules/timers-browserify/main.js': {
-              index: 226,
-              hash: 'c5BeXolKrszfyGtifZVr',
+            'node_modules/lodash/_stringToPath.js': {
+              index: 176,
+              hash: 'WduCAHGisFQY91/TpBpr',
+              parents: ['node_modules/lodash/_castPath.js']
+            },
+            'node_modules/lodash/_hasPath.js': {
+              index: 133,
+              hash: 'H9ddOWkLPRuFYq8fwTEv',
+              parents: ['node_modules/lodash/hasIn.js']
+            },
+            'node_modules/lodash/hasIn.js': {
+              index: 186,
+              hash: 'o6j7gwruD7qKNbgMUe0j',
+              parents: ['node_modules/lodash/_baseMatchesProperty.js']
+            },
+            'node_modules/lodash/_baseMatchesProperty.js': {
+              index: 102,
+              hash: 'JUSg/+I63FvjCRBMWDG8',
+              parents: ['node_modules/lodash/_baseIteratee.js']
+            },
+            'node_modules/lodash/_isKeyable.js': {
+              index: 142,
+              hash: 'NQsK9iVUkTA1EsHPdaK1',
+              parents: ['node_modules/lodash/_getMapData.js']
+            },
+            'node_modules/lodash/_mapCacheDelete.js': {
+              index: 152,
+              hash: 'Y2RLt8NGt0Im9c9uXXcS',
+              parents: ['node_modules/lodash/_MapCache.js']
+            },
+            'node_modules/lodash/_hashDelete.js': {
+              index: 135,
+              hash: 'CmVwjIdw4ONOgfUyiaMT',
+              parents: ['node_modules/lodash/_Hash.js']
+            },
+            'node_modules/lodash/_hashSet.js': {
+              index: 138,
+              hash: 'GANy9myYOl9CQUX6Hi+w',
+              parents: ['node_modules/lodash/_Hash.js']
+            },
+            'node_modules/lodash/_nativeCreate.js': {
+              index: 159,
+              hash: 'QnEWfxsVWqcrQRLl5xaD',
               parents: [
-                'node_modules/timers-browserify/main.js',
-                'node_modules/vue/dist/vue.js',
-                'node_modules/vue/dist/vue.runtime.common.prod.js',
-                'node_modules/vue/dist/vue.runtime.common.dev.js'
+                'node_modules/lodash/_hashSet.js',
+                'node_modules/lodash/_hashHas.js',
+                'node_modules/lodash/_hashGet.js',
+                'node_modules/lodash/_hashClear.js'
               ]
             },
-            'node_modules/vue/dist/vue.js': {
-              index: 232,
-              hash: 'MlUf/+T/HoADTNJ/iULB',
-              parents: [
-                'src/frontend/public/js/store/index.js',
-                'src/frontend/public/js/main.js'
-              ]
-            },
-            'node_modules/vue/dist/vue.runtime.common.prod.js': {
-              index: 235,
-              hash: 'K0BB29GES5agyJVwTU1N',
-              parents: ['node_modules/vue/dist/vue.runtime.common.js']
-            },
-            'node_modules/vue/dist/vue.runtime.common.dev.js': {
-              index: 233,
-              hash: 'DV7mMInCe62kFg1dyTPa',
-              parents: ['node_modules/vue/dist/vue.runtime.common.js']
-            },
-            'node_modules/vue/dist/vue.runtime.common.js': {
-              index: 234,
-              hash: '799PTSOMIOGq3tZyX7LA',
-              parents: [
-                'src/frontend/public/js/components/createLineupButton.vue',
-                'src/frontend/public/js/components/test.vue',
-                'src/frontend/public/js/components/carousel.vue',
-                'src/frontend/public/js/components/ui/button.vue',
-                'src/frontend/public/js/components/resetPassword.vue',
-                'src/frontend/public/js/components/ui/input.vue',
-                'src/frontend/public/js/components/ui/google-login-button.vue',
-                'src/frontend/public/js/components/ui/facebook-login-button.vue',
-                'src/frontend/public/js/components/ui/errorBox.vue',
-                'src/frontend/public/js/components/register.vue',
-                'src/frontend/public/js/components/search.vue',
-                'src/frontend/public/js/components/dashboard/createEvent.vue',
-                'src/frontend/public/js/components/dashboard/lineup.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/sideNav.vue',
-                'src/frontend/public/js/components/dashboard/editLineup.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/lineupNav.vue',
-                'src/frontend/public/js/components/dashboard/profile.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/feedbackCard.vue',
-                'src/frontend/public/js/components/dashboard/feedback.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/questionCard.vue',
-                'src/frontend/public/js/components/dashboard/questions.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/eventCard.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/events.vue',
-                'src/frontend/public/js/components/dashboard/dashboard.vue',
-                'src/frontend/public/js/components/registerHeader.vue'
-              ]
-            },
-            'node_modules/vue-hot-reload-api/dist/index.js': {
-              index: 230,
-              hash: 'BnmVomLE3JKioFJdZND8',
-              parents: [
-                'src/frontend/public/js/components/createLineupButton.vue',
-                'src/frontend/public/js/components/test.vue',
-                'src/frontend/public/js/components/carousel.vue',
-                'src/frontend/public/js/components/ui/button.vue',
-                'src/frontend/public/js/components/resetPassword.vue',
-                'src/frontend/public/js/components/ui/input.vue',
-                'src/frontend/public/js/components/ui/google-login-button.vue',
-                'src/frontend/public/js/components/ui/facebook-login-button.vue',
-                'src/frontend/public/js/components/ui/errorBox.vue',
-                'src/frontend/public/js/components/register.vue',
-                'src/frontend/public/js/components/search.vue',
-                'src/frontend/public/js/components/dashboard/createEvent.vue',
-                'src/frontend/public/js/components/dashboard/lineup.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/sideNav.vue',
-                'src/frontend/public/js/components/dashboard/editLineup.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/lineupNav.vue',
-                'src/frontend/public/js/components/dashboard/profile.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/feedbackCard.vue',
-                'src/frontend/public/js/components/dashboard/feedback.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/questionCard.vue',
-                'src/frontend/public/js/components/dashboard/questions.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/eventCard.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/events.vue',
-                'src/frontend/public/js/components/dashboard/dashboard.vue',
-                'src/frontend/public/js/components/registerHeader.vue'
-              ]
-            },
-            'src/frontend/public/js/components/createLineupButton.vue': {
-              index: 240,
-              hash: 'ccADlR1AkT0jzC5dPzAC',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/components/ui/button.vue': {
-              index: 259,
-              hash: '9SMORMKsItPqI/as5kfr',
-              parents: [
-                'src/frontend/public/js/components/createLineupButton.vue',
-                'src/frontend/public/js/components/resetPassword.vue',
-                'src/frontend/public/js/components/register.vue',
-                'src/frontend/public/js/components/registerHeader.vue'
-              ]
-            },
-            'src/frontend/public/js/components/test.vue': {
-              index: 258,
-              hash: 'zhPYvMeHlgN2vrWFnXLx',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'node_modules/vuex/dist/vuex.common.js': {
-              index: 237,
-              hash: 'LWG9/9BAgVCemGs6ADOp',
-              parents: [
-                'src/frontend/public/js/components/resetPassword.vue',
-                'src/frontend/public/js/components/register.vue',
-                'src/frontend/public/js/store/index.js',
-                'src/frontend/public/js/components/registerHeader.vue'
-              ]
-            },
-            'node_modules/vue-owl-carousel/dist/vue-owl-carousel.js': {
-              index: 231,
-              hash: 'bZY0G4qrXkCmnvJTce8k',
-              parents: ['src/frontend/public/js/components/carousel.vue']
-            },
-            'src/frontend/public/js/components/carousel.vue': {
-              index: 239,
-              hash: 'cZU9M6RQeo9SZbiLiF/I',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'node_modules/vueify/lib/insert-css.js': {
-              index: 236,
-              hash: 'oiKAfua2i7DdNH5GB3Qm',
-              parents: [
-                'src/frontend/public/js/components/ui/button.vue',
-                'src/frontend/public/js/components/ui/input.vue',
-                'src/frontend/public/js/components/ui/google-login-button.vue',
-                'src/frontend/public/js/components/ui/facebook-login-button.vue',
-                'src/frontend/public/js/components/ui/errorBox.vue',
-                'src/frontend/public/js/components/search.vue',
-                'src/frontend/public/js/components/dashboard/createEvent.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/sideNav.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/lineupNav.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/feedbackCard.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/questionCard.vue',
-                'src/frontend/public/js/components/dashboard/subComponents/eventCard.vue',
-                'src/frontend/public/js/components/registerHeader.vue'
-              ]
-            },
-            'src/frontend/public/js/components/resetPassword.vue': {
-              index: 256,
-              hash: 'Sh/KQOcMBG8Cu3QFPO+Z',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/components/ui/input.vue': {
-              index: 263,
-              hash: 'xqENJnh9tU8zHAhwgEZz',
-              parents: [
-                'src/frontend/public/js/components/resetPassword.vue',
-                'src/frontend/public/js/components/register.vue',
-                'src/frontend/public/js/components/registerHeader.vue'
-              ]
-            },
-            'src/frontend/public/js/components/ui/google-login-button.vue': {
-              index: 262,
-              hash: 'u514WKKUx3mQ9p8u1e9v',
-              parents: [
-                'src/frontend/public/js/components/register.vue',
-                'src/frontend/public/js/components/registerHeader.vue'
-              ]
-            },
-            'src/frontend/public/js/components/ui/facebook-login-button.vue': {
-              index: 261,
-              hash: 'veketBSi7U5bS4uEmfnZ',
-              parents: [
-                'src/frontend/public/js/components/register.vue',
-                'src/frontend/public/js/components/registerHeader.vue'
-              ]
-            },
-            'src/frontend/public/js/components/ui/errorBox.vue': {
-              index: 260,
-              hash: '32kRkp7+AsG1hXHYDC0I',
-              parents: [
-                'src/frontend/public/js/components/register.vue',
-                'src/frontend/public/js/components/registerHeader.vue'
-              ]
-            },
-            'src/frontend/public/js/components/register.vue': {
-              index: 254,
-              hash: 'Ww3zwMgVb2cSc2oSAICJ',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/components/search.vue': {
-              index: 257,
-              hash: 'pYbSCVDXxljDCS8IcQyr',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/components/dashboard/createEvent.vue': {
-              index: 241,
-              hash: 'EU9qY8R8L5PQGDtp3iBR',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/components/dashboard/subComponents/sideNav.vue': {
-              index: 253,
-              hash: 'lm5L/oE3M++ugvn+wCvB',
-              parents: [
-                'src/frontend/public/js/components/dashboard/createEvent.vue',
-                'src/frontend/public/js/components/dashboard/lineup.vue',
-                'src/frontend/public/js/components/dashboard/editLineup.vue',
-                'src/frontend/public/js/components/dashboard/profile.vue',
-                'src/frontend/public/js/components/dashboard/feedback.vue',
-                'src/frontend/public/js/components/dashboard/questions.vue',
-                'src/frontend/public/js/components/dashboard/dashboard.vue'
-              ]
-            },
-            'src/frontend/public/js/components/dashboard/subComponents/lineupNav.vue': {
-              index: 251,
-              hash: 'dCtTh+vf9hu6maZlNrLk',
-              parents: [
-                'src/frontend/public/js/components/dashboard/createEvent.vue',
-                'src/frontend/public/js/components/dashboard/lineup.vue',
-                'src/frontend/public/js/components/dashboard/editLineup.vue',
-                'src/frontend/public/js/components/dashboard/profile.vue',
-                'src/frontend/public/js/components/dashboard/feedback.vue',
-                'src/frontend/public/js/components/dashboard/questions.vue',
-                'src/frontend/public/js/components/dashboard/dashboard.vue'
-              ]
-            },
-            'src/frontend/public/js/components/dashboard/lineup.vue': {
-              index: 245,
-              hash: '4LHl0oMXpOSBfMAij0uj',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/components/dashboard/editLineup.vue': {
-              index: 243,
-              hash: 'xjz6609wKSvY0UkmD1MB',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/components/dashboard/profile.vue': {
-              index: 246,
-              hash: 'upvNX+lVjG3fdf0drFNy',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/components/dashboard/subComponents/feedbackCard.vue': {
-              index: 250,
-              hash: 'tQ8C+Vw5UXwvL7kVstGd',
-              parents: [
-                'src/frontend/public/js/components/dashboard/feedback.vue'
-              ]
-            },
-            'src/frontend/public/js/components/dashboard/feedback.vue': {
-              index: 244,
-              hash: '3fU0lRPEd0SOlrmnrNuj',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/components/dashboard/subComponents/questionCard.vue': {
-              index: 252,
-              hash: 'bTHHQKnxV56/arcw3eNk',
-              parents: [
-                'src/frontend/public/js/components/dashboard/questions.vue'
-              ]
-            },
-            'src/frontend/public/js/components/dashboard/questions.vue': {
-              index: 247,
-              hash: 'IS/mUR/JxTrP636IAGTO',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/components/dashboard/subComponents/eventCard.vue': {
-              index: 248,
-              hash: 'dXkhsGmJUSvI5D7cbsEo',
-              parents: [
-                'src/frontend/public/js/components/dashboard/subComponents/events.vue'
-              ]
-            },
-            'src/frontend/public/js/components/dashboard/subComponents/events.vue': {
-              index: 249,
-              hash: 'X7WEebDu2oUJnvLN8dft',
-              parents: [
-                'src/frontend/public/js/components/dashboard/dashboard.vue'
-              ]
-            },
-            'src/frontend/public/js/components/dashboard/dashboard.vue': {
-              index: 242,
-              hash: '1Nsk6y1+BAw4Xn53UQeJ',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'src/frontend/public/js/store/modules/event.js': {
-              index: 267,
-              hash: 'hosILh5sR+HqArVhXvWu',
-              parents: ['src/frontend/public/js/store/index.js']
-            },
-            'src/frontend/public/js/utils/index.js': {
-              index: 269,
-              hash: 'PGd5vV98RlzS798ypZ8o',
-              parents: ['src/frontend/public/js/store/modules/user.js']
-            },
-            'src/frontend/public/js/store/modules/user.js': {
-              index: 268,
-              hash: 'OVgBV+QQFb/IXOSyE3cK',
-              parents: ['src/frontend/public/js/store/index.js']
-            },
-            'src/frontend/public/js/services/user.js': {
-              index: 265,
-              hash: 'NonGfLbSexRC8Kd0DlCl',
-              parents: [
-                'src/frontend/public/js/store/modules/user.js',
-                'src/frontend/public/js/components/registerHeader.vue'
-              ]
-            },
-            'src/frontend/public/js/store/index.js': {
-              index: 266,
-              hash: 'tHEZ2uL/PCKmbcsszeh0',
-              parents: ['src/frontend/public/js/main.js']
-            },
-            'node_modules/axios/lib/helpers/spread.js': {
-              index: 28,
-              hash: 'tRmNydzwpR2+f97xOT2R',
-              parents: ['node_modules/axios/lib/axios.js']
+            'node_modules/lodash/_hashHas.js': {
+              index: 137,
+              hash: 'fr70n7H4vKHBcQoEXEpO',
+              parents: ['node_modules/lodash/_Hash.js']
             },
             'node_modules/axios/lib/helpers/bind.js': {
               index: 20,
               hash: '7qz63sWc/avguoKZp/Tj',
               parents: [
                 'node_modules/axios/lib/utils.js',
-                'node_modules/axios/lib/axios.js'
-              ]
-            },
-            'node_modules/axios/lib/utils.js': {
-              index: 29,
-              hash: 'qtyQ324ywC3lmxEImVMz',
-              parents: [
-                'node_modules/axios/lib/helpers/normalizeHeaderName.js',
-                'node_modules/axios/lib/core/mergeConfig.js',
-                'node_modules/axios/lib/helpers/buildURL.js',
-                'node_modules/axios/lib/core/InterceptorManager.js',
-                'node_modules/axios/lib/core/transformData.js',
-                'node_modules/axios/lib/core/dispatchRequest.js',
-                'node_modules/axios/lib/core/Axios.js',
-                'node_modules/axios/lib/helpers/parseHeaders.js',
-                'node_modules/axios/lib/helpers/isURLSameOrigin.js',
-                'node_modules/axios/lib/helpers/cookies.js',
-                'node_modules/axios/lib/adapters/xhr.js',
-                'node_modules/axios/lib/defaults.js',
-                'node_modules/axios/lib/axios.js'
-              ]
-            },
-            'node_modules/axios/lib/helpers/normalizeHeaderName.js': {
-              index: 26,
-              hash: 'ZOnEbUQ4gAqyOWXM/MJz',
-              parents: ['node_modules/axios/lib/defaults.js']
-            },
-            'node_modules/axios/lib/cancel/isCancel.js': {
-              index: 9,
-              hash: 'I1e5Pa4+rYUPP2HOlgqQ',
-              parents: [
-                'node_modules/axios/lib/core/dispatchRequest.js',
                 'node_modules/axios/lib/axios.js'
               ]
             },
@@ -68780,10 +68650,87 @@ function _objectSpread(target) {
                 'node_modules/axios/lib/axios.js'
               ]
             },
-            'node_modules/axios/lib/cancel/CancelToken.js': {
-              index: 8,
-              hash: 'FHNSerik6mTW7UK588b6',
+            'node_modules/lodash/_hashGet.js': {
+              index: 136,
+              hash: 'dc0CR5GuEuyIhxwkyCwj',
+              parents: ['node_modules/lodash/_Hash.js']
+            },
+            'node_modules/axios/lib/helpers/spread.js': {
+              index: 28,
+              hash: 'tRmNydzwpR2+f97xOT2R',
               parents: ['node_modules/axios/lib/axios.js']
+            },
+            'node_modules/axios/lib/cancel/isCancel.js': {
+              index: 9,
+              hash: 'I1e5Pa4+rYUPP2HOlgqQ',
+              parents: [
+                'node_modules/axios/lib/core/dispatchRequest.js',
+                'node_modules/axios/lib/axios.js'
+              ]
+            },
+            'src/frontend/public/js/components/dashboard/createEvent.vue': {
+              index: 241,
+              hash: 'EU9qY8R8L5PQGDtp3iBR',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'node_modules/axios/lib/utils.js': {
+              index: 29,
+              hash: 'qtyQ324ywC3lmxEImVMz',
+              parents: [
+                'node_modules/axios/lib/core/mergeConfig.js',
+                'node_modules/axios/lib/helpers/normalizeHeaderName.js',
+                'node_modules/axios/lib/helpers/buildURL.js',
+                'node_modules/axios/lib/core/InterceptorManager.js',
+                'node_modules/axios/lib/helpers/cookies.js',
+                'node_modules/axios/lib/helpers/parseHeaders.js',
+                'node_modules/axios/lib/helpers/isURLSameOrigin.js',
+                'node_modules/axios/lib/core/transformData.js',
+                'node_modules/axios/lib/core/dispatchRequest.js',
+                'node_modules/axios/lib/core/Axios.js',
+                'node_modules/axios/lib/adapters/xhr.js',
+                'node_modules/axios/lib/defaults.js',
+                'node_modules/axios/lib/axios.js'
+              ]
+            },
+            'node_modules/lodash/_hashClear.js': {
+              index: 134,
+              hash: '2feZ9hRgUzW8Djw0JrqE',
+              parents: ['node_modules/lodash/_Hash.js']
+            },
+            'node_modules/lodash/_Hash.js': {
+              index: 63,
+              hash: 'hTyKHFwLDhT8hzgE2zlD',
+              parents: ['node_modules/lodash/_mapCacheClear.js']
+            },
+            'node_modules/lodash/_mapCacheClear.js': {
+              index: 151,
+              hash: '6D5+Bp90PNozl9Vr8wu2',
+              parents: ['node_modules/lodash/_MapCache.js']
+            },
+            'node_modules/lodash/_stackSet.js': {
+              index: 175,
+              hash: 'rFq/zAhyEaIffTCH45Gf',
+              parents: ['node_modules/lodash/_Stack.js']
+            },
+            'node_modules/lodash/_baseIsMatch.js': {
+              index: 95,
+              hash: 'yrF79Y2F5RiVXHPZgzhK',
+              parents: ['node_modules/lodash/_baseMatches.js']
+            },
+            'node_modules/lodash/_baseMatches.js': {
+              index: 101,
+              hash: 'eM6GzX+YFfSSvWUut1RW',
+              parents: ['node_modules/lodash/_baseIteratee.js']
+            },
+            'node_modules/lodash/some.js': {
+              index: 203,
+              hash: 'o5R2DTe3L0fWtByoF6NK',
+              parents: ['node_modules/browserify-hmr/inc/index.js']
+            },
+            'node_modules/browserify-hmr/inc/index.js': {
+              index: 35,
+              hash: 'szQAOWiT0DPGHEwHQCqu',
+              parents: []
             },
             'node_modules/axios/lib/core/mergeConfig.js': {
               index: 16,
@@ -68792,6 +68739,16 @@ function _objectSpread(target) {
                 'node_modules/axios/lib/core/Axios.js',
                 'node_modules/axios/lib/axios.js'
               ]
+            },
+            'node_modules/axios/lib/cancel/CancelToken.js': {
+              index: 8,
+              hash: 'FHNSerik6mTW7UK588b6',
+              parents: ['node_modules/axios/lib/axios.js']
+            },
+            'node_modules/axios/lib/helpers/normalizeHeaderName.js': {
+              index: 26,
+              hash: 'ZOnEbUQ4gAqyOWXM/MJz',
+              parents: ['node_modules/axios/lib/defaults.js']
             },
             'node_modules/axios/lib/helpers/buildURL.js': {
               index: 21,
@@ -68805,6 +68762,34 @@ function _objectSpread(target) {
               index: 11,
               hash: 'eKcTD61ZQvp+fRuqC8MM',
               parents: ['node_modules/axios/lib/core/Axios.js']
+            },
+            'node_modules/axios/lib/helpers/cookies.js': {
+              index: 23,
+              hash: 'qM6kzxO0glTud6f+9Zsb',
+              parents: ['node_modules/axios/lib/adapters/xhr.js']
+            },
+            'node_modules/axios/lib/helpers/parseHeaders.js': {
+              index: 27,
+              hash: 'Y1BQXR+41VBwe6p8rmZ/',
+              parents: ['node_modules/axios/lib/adapters/xhr.js']
+            },
+            'node_modules/axios/lib/helpers/isURLSameOrigin.js': {
+              index: 25,
+              hash: 'nuSPzJI+HS39GwE1dcbh',
+              parents: ['node_modules/axios/lib/adapters/xhr.js']
+            },
+            'node_modules/axios/lib/core/settle.js': {
+              index: 17,
+              hash: '4nu0h+kT7T3ODvM1HTjb',
+              parents: ['node_modules/axios/lib/adapters/xhr.js']
+            },
+            'node_modules/axios/lib/core/createError.js': {
+              index: 13,
+              hash: '+o6+WD/ccw4RiSORle6L',
+              parents: [
+                'node_modules/axios/lib/core/settle.js',
+                'node_modules/axios/lib/adapters/xhr.js'
+              ]
             },
             'node_modules/axios/lib/core/transformData.js': {
               index: 18,
@@ -68828,34 +68813,6 @@ function _objectSpread(target) {
               index: 10,
               hash: 'y6Xr/1syYWJNaI+vV0aj',
               parents: ['node_modules/axios/lib/axios.js']
-            },
-            'node_modules/axios/lib/helpers/parseHeaders.js': {
-              index: 27,
-              hash: 'Y1BQXR+41VBwe6p8rmZ/',
-              parents: ['node_modules/axios/lib/adapters/xhr.js']
-            },
-            'node_modules/axios/lib/helpers/isURLSameOrigin.js': {
-              index: 25,
-              hash: 'nuSPzJI+HS39GwE1dcbh',
-              parents: ['node_modules/axios/lib/adapters/xhr.js']
-            },
-            'node_modules/axios/lib/helpers/cookies.js': {
-              index: 23,
-              hash: 'qM6kzxO0glTud6f+9Zsb',
-              parents: ['node_modules/axios/lib/adapters/xhr.js']
-            },
-            'node_modules/axios/lib/core/settle.js': {
-              index: 17,
-              hash: '4nu0h+kT7T3ODvM1HTjb',
-              parents: ['node_modules/axios/lib/adapters/xhr.js']
-            },
-            'node_modules/axios/lib/core/createError.js': {
-              index: 13,
-              hash: '+o6+WD/ccw4RiSORle6L',
-              parents: [
-                'node_modules/axios/lib/core/settle.js',
-                'node_modules/axios/lib/adapters/xhr.js'
-              ]
             },
             'node_modules/axios/lib/helpers/isAbsoluteURL.js': {
               index: 24,
@@ -68898,6 +68855,49 @@ function _objectSpread(target) {
             'src/frontend/public/js/components/registerHeader.vue': {
               index: 255,
               hash: 'Hz7gtb+9k1y2GHgXmAeT',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'src/frontend/public/js/components/dashboard/subComponents/questionCard.vue': {
+              index: 252,
+              hash: 'bTHHQKnxV56/arcw3eNk',
+              parents: [
+                'src/frontend/public/js/components/dashboard/questions.vue'
+              ]
+            },
+            'src/frontend/public/js/components/dashboard/questions.vue': {
+              index: 247,
+              hash: 'IS/mUR/JxTrP636IAGTO',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'src/frontend/public/js/components/dashboard/subComponents/feedbackCard.vue': {
+              index: 250,
+              hash: 'tQ8C+Vw5UXwvL7kVstGd',
+              parents: [
+                'src/frontend/public/js/components/dashboard/feedback.vue'
+              ]
+            },
+            'src/frontend/public/js/components/dashboard/feedback.vue': {
+              index: 244,
+              hash: '3fU0lRPEd0SOlrmnrNuj',
+              parents: ['src/frontend/public/js/main.js']
+            },
+            'src/frontend/public/js/components/dashboard/subComponents/eventCard.vue': {
+              index: 248,
+              hash: 'dXkhsGmJUSvI5D7cbsEo',
+              parents: [
+                'src/frontend/public/js/components/dashboard/subComponents/events.vue'
+              ]
+            },
+            'src/frontend/public/js/components/dashboard/subComponents/events.vue': {
+              index: 249,
+              hash: 'X7WEebDu2oUJnvLN8dft',
+              parents: [
+                'src/frontend/public/js/components/dashboard/dashboard.vue'
+              ]
+            },
+            'src/frontend/public/js/components/dashboard/dashboard.vue': {
+              index: 242,
+              hash: '1Nsk6y1+BAw4Xn53UQeJ',
               parents: ['src/frontend/public/js/main.js']
             },
             'src/frontend/public/js/main.js': {
