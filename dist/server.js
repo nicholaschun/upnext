@@ -33,7 +33,7 @@ var _verifySession = _interopRequireDefault(
 var app = (0, _express['default'])()
 var configure = (0, _dotenv.config)()
 var port = process.env.PORT || configure.parsed.default_port
-var hostname = configure.parsed.default_host
+var hostname = '127.0.0.1'
 app.use((0, _cors['default'])())
 app.use((0, _cookieParser['default'])())
 app.set('views', './frontend/views')
