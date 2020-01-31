@@ -2,7 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import session from 'express-session'
 import passport from 'passport'
-import { config } from 'dotenv'
+import dotenv from 'dotenv'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
@@ -14,22 +14,22 @@ import guest from './backend/routes/guest'
 import verifySession from './backend/app/auth/verifySession'
 
 const app = express()
-const configure = config()
-const port = process.env.PORT || configure.parsed.default_port
+dotenv.config()
+const port = process.env.PORT || process.env.default_port
 const hostname = '127.0.0.1'
 
 app.use(cors())
 app.use(cookieParser())
-app.set('views', './frontend/views')
+app.set('views', './src/frontend/views')
 app.set('view engine', 'pug')
 
 app.use(bodyParser.json())
-app.use(express.static('./frontend/public'))
+app.use(express.static('./src/frontend/public'))
 
 app.use(
   session({
-    key: configure.parsed.session_key,
-    secret: configure.parsed.secret_key,
+    key: process.env.session_key,
+    secret: process.env.secret_key,
     resave: false,
     expires: false,
     saveUninitialized: true
@@ -44,8 +44,8 @@ require('./backend/app/auth/passport')(passport)
 
 app.use('/', guest)
 app.use('/dashboard', userDashboard)
-app.use(`${configure.parsed.api_base_url}/users`, users)
-app.use(`${configure.parsed.api_base_url}/events`, events)
+app.use(`${process.env.api_base_url}/users`, users)
+app.use(`${process.env.api_base_url}/events`, events)
 app.use('/auth', providers)
 
 /* Start express server */
