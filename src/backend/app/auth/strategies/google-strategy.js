@@ -6,14 +6,15 @@ import {
   ifUserExists,
   createUser
 } from '../../../domains/user'
-import { config } from 'dotenv'
+import dotenv from 'dotenv'
+dotenv.config()
 
 passport.use(
   new googleStrategy.Strategy(
     {
-      clientID: config().parsed.google_client_id,
-      clientSecret: config().parsed.google_secret,
-      callbackURL: config().parsed.google_callback
+      clientID: process.env.google_client_id,
+      clientSecret: process.env.google_secret,
+      callbackURL: process.env.google_callback
     },
     async (accessToken, refreshToken, profile, done) => {
       //check if the user already exists and return it

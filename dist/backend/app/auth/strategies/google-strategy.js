@@ -16,14 +16,16 @@ var _passportGoogleOauth = _interopRequireDefault(
 
 var _user = require('../../../domains/user')
 
-var _dotenv = require('dotenv')
+var _dotenv = _interopRequireDefault(require('dotenv'))
+
+_dotenv['default'].config()
 
 _passport['default'].use(
   new _passportGoogleOauth['default'].Strategy(
     {
-      clientID: (0, _dotenv.config)().parsed.google_client_id,
-      clientSecret: (0, _dotenv.config)().parsed.google_secret,
-      callbackURL: (0, _dotenv.config)().parsed.google_callback
+      clientID: process.env.google_client_id,
+      clientSecret: process.env.google_secret,
+      callbackURL: process.env.google_callback
     },
     /*#__PURE__*/
     (function() {

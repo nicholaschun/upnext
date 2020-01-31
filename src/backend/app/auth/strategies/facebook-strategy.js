@@ -6,14 +6,15 @@ import {
   ifUserExists,
   createUser
 } from '../../../domains/user'
-import { config } from 'dotenv'
+import dotenv from 'dotenv'
+dotenv.config()
 
 passport.use(
   new facebookStrategy.Strategy(
     {
-      clientID: config().parsed.facebook_client_id,
-      clientSecret: config().parsed.facebook_secret,
-      callbackURL: config().parsed.facebook_callback,
+      clientID: process.env.facebook_client_id,
+      clientSecret: process.env.facebook_secret,
+      callbackURL: process.env.facebook_callback,
       profileFields: ['id', 'displayName', 'photos', 'email']
     },
     async (accessToken, refreshToken, profile, done) => {

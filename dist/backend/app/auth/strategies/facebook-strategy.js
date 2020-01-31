@@ -14,14 +14,16 @@ var _passportFacebook = _interopRequireDefault(require('passport-facebook'))
 
 var _user = require('../../../domains/user')
 
-var _dotenv = require('dotenv')
+var _dotenv = _interopRequireDefault(require('dotenv'))
+
+_dotenv['default'].config()
 
 _passport['default'].use(
   new _passportFacebook['default'].Strategy(
     {
-      clientID: (0, _dotenv.config)().parsed.facebook_client_id,
-      clientSecret: (0, _dotenv.config)().parsed.facebook_secret,
-      callbackURL: (0, _dotenv.config)().parsed.facebook_callback,
+      clientID: process.env.facebook_client_id,
+      clientSecret: process.env.facebook_secret,
+      callbackURL: process.env.facebook_callback,
       profileFields: ['id', 'displayName', 'photos', 'email']
     },
     /*#__PURE__*/
