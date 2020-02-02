@@ -1,4 +1,4 @@
-const userservice = require('./../../services/user')
+const userService = require('./../../services/user')
 const utils = require('./../../utils/index')
 
 const state = {
@@ -55,7 +55,7 @@ const actions = {
   async registerUser({ commit, state }) {
     commit('toggleLoader', 'createuser')
     try {
-      const result = await userservice.createUser(state.createuser)
+      const result = await userService.createUser(state.createuser)
       commit('toggleLoader', 'createuser')
       commit('setMessages', {
         state: 'createuser',
@@ -77,7 +77,7 @@ const actions = {
   async loginUser({ commit, state }) {
     commit('toggleLoader', 'login')
     try {
-      const result = await userservice.loginUser(state.login)
+      const result = await userService.loginUser(state.login)
       console.log(result)
       window.location = '/dashboard'
       commit('toggleLoader', 'login')
