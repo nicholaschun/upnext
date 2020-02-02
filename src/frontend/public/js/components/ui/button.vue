@@ -25,6 +25,7 @@ button {
   border: none;
   background: transparent;
   transition: 0.3s;
+  height: 40px;
 }
 button[disabled] {
   background: var(--upnext-disabled-button);
@@ -33,17 +34,26 @@ button[disabled] {
 .default-button {
   background: var(--upnext-yellow);
   color: white;
-  padding: 6px 15px 3px 12px;
-  border-radius: 15px;
+  padding: 6px 25px 3px 25px;
+  border-radius: 40px;
   font-size: 1em;
   border: 1px solid var(--upnext-yellow);
+  outline: none;
+}
+.question-button {
+  background: transparent;
+  color: var(--upnext-input-addon);
+  padding: 6px 15px 3px 12px;
+  border-radius: 40px;
+  font-size: 1em;
+  border: 1px solid var(--upnext-blue);
   outline: none;
 }
 .transparent-button {
   background: transparent !important;
   color: white;
   padding: 6px 15px 3px 12px;
-  border-radius: 15px;
+  border-radius: 40px;
   font-size: 1em;
   outline: none;
 }

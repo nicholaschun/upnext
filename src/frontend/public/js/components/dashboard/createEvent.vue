@@ -4,10 +4,96 @@
       <side-nav title="Create Lineup" />
     </div>
     <div class="col-md-9">
-      <lineup-nav />
+      <!-- <lineup-nav /> -->
       <div class="col-md-12 create-event">
-        <div class="image-upload-container"></div>
-        <div class="create-event-details"></div>
+        <div class="image-upload-container cover-image">
+          <div class="edit-image-overlay">
+            <div class="edit-camera-image">
+              <span
+                ><img
+                  src="../../../img/photo-camera.svg"
+                  width="30px"
+                  height="30px"
+                  alt=""
+                  style="margin-top: 80px"/></span
+              ><br />
+              <span style="text-align:center;color: white;font-size: .8em"
+                >Click to select image <br /><small
+                  >( 1920 × 250* )</small
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="create-event-details">
+        <div class="col-md-12" style="margin-top: 30px;">
+          <div class="col-md-6">
+            <label for="Event name">Event Name</label>
+            <u-input
+              name="password"
+              v-validate="'required'"
+              className="form-control custom-input"
+              type="text"
+              v-model="events.createevent.event_name"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label for="Event name">Event Days</label>
+            <u-input
+              name="password"
+              v-validate="'required'"
+              className="form-control custom-input"
+              type="text"
+              v-model="events.createevent.event_days"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-12" style="margin-top: 20px;">
+          <div class="col-md-12">
+            <label for="Event name">Event Description</label>
+            <u-input
+              name="password"
+              v-validate="'required'"
+              className="form-control custom-input"
+              type="text"
+              v-model="events.createevent.description"
+            />
+          </div>
+        </div>
+        <div class="col-md-12" style="margin-top: 20px;">
+          <div class="col-md-4">
+            <u-button
+              class="question-button"
+              type="button"
+              :disabled="events.createevent.loader"
+            >
+              Collect Feedback
+            </u-button>
+          </div>
+          <div class="col-md-4">
+            <u-button
+              class="question-button"
+              type="button"
+              :disabled="events.createevent.loader"
+            >
+              Collect Questions
+            </u-button>
+          </div>
+        </div>
+        <div class="col-md-12" style="margin-top: 20px;">
+          <div class="col-md-5">
+            <u-button
+              class="default-button"
+              type="button"
+              :disabled="events.createevent.loader"
+            >
+              Continue
+            </u-button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -15,21 +101,65 @@
 <script>
 const lineupNav = require('./subComponents/lineupNav.vue')
 const sideNav = require('./subComponents/sideNav.vue')
+const inputField = require('./../ui/input.vue')
+const registerButton = require('./../ui/button.vue')
+
+// const errorBox = require('./ui/errorBox.vue')
+
+const { mapState } = require('vuex')
+
 module.exports = {
+  computed: {
+    ...mapState({
+      events: state => state.events
+    })
+  },
   components: {
     'lineup-nav': lineupNav,
-    'side-nav': sideNav
+    'side-nav': sideNav,
+    'u-input': inputField,
+    'u-button': registerButton
   }
 }
 </script>
 <style scoped>
 .image-upload-container {
   height: 250px;
-  background: red;
+  background: rgb(78, 75, 75);
 }
 
 .create-event-details {
-  height: 400px;
-  background: var(--upnext-light-ash);
+  padding: 5% 0 10% 0;
+}
+.image-upload-container {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.create-event-details {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.edit-image-overlay {
+  background: rgba(0, 0, 0, 0.51);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.cover-image {
+  padding: 0 !important;
+  text-align: center;
+  position: relative;
+}
+
+.cover-image img {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  width: 100%;
+  vertical-align: middle;
 }
 </style>

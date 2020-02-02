@@ -70,6 +70,7 @@ input {
   /* border-radius: 6px !important; */
   border: 1px solid var(--upnext-input-border);
   width: 100%;
+  height: 40px;
   outline: none;
 }
 </style>
