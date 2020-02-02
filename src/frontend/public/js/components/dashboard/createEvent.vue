@@ -6,7 +6,16 @@
     <div class="col-md-9">
       <!-- <lineup-nav /> -->
       <div class="col-md-12 create-event">
-        <div class="image-upload-container cover-image">
+        <div class="image-upload-container cover-image" @click="openImage">
+          <input
+            type="file"
+            @change="loadImage"
+            accept="image/*"
+            style="display: none"
+            ref="imageInput"
+          />
+          <img :src="imageUrl" class="img-responsive" alt="" />
+
           <div class="edit-image-overlay">
             <div class="edit-camera-image">
               <span
@@ -109,10 +118,33 @@ const registerButton = require('./../ui/button.vue')
 const { mapState } = require('vuex')
 
 module.exports = {
+  data() {
+    return {
+      imageUrl: null
+    }
+  },
   computed: {
     ...mapState({
       events: state => state.events
     })
+  },
+  methods: {
+    openImage() {
+      this.$refs.imageInput.click()
+    },
+    loadImage(event) {
+      console.log(event)
+      let file = event.target.files[0]
+      if (file.size > 2000000) {
+        alert('Event image cannot be more than 2MB')
+      } else {
+        let reader = new FileReader()
+        reader.onload = e => {
+          this.imageUrl = e.target.result
+        }
+        reader.readAsDataURL(file)
+      }
+    }
   },
   components: {
     'lineup-nav': lineupNav,
@@ -141,7 +173,7 @@ module.exports = {
   border-bottom-right-radius: 8px;
 }
 .edit-image-overlay {
-  background: rgba(0, 0, 0, 0.51);
+  background: rgba(102, 102, 102, 0.233);
   position: absolute;
   top: 0;
   height: 100%;
@@ -154,6 +186,7 @@ module.exports = {
   padding: 0 !important;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 
 .cover-image img {

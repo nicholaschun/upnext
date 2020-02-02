@@ -25,7 +25,7 @@ button {
   border: none;
   background: transparent;
   transition: 0.3s;
-  height: 40px;
+  height: 35px;
 }
 button[disabled] {
   background: var(--upnext-disabled-button);
