@@ -4,7 +4,7 @@ import { createUser, createUserProfile, ifUserExists } from '../domains/user'
 import { issueToken } from './../app/auth/jwt/issueToken'
 
 module.exports = {
-  async createUser(req, res, next) {
+  async createUser(req, res) {
     try {
       validate(req, res)
       const check = await ifUserExists(req.body.email)
@@ -26,7 +26,7 @@ module.exports = {
       }
       const user = await createUser(body)
       const data = {
-        id: user.id,
+        id: user.user_id,
         profile: body
       }
       await createUserProfile(data)

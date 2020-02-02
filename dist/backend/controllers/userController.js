@@ -17,7 +17,7 @@ var _user = require('../domains/user')
 var _issueToken = require('./../app/auth/jwt/issueToken')
 
 module.exports = {
-  createUser: function createUser(req, res, next) {
+  createUser: function createUser(req, res) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee() {
@@ -65,7 +65,7 @@ module.exports = {
                 case 10:
                   user = _context.sent
                   data = {
-                    id: user.id,
+                    id: user.user_id,
                     profile: body
                   }
                   _context.next = 14
