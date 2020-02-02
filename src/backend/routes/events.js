@@ -40,7 +40,7 @@ routes.post(
   '/feedback/createfeedback/:event_id',
   feedbackController.createFeedback
 )
-routes.get('/feedback/getfeedbacks/:event_id', feedbackController.getFeedback)
+routes.get('/feedback/getallfeedback/:event_id', feedbackController.getFeedback)
 routes.put(
   '/feedback/editfeedback/:feedback_id',
   feedbackController.editFeedback
@@ -54,13 +54,16 @@ routes.post(
   '/questions/createquestions/:event_id',
   feedbackController.createQuestion
 )
-routes.get('/feedback/getquestions/:event_id', feedbackController.getQuestions)
+routes.get(
+  '/questions/getallquestions/:event_id',
+  feedbackController.getQuestions
+)
 routes.put(
-  '/feedback/editquestion/:question_id',
+  '/questions/editquestion/:question_id',
   feedbackController.editQuestion
 )
 routes.delete(
-  '/feedback/deletequestion/:question_id',
+  '/questions/deletequestion/:question_id',
   feedbackController.deleteQuestion
 )
 

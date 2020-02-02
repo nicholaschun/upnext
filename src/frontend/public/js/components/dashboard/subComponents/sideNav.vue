@@ -12,7 +12,7 @@
     <div class="my-event-nav">
       <ul>
         <li>
-          <a href="#" class="active"
+          <a href="/dashboard" class="active"
             ><span class="fa fa-calendar"></span> My Events</a
           >
         </li>
