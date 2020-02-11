@@ -36,9 +36,6 @@ module.exports = {
             'lastname',
             'last name field is required'
           ).exists(),
-          (0, _expressValidator.body)('email', 'invalid email')
-            .exists()
-            .isEmail(),
           (0, _expressValidator.body)('organization').optional()
         ]
       }

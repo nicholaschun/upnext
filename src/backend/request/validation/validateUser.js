@@ -18,9 +18,6 @@ module.exports = {
         return [
           body('firstname', 'first name field is required').exists(),
           body('lastname', 'last name field is required').exists(),
-          body('email', 'invalid email')
-            .exists()
-            .isEmail(),
           body('organization').optional()
         ]
       }
