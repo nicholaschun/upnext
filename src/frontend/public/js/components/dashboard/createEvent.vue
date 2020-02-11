@@ -5,105 +5,117 @@
     </div>
     <div class="col-md-9">
       <!-- <lineup-nav /> -->
-      <div class="col-md-12 create-event">
-        <div class="image-upload-container cover-image" @click="openImage">
-          <input
-            type="file"
-            @change="loadImage"
-            accept="image/*"
-            style="display: none"
-            ref="imageInput"
-          />
-          <img :src="imageUrl" class="img-responsive" alt="" />
+      <form
+        @submit.prevent="createEvent('create_event')"
+        data-vv-scope="create_event"
+      >
+        <div class="col-md-12 create-event">
+          <div class="image-upload-container cover-image" @click="openImage">
+            <input
+              type="file"
+              @change="loadImage"
+              accept="image/*"
+              style="display: none"
+              ref="imageInput"
+            />
+            <img :src="imageUrl" class="img-responsive" alt="" />
 
-          <div class="edit-image-overlay">
-            <div class="edit-camera-image">
-              <span
-                ><img
-                  src="../../../img/photo-camera.svg"
-                  width="30px"
-                  height="30px"
-                  alt=""
-                  style="margin-top: 80px"/></span
-              ><br />
-              <span style="text-align:center;color: white;font-size: .8em"
-                >Click to select image <br /><small
-                  >( 1920 × 250* )</small
-                ></span
-              >
+            <div class="edit-image-overlay">
+              <div class="edit-camera-image">
+                <span
+                  ><img
+                    src="../../../img/photo-camera.svg"
+                    width="30px"
+                    height="30px"
+                    alt=""
+                    style="margin-top: 80px"/></span
+                ><br />
+                <span style="text-align:center;color: white;font-size: .8em"
+                  >Click to select image <br /><small
+                    >( 1920 × 250* )</small
+                  ></span
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="create-event-details">
-        <div class="col-md-12" style="margin-top: 30px;">
-          <div class="col-md-6">
-            <label for="Event name">Event Name</label>
-            <u-input
-              name="password"
-              v-validate="'required'"
-              className="form-control custom-input"
-              type="text"
-              v-model="events.createevent.event_name"
-            />
+        <div class="create-event-details">
+          <div class="col-md-12" style="margin-top: 30px;">
+            <div class="col-md-6">
+              <label for="Event name">Event Name</label>
+              <u-input
+                name="event name"
+                v-validate="'required'"
+                className="form-control custom-input"
+                type="text"
+                v-model="events.createevent.event_name"
+              />
+            </div>
+            <small class="form-error animated fadeInUp2">{{
+              errors.first('create_event.event name')
+            }}</small>
+
+            <div class="col-md-6">
+              <label for="Event name">Event Days</label>
+              <u-input
+                name="event days"
+                className="form-control custom-input"
+                type="text"
+                v-model="events.createevent.event_days"
+              />
+            </div>
           </div>
 
-          <div class="col-md-6">
-            <label for="Event name">Event Days</label>
-            <u-input
-              name="password"
-              v-validate="'required'"
-              className="form-control custom-input"
-              type="text"
-              v-model="events.createevent.event_days"
-            />
+          <div class="col-md-12" style="margin-top: 20px;">
+            <div class="col-md-12">
+              <label for="Event name">Event Description</label>
+              <u-input
+                name="event description"
+                className="form-control custom-input"
+                type="text"
+                v-model="events.createevent.description"
+              />
+            </div>
+          </div>
+          <div class="col-md-12" style="margin-top: 20px;">
+            <div class="col-md-4">
+              <u-button
+                :class="{
+                  'default-button': events.createevent.has_feedback,
+                  'question-button': !events.createevent.has_feedback
+                }"
+                type="button"
+                @click.native="$store.dispatch('toggleButton', 'has_feedback')"
+              >
+                Collect Feedback
+              </u-button>
+            </div>
+            <div class="col-md-4">
+              <u-button
+                type="button"
+                @click.native="$store.dispatch('toggleButton', 'has_questions')"
+                :class="{
+                  'default-button': events.createevent.has_questions,
+                  'question-button': !events.createevent.has_questions
+                }"
+              >
+                Collect Questions
+              </u-button>
+            </div>
+          </div>
+          <div class="col-md-12" style="margin-top: 20px;">
+            <div class="col-md-5">
+              <u-button
+                class="default-button"
+                type="submit"
+                :disabled="events.createevent.loader"
+              >
+                Continue
+              </u-button>
+            </div>
           </div>
         </div>
-
-        <div class="col-md-12" style="margin-top: 20px;">
-          <div class="col-md-12">
-            <label for="Event name">Event Description</label>
-            <u-input
-              name="password"
-              v-validate="'required'"
-              className="form-control custom-input"
-              type="text"
-              v-model="events.createevent.description"
-            />
-          </div>
-        </div>
-        <div class="col-md-12" style="margin-top: 20px;">
-          <div class="col-md-4">
-            <u-button
-              class="question-button"
-              type="button"
-              :disabled="events.createevent.loader"
-            >
-              Collect Feedback
-            </u-button>
-          </div>
-          <div class="col-md-4">
-            <u-button
-              class="question-button"
-              type="button"
-              :disabled="events.createevent.loader"
-            >
-              Collect Questions
-            </u-button>
-          </div>
-        </div>
-        <div class="col-md-12" style="margin-top: 20px;">
-          <div class="col-md-5">
-            <u-button
-              class="default-button"
-              type="button"
-              :disabled="events.createevent.loader"
-            >
-              Continue
-            </u-button>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -120,7 +132,8 @@ const { mapState } = require('vuex')
 module.exports = {
   data() {
     return {
-      imageUrl: null
+      imageUrl: null,
+      file: ''
     }
   },
   computed: {
@@ -133,8 +146,8 @@ module.exports = {
       this.$refs.imageInput.click()
     },
     loadImage(event) {
-      console.log(event)
       let file = event.target.files[0]
+      this.file = event.target.files[0]
       if (file.size > 2000000) {
         alert('Event image cannot be more than 2MB')
       } else {
@@ -144,7 +157,15 @@ module.exports = {
         }
         reader.readAsDataURL(file)
       }
-    }
+    },
+    createEvent(scope) {
+      this.$validator.validateAll(scope).then(validate => {
+        if (validate) {
+          this.$store.dispatch('createEvent', this.file)
+        }
+      })
+    },
+    toggleButton(type) {}
   },
   components: {
     'lineup-nav': lineupNav,

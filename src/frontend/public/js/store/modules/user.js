@@ -4,6 +4,7 @@ const utils = require('./../../utils/index')
 const state = {
   users: [],
   createuser: {
+    user_id: 'c1ac68a9-dd8e-4c3f-a1d0-e33fd5e2de27',
     firstname: 'Nicholas',
     lastname: 'Mamiya',
     email: 'nicholaschunryne@gmail.com',
@@ -91,6 +92,29 @@ const actions = {
         message: errors
       })
     }
+  },
+
+  async updateUser({commit, state}) {
+    commit('toggleLoader', 'createuser')
+    try {
+      const result = await userService.editUser(state.createuser)
+      commit('toggleLoader', 'createuser')
+      commit('setMessages', {
+        state: 'createuser',
+        type: 'success',
+        message: result.data
+      })
+    } catch (error) {
+      console.log(error)
+      commit('toggleLoader', 'createuser')
+      const errors = utils.generateMessage(error)
+      commit('setMessages', {
+        state: 'createuser',
+        type: 'error',
+        message: errors
+      })
+    }
+
   },
 
   async sendResetPasswordLink({ commit }) {

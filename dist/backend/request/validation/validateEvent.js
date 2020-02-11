@@ -14,17 +14,36 @@ module.exports = {
       case 'createEvent': {
         return [
           (0, _expressValidator.body)(
-            'eventName',
+            'event_name',
             'event name is required'
-          ).exists()
+          ).exists(),
+          (0, _expressValidator.body)('user_id', 'user id is required').exists()
         ]
       }
 
       case 'editEvent': {
         return [
           (0, _expressValidator.body)(
-            'eventName',
+            'event_name',
             'event name is required'
+          ).exists()
+        ]
+      }
+
+      case 'createFeedback': {
+        return [
+          (0, _expressValidator.body)(
+            'feedback',
+            'feedback is required'
+          ).exists()
+        ]
+      }
+
+      case 'createQuestion': {
+        return [
+          (0, _expressValidator.body)(
+            'question',
+            'question is required'
           ).exists()
         ]
       }

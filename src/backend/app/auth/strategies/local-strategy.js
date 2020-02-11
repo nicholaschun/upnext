@@ -9,6 +9,7 @@ passport.use(
     async (email, password, done) => {
       // check if user email exists
       const user = await ifUserExists(email)
+      // console.log(user)
       if (!user) {
         return done(null, false, {
           msg: 'User does not exist'

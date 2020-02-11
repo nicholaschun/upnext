@@ -8,6 +8,10 @@ module.exports = {
   createUser(data) {
     return axios.post(`${baseurl}/register`, data)
   },
-  editUser() {},
+  editUser(data) {
+    console.log(data)
+    return axios.put(`${baseurl}/edituser/${data.user_id}`, data)
+
+  },
   deleteUser() {}
 }

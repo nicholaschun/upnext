@@ -9,6 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      event_id: {
+        type: Sequelize.STRING
+      },
       feedback: {
         type: Sequelize.STRING
       },

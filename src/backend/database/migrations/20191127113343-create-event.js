@@ -36,7 +36,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       event_url: {
         type: Sequelize.STRING

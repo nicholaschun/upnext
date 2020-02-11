@@ -3,10 +3,15 @@ const baseurl = '/api/v1/events'
 
 module.exports = {
   createEvent(data) {
-    return axios.post(`${baseurl}/createevent`, data)
+    console.log(data)
+    return axios.post(`${baseurl}/createevent`, data
+    )
   },
   listAllEvents() {
     return axios.get(`${baseurl}/getallevents`)
+  },
+  getUserEvents(userId) {
+    return axios.get(`${baseurl}/getuserevents/${userId}`)
   },
   listUserEvents(userId) {
     return axios.get(`${baseurl}/getuserevents/${userId}`)

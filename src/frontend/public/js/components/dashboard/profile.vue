@@ -9,8 +9,8 @@
         <h4>Edit Profile</h4>
       </div>
       <form
-        @submit.prevent="registerUser('user_register')"
-        data-vv-scope="user_register"
+        @submit.prevent="updateUser('user_update')"
+        data-vv-scope="user_update"
       >
         <div class="col-md-12 no-padding">
           <div class="col-md-12 input-container no-padding">
@@ -27,7 +27,7 @@
                 />
               </div>
               <small class="form-error animated fadeInUp2">{{
-                errors.first('user_register.first name')
+                errors.first('user_update.first name')
               }}</small>
             </div>
             <div class="col-md-6 ">
@@ -43,7 +43,7 @@
                 />
               </div>
               <small class="form-error animated fadeInUp2">{{
-                errors.first('user_register.last name')
+                errors.first('user_update.last name')
               }}</small>
             </div>
           </div>
@@ -58,6 +58,7 @@
                   type="email"
                   name="email"
                   v-validate="'required|email'"
+                  disabled="disabled"
                   v-model="profile.createuser.email"
                   className="form-control custom-input"
                 />
@@ -89,6 +90,7 @@
                   v-model="profile.createuser.password"
                   v-validate="'required'"
                   name="password"
+                  disabled="disabled"
                   className="form-control custom-input"
                 />
               </div>
@@ -133,6 +135,15 @@ module.exports = {
     })
   },
 
+  methods: {
+    updateUser(scope) {
+      this.$validator.validateAll(scope).then(validate => {
+        if (validate) {
+          this.$store.dispatch('updateUser')
+        }
+      })
+    }
+  },
   components: {
     'u-input': inputField,
     'u-button': registerButton,

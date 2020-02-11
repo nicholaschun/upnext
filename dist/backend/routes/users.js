@@ -29,6 +29,7 @@ routes.post(
   (0, _validateUser.validateUser)('loginUser'),
   _userController['default'].tokenLogin
 )
+routes.get('/authuser', _userController['default'].authUser)
 routes.post(
   '/resetPassword',
   (0, _validateUser.validateUser)('resetPassword'),
@@ -38,6 +39,11 @@ routes.post(
   '/sendPasswordEmail',
   (0, _validateUser.validateUser)('sendPassEmail'),
   _userController['default'].sendPasswordEmail
+)
+routes.put(
+  '/edituser/:user_id',
+  (0, _validateUser.validateUser)('editUser'),
+  _userController['default'].editUser
 ) //Protected routes
 
 routes.get(

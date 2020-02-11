@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       event_image_thumb: DataTypes.STRING,
       has_feedback: DataTypes.BOOLEAN,
       has_questions: DataTypes.BOOLEAN,
-      user_id: DataTypes.INTEGER,
+      user_id: DataTypes.STRING,
       event_url: DataTypes.STRING,
       url_snippet: DataTypes.STRING,
       additional_info: DataTypes.TEXT
@@ -31,9 +31,9 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: 'user_id',
       targetKey: 'user_id'
     })
-    Event.hasMany(models.Lineup, {
+    Event.belongsTo(models.Lineup, {
       foreignKey: 'event_id',
-      targetKey: 'eventid'
+      targetKey: 'event_id'
     })
   }
 

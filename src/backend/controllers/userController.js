@@ -1,6 +1,11 @@
 import passport from 'passport'
 import { validate } from './../utils/validate'
-import { createUser, createUserProfile, ifUserExists } from '../domains/user'
+import {
+  createUser,
+  createUserProfile,
+  ifUserExists,
+  editUserProfile
+} from '../domains/user'
 import { issueToken } from './../app/auth/jwt/issueToken'
 
 module.exports = {
@@ -11,7 +16,7 @@ module.exports = {
       if (check) {
         return res
           .status(401)
-          .json({ msg: 'User already exists login to continue your session' })
+          .json('User already exists login to continue your session' )
       }
       const body = {
         email: req.body.email,
@@ -30,13 +35,9 @@ module.exports = {
         profile: body
       }
       await createUserProfile(data)
-      return res.json({
-        data: user,
-        msg:
-          'Account created succusfully. Check your email to verify your account'
-      })
+      return res.json(user)
     } catch (error) {
-      console.log(error)
+      return res.json(error)
     }
   },
   loginUser(req, res, next) {
@@ -57,26 +58,33 @@ module.exports = {
       console.log(error)
     }
   },
-  tokenLogin(req, res, next) {
-    passport.authenticate('local', { session: false }, (err, user, info) => {
-      if (err || !user) {
-        return res.status(400).json({
-          message: info.message
-        })
-      }
-      req.logIn(user, { session: false }, err => {
-        if (err) {
-          return res.status(400).json({
-            message: 'Something went wrong. Try again'
-          })
+
+  async tokenLogin(req, res, next) {
+    try {
+      validate(req, res)
+      passport.authenticate('local', { session: false }, (err, user, info) => {
+        if (err || !user) {
+          return res.status(400).json(info.msg)
         }
-        //generate a signed token for the user
-        const body = { iq: user.id, ie: user.email }
-        const token = issueToken(body)
-        return res.json({ token: token })
-      })
-    })(req, res, next)
+        req.logIn(user, { session: false }, err => {
+          if (err) {
+            return res.status(400).json('Something went wrong. Try again')
+          }
+          //generate a signed token for the user
+          const body = { user_id: user.user_id, email: user.email }
+          const token = issueToken(body)
+          return res.json(token)
+        })
+      })(req, res, next)
+    } catch (error) {
+      return res.json(error)
+    }
   },
+
+  authUser(req, res){
+    res.json(req.user.user.data)
+  },
+
   async sendPasswordEmail(req, res) {
     try {
       validate(req, res)
@@ -84,6 +92,7 @@ module.exports = {
       const { email } = req.body
     } catch (error) {
       console.log(error)
+      return res.json(error)
     }
   },
   resetPassword(req, res) {
@@ -93,6 +102,15 @@ module.exports = {
       const { token, newPassword, confirmPassword } = req.body
     } catch (error) {
       console.log(error)
+    }
+  },
+  async editUser(req, res) {
+    try {
+      validate(req, res)
+      const result = await editUserProfile(req.body, req.params.user_id)
+      return res.json(result)
+    } catch (error) {
+      return res.status(500).json(error)
     }
   },
   logoutUser(req, res) {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <u-button class="round-button" :onClick="callRegister">
+    <u-button class="round-button" type="button" @click.native="callRegister">
       <h4>Create <br />Line-up</h4>
     </u-button>
   </div>

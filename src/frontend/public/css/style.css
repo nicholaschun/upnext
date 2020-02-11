@@ -21,6 +21,8 @@
 
 body {
   font-family: GillSansRegular;
+  /* font-family: 'Didact Gothic', sans-serif !important; */
+
 }
 p,
 a,
@@ -36,6 +38,8 @@ label,
 input,
 button {
   font-family: GillSansRegular;
+  /* font-family: 'Didact Gothic', sans-serif !important; */
+
 }
 
 :root {

@@ -1,18 +1,23 @@
 import {
   getLineup,
   createLineup,
-  editLineup,
-  deleteLineup
+  deleteLineup,
+  deleteSingleLineup
 } from '../domains/event/lineup'
 
-import { getEventById } from '../domains/event/index'
+import { getEventById,deleteEvent } from '../domains/event/index'
 module.exports = {
   async createLineup(req, res) {
     try {
-      const lineup = await createLineup(req.body)
-      return res.json(lineup)
+      //check if event id exists
+      const event = await getEventById(req.params.event_id)
+      if(!event){
+        return res.status(401).json('Event with the provided id not found')
+      }
+      await createLineup(req.body, req.params.event_id)
+      return res.status(200).json(true)
     } catch (error) {
-      res.status(500).send({
+      res.status(500).json({
         message: error.message || 'Something went wrong'
       })
     }
@@ -23,7 +28,7 @@ module.exports = {
       const event = await getEventById(req.params.event_id)
       return res.json(event)
     } catch (error) {
-      res.status(500).send({
+      res.status(500).json({
         message: error.message || 'Something went wrong'
       })
     }
@@ -31,17 +36,11 @@ module.exports = {
 
   async editEventLineup(req, res) {
     try {
-      const body = {
-        start_time: req.body.start_time,
-        end_time: req.body.end_time,
-        description: req.body.description,
-        duration: req.body.duration,
-        facilitator: req.body.facilitator
-      }
-      const lineup = await editLineup(body, req.params.lineup_id)
-      return res.json(lineup)
+      await deleteLineup(req.params.event_id)
+      await createLineup(req.body, req.params.event_id)
+      return res.json(true)
     } catch (error) {
-      res.status(500).send({
+      res.status(500).json({
         message: error.message || 'Something went wrong'
       })
     }
@@ -49,10 +48,10 @@ module.exports = {
 
   async deleteEventLineup(req, res) {
     try {
-      const lineup = await deleteLineup(req.params.lineup_id)
+      const lineup = await deleteSingleLineup(req.params.lineup_id)
       return res.json(lineup)
     } catch (error) {
-      res.status(500).send({
+      res.status(500).json({
         message: error.message || 'Something went wrong'
       })
     }

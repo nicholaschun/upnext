@@ -4,7 +4,7 @@
   "description": "api for creating event lineups",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/nodemon --exec babel-node src/server.js & watchify -vd -p browserify-hmr -t vueify -e  src/frontend/public/js/main.js -o src/frontend/public/js/bundle.js",
+    "dev": "./node_modules/.bin/nodemon --exec babel-node src/server.js",
     "start": "node dist/server.js",
     "build": "rimraf dist && babel ./src --out-dir dist/  --ignore ./node_modules",
     "test": "echo \"Error: no test specified\" && exit 0"
@@ -31,6 +31,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.8.3",
     "@babel/runtime": "^7.8.4",
+    "aws-sdk": "^2.610.0",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -43,6 +44,8 @@
     "express-session": "^1.17.0",
     "express-validator": "^6.3.1",
     "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
     "mysql2": "^1.7.0",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
@@ -57,6 +60,8 @@
     "vue": "^2.6.11",
     "vue-cookies": "^1.6.1",
     "vue-owl-carousel": "^2.0.3",
+    "vue-router": "^3.1.5",
+    "vue-toasted": "^1.1.27",
     "vueify": "^9.4.1",
     "vuex": "^3.1.2",
     "watchify": "^3.11.1"

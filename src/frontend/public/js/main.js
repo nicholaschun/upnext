@@ -1,11 +1,17 @@
 const Vue = require('vue/dist/vue.js')
 const Veevalidate = require('vee-validate')
 const VueCookies = require('vue-cookies')
+const Toasted = require('vue-toasted/dist/vue-toasted')
+
 const store = require('./store/index.js')
+const router = require('./routes/index.js')
 
 Vue.use(Veevalidate)
 Vue.use(store)
 Vue.use(VueCookies)
+Vue.use(Toasted)
+
+
 
 Vue.component('testComponent', require('./components/test.vue'))
 Vue.component('searchComponent', require('./components/search.vue'))
@@ -33,6 +39,10 @@ Vue.component(
   'dashboardComponent',
   require('./components/dashboard/dashboard.vue')
 )
+Vue.component(
+  'dashboardComponent',
+  require('./components/app.vue')
+)
 Vue.component('lineupComponent', require('./components/dashboard/lineup.vue'))
 Vue.component(
   'editLineupComponent',
@@ -50,5 +60,9 @@ Vue.component('profileComponent', require('./components/dashboard/profile.vue'))
 
 const app = new Vue({
   el: '#app',
+  router,
   store
 })
+
+
+

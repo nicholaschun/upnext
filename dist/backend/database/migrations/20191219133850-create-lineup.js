@@ -15,6 +15,9 @@ module.exports = {
       event_id: {
         type: Sequelize.STRING
       },
+      day: {
+        type: Sequelize.STRING
+      },
       start_time: {
         type: Sequelize.STRING
       },

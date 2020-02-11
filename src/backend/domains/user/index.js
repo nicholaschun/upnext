@@ -3,7 +3,6 @@ import util from '../../utils/index'
 
 module.exports = {
   async createUser(body) {
-    console.log(body)
     const verifyToken = util.genToken(body.email)
     return await db.User.create({
       email: body.email,
@@ -28,9 +27,25 @@ module.exports = {
     })
   },
 
+  async editUserProfile(body, user_id) {
+    return await db.UserProfile.update({
+        first_name: body.firstname,
+        last_name: body.lastname,
+        full_name: `${body.firstname} ${body.lastname}`,
+        organization: body.organization
+    }, {where:{user_id: user_id } })
+  },
+
   async ifUserExists(email) {
     return await db.User.findOne({
       where: { email: email },
+      include: [{ model: db.UserProfile }]
+    })
+  },
+
+  async ifUserIdExists(user_id) {
+    return await db.User.findOne({
+      where: { user_id: user_id },
       include: [{ model: db.UserProfile }]
     })
   }

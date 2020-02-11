@@ -22,9 +22,8 @@ module.exports = {
           while (1) {
             switch ((_context.prev = _context.next)) {
               case 0:
-                console.log(body)
                 verifyToken = _index2['default'].genToken(body.email)
-                _context.next = 4
+                _context.next = 3
                 return _index['default'].User.create({
                   email: body.email,
                   status: body.status,
@@ -36,10 +35,10 @@ module.exports = {
                   user_id: _index2['default'].genuuid()
                 })
 
-              case 4:
+              case 3:
                 return _context.abrupt('return', _context.sent)
 
-              case 5:
+              case 4:
               case 'end':
                 return _context.stop()
             }
@@ -80,7 +79,7 @@ module.exports = {
       })
     )()
   },
-  ifUserExists: function ifUserExists(email) {
+  editUserProfile: function editUserProfile(body, user_id) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee3() {
@@ -89,6 +88,43 @@ module.exports = {
             switch ((_context3.prev = _context3.next)) {
               case 0:
                 _context3.next = 2
+                return _index['default'].UserProfile.update(
+                  {
+                    first_name: body.firstname,
+                    last_name: body.lastname,
+                    full_name: ''
+                      .concat(body.firstname, ' ')
+                      .concat(body.lastname),
+                    organization: body.organization
+                  },
+                  {
+                    where: {
+                      user_id: user_id
+                    }
+                  }
+                )
+
+              case 2:
+                return _context3.abrupt('return', _context3.sent)
+
+              case 3:
+              case 'end':
+                return _context3.stop()
+            }
+          }
+        }, _callee3)
+      })
+    )()
+  },
+  ifUserExists: function ifUserExists(email) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee4() {
+        return _regenerator['default'].wrap(function _callee4$(_context4) {
+          while (1) {
+            switch ((_context4.prev = _context4.next)) {
+              case 0:
+                _context4.next = 2
                 return _index['default'].User.findOne({
                   where: {
                     email: email
@@ -101,14 +137,46 @@ module.exports = {
                 })
 
               case 2:
-                return _context3.abrupt('return', _context3.sent)
+                return _context4.abrupt('return', _context4.sent)
 
               case 3:
               case 'end':
-                return _context3.stop()
+                return _context4.stop()
             }
           }
-        }, _callee3)
+        }, _callee4)
+      })
+    )()
+  },
+  ifUserIdExists: function ifUserIdExists(user_id) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee5() {
+        return _regenerator['default'].wrap(function _callee5$(_context5) {
+          while (1) {
+            switch ((_context5.prev = _context5.next)) {
+              case 0:
+                _context5.next = 2
+                return _index['default'].User.findOne({
+                  where: {
+                    user_id: user_id
+                  },
+                  include: [
+                    {
+                      model: _index['default'].UserProfile
+                    }
+                  ]
+                })
+
+              case 2:
+                return _context5.abrupt('return', _context5.sent)
+
+              case 3:
+              case 'end':
+                return _context5.stop()
+            }
+          }
+        }, _callee5)
       })
     )()
   }

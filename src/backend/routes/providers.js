@@ -1,6 +1,10 @@
 import express from 'express'
 import passport from 'passport'
 
+
+import userController from '../controllers/userController'
+import { validateUser } from '../request/validation/validateUser'
+
 const routes = express.Router()
 
 routes.get(
@@ -23,5 +27,8 @@ routes.get(
     res.redirect('/dashboard')
   }
 )
+
+routes.post('/register', validateUser('createUser'), userController.createUser)
+routes.post('/login', validateUser('loginUser'), userController.tokenLogin)
 
 module.exports = routes

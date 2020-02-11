@@ -1,17 +1,14 @@
 <template>
-  <button @click="onClick" :type="type" :disabled="disabled">
+  <button  :type="type" :disabled="disabled">
     <slot>Button</slot>
   </button>
 </template>
 <script>
 module.exports = {
   props: {
-    onClick: {
-      required: false,
-      default: ''
-    },
+    
     type: {
-      required: false
+      required: true
     },
     disabled: {
       required: false

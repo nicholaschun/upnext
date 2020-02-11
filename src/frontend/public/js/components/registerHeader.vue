@@ -2,14 +2,14 @@
   <div class="register-header">
     <ul>
       <li>
-        <u-button class="default-button" :onClick="callRegister">
+        <u-button class="default-button" type="button" @click.native="callRegister">
           Create Account
         </u-button>
       </li>
       <li>
-        <u-button class="transparent-button" :onClick="testButton">
+        <span style="color:white;" class="transparent-button" type="button">
           Login
-        </u-button>
+        </span>
         <div class="login-container animated fadeInUp2">
           <div class="show-angle-up">
             <span class="fa fa-caret-up fa-2x"></span>
@@ -25,7 +25,7 @@
             <facebook-login-button />
             <google-login-button />
             <form
-              @submit.prevent="loginUser('user_login')"
+              @submit.prevent="loginUser('user_loginn')"
               auto-complete="off"
               data-vv-scope="user_login"
               autocomplete="off"
@@ -71,7 +71,7 @@
               </div>
               <div class="col-md-12 input-container">
                 <div class="input-group">
-                  <u-button
+                  <!-- <u-button
                     class="default-button"
                     type="submit"
                     :disabled="loginState.login.loader"
@@ -81,7 +81,7 @@
                       v-if="loginState.login.loader"
                       class="fa fa-loader fa-spinner fa-spin"
                     ></span>
-                  </u-button>
+                  </u-button> -->
                 </div>
               </div>
             </form>

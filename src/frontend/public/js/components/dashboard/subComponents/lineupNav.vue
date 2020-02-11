@@ -1,9 +1,9 @@
 <template>
     <div class="lineup-nav">
         <ul>
-            <li><a href="/dashboard/lineup"><span class="fa fa-eye"></span> Line-up</a></li>
-            <li><a href="/dashboard/questions"><span class="fa fa-comment"></span> Questions</a></li>
-            <li><a href="/dashboard/feedback"><span class="fa fa-question-circle"></span> Feedback</a></li>
+            <li><router-link to="/dashboard/lineup"><span class="fa fa-eye"></span> Line-up</router-link></li>
+            <li><router-link to="/dashboard/questions"><span class="fa fa-comment"></span> Questions</router-link></li>
+            <li><router-link to="/dashboard/feedback"><span class="fa fa-question-circle"></span> Feedback</router-link></li>
         </ul>
     </div>
 </template>

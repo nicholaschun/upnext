@@ -6,6 +6,7 @@
       :value="value"
       :placeholder="placeholder"
       :class="className"
+      v-bind="$attrs"
       @blur="$emit('blur')"
       @focus="$emit('focus')"
       @change="updateInput"

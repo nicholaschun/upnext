@@ -4,6 +4,8 @@ var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefau
 
 var _express = _interopRequireDefault(require('express'))
 
+var _multer = _interopRequireDefault(require('multer'))
+
 var _eventController = _interopRequireDefault(
   require('../controllers/eventController')
 )
@@ -22,13 +24,17 @@ var _validateEvent = require('../request/validation/validateEvent')
 var routes = _express['default'].Router()
 
 routes.post(
-  '/createevent',
-  (0, _validateEvent.validateEvent)('createEvent'),
+  '/createevent', // validateEvent('createEvent'),
+  (0, _multer['default'])({
+    dest: 'temp/'
+  }).single('featured_image'),
   _eventController['default'].createEvent
 )
 routes.put(
-  '/editevent/:event_id',
-  (0, _validateEvent.validateEvent)('editEvent'),
+  '/editevent/:event_id', // validateEvent('editEvent'),
+  (0, _multer['default'])({
+    dest: 'temp/'
+  }).single('featured_image'),
   _eventController['default'].editEvent
 )
 routes.get('/getallevents', _eventController['default'].getAllEvents)
@@ -42,6 +48,10 @@ routes.patch(
   '/publishevent/:event_id',
   _eventController['default'].publishEvent
 )
+routes.patch(
+  '/unpublishevent/:event_id',
+  _eventController['default'].unpublishEvent
+)
 /* event line up routes appear here */
 
 routes.post(
@@ -53,7 +63,7 @@ routes.get(
   _lineupController['default'].getEventLineup
 )
 routes.put(
-  '/editeventlineup/:lineup_id',
+  '/:event_id/editlineup',
   _lineupController['default'].editEventLineup
 )
 routes['delete'](
@@ -64,10 +74,11 @@ routes['delete'](
 
 routes.post(
   '/feedback/createfeedback/:event_id',
+  (0, _validateEvent.validateEvent)('createFeedback'),
   _feedbackController['default'].createFeedback
 )
 routes.get(
-  '/feedback/getfeedbacks/:event_id',
+  '/feedback/getallfeedback/:event_id',
   _feedbackController['default'].getFeedback
 )
 routes.put(
@@ -80,18 +91,19 @@ routes['delete'](
 )
 routes.post(
   '/questions/createquestions/:event_id',
+  (0, _validateEvent.validateEvent)('createQuestion'),
   _feedbackController['default'].createQuestion
 )
 routes.get(
-  '/feedback/getquestions/:event_id',
+  '/questions/getallquestions/:event_id',
   _feedbackController['default'].getQuestions
 )
 routes.put(
-  '/feedback/editquestion/:question_id',
+  '/questions/editquestion/:question_id',
   _feedbackController['default'].editQuestion
 )
 routes['delete'](
-  '/feedback/deletequestion/:question_id',
+  '/questions/deletequestion/:question_id',
   _feedbackController['default'].deleteQuestion
 )
 module.exports = routes

@@ -12,6 +12,8 @@ var _index = _interopRequireDefault(require('../../database/models/index'))
 
 var _index2 = _interopRequireDefault(require('../../utils/index'))
 
+var _handleFile = _interopRequireDefault(require('./../../utils/handleFile'))
+
 /*  run all database queries for events here */
 module.exports = {
   getAllEvents: function getAllEvents() {
@@ -148,7 +150,7 @@ module.exports = {
             switch ((_context5.prev = _context5.next)) {
               case 0:
                 _context5.next = 2
-                return _index['default'].Event.findOne({
+                return _index['default'].Event.findAll({
                   where: {
                     user_id: user_id
                   },
@@ -171,22 +173,46 @@ module.exports = {
       })
     )()
   },
-  createEvent: function createEvent(data) {
+  createEvent: function createEvent(data, file) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee6() {
+        var featured_image, _ref, location
+
         return _regenerator['default'].wrap(function _callee6$(_context6) {
           while (1) {
             switch ((_context6.prev = _context6.next)) {
               case 0:
-                _context6.next = 2
+                featured_image = ''
+
+                if (!file) {
+                  _context6.next = 9
+                  break
+                }
+
+                _context6.next = 4
+                return _handleFile['default'].uploadDataImage(file, 'events')
+
+              case 4:
+                _ref = _context6.sent
+                location = _ref.location
+                featured_image = location
+                _context6.next = 10
+                break
+
+              case 9:
+                featured_image =
+                  'https://upnextresources.s3-eu-west-1.amazonaws.com/events/event_placeholder.jpg'
+
+              case 10:
+                _context6.next = 12
                 return _index['default'].Event.create({
                   event_id: _index2['default'].genuuid(),
                   event_name: data.event_name,
                   event_days: data.event_days,
                   event_category: data.event_category,
                   event_status: 0,
-                  event_image: data.event_image,
+                  event_image: featured_image,
                   has_feedback: data.has_feedback,
                   has_questions: data.has_questions,
                   user_id: data.user_id,
@@ -195,10 +221,10 @@ module.exports = {
                   additional_info: data.additional_info
                 })
 
-              case 2:
+              case 12:
                 return _context6.abrupt('return', _context6.sent)
 
-              case 3:
+              case 13:
               case 'end':
                 return _context6.stop()
             }
@@ -207,26 +233,50 @@ module.exports = {
       })
     )()
   },
-  editEvent: function editEvent(data, event_id) {
+  editEvent: function editEvent(req, event_id) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee7() {
+        var final_image, _ref2, location
+
         return _regenerator['default'].wrap(function _callee7$(_context7) {
           while (1) {
             switch ((_context7.prev = _context7.next)) {
               case 0:
-                _context7.next = 2
+                final_image = ''
+
+                if (!req.file) {
+                  _context7.next = 9
+                  break
+                }
+
+                _context7.next = 4
+                return _handleFile['default'].uploadDataImage(
+                  req.file,
+                  'events'
+                )
+
+              case 4:
+                _ref2 = _context7.sent
+                location = _ref2.location
+                final_image = location
+                _context7.next = 10
+                break
+
+              case 9:
+                final_image = req.body.featured_image
+
+              case 10:
+                _context7.next = 12
                 return _index['default'].Event.update(
                   {
-                    event_name: data.event_name,
-                    event_days: data.event_days,
-                    event_category: data.event_category,
-                    event_image: data.event_image,
-                    has_feedback: data.has_feedback,
-                    has_questions: data.has_questions,
-                    event_url: data.event_url,
-                    url_snippet: data.url_snippet,
-                    additional_info: data.additional_info
+                    event_name: req.body.event_name,
+                    event_days: req.body.event_days,
+                    event_category: req.body.event_category,
+                    event_image: final_image,
+                    has_feedback: req.body.has_feedback,
+                    has_questions: req.body.has_questions,
+                    additional_info: req.body.additional_info
                   },
                   {
                     where: {
@@ -235,10 +285,10 @@ module.exports = {
                   }
                 )
 
-              case 2:
+              case 12:
                 return _context7.abrupt('return', _context7.sent)
 
-              case 3:
+              case 13:
               case 'end':
                 return _context7.stop()
             }
@@ -247,7 +297,7 @@ module.exports = {
       })
     )()
   },
-  publishEvent: function publishEvent(data, event_id) {
+  publishEvent: function publishEvent(event_id) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee8() {
@@ -258,7 +308,7 @@ module.exports = {
                 _context8.next = 2
                 return _index['default'].Event.update(
                   {
-                    event_status: data.event_status
+                    event_status: 1
                   },
                   {
                     where: {
@@ -279,7 +329,7 @@ module.exports = {
       })
     )()
   },
-  deleteEvent: function deleteEvent(id) {
+  unpublishEvent: function unpublishEvent(event_id) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee9() {
@@ -288,11 +338,16 @@ module.exports = {
             switch ((_context9.prev = _context9.next)) {
               case 0:
                 _context9.next = 2
-                return _index['default'].Event.destroy({
-                  where: {
-                    event_id: id
+                return _index['default'].Event.update(
+                  {
+                    event_status: 0
+                  },
+                  {
+                    where: {
+                      event_id: event_id
+                    }
                   }
-                })
+                )
 
               case 2:
                 return _context9.abrupt('return', _context9.sent)
@@ -303,6 +358,33 @@ module.exports = {
             }
           }
         }, _callee9)
+      })
+    )()
+  },
+  deleteEvent: function deleteEvent(id) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee10() {
+        return _regenerator['default'].wrap(function _callee10$(_context10) {
+          while (1) {
+            switch ((_context10.prev = _context10.next)) {
+              case 0:
+                _context10.next = 2
+                return _index['default'].Event.destroy({
+                  where: {
+                    event_id: id
+                  }
+                })
+
+              case 2:
+                return _context10.abrupt('return', _context10.sent)
+
+              case 3:
+              case 'end':
+                return _context10.stop()
+            }
+          }
+        }, _callee10)
       })
     )()
   }

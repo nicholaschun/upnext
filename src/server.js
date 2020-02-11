@@ -44,9 +44,9 @@ require('./backend/app/auth/passport')(passport)
 
 app.use('/', guest)
 app.use('/dashboard', userDashboard)
-app.use(`${process.env.api_base_url}/users`, users)
-app.use(`${process.env.api_base_url}/events`, events)
-app.use('/auth', providers)
+app.use(`${process.env.api_base_url}/users`, passport.authenticate('jwt', { session: false }), users)
+app.use(`${process.env.api_base_url}/events`, passport.authenticate('jwt', { session: false }), events)
+app.use(`${process.env.api_base_url}/auth`, providers)
 
 /* Start express server */
 

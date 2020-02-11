@@ -12,14 +12,16 @@
     <div class="my-event-nav">
       <ul>
         <li>
-          <a href="/dashboard" class="active"
+                <router-link to="/dashboard"> <span class="fa fa-calendar"></span> My Events</router-link>
+          <!-- <a href="/dashboard" class="active"
             ><span class="fa fa-calendar"></span> My Events</a
-          >
+          > -->
         </li>
         <li>
-          <a href="/dashboard/profile"
+          <router-link to="/dashboard/profile"> <span class="fa fa-user"></span> Edit Profile</router-link>
+          <!-- <a href="/dashboard/profile"
             ><span class="fa fa-user"></span> Edit Profile</a
-          >
+          > -->
         </li>
       </ul>
     </div>

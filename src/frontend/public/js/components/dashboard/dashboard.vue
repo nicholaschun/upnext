@@ -4,20 +4,32 @@
       <side-nav title="Dashboard" />
     </div>
     <div class="col-md-9">
-      <!-- <lineup-nav /> -->
-
+      <lineup-nav />
       <div class="col-md-12">
-        <events />
+        <events :events="eventState.events" />
       </div>
     </div>
   </div>
 </template>
+
 <script>
 const lineupNav = require('./subComponents/lineupNav.vue')
 const sideNav = require('./subComponents/sideNav.vue')
 const events = require('./subComponents/events.vue')
+const {mapState} = require('vuex')
 
 module.exports = {
+
+  computed: {
+    ...mapState({
+      eventState: state => state.events
+    })
+  },
+
+  created() {
+    console.log('users')
+    this.$store.dispatch('getUserEvents')
+  },
   components: {
     'lineup-nav': lineupNav,
     'side-nav': sideNav,
