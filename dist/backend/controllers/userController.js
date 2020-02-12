@@ -149,7 +149,13 @@ module.exports = {
 
                           var body = {
                             user_id: user.user_id,
-                            email: user.email
+                            email: user.email,
+                            first_name: user.UserProfile.first_name,
+                            last_name: user.UserProfile.last_name,
+                            organization: user.UserProfile.organization,
+                            profile: user.UserProfile.profile,
+                            status: user.status,
+                            verified: user.verified
                           }
                           var token = (0, _issueToken.issueToken)(body)
                           return res.json(token)

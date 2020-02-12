@@ -16,7 +16,7 @@ module.exports = {
       if (check) {
         return res
           .status(401)
-          .json('User already exists login to continue your session' )
+          .json('User already exists login to continue your session')
       }
       const body = {
         email: req.body.email,
@@ -71,7 +71,16 @@ module.exports = {
             return res.status(400).json('Something went wrong. Try again')
           }
           //generate a signed token for the user
-          const body = { user_id: user.user_id, email: user.email }
+          const body = {
+            user_id: user.user_id,
+            email: user.email,
+            first_name: user.UserProfile.first_name,
+            last_name: user.UserProfile.last_name,
+            organization: user.UserProfile.organization,
+            profile: user.UserProfile.profile,
+            status: user.status,
+            verified: user.verified
+          }
           const token = issueToken(body)
           return res.json(token)
         })
@@ -81,7 +90,7 @@ module.exports = {
     }
   },
 
-  authUser(req, res){
+  authUser(req, res) {
     res.json(req.user.user.data)
   },
 

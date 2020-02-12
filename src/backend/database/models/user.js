@@ -13,8 +13,11 @@ module.exports = (sequelize, DataTypes) => {
   })
   User.associate = models => {
     // associations can be defined here
-    User.hasOne(models.UserProfile, { foreignKey: 'user_id', targetKey: 'id' })
-    User.hasOne(models.Event, { foreignKey: 'user_id', targetKey: 'id' })
+    User.belongsTo(models.UserProfile, {
+      foreignKey: 'user_id',
+      targetKey: 'user_id'
+    })
+    User.hasOne(models.Event, { foreignKey: 'user_id', targetKey: 'user_id' })
   }
   return User
 }

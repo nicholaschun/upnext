@@ -15,13 +15,13 @@ module.exports = function(sequelize, DataTypes) {
 
   User.associate = function(models) {
     // associations can be defined here
-    User.hasOne(models.UserProfile, {
+    User.belongsTo(models.UserProfile, {
       foreignKey: 'user_id',
-      targetKey: 'id'
+      targetKey: 'user_id'
     })
     User.hasOne(models.Event, {
       foreignKey: 'user_id',
-      targetKey: 'id'
+      targetKey: 'user_id'
     })
   }
 
