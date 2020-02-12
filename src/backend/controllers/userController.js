@@ -82,7 +82,7 @@ module.exports = {
             verified: user.verified
           }
           const token = issueToken(body)
-          return res.json(token)
+          return res.json({ token: token, user: body })
         })
       })(req, res, next)
     } catch (error) {

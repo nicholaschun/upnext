@@ -158,7 +158,10 @@ module.exports = {
                             verified: user.verified
                           }
                           var token = (0, _issueToken.issueToken)(body)
-                          return res.json(token)
+                          return res.json({
+                            token: token,
+                            user: body
+                          })
                         }
                       )
                     }
