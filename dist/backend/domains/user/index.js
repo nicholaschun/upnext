@@ -90,11 +90,11 @@ module.exports = {
                 _context3.next = 2
                 return _index['default'].UserProfile.update(
                   {
-                    first_name: body.firstname,
-                    last_name: body.lastname,
+                    first_name: body.first_name,
+                    last_name: body.last_name,
                     full_name: ''
-                      .concat(body.firstname, ' ')
-                      .concat(body.lastname),
+                      .concat(body.first_name, ' ')
+                      .concat(body.last_name),
                     organization: body.organization
                   },
                   {

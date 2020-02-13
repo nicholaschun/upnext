@@ -28,12 +28,15 @@ module.exports = {
   },
 
   async editUserProfile(body, user_id) {
-    return await db.UserProfile.update({
-        first_name: body.firstname,
-        last_name: body.lastname,
-        full_name: `${body.firstname} ${body.lastname}`,
+    return await db.UserProfile.update(
+      {
+        first_name: body.first_name,
+        last_name: body.last_name,
+        full_name: `${body.first_name} ${body.last_name}`,
         organization: body.organization
-    }, {where:{user_id: user_id } })
+      },
+      { where: { user_id: user_id } }
+    )
   },
 
   async ifUserExists(email) {

@@ -5,8 +5,8 @@ module.exports = {
     switch (method) {
       case 'createUser': {
         return [
-          body('firstname', 'first name field is required').exists(),
-          body('lastname', 'last name field is required').exists(),
+          body('first_name', 'first name field is required').exists(),
+          body('last_name', 'last name field is required').exists(),
           body('email', 'invalid email')
             .exists()
             .isEmail(),
@@ -16,8 +16,8 @@ module.exports = {
       }
       case 'editUser': {
         return [
-          body('firstname', 'first name field is required').exists(),
-          body('lastname', 'last name field is required').exists(),
+          body('first_name', 'first name field is required').exists(),
+          body('last_name', 'last name field is required').exists(),
           body('organization').optional()
         ]
       }

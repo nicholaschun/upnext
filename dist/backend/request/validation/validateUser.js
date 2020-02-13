@@ -8,11 +8,11 @@ module.exports = {
       case 'createUser': {
         return [
           (0, _expressValidator.body)(
-            'firstname',
+            'first_name',
             'first name field is required'
           ).exists(),
           (0, _expressValidator.body)(
-            'lastname',
+            'last_name',
             'last name field is required'
           ).exists(),
           (0, _expressValidator.body)('email', 'invalid email')
@@ -29,11 +29,11 @@ module.exports = {
       case 'editUser': {
         return [
           (0, _expressValidator.body)(
-            'firstname',
+            'first_name',
             'first name field is required'
           ).exists(),
           (0, _expressValidator.body)(
-            'lastname',
+            'last_name',
             'last name field is required'
           ).exists(),
           (0, _expressValidator.body)('organization').optional()

@@ -21,8 +21,8 @@ module.exports = {
       const body = {
         email: req.body.email,
         password: req.body.password,
-        firstName: req.body.firstname,
-        lastName: req.body.lastname,
+        firstName: req.body.first_name,
+        lastName: req.body.last_name,
         organization: req.body.organization,
         profile: '',
         status: 0,
