@@ -243,7 +243,7 @@ module.exports = {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee4() {
-        var result
+        var token
         return _regenerator['default'].wrap(
           function _callee4$(_context4) {
             while (1) {
@@ -258,8 +258,14 @@ module.exports = {
                   )
 
                 case 4:
-                  result = _context4.sent
-                  return _context4.abrupt('return', res.json(result))
+                  token = (0, _issueToken.issueToken)(req.body)
+                  return _context4.abrupt(
+                    'return',
+                    res.json({
+                      token: token,
+                      user: req.body
+                    })
+                  )
 
                 case 8:
                   _context4.prev = 8

@@ -116,8 +116,9 @@ module.exports = {
   async editUser(req, res) {
     try {
       validate(req, res)
-      const result = await editUserProfile(req.body, req.params.user_id)
-      return res.json(result)
+      await editUserProfile(req.body, req.params.user_id)
+      const token = issueToken(req.body)
+      return res.json({ token: token, user: req.body })
     } catch (error) {
       return res.status(500).json(error)
     }
