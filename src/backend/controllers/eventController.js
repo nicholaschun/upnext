@@ -6,14 +6,10 @@ import {
   editEvent,
   publishEvent,
   unpublishEvent,
-  deleteEvent,
-  
+  deleteEvent
 } from '../domains/event/index'
 import { validate } from './../utils/validate'
-import {
-  ifUserIdExists,
-} from '../domains/user'
-
+import { ifUserIdExists } from '../domains/user'
 
 module.exports = {
   async createEvent(req, res) {
@@ -21,12 +17,13 @@ module.exports = {
     try {
       //check to see if user exists
       const user = await ifUserIdExists(req.body.user_id)
-      if(!user){
+      if (!user) {
         return res.json('Invalid user id provided')
       }
       const event = await createEvent(req.body, req.file)
       return res.json(event)
     } catch (error) {
+      console.log(error)
       res.status(500).send({
         message: error.message || 'Something went wrong'
       })
@@ -39,6 +36,7 @@ module.exports = {
       if (!event) return res.status(404).send('event with given id not found')
       return res.json(event)
     } catch (error) {
+      console.log(error)
       res.status(500).send({
         message: error.message || 'Something went wrong'
       })

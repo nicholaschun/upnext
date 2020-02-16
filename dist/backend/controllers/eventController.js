@@ -54,11 +54,12 @@ module.exports = {
                 case 13:
                   _context.prev = 13
                   _context.t0 = _context['catch'](1)
+                  console.log(_context.t0)
                   res.status(500).send({
                     message: _context.t0.message || 'Something went wrong'
                   })
 
-                case 16:
+                case 17:
                 case 'end':
                   return _context.stop()
               }
@@ -104,11 +105,12 @@ module.exports = {
                 case 9:
                   _context2.prev = 9
                   _context2.t0 = _context2['catch'](0)
+                  console.log(_context2.t0)
                   res.status(500).send({
                     message: _context2.t0.message || 'Something went wrong'
                   })
 
-                case 12:
+                case 13:
                 case 'end':
                   return _context2.stop()
               }
