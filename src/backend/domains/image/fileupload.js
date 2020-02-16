@@ -5,7 +5,7 @@ import path from 'path'
 import { config } from 'dotenv'
 
 // uploads a base64 image
-const fileupload = async (file, type, location) => {
+const fileupload = async (file, location) => {
   const configure = config()
 
   aws.config.update({
@@ -20,11 +20,9 @@ const fileupload = async (file, type, location) => {
     Bucket:
       `${process.env.awsResourceBucket}/${location}` ||
       `${configure.parsed.awsResourceBucket}/${location}`,
-    Key: `${Date.now().toString()}.${type}`,
-    Body: file,
-    ACL: 'public-read',
-    ContentEncoding: 'base64',
-    ContentType: `image/${type}`
+    Key: `${Date.now().toString()}${path.extname(file.originalname)}`,
+    Body: fs.createReadStream(file.path),
+    ACL: 'public-read'
   }
 
   try {

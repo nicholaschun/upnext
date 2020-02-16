@@ -22,7 +22,7 @@ var fileupload =
   (function() {
     var _ref = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
-      _regenerator['default'].mark(function _callee(file, type, location) {
+      _regenerator['default'].mark(function _callee(file, location) {
         var configure, s3, params, _ref2, Location, Key, result
 
         return _regenerator['default'].wrap(
@@ -52,11 +52,11 @@ var fileupload =
                       ''
                         .concat(configure.parsed.awsResourceBucket, '/')
                         .concat(location),
-                    Key: ''.concat(Date.now().toString(), '.').concat(type),
-                    Body: file,
-                    ACL: 'public-read',
-                    ContentEncoding: 'base64',
-                    ContentType: 'image/'.concat(type)
+                    Key: ''
+                      .concat(Date.now().toString())
+                      .concat(_path['default'].extname(file.originalname)),
+                    Body: _fs['default'].createReadStream(file.path),
+                    ACL: 'public-read'
                   }
                   _context.prev = 4
                   _context.next = 7
@@ -90,7 +90,7 @@ var fileupload =
       })
     )
 
-    return function fileupload(_x, _x2, _x3) {
+    return function fileupload(_x, _x2) {
       return _ref.apply(this, arguments)
     }
   })()
@@ -168,7 +168,7 @@ var fileformdataupload =
       })
     )
 
-    return function fileformdataupload(_x4, _x5) {
+    return function fileformdataupload(_x3, _x4) {
       return _ref3.apply(this, arguments)
     }
   })()
