@@ -27,6 +27,9 @@ module.exports = {
       event_image: {
         type: Sequelize.STRING
       },
+      event_dates: {
+        type: Sequelize.TEXT
+      },
       event_image_thumb: {
         type: Sequelize.STRING
       },

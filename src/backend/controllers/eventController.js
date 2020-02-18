@@ -23,7 +23,6 @@ module.exports = {
       const event = await createEvent(req.body, req.file)
       return res.json(event)
     } catch (error) {
-      console.log(error)
       res.status(500).send({
         message: error.message || 'Something went wrong'
       })

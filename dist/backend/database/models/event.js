@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       event_category: DataTypes.INTEGER,
       event_status: DataTypes.BOOLEAN,
       event_image: DataTypes.STRING,
+      event_dates: DataTypes.TEXT,
       event_image_thumb: DataTypes.STRING,
       has_feedback: DataTypes.BOOLEAN,
       has_questions: DataTypes.BOOLEAN,

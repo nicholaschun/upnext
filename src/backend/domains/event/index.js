@@ -4,7 +4,6 @@ import db from '../../database/models/index'
 import util from '../../utils/index'
 import handleImage from './../../utils/handleFile'
 
-
 module.exports = {
   async getAllEvents() {
     return await db.Event.findAll({
@@ -36,29 +35,26 @@ module.exports = {
   async getUserEvents(user_id) {
     return await db.Event.findAll({
       where: { user_id: user_id },
-      include: [
-        { model: db.Lineup }
-      ]
+      include: [{ model: db.Lineup }]
     })
   },
 
   async createEvent(data, file) {
     let featured_image = ''
     if (file) {
-      const { location } = await handleImage.uploadDataImage(
-        file,
-        'events'
-      )
+      const { location } = await handleImage.uploadDataImage(file, 'events')
       featured_image = location
     } else {
-      featured_image = 'https://upnextresources.s3-eu-west-1.amazonaws.com/events/event_placeholder.jpg'
+      featured_image =
+        'https://upnextresources.s3-eu-west-1.amazonaws.com/events/event_placeholder.jpg'
     }
     return await db.Event.create({
-      event_id: util.genuuid(), 
+      event_id: util.genuuid(),
       event_name: data.event_name,
       event_days: data.event_days,
       event_category: data.event_category,
       event_status: 0,
+      event_dates: JSON.stringify(data.event_dates),
       event_image: featured_image,
       has_feedback: data.has_feedback,
       has_questions: data.has_questions,
@@ -70,7 +66,6 @@ module.exports = {
   },
 
   async editEvent(req, event_id) {
-
     let final_image = ''
     if (req.file) {
       const { location } = await handleImage.uploadDataImage(req.file, 'events')
@@ -100,7 +95,6 @@ module.exports = {
       { where: { event_id: event_id } }
     )
   },
-
 
   async unpublishEvent(event_id) {
     return await db.Event.update(
