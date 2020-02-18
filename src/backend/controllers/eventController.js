@@ -20,7 +20,8 @@ module.exports = {
       if (!user) {
         return res.json('Invalid user id provided')
       }
-      const event = await createEvent(req.body, req.file)
+      let event = await createEvent(req.body, req.file)
+      event.event_dates = JSON.parse(event.event_dates)
       return res.json(event)
     } catch (error) {
       res.status(500).send({

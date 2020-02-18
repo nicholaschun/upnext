@@ -49,16 +49,17 @@ module.exports = {
 
                 case 9:
                   event = _context.sent
+                  event.event_dates = JSON.parse(event.event_dates)
                   return _context.abrupt('return', res.json(event))
 
-                case 13:
-                  _context.prev = 13
+                case 14:
+                  _context.prev = 14
                   _context.t0 = _context['catch'](1)
                   res.status(500).send({
                     message: _context.t0.message || 'Something went wrong'
                   })
 
-                case 16:
+                case 17:
                 case 'end':
                   return _context.stop()
               }
@@ -66,7 +67,7 @@ module.exports = {
           },
           _callee,
           null,
-          [[1, 13]]
+          [[1, 14]]
         )
       })
     )()
