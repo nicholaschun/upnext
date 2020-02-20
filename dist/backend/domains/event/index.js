@@ -212,7 +212,7 @@ module.exports = {
                   event_days: data.event_days,
                   event_category: data.event_category,
                   event_status: 0,
-                  event_dates: JSON.stringify(data.event_dates),
+                  event_dates: data.event_dates,
                   event_image: featured_image,
                   has_feedback: data.has_feedback,
                   has_questions: data.has_questions,
