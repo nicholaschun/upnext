@@ -2,39 +2,27 @@
 
 module.exports = {
   up: function up(queryInterface, Sequelize) {
-    return queryInterface.createTable('Lineups', {
+    return queryInterface.createTable('EventDays', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      lineup_id: {
+      event_id: {
         type: Sequelize.STRING
       },
       day_id: {
         type: Sequelize.STRING
       },
-      event_id: {
+      date: {
         type: Sequelize.STRING
       },
-      day: {
-        type: Sequelize.STRING
+      questions: {
+        type: Sequelize.BOOLEAN
       },
-      start_time: {
-        type: Sequelize.STRING
-      },
-      end_time: {
-        type: Sequelize.STRING
-      },
-      description: {
-        type: Sequelize.TEXT
-      },
-      duration: {
-        type: Sequelize.STRING
-      },
-      facilitator: {
-        type: Sequelize.STRING
+      feedback: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -47,6 +35,6 @@ module.exports = {
     })
   },
   down: function down(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Lineups')
+    return queryInterface.dropTable('EventDays')
   }
 }

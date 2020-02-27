@@ -1,7 +1,7 @@
 'use strict'
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Questions', {
+    return queryInterface.createTable('EventDays', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,14 +14,14 @@ module.exports = {
       day_id: {
         type: Sequelize.STRING
       },
-      name: {
+      date: {
         type: Sequelize.STRING
       },
-      email: {
-        type: Sequelize.STRING
+      questions: {
+        type: Sequelize.BOOLEAN
       },
-      question: {
-        type: Sequelize.STRING
+      feedback: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +34,6 @@ module.exports = {
     })
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Questions')
+    return queryInterface.dropTable('EventDays')
   }
 }

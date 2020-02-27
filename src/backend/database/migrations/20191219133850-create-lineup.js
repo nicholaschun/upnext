@@ -11,6 +11,9 @@ module.exports = {
       lineup_id: {
         type: Sequelize.STRING
       },
+      day_id: {
+        type: Sequelize.STRING
+      },
       event_id: {
         type: Sequelize.STRING
       },

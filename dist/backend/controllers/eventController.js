@@ -10,6 +10,8 @@ var _asyncToGenerator2 = _interopRequireDefault(
 
 var _index = require('../domains/event/index')
 
+var _lineup = require('../domains/event/lineup')
+
 var _validate = require('./../utils/validate')
 
 var _user = require('../domains/user')
@@ -19,7 +21,7 @@ module.exports = {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee() {
-        var user, event
+        var user, event, payload, eventD, resultData
         return _regenerator['default'].wrap(
           function _callee$(_context) {
             while (1) {
@@ -50,16 +52,31 @@ module.exports = {
                 case 9:
                   event = _context.sent
                   event.event_dates = JSON.parse(event.event_dates)
-                  return _context.abrupt('return', res.json(event))
+                  payload = {
+                    event_id: event.event_id,
+                    event_dates: event.event_dates,
+                    has_questions: 0,
+                    has_feedback: 0
+                  }
+                  _context.next = 14
+                  return (0, _index.createEventDay)(payload)
 
                 case 14:
-                  _context.prev = 14
+                  eventD = _context.sent
+                  resultData = {
+                    event: event,
+                    eventDays: eventD
+                  }
+                  return _context.abrupt('return', res.json(resultData))
+
+                case 19:
+                  _context.prev = 19
                   _context.t0 = _context['catch'](1)
                   res.status(500).send({
                     message: _context.t0.message || 'Something went wrong'
                   })
 
-                case 17:
+                case 22:
                 case 'end':
                   return _context.stop()
               }
@@ -67,7 +84,7 @@ module.exports = {
           },
           _callee,
           null,
-          [[1, 14]]
+          [[1, 19]]
         )
       })
     )()
@@ -407,6 +424,78 @@ module.exports = {
           _callee8,
           null,
           [[0, 9]]
+        )
+      })
+    )()
+  },
+  getEventDay: function getEventDay(req, res) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee9() {
+        var result
+        return _regenerator['default'].wrap(
+          function _callee9$(_context9) {
+            while (1) {
+              switch ((_context9.prev = _context9.next)) {
+                case 0:
+                  _context9.prev = 0
+                  _context9.next = 3
+                  return (0, _index.getAddedEventDay)(req.params.day_id)
+
+                case 3:
+                  result = _context9.sent
+                  return _context9.abrupt('return', res.json(result))
+
+                case 7:
+                  _context9.prev = 7
+                  _context9.t0 = _context9['catch'](0)
+                  console.log(_context9.t0)
+
+                case 10:
+                case 'end':
+                  return _context9.stop()
+              }
+            }
+          },
+          _callee9,
+          null,
+          [[0, 7]]
+        )
+      })
+    )()
+  },
+  getLineupByDay: function getLineupByDay(req, res) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee10() {
+        var result
+        return _regenerator['default'].wrap(
+          function _callee10$(_context10) {
+            while (1) {
+              switch ((_context10.prev = _context10.next)) {
+                case 0:
+                  _context10.prev = 0
+                  _context10.next = 3
+                  return (0, _lineup.getLineupByDay)(req.params)
+
+                case 3:
+                  result = _context10.sent
+                  return _context10.abrupt('return', res.json(result))
+
+                case 7:
+                  _context10.prev = 7
+                  _context10.t0 = _context10['catch'](0)
+                  console.log(_context10.t0)
+
+                case 10:
+                case 'end':
+                  return _context10.stop()
+              }
+            }
+          },
+          _callee10,
+          null,
+          [[0, 7]]
         )
       })
     )()

@@ -11,6 +11,9 @@ module.exports = {
       event_id: {
         type: Sequelize.STRING
       },
+      day_id: {
+        type: Sequelize.STRING
+      },
       feedback: {
         type: Sequelize.STRING
       },

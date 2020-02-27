@@ -6,8 +6,11 @@ import {
   editEvent,
   publishEvent,
   unpublishEvent,
-  deleteEvent
+  deleteEvent,
+  createEventDay,
+  getAddedEventDay
 } from '../domains/event/index'
+import { getLineupByDay } from '../domains/event/lineup'
 import { validate } from './../utils/validate'
 import { ifUserIdExists } from '../domains/user'
 
@@ -22,7 +25,15 @@ module.exports = {
       }
       let event = await createEvent(req.body, req.file)
       event.event_dates = JSON.parse(event.event_dates)
-      return res.json(event)
+      let payload = {
+        event_id: event.event_id,
+        event_dates: event.event_dates,
+        has_questions: 0,
+        has_feedback: 0
+      }
+      const eventD = await createEventDay(payload)
+      let resultData = { event, eventDays: eventD }
+      return res.json(resultData)
     } catch (error) {
       res.status(500).send({
         message: error.message || 'Something went wrong'
@@ -111,6 +122,23 @@ module.exports = {
       res.status(500).send({
         message: error.message || 'Something went wrong'
       })
+    }
+  },
+  async getEventDay(req, res) {
+    try {
+      const result = await getAddedEventDay(req.params.day_id)
+      return res.json(result)
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
+  async getLineupByDay(req, res) {
+    try {
+      const result = await getLineupByDay(req.params)
+      return res.json(result)
+    } catch (error) {
+      console.log(error)
     }
   }
 }

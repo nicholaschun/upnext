@@ -14,7 +14,7 @@ var _index2 = _interopRequireDefault(require('../../utils/index'))
 
 /*  run all database queries for lineup here */
 module.exports = {
-  getLineup: function getLineup(event_id) {
+  getLineup: function getLineup(day_id) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee() {
@@ -22,17 +22,18 @@ module.exports = {
           while (1) {
             switch ((_context.prev = _context.next)) {
               case 0:
-                _context.next = 2
-                return _index['default'].Lineup.findOne({
-                  where: {
-                    event_id: event_id
-                  }
-                })
+                return _context.abrupt(
+                  'return',
+                  Promise.resolve(
+                    _index['default'].Lineup.findOne({
+                      where: {
+                        day_id: day_id
+                      }
+                    })
+                  )
+                )
 
-              case 2:
-                return _context.abrupt('return', _context.sent)
-
-              case 3:
+              case 1:
               case 'end':
                 return _context.stop()
             }
@@ -45,29 +46,34 @@ module.exports = {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee2() {
+        var lineupData, i, sampledata
         return _regenerator['default'].wrap(function _callee2$(_context2) {
           while (1) {
             switch ((_context2.prev = _context2.next)) {
               case 0:
+                lineupData = []
+
+                for (i = 0; i < data.length; i++) {
+                  sampledata = {
+                    event_id: event_id,
+                    start_time: data[i].start_time,
+                    end_time: data[i].end_time,
+                    day_id: data[i].day_id,
+                    description: data[i].description,
+                    duration: data[i].duration,
+                    lineup_id: _index2['default'].genuuid()
+                  }
+                  lineupData.push(sampledata)
+                }
+
                 return _context2.abrupt(
                   'return',
                   Promise.resolve(
-                    data.forEach(function(event) {
-                      _index['default'].Lineup.create({
-                        lineup_id: _index2['default'].genuuid(),
-                        event_id: event_id,
-                        day: event.day,
-                        start_time: event.start_time,
-                        end_time: event.end_time,
-                        description: event.description,
-                        duration: event.duration,
-                        facilitator: event.facilitator
-                      })
-                    })
+                    _index['default'].Lineup.bulkCreate(lineupData)
                   )
                 )
 
-              case 1:
+              case 3:
               case 'end':
                 return _context2.stop()
             }
@@ -76,33 +82,44 @@ module.exports = {
       })
     )()
   },
-  editLineup: function editLineup(data, event_id) {
+  editLineup: function editLineup(data, day_id) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee3() {
+        var lineupData, i, sampledata
         return _regenerator['default'].wrap(function _callee3$(_context3) {
           while (1) {
             switch ((_context3.prev = _context3.next)) {
               case 0:
-                data.forEach(function(event) {
-                  return _index['default'].Lineup.update(
-                    {
-                      day: event.day,
-                      start_time: event.start_time,
-                      end_time: event.end_time,
-                      description: event.description,
-                      duration: event.duration,
-                      facilitator: event.facilitator
-                    },
-                    {
-                      where: {
-                        event_id: event_id
-                      }
-                    }
-                  )
+                //delete all lineup with that day
+                _index['default'].Lineup.destroy({
+                  where: {
+                    day_id: day_id
+                  }
                 })
 
-              case 1:
+                lineupData = []
+
+                for (i = 0; i < data.length; i++) {
+                  sampledata = {
+                    event_id: data[i].event_id,
+                    start_time: data[i].start_time,
+                    end_time: data[i].end_time,
+                    day_id: data[i].day_id,
+                    decription: data[i].description,
+                    lineup_id: _index2['default'].genuuid()
+                  }
+                  lineupData.push(sampledata)
+                }
+
+                return _context3.abrupt(
+                  'return',
+                  Promise.resolve(
+                    _index['default'].Lineup.bulkCreate(lineupData)
+                  )
+                )
+
+              case 4:
               case 'end':
                 return _context3.stop()
             }
@@ -162,6 +179,34 @@ module.exports = {
             }
           }
         }, _callee5)
+      })
+    )()
+  },
+  getLineupByDay: function getLineupByDay(params) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee6() {
+        return _regenerator['default'].wrap(function _callee6$(_context6) {
+          while (1) {
+            switch ((_context6.prev = _context6.next)) {
+              case 0:
+                _context6.next = 2
+                return _index['default'].Lineup.findAll({
+                  where: {
+                    event_id: params.event_id,
+                    day_id: params.day_id
+                  }
+                })
+
+              case 2:
+                return _context6.abrupt('return', _context6.sent)
+
+              case 3:
+              case 'end':
+                return _context6.stop()
+            }
+          }
+        }, _callee6)
       })
     )()
   }

@@ -18,9 +18,6 @@ module.exports = {
       event_days: {
         type: Sequelize.INTEGER
       },
-      event_category: {
-        type: Sequelize.INTEGER
-      },
       event_status: {
         type: Sequelize.BOOLEAN
       },
@@ -33,12 +30,6 @@ module.exports = {
       event_image_thumb: {
         type: Sequelize.STRING
       },
-      has_feedback: {
-        type: Sequelize.BOOLEAN
-      },
-      has_questions: {
-        type: Sequelize.BOOLEAN
-      },
       user_id: {
         type: Sequelize.STRING
       },
@@ -48,7 +39,7 @@ module.exports = {
       url_snippet: {
         type: Sequelize.STRING
       },
-      additional_info: {
+      description: {
         type: Sequelize.TEXT
       },
       createdAt: {

@@ -4,8 +4,9 @@ module.exports = function(sequelize, DataTypes) {
   var Feedback = sequelize.define(
     'Feedback',
     {
-      feedback: DataTypes.STRING,
-      event_id: DataTypes.STRING
+      feedback: DataTypes.TEXT,
+      event_id: DataTypes.STRING,
+      day_id: DataTypes.STRING
     },
     {}
   )

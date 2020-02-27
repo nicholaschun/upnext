@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       lineup_id: DataTypes.STRING,
       event_id: DataTypes.STRING,
       start_time: DataTypes.STRING,
+      day_id: DataTypes.STRING,
       day: DataTypes.INTEGER,
       end_time: DataTypes.STRING,
       description: DataTypes.TEXT,

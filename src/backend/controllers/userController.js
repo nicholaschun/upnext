@@ -50,7 +50,6 @@ module.exports = {
         // const userBody = { id: user.id, email: user.email }
         req.logIn(user, err => {
           // res.send('logged in')
-          console.log(req.user)
           res.json(req.user)
         })
       })(req, res, next)

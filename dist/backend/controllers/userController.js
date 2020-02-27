@@ -105,7 +105,6 @@ module.exports = {
 
         req.logIn(user, function(err) {
           // res.send('logged in')
-          console.log(req.user)
           res.json(req.user)
         })
       })(req, res, next)

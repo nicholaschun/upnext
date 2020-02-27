@@ -27,7 +27,7 @@ routes.post(
   '/createevent', // validateEvent('createEvent'),
   (0, _multer['default'])({
     dest: 'temp/'
-  }).single('featured_image'),
+  }).single('event_image'),
   _eventController['default'].createEvent
 )
 routes.put(
@@ -63,7 +63,7 @@ routes.get(
   _lineupController['default'].getEventLineup
 )
 routes.put(
-  '/:event_id/editlineup',
+  '/:event_id/editlineup/:day_id',
   _lineupController['default'].editEventLineup
 )
 routes['delete'](
@@ -73,12 +73,12 @@ routes['delete'](
 /* event feedback and quetions */
 
 routes.post(
-  '/feedback/createfeedback/:event_id',
+  '/feedback/createfeedback/:event_id/:day_id',
   (0, _validateEvent.validateEvent)('createFeedback'),
   _feedbackController['default'].createFeedback
 )
 routes.get(
-  '/feedback/getallfeedback/:event_id',
+  '/feedback/getallfeedback/:event_id/:day_id',
   _feedbackController['default'].getFeedback
 )
 routes.put(
@@ -90,12 +90,12 @@ routes['delete'](
   _feedbackController['default'].deleteFeedback
 )
 routes.post(
-  '/questions/createquestions/:event_id',
+  '/questions/createquestions/:event_id/:day_id',
   (0, _validateEvent.validateEvent)('createQuestion'),
   _feedbackController['default'].createQuestion
 )
 routes.get(
-  '/questions/getallquestions/:event_id',
+  '/questions/getallquestions/:event_id/:day_id',
   _feedbackController['default'].getQuestions
 )
 routes.put(
@@ -105,5 +105,9 @@ routes.put(
 routes['delete'](
   '/questions/deletequestion/:question_id',
   _feedbackController['default'].deleteQuestion
+)
+routes.get(
+  '/getlineupbyday/:event_id/:day_id',
+  _eventController['default'].getLineupByDay
 )
 module.exports = routes

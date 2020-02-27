@@ -156,7 +156,7 @@ module.exports = {
                   },
                   include: [
                     {
-                      model: _index['default'].Lineup
+                      model: _index['default'].EventDay
                     }
                   ]
                 })
@@ -209,17 +209,14 @@ module.exports = {
                 return _index['default'].Event.create({
                   event_id: _index2['default'].genuuid(),
                   event_name: data.event_name,
-                  event_days: data.event_days,
-                  event_category: data.event_category,
+                  event_days: data.event_dates.length,
                   event_status: 0,
-                  event_dates: data.event_dates,
+                  event_dates: JSON.stringify(data.event_dates),
                   event_image: featured_image,
-                  has_feedback: data.has_feedback,
-                  has_questions: data.has_questions,
                   user_id: data.user_id,
-                  event_url: data.event_url,
-                  url_snippet: data.url_snippet,
-                  additional_info: data.additional_info
+                  event_url: null,
+                  url_snippet: null,
+                  description: data.description
                 })
 
               case 12:
@@ -386,6 +383,77 @@ module.exports = {
             }
           }
         }, _callee10)
+      })
+    )()
+  },
+  createEventDay: function createEventDay(payload) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee11() {
+        var event_dates, day_ids, eventDayData, i, sampleDaydata
+        return _regenerator['default'].wrap(function _callee11$(_context11) {
+          while (1) {
+            switch ((_context11.prev = _context11.next)) {
+              case 0:
+                event_dates = payload.event_dates
+                day_ids = {}
+                eventDayData = []
+
+                for (i = 0; i < event_dates.length; i++) {
+                  day_ids[_index2['default'].genuuid()] = event_dates[i]
+                  sampleDaydata = {
+                    event_id: payload.event_id,
+                    day_id: null,
+                    date: null,
+                    questions: payload.has_feedback,
+                    feedback: payload.has_feedback
+                  }
+                  sampleDaydata.day_id = Object.keys(day_ids)[i]
+                  sampleDaydata.date = event_dates[i]
+                  eventDayData.push(sampleDaydata)
+                }
+
+                return _context11.abrupt(
+                  'return',
+                  Promise.resolve(
+                    _index['default'].EventDay.bulkCreate(eventDayData)
+                  )
+                )
+
+              case 5:
+              case 'end':
+                return _context11.stop()
+            }
+          }
+        }, _callee11)
+      })
+    )()
+  },
+  getAddedEventDay: function getAddedEventDay(day_id) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee12() {
+        return _regenerator['default'].wrap(function _callee12$(_context12) {
+          while (1) {
+            switch ((_context12.prev = _context12.next)) {
+              case 0:
+                return _context12.abrupt(
+                  'return',
+                  Promise.resolve(
+                    _index['default'].EventDay.findOne({
+                      where: {
+                        day_id: day_id
+                      }
+                    })
+                  )
+                )
+
+              case 1:
+              case 'end':
+                return _context12.stop()
+            }
+          }
+        }, _callee12)
       })
     )()
   }

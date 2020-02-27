@@ -35,7 +35,7 @@ module.exports = {
   async getUserEvents(user_id) {
     return await db.Event.findAll({
       where: { user_id: user_id },
-      include: [{ model: db.Lineup }]
+      include: [{ model: db.EventDay }]
     })
   },
 
@@ -51,17 +51,14 @@ module.exports = {
     return await db.Event.create({
       event_id: util.genuuid(),
       event_name: data.event_name,
-      event_days: data.event_days,
-      event_category: data.event_category,
+      event_days: data.event_dates.length,
       event_status: 0,
-      event_dates: data.event_dates,
+      event_dates: JSON.stringify(data.event_dates),
       event_image: featured_image,
-      has_feedback: data.has_feedback,
-      has_questions: data.has_questions,
       user_id: data.user_id,
-      event_url: data.event_url,
-      url_snippet: data.url_snippet,
-      additional_info: data.additional_info
+      event_url: null,
+      url_snippet: null,
+      description: data.description
     })
   },
 
@@ -109,5 +106,30 @@ module.exports = {
     return await db.Event.destroy({
       where: { event_id: id }
     })
+  },
+
+  async createEventDay(payload) {
+    let event_dates = payload.event_dates
+    let day_ids = {}
+
+    let eventDayData = []
+
+    for (let i = 0; i < event_dates.length; i++) {
+      day_ids[util.genuuid()] = event_dates[i]
+      let sampleDaydata = {
+        event_id: payload.event_id,
+        day_id: null,
+        date: null,
+        questions: payload.has_feedback,
+        feedback: payload.has_feedback
+      }
+      sampleDaydata.day_id = Object.keys(day_ids)[i]
+      sampleDaydata.date = event_dates[i]
+      eventDayData.push(sampleDaydata)
+    }
+    return Promise.resolve(db.EventDay.bulkCreate(eventDayData))
+  },
+  async getAddedEventDay(day_id) {
+    return Promise.resolve(db.EventDay.findOne({ where: { day_id: day_id } }))
   }
 }

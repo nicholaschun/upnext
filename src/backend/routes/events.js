@@ -14,7 +14,7 @@ import { validateEvent } from '../request/validation/validateEvent'
 routes.post(
   '/createevent',
   // validateEvent('createEvent'),
-  multer({ dest: 'temp/' }).single('featured_image'),
+  multer({ dest: 'temp/' }).single('event_image'),
   eventController.createEvent
 )
 routes.put(
@@ -31,11 +31,10 @@ routes.delete('/deleteevent/:event_id', eventController.deleteEvent)
 routes.patch('/publishevent/:event_id', eventController.publishEvent)
 routes.patch('/unpublishevent/:event_id', eventController.unpublishEvent)
 
-
 /* event line up routes appear here */
 routes.post('/:event_id/createlineup', lineupController.createLineup)
 routes.get('/:event_id/geteventlineup', lineupController.getEventLineup)
-routes.put('/:event_id/editlineup', lineupController.editEventLineup)
+routes.put('/:event_id/editlineup/:day_id', lineupController.editEventLineup)
 routes.delete(
   '/deleteeventlineup/:lineup_id',
   lineupController.deleteEventLineup
@@ -43,11 +42,14 @@ routes.delete(
 
 /* event feedback and quetions */
 routes.post(
-  '/feedback/createfeedback/:event_id',
-    validateEvent('createFeedback'),
+  '/feedback/createfeedback/:event_id/:day_id',
+  validateEvent('createFeedback'),
   feedbackController.createFeedback
 )
-routes.get('/feedback/getallfeedback/:event_id', feedbackController.getFeedback)
+routes.get(
+  '/feedback/getallfeedback/:event_id/:day_id',
+  feedbackController.getFeedback
+)
 routes.put(
   '/feedback/editfeedback/:feedback_id',
   feedbackController.editFeedback
@@ -58,12 +60,12 @@ routes.delete(
 )
 
 routes.post(
-  '/questions/createquestions/:event_id',
+  '/questions/createquestions/:event_id/:day_id',
   validateEvent('createQuestion'),
   feedbackController.createQuestion
 )
 routes.get(
-  '/questions/getallquestions/:event_id',
+  '/questions/getallquestions/:event_id/:day_id',
   feedbackController.getQuestions
 )
 routes.put(
@@ -74,5 +76,7 @@ routes.delete(
   '/questions/deletequestion/:question_id',
   feedbackController.deleteQuestion
 )
+
+routes.get('/getlineupbyday/:event_id/:day_id', eventController.getLineupByDay)
 
 module.exports = routes

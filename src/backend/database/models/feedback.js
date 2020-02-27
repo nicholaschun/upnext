@@ -3,8 +3,9 @@ module.exports = (sequelize, DataTypes) => {
   const Feedback = sequelize.define(
     'Feedback',
     {
-      feedback: DataTypes.STRING,
-      event_id: DataTypes.STRING
+      feedback: DataTypes.TEXT,
+      event_id: DataTypes.STRING,
+      day_id: DataTypes.STRING
     },
     {}
   )

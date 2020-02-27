@@ -119,26 +119,19 @@ module.exports = {
                 case 0:
                   _context3.prev = 0
                   _context3.next = 3
-                  return (0, _lineup.deleteLineup)(req.params.event_id)
+                  return (0, _lineup.editLineup)(req.body, req.params.day_id)
 
                 case 3:
-                  _context3.next = 5
-                  return (0, _lineup.createLineup)(
-                    req.body,
-                    req.params.event_id
-                  )
-
-                case 5:
                   return _context3.abrupt('return', res.json(true))
 
-                case 8:
-                  _context3.prev = 8
+                case 6:
+                  _context3.prev = 6
                   _context3.t0 = _context3['catch'](0)
                   res.status(500).json({
                     message: _context3.t0.message || 'Something went wrong'
                   })
 
-                case 11:
+                case 9:
                 case 'end':
                   return _context3.stop()
               }
@@ -146,7 +139,7 @@ module.exports = {
           },
           _callee3,
           null,
-          [[0, 8]]
+          [[0, 6]]
         )
       })
     )()
