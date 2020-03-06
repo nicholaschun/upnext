@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       day: DataTypes.INTEGER,
       end_time: DataTypes.STRING,
       description: DataTypes.TEXT,
+      activity: DataTypes.TEXT,
       duration: DataTypes.STRING,
       facilitator: DataTypes.STRING
     },

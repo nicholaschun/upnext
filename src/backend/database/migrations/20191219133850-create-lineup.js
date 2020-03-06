@@ -29,6 +29,9 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      activity: {
+        type: Sequelize.TEXT
+      },
       duration: {
         type: Sequelize.STRING
       },

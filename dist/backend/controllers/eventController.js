@@ -65,7 +65,7 @@ module.exports = {
                   eventD = _context.sent
                   resultData = {
                     event: event,
-                    eventDays: eventD
+                    event_days: eventD
                   }
                   return _context.abrupt('return', res.json(resultData))
 

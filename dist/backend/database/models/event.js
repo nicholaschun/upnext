@@ -33,6 +33,10 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: 'event_id',
       targetKey: 'event_id'
     })
+    Event.hasMany(models.EventDay, {
+      foreignKey: 'event_id',
+      sourceKey: 'event_id'
+    })
   }
 
   return Event

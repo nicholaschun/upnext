@@ -51,6 +51,14 @@ module.exports = {
           while (1) {
             switch ((_context2.prev = _context2.next)) {
               case 0:
+                //delete all lineup with that day before saving new one
+                _index['default'].Lineup.destroy({
+                  where: {
+                    day_id: data[0].day_id,
+                    event_id: event_id
+                  }
+                })
+
                 lineupData = []
 
                 for (i = 0; i < data.length; i++) {
@@ -60,6 +68,7 @@ module.exports = {
                     end_time: data[i].end_time,
                     day_id: data[i].day_id,
                     description: data[i].description,
+                    activity: data[i].activity,
                     duration: data[i].duration,
                     lineup_id: _index2['default'].genuuid()
                   }
@@ -73,7 +82,7 @@ module.exports = {
                   )
                 )
 
-              case 3:
+              case 4:
               case 'end':
                 return _context2.stop()
             }
@@ -107,6 +116,7 @@ module.exports = {
                     end_time: data[i].end_time,
                     day_id: data[i].day_id,
                     decription: data[i].description,
+                    activity: data[i].activity,
                     lineup_id: _index2['default'].genuuid()
                   }
                   lineupData.push(sampledata)

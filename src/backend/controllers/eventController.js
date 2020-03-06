@@ -32,7 +32,7 @@ module.exports = {
         has_feedback: 0
       }
       const eventD = await createEventDay(payload)
-      let resultData = { event, eventDays: eventD }
+      let resultData = { event, event_days: eventD }
       return res.json(resultData)
     } catch (error) {
       res.status(500).send({

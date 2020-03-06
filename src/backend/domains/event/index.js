@@ -14,14 +14,14 @@ module.exports = {
   async getEventById(id) {
     return await db.Event.findOne({
       where: { event_id: id },
-      include: [{ model: db.Lineup }]
+      include: [{ model: db.EventDay }]
     })
   },
 
   async getEventByDate(date) {
     return await db.Event.findAll({
       where: { createdAt: date },
-      include: [{ model: db.Lineup }]
+      include: [{ model: db.EventDay }]
     })
   },
 
@@ -34,8 +34,8 @@ module.exports = {
 
   async getUserEvents(user_id) {
     return await db.Event.findAll({
-      where: { user_id: user_id },
-      include: [{ model: db.EventDay }]
+      where: { user_id: user_id }
+      // include: [{ model: db.EventDay }]
     })
   },
 
@@ -53,7 +53,7 @@ module.exports = {
       event_name: data.event_name,
       event_days: data.event_dates.length,
       event_status: 0,
-      event_dates: JSON.stringify(data.event_dates),
+      event_dates: data.event_dates,
       event_image: featured_image,
       user_id: data.user_id,
       event_url: null,
@@ -120,7 +120,7 @@ module.exports = {
         event_id: payload.event_id,
         day_id: null,
         date: null,
-        questions: payload.has_feedback,
+        questions: payload.has_questions,
         feedback: payload.has_feedback
       }
       sampleDaydata.day_id = Object.keys(day_ids)[i]

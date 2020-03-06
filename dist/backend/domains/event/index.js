@@ -60,7 +60,7 @@ module.exports = {
                   },
                   include: [
                     {
-                      model: _index['default'].Lineup
+                      model: _index['default'].EventDay
                     }
                   ]
                 })
@@ -92,7 +92,7 @@ module.exports = {
                   },
                   include: [
                     {
-                      model: _index['default'].Lineup
+                      model: _index['default'].EventDay
                     }
                   ]
                 })
@@ -153,12 +153,7 @@ module.exports = {
                 return _index['default'].Event.findAll({
                   where: {
                     user_id: user_id
-                  },
-                  include: [
-                    {
-                      model: _index['default'].EventDay
-                    }
-                  ]
+                  } // include: [{ model: db.EventDay }]
                 })
 
               case 2:
@@ -211,7 +206,7 @@ module.exports = {
                   event_name: data.event_name,
                   event_days: data.event_dates.length,
                   event_status: 0,
-                  event_dates: JSON.stringify(data.event_dates),
+                  event_dates: data.event_dates,
                   event_image: featured_image,
                   user_id: data.user_id,
                   event_url: null,
@@ -405,7 +400,7 @@ module.exports = {
                     event_id: payload.event_id,
                     day_id: null,
                     date: null,
-                    questions: payload.has_feedback,
+                    questions: payload.has_questions,
                     feedback: payload.has_feedback
                   }
                   sampleDaydata.day_id = Object.keys(day_ids)[i]
