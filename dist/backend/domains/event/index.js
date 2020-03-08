@@ -15,7 +15,7 @@ var _index2 = _interopRequireDefault(require('../../utils/index'))
 var _handleFile = _interopRequireDefault(require('./../../utils/handleFile'))
 
 /*  run all database queries for events here */
-module.exports = {
+var self = (module.exports = {
   getAllEvents: function getAllEvents() {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
@@ -204,7 +204,7 @@ module.exports = {
                 return _index['default'].Event.create({
                   event_id: _index2['default'].genuuid(),
                   event_name: data.event_name,
-                  event_days: data.event_dates.length,
+                  event_days: JSON.parse(data.event_dates.length),
                   event_status: 0,
                   event_dates: data.event_dates,
                   event_image: featured_image,
@@ -226,62 +226,89 @@ module.exports = {
       })
     )()
   },
-  editEvent: function editEvent(req, event_id) {
+  editEvent: function editEvent(payload) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee7() {
-        var final_image, _ref2, location
+        var dateArr,
+          originArr,
+          featured_image,
+          _ref2,
+          location,
+          deleteDays,
+          editMainEvent,
+          dayPayload,
+          editEventDays
 
         return _regenerator['default'].wrap(function _callee7$(_context7) {
           while (1) {
             switch ((_context7.prev = _context7.next)) {
               case 0:
-                final_image = ''
+                /* manipulate data here before inserting into db */
+                dateArr = []
+                originArr = JSON.parse(payload.body.event_dates)
+                originArr.forEach(function(el) {
+                  dateArr.push(el.date)
+                })
+                featured_image = ''
 
-                if (!req.file) {
-                  _context7.next = 9
+                if (!payload.file) {
+                  _context7.next = 12
                   break
                 }
 
-                _context7.next = 4
+                _context7.next = 7
                 return _handleFile['default'].uploadDataImage(
-                  req.file,
+                  payload.file,
                   'events'
                 )
 
-              case 4:
+              case 7:
                 _ref2 = _context7.sent
                 location = _ref2.location
-                final_image = location
-                _context7.next = 10
+                featured_image = location
+                _context7.next = 13
                 break
 
-              case 9:
-                final_image = req.body.featured_image
+              case 12:
+                featured_image = payload.body.featured_image
 
-              case 10:
-                _context7.next = 12
-                return _index['default'].Event.update(
+              case 13:
+                //delete already existing event dates
+                deleteDays = _index['default'].EventDay.destroy({
+                  where: {
+                    event_id: payload.event_id
+                  }
+                }) //edit main event params
+
+                editMainEvent = _index['default'].Event.update(
                   {
-                    event_name: req.body.event_name,
-                    event_days: req.body.event_days,
-                    event_category: req.body.event_category,
-                    event_image: final_image,
-                    has_feedback: req.body.has_feedback,
-                    has_questions: req.body.has_questions,
-                    additional_info: req.body.additional_info
+                    event_name: payload.body.event_name,
+                    event_days: originArr.length,
+                    event_dates: JSON.stringify(dateArr),
+                    event_image: featured_image,
+                    description: payload.body.description
                   },
                   {
                     where: {
-                      event_id: event_id
+                      event_id: payload.event_id
                     }
                   }
+                ) //update event days
+
+                dayPayload = {
+                  event_id: payload.event_id,
+                  event_dates: originArr,
+                  has_questions: payload.body.has_questions,
+                  has_feedback: payload.body.has_feedback
+                }
+                editEventDays = self.editEventDay(dayPayload)
+                return _context7.abrupt(
+                  'return',
+                  Promise.all([deleteDays, editMainEvent, editEventDays])
                 )
 
-              case 12:
-                return _context7.abrupt('return', _context7.sent)
-
-              case 13:
+              case 18:
               case 'end':
                 return _context7.stop()
             }
@@ -289,6 +316,29 @@ module.exports = {
         }, _callee7)
       })
     )()
+  },
+  editEventDay: function editEventDay(payload) {
+    var event_dates = payload.event_dates
+
+    for (var i = 0; i < event_dates.length; i++) {
+      if (event_dates[i].day_id && event_dates[i].event_id) {
+        _index['default'].EventDay.create({
+          event_id: event_dates[i].event_id,
+          day_id: event_dates[i].day_id,
+          date: event_dates[i].date,
+          questions: event_dates[i].has_questions,
+          feedback: event_dates[i].has_feedback
+        })
+      } else {
+        _index['default'].EventDay.create({
+          event_id: payload.event_id,
+          day_id: _index2['default'].genuuid(),
+          date: event_dates[i].date,
+          questions: payload.has_questions,
+          feedback: payload.has_feedback
+        })
+      }
+    }
   },
   publishEvent: function publishEvent(event_id) {
     return (0, _asyncToGenerator2['default'])(
@@ -381,14 +431,41 @@ module.exports = {
       })
     )()
   },
-  createEventDay: function createEventDay(payload) {
+  deleteEventDay: function deleteEventDay(id) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee11() {
-        var event_dates, day_ids, eventDayData, i, sampleDaydata
         return _regenerator['default'].wrap(function _callee11$(_context11) {
           while (1) {
             switch ((_context11.prev = _context11.next)) {
+              case 0:
+                _context11.next = 2
+                return _index['default'].EventDay.destroy({
+                  where: {
+                    event_id: id
+                  }
+                })
+
+              case 2:
+                return _context11.abrupt('return', _context11.sent)
+
+              case 3:
+              case 'end':
+                return _context11.stop()
+            }
+          }
+        }, _callee11)
+      })
+    )()
+  },
+  createEventDay: function createEventDay(payload) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee12() {
+        var event_dates, day_ids, eventDayData, i, sampleDaydata
+        return _regenerator['default'].wrap(function _callee12$(_context12) {
+          while (1) {
+            switch ((_context12.prev = _context12.next)) {
               case 0:
                 event_dates = payload.event_dates
                 day_ids = {}
@@ -408,7 +485,7 @@ module.exports = {
                   eventDayData.push(sampleDaydata)
                 }
 
-                return _context11.abrupt(
+                return _context12.abrupt(
                   'return',
                   Promise.resolve(
                     _index['default'].EventDay.bulkCreate(eventDayData)
@@ -417,22 +494,22 @@ module.exports = {
 
               case 5:
               case 'end':
-                return _context11.stop()
+                return _context12.stop()
             }
           }
-        }, _callee11)
+        }, _callee12)
       })
     )()
   },
   getAddedEventDay: function getAddedEventDay(day_id) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
-      _regenerator['default'].mark(function _callee12() {
-        return _regenerator['default'].wrap(function _callee12$(_context12) {
+      _regenerator['default'].mark(function _callee13() {
+        return _regenerator['default'].wrap(function _callee13$(_context13) {
           while (1) {
-            switch ((_context12.prev = _context12.next)) {
+            switch ((_context13.prev = _context13.next)) {
               case 0:
-                return _context12.abrupt(
+                return _context13.abrupt(
                   'return',
                   Promise.resolve(
                     _index['default'].EventDay.findOne({
@@ -445,11 +522,11 @@ module.exports = {
 
               case 1:
               case 'end':
-                return _context12.stop()
+                return _context13.stop()
             }
           }
-        }, _callee12)
+        }, _callee13)
       })
     )()
   }
-}
+})

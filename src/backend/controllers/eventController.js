@@ -42,9 +42,14 @@ module.exports = {
   },
 
   async editEvent(req, res) {
+    const eventPayload = {
+      file: req.file,
+      event_id: req.params.event_id,
+      body: req.body
+    }
     try {
-      const event = await editEvent(req, req.params.event_id)
-      if (!event) return res.status(404).send('event with given id not found')
+      await editEvent(eventPayload)
+      const event = await getEventById(req.params.event_id)
       return res.json(event)
     } catch (error) {
       console.log(error)

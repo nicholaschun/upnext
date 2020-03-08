@@ -93,41 +93,38 @@ module.exports = {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee2() {
-        var event
+        var eventPayload, event
         return _regenerator['default'].wrap(
           function _callee2$(_context2) {
             while (1) {
               switch ((_context2.prev = _context2.next)) {
                 case 0:
-                  _context2.prev = 0
-                  _context2.next = 3
-                  return (0, _index.editEvent)(req, req.params.event_id)
-
-                case 3:
-                  event = _context2.sent
-
-                  if (event) {
-                    _context2.next = 6
-                    break
+                  eventPayload = {
+                    file: req.file,
+                    event_id: req.params.event_id,
+                    body: req.body
                   }
+                  _context2.prev = 1
+                  _context2.next = 4
+                  return (0, _index.editEvent)(eventPayload)
 
-                  return _context2.abrupt(
-                    'return',
-                    res.status(404).send('event with given id not found')
-                  )
+                case 4:
+                  _context2.next = 6
+                  return (0, _index.getEventById)(req.params.event_id)
 
                 case 6:
+                  event = _context2.sent
                   return _context2.abrupt('return', res.json(event))
 
-                case 9:
-                  _context2.prev = 9
-                  _context2.t0 = _context2['catch'](0)
+                case 10:
+                  _context2.prev = 10
+                  _context2.t0 = _context2['catch'](1)
                   console.log(_context2.t0)
                   res.status(500).send({
                     message: _context2.t0.message || 'Something went wrong'
                   })
 
-                case 13:
+                case 14:
                 case 'end':
                   return _context2.stop()
               }
@@ -135,7 +132,7 @@ module.exports = {
           },
           _callee2,
           null,
-          [[0, 9]]
+          [[1, 10]]
         )
       })
     )()

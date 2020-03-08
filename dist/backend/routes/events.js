@@ -34,7 +34,7 @@ routes.put(
   '/editevent/:event_id', // validateEvent('editEvent'),
   (0, _multer['default'])({
     dest: 'temp/'
-  }).single('featured_image'),
+  }).single('event_image'),
   _eventController['default'].editEvent
 )
 routes.get('/getallevents', _eventController['default'].getAllEvents)

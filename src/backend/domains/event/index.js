@@ -4,7 +4,7 @@ import db from '../../database/models/index'
 import util from '../../utils/index'
 import handleImage from './../../utils/handleFile'
 
-module.exports = {
+let self = (module.exports = {
   async getAllEvents() {
     return await db.Event.findAll({
       include: [{ model: db.Lineup }]
@@ -51,7 +51,7 @@ module.exports = {
     return await db.Event.create({
       event_id: util.genuuid(),
       event_name: data.event_name,
-      event_days: data.event_dates.length,
+      event_days: JSON.parse(data.event_dates.length),
       event_status: 0,
       event_dates: data.event_dates,
       event_image: featured_image,
@@ -62,26 +62,74 @@ module.exports = {
     })
   },
 
-  async editEvent(req, event_id) {
-    let final_image = ''
-    if (req.file) {
-      const { location } = await handleImage.uploadDataImage(req.file, 'events')
-      final_image = location
+  async editEvent(payload) {
+    /* manipulate data here before inserting into db */
+
+    let dateArr = []
+    let originArr = JSON.parse(payload.body.event_dates)
+    originArr.forEach(el => {
+      dateArr.push(el.date)
+    })
+    let featured_image = ''
+    if (payload.file) {
+      const { location } = await handleImage.uploadDataImage(
+        payload.file,
+        'events'
+      )
+      featured_image = location
     } else {
-      final_image = req.body.featured_image
+      featured_image = payload.body.featured_image
     }
-    return await db.Event.update(
+
+    //delete already existing event dates
+    const deleteDays = db.EventDay.destroy({
+      where: { event_id: payload.event_id }
+    })
+
+    //edit main event params
+    const editMainEvent = db.Event.update(
       {
-        event_name: req.body.event_name,
-        event_days: req.body.event_days,
-        event_category: req.body.event_category,
-        event_image: final_image,
-        has_feedback: req.body.has_feedback,
-        has_questions: req.body.has_questions,
-        additional_info: req.body.additional_info
+        event_name: payload.body.event_name,
+        event_days: originArr.length,
+        event_dates: JSON.stringify(dateArr),
+        event_image: featured_image,
+        description: payload.body.description
       },
-      { where: { event_id: event_id } }
+      { where: { event_id: payload.event_id } }
     )
+
+    //update event days
+    let dayPayload = {
+      event_id: payload.event_id,
+      event_dates: originArr,
+      has_questions: payload.body.has_questions,
+      has_feedback: payload.body.has_feedback
+    }
+    const editEventDays = self.editEventDay(dayPayload)
+
+    return Promise.all([deleteDays, editMainEvent, editEventDays])
+  },
+  editEventDay(payload) {
+    let event_dates = payload.event_dates
+    for (let i = 0; i < event_dates.length; i++) {
+      if (event_dates[i].day_id && event_dates[i].event_id) {
+        db.EventDay.create({
+          event_id: event_dates[i].event_id,
+          day_id: event_dates[i].day_id,
+          date: event_dates[i].date,
+          questions: event_dates[i].has_questions,
+          feedback: event_dates[i].has_feedback
+        })
+      } else {
+        db.EventDay.create({
+          event_id: payload.event_id,
+          day_id: util.genuuid(),
+          date: event_dates[i].date,
+          questions: payload.has_questions,
+          feedback: payload.has_feedback
+        })
+      }
+    }
   },
 
   async publishEvent(event_id) {
@@ -108,12 +156,17 @@ module.exports = {
     })
   },
 
+  async deleteEventDay(id) {
+    return await db.EventDay.destroy({
+      where: { event_id: id }
+    })
+  },
+
   async createEventDay(payload) {
     let event_dates = payload.event_dates
     let day_ids = {}
 
     let eventDayData = []
-
     for (let i = 0; i < event_dates.length; i++) {
       day_ids[util.genuuid()] = event_dates[i]
       let sampleDaydata = {
@@ -132,4 +185,4 @@ module.exports = {
   async getAddedEventDay(day_id) {
     return Promise.resolve(db.EventDay.findOne({ where: { day_id: day_id } }))
   }
-}
+})

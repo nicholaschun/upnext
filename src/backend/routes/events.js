@@ -20,7 +20,7 @@ routes.post(
 routes.put(
   '/editevent/:event_id',
   // validateEvent('editEvent'),
-  multer({ dest: 'temp/' }).single('featured_image'),
+  multer({ dest: 'temp/' }).single('event_image'),
   eventController.editEvent
 )
 routes.get('/getallevents', eventController.getAllEvents)
