@@ -403,16 +403,20 @@ module.exports = {
                   )
 
                 case 6:
+                  events.forEach(function(element) {
+                    element.event_dates = JSON.parse(element.event_dates)
+                  }) // events.event_dates = JSON.parse(events.event_dates)
+
                   return _context8.abrupt('return', res.json(events))
 
-                case 9:
-                  _context8.prev = 9
+                case 10:
+                  _context8.prev = 10
                   _context8.t0 = _context8['catch'](0)
                   res.status(500).send({
                     message: _context8.t0.message || 'Something went wrong'
                   })
 
-                case 12:
+                case 13:
                 case 'end':
                   return _context8.stop()
               }
@@ -420,7 +424,7 @@ module.exports = {
           },
           _callee8,
           null,
-          [[0, 9]]
+          [[0, 10]]
         )
       })
     )()

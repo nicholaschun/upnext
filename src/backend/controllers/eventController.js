@@ -120,8 +120,12 @@ module.exports = {
 
   async getUserEvents(req, res) {
     try {
-      const events = await getUserEvents(req.params.user_id)
+      let events = await getUserEvents(req.params.user_id)
       if (!events) return res.status(404).send('user with given id not found')
+      events.forEach(element => {
+        element.event_dates = JSON.parse(element.event_dates)
+      })
+      // events.event_dates = JSON.parse(events.event_dates)
       return res.json(events)
     } catch (error) {
       res.status(500).send({
