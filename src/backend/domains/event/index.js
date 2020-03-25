@@ -18,6 +18,13 @@ let self = (module.exports = {
     })
   },
 
+  async getEventBySnippet(snippet) {
+    return await db.Event.findOne({
+      where: { url_snippet: snippet },
+      include: [{ model: db.EventDay }]
+    })
+  },
+
   async getEventByDate(date) {
     return await db.Event.findAll({
       where: { createdAt: date },
@@ -40,6 +47,7 @@ let self = (module.exports = {
   },
 
   async createEvent(data, file) {
+    let eventSnippet = util.generateEventLink(data.event_name)
     let featured_image = ''
     if (file) {
       const { location } = await handleImage.uploadDataImage(file, 'events')
@@ -56,8 +64,8 @@ let self = (module.exports = {
       event_dates: data.event_dates,
       event_image: featured_image,
       user_id: data.user_id,
-      event_url: null,
-      url_snippet: null,
+      event_url: `up-next.co/${eventSnippet}`,
+      url_snippet: eventSnippet,
       description: data.description
     })
   },

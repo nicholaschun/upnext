@@ -8,7 +8,8 @@ import {
   unpublishEvent,
   deleteEvent,
   createEventDay,
-  getAddedEventDay
+  getAddedEventDay,
+  getEventBySnippet
 } from '../domains/event/index'
 import { getLineupByDay } from '../domains/event/lineup'
 import { validate } from './../utils/validate'
@@ -52,7 +53,6 @@ module.exports = {
       const event = await getEventById(req.params.event_id)
       return res.json(event)
     } catch (error) {
-      console.log(error)
       res.status(500).send({
         message: error.message || 'Something went wrong'
       })
@@ -98,6 +98,18 @@ module.exports = {
     try {
       const event = await getEventById(req.params.event_id)
       if (!event) return res.status(404).send('event with given id not found')
+      return res.json(event)
+    } catch (error) {
+      res.status(500).send({
+        message: error.message || 'Something went wrong'
+      })
+    }
+  },
+
+  async getEventbySnippet(req, res) {
+    try {
+      const event = await getEventBySnippet(req.params.snippet)
+      if (!event) return res.status(404).send('event cannot be not found')
       return res.json(event)
     } catch (error) {
       res.status(500).send({

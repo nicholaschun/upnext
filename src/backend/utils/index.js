@@ -14,5 +14,9 @@ module.exports = {
   },
   genuuid() {
     return uuid()
+  },
+  generateEventLink(snippet) {
+    let lower = snippet.toLowerCase()
+    return lower.split(' ').join('-')
   }
 }

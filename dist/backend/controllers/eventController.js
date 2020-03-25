@@ -119,12 +119,11 @@ module.exports = {
                 case 10:
                   _context2.prev = 10
                   _context2.t0 = _context2['catch'](1)
-                  console.log(_context2.t0)
                   res.status(500).send({
                     message: _context2.t0.message || 'Something went wrong'
                   })
 
-                case 14:
+                case 13:
                 case 'end':
                   return _context2.stop()
               }
@@ -325,7 +324,7 @@ module.exports = {
       })
     )()
   },
-  deleteEvent: function deleteEvent(req, res) {
+  getEventbySnippet: function getEventbySnippet(req, res) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee7() {
@@ -337,7 +336,7 @@ module.exports = {
                 case 0:
                   _context7.prev = 0
                   _context7.next = 3
-                  return (0, _index.deleteEvent)(req.params.event_id)
+                  return (0, _index.getEventBySnippet)(req.params.snippet)
 
                 case 3:
                   event = _context7.sent
@@ -349,7 +348,7 @@ module.exports = {
 
                   return _context7.abrupt(
                     'return',
-                    res.status(404).send('event with given id not found')
+                    res.status(404).send('event cannot be not found')
                   )
 
                 case 6:
@@ -375,11 +374,11 @@ module.exports = {
       })
     )()
   },
-  getUserEvents: function getUserEvents(req, res) {
+  deleteEvent: function deleteEvent(req, res) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee8() {
-        var events
+        var event
         return _regenerator['default'].wrap(
           function _callee8$(_context8) {
             while (1) {
@@ -387,17 +386,67 @@ module.exports = {
                 case 0:
                   _context8.prev = 0
                   _context8.next = 3
-                  return (0, _index.getUserEvents)(req.params.user_id)
+                  return (0, _index.deleteEvent)(req.params.event_id)
 
                 case 3:
-                  events = _context8.sent
+                  event = _context8.sent
 
-                  if (events) {
+                  if (event) {
                     _context8.next = 6
                     break
                   }
 
                   return _context8.abrupt(
+                    'return',
+                    res.status(404).send('event with given id not found')
+                  )
+
+                case 6:
+                  return _context8.abrupt('return', res.json(event))
+
+                case 9:
+                  _context8.prev = 9
+                  _context8.t0 = _context8['catch'](0)
+                  res.status(500).send({
+                    message: _context8.t0.message || 'Something went wrong'
+                  })
+
+                case 12:
+                case 'end':
+                  return _context8.stop()
+              }
+            }
+          },
+          _callee8,
+          null,
+          [[0, 9]]
+        )
+      })
+    )()
+  },
+  getUserEvents: function getUserEvents(req, res) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee9() {
+        var events
+        return _regenerator['default'].wrap(
+          function _callee9$(_context9) {
+            while (1) {
+              switch ((_context9.prev = _context9.next)) {
+                case 0:
+                  _context9.prev = 0
+                  _context9.next = 3
+                  return (0, _index.getUserEvents)(req.params.user_id)
+
+                case 3:
+                  events = _context9.sent
+
+                  if (events) {
+                    _context9.next = 6
+                    break
+                  }
+
+                  return _context9.abrupt(
                     'return',
                     res.status(404).send('user with given id not found')
                   )
@@ -407,52 +456,16 @@ module.exports = {
                     element.event_dates = JSON.parse(element.event_dates)
                   }) // events.event_dates = JSON.parse(events.event_dates)
 
-                  return _context8.abrupt('return', res.json(events))
+                  return _context9.abrupt('return', res.json(events))
 
                 case 10:
-                  _context8.prev = 10
-                  _context8.t0 = _context8['catch'](0)
+                  _context9.prev = 10
+                  _context9.t0 = _context9['catch'](0)
                   res.status(500).send({
-                    message: _context8.t0.message || 'Something went wrong'
+                    message: _context9.t0.message || 'Something went wrong'
                   })
 
                 case 13:
-                case 'end':
-                  return _context8.stop()
-              }
-            }
-          },
-          _callee8,
-          null,
-          [[0, 10]]
-        )
-      })
-    )()
-  },
-  getEventDay: function getEventDay(req, res) {
-    return (0, _asyncToGenerator2['default'])(
-      /*#__PURE__*/
-      _regenerator['default'].mark(function _callee9() {
-        var result
-        return _regenerator['default'].wrap(
-          function _callee9$(_context9) {
-            while (1) {
-              switch ((_context9.prev = _context9.next)) {
-                case 0:
-                  _context9.prev = 0
-                  _context9.next = 3
-                  return (0, _index.getAddedEventDay)(req.params.day_id)
-
-                case 3:
-                  result = _context9.sent
-                  return _context9.abrupt('return', res.json(result))
-
-                case 7:
-                  _context9.prev = 7
-                  _context9.t0 = _context9['catch'](0)
-                  console.log(_context9.t0)
-
-                case 10:
                 case 'end':
                   return _context9.stop()
               }
@@ -460,12 +473,12 @@ module.exports = {
           },
           _callee9,
           null,
-          [[0, 7]]
+          [[0, 10]]
         )
       })
     )()
   },
-  getLineupByDay: function getLineupByDay(req, res) {
+  getEventDay: function getEventDay(req, res) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee10() {
@@ -477,7 +490,7 @@ module.exports = {
                 case 0:
                   _context10.prev = 0
                   _context10.next = 3
-                  return (0, _lineup.getLineupByDay)(req.params)
+                  return (0, _index.getAddedEventDay)(req.params.day_id)
 
                 case 3:
                   result = _context10.sent
@@ -495,6 +508,42 @@ module.exports = {
             }
           },
           _callee10,
+          null,
+          [[0, 7]]
+        )
+      })
+    )()
+  },
+  getLineupByDay: function getLineupByDay(req, res) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee11() {
+        var result
+        return _regenerator['default'].wrap(
+          function _callee11$(_context11) {
+            while (1) {
+              switch ((_context11.prev = _context11.next)) {
+                case 0:
+                  _context11.prev = 0
+                  _context11.next = 3
+                  return (0, _lineup.getLineupByDay)(req.params)
+
+                case 3:
+                  result = _context11.sent
+                  return _context11.abrupt('return', res.json(result))
+
+                case 7:
+                  _context11.prev = 7
+                  _context11.t0 = _context11['catch'](0)
+                  console.log(_context11.t0)
+
+                case 10:
+                case 'end':
+                  return _context11.stop()
+              }
+            }
+          },
+          _callee11,
           null,
           [[0, 7]]
         )

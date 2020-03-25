@@ -20,5 +20,9 @@ module.exports = {
   },
   genuuid: function genuuid() {
     return (0, _uuid['default'])()
+  },
+  generateEventLink: function generateEventLink(snippet) {
+    var lower = snippet.toLowerCase()
+    return lower.split(' ').join('-')
   }
 }

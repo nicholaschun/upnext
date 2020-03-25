@@ -25,6 +25,7 @@ routes.put(
 )
 routes.get('/getallevents', eventController.getAllEvents)
 routes.get('/getevent/:event_id', eventController.getEventById)
+routes.get('/geteventbysnippet/:snippet', eventController.getEventbySnippet)
 routes.get('/getuserevents/:user_id', eventController.getUserEvents)
 
 routes.delete('/deleteevent/:event_id', eventController.deleteEvent)

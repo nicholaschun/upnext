@@ -49,4 +49,6 @@ routes.post(
   (0, _validateUser.validateUser)('loginUser'),
   _userController['default'].tokenLogin
 )
+routes.post('/loginwithgoogle', _userController['default'].loginWithGoogle)
+routes.post('/loginwithfacebook', _userController['default'].loginWithFacebook)
 module.exports = routes

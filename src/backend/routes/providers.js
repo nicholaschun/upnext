@@ -1,7 +1,6 @@
 import express from 'express'
 import passport from 'passport'
 
-
 import userController from '../controllers/userController'
 import { validateUser } from '../request/validation/validateUser'
 
@@ -30,5 +29,7 @@ routes.get(
 
 routes.post('/register', validateUser('createUser'), userController.createUser)
 routes.post('/login', validateUser('loginUser'), userController.tokenLogin)
+routes.post('/loginwithgoogle', userController.loginWithGoogle)
+routes.post('/loginwithfacebook', userController.loginWithFacebook)
 
 module.exports = routes

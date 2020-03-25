@@ -14,6 +14,8 @@ var _validate = require('./../utils/validate')
 
 var _user = require('../domains/user')
 
+var _googleAuth = require('./../domains/user/googleAuth')
+
 var _issueToken = require('./../app/auth/jwt/issueToken')
 
 module.exports = {
@@ -56,9 +58,11 @@ module.exports = {
                     firstName: req.body.first_name,
                     lastName: req.body.last_name,
                     organization: req.body.organization,
-                    profile: '',
-                    status: 0,
-                    verified: 0,
+                    profile:
+                      'https://upnextresources.s3-eu-west-1.amazonaws.com/default_profile.jpg',
+                    status: 1,
+                    verified: 1,
+                    sub_id: null,
                     loginProvider: 3
                   }
                   _context.next = 10
@@ -290,5 +294,249 @@ module.exports = {
   logoutUser: function logoutUser(req, res) {
     req.logout()
     return res.redirect('/') // res.send('logout user')
+  },
+  loginWithGoogle: function loginWithGoogle(req, res) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee5() {
+        var result,
+          user,
+          _body,
+          _token,
+          body,
+          newUser,
+          data,
+          returneduser,
+          token
+
+        return _regenerator['default'].wrap(
+          function _callee5$(_context5) {
+            while (1) {
+              switch ((_context5.prev = _context5.next)) {
+                case 0:
+                  _context5.prev = 0
+                  _context5.next = 3
+                  return (0, _googleAuth.verifyIdToken)(req.body.idToken)
+
+                case 3:
+                  result = _context5.sent
+                  _context5.next = 6
+                  return (0, _user.ifUserExists)(result.email)
+
+                case 6:
+                  user = _context5.sent
+
+                  if (!user) {
+                    _context5.next = 11
+                    break
+                  }
+
+                  //generate a signed token for the user
+                  _body = {
+                    user_id: user.user_id,
+                    email: user.email,
+                    first_name: user.UserProfile.first_name,
+                    last_name: user.UserProfile.last_name,
+                    organization: user.UserProfile.organization,
+                    profile: user.UserProfile.profile,
+                    status: user.status,
+                    verified: user.verified
+                  }
+                  _token = (0, _issueToken.issueToken)(_body)
+                  return _context5.abrupt(
+                    'return',
+                    res.json({
+                      token: _token,
+                      user: _body
+                    })
+                  )
+
+                case 11:
+                  // Register a new user and generate a jwt
+                  body = {
+                    email: result.email,
+                    password: result.sub,
+                    firstName: result.given_name,
+                    lastName: result.family_name,
+                    organization: null,
+                    profile: result.picture,
+                    status: 1,
+                    verified: 1,
+                    sub_id: result.sub,
+                    loginProvider: 2
+                  }
+                  _context5.next = 14
+                  return (0, _user.createUser)(body)
+
+                case 14:
+                  newUser = _context5.sent
+                  data = {
+                    id: newUser.user_id,
+                    profile: body
+                  }
+                  _context5.next = 18
+                  return (0, _user.createUserProfile)(data)
+
+                case 18:
+                  returneduser = {
+                    user_id: newUser.user_id,
+                    email: result.email,
+                    first_name: result.given_name,
+                    last_name: result.family_name,
+                    organization: null,
+                    profile: result.picture,
+                    status: 1,
+                    verified: 1,
+                    sub_id: result.sub,
+                    loginProvider: 2
+                  }
+                  token = (0, _issueToken.issueToken)(returneduser)
+                  return _context5.abrupt(
+                    'return',
+                    res.json({
+                      token: token,
+                      user: returneduser
+                    })
+                  )
+
+                case 23:
+                  _context5.prev = 23
+                  _context5.t0 = _context5['catch'](0)
+                  return _context5.abrupt(
+                    'return',
+                    res.status(500).json(_context5.t0)
+                  )
+
+                case 26:
+                case 'end':
+                  return _context5.stop()
+              }
+            }
+          },
+          _callee5,
+          null,
+          [[0, 23]]
+        )
+      })
+    )()
+  },
+  loginWithFacebook: function loginWithFacebook(req, res) {
+    return (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/
+      _regenerator['default'].mark(function _callee6() {
+        var userData,
+          user,
+          _body2,
+          _token2,
+          body,
+          newUser,
+          data,
+          returneduser,
+          token
+
+        return _regenerator['default'].wrap(
+          function _callee6$(_context6) {
+            while (1) {
+              switch ((_context6.prev = _context6.next)) {
+                case 0:
+                  _context6.prev = 0
+                  //check if the user already exists.
+                  userData = req.body
+                  _context6.next = 4
+                  return (0, _user.ifUserExists)(userData.email)
+
+                case 4:
+                  user = _context6.sent
+
+                  if (!user) {
+                    _context6.next = 9
+                    break
+                  }
+
+                  //generate a signed token for the user
+                  _body2 = {
+                    user_id: user.user_id,
+                    email: user.email,
+                    first_name: user.UserProfile.first_name,
+                    last_name: user.UserProfile.last_name,
+                    organization: user.UserProfile.organization,
+                    profile: user.UserProfile.profile,
+                    status: user.status,
+                    verified: user.verified
+                  }
+                  _token2 = (0, _issueToken.issueToken)(_body2)
+                  return _context6.abrupt(
+                    'return',
+                    res.json({
+                      token: _token2,
+                      user: _body2
+                    })
+                  )
+
+                case 9:
+                  // Register a new user and generate a jwt
+                  body = {
+                    email: userData.email,
+                    password: userData.id,
+                    firstName: userData.first_name,
+                    lastName: userData.last_name,
+                    organization: null,
+                    profile: userData.profile,
+                    status: 1,
+                    verified: 1,
+                    sub_id: userData.id,
+                    loginProvider: 2
+                  }
+                  _context6.next = 12
+                  return (0, _user.createUser)(body)
+
+                case 12:
+                  newUser = _context6.sent
+                  data = {
+                    id: newUser.user_id,
+                    profile: body
+                  }
+                  _context6.next = 16
+                  return (0, _user.createUserProfile)(data)
+
+                case 16:
+                  returneduser = {
+                    user_id: newUser.user_id,
+                    email: userData.email,
+                    first_name: userData.first_name,
+                    last_name: userData.last_name,
+                    organization: null,
+                    profile: userData.profile,
+                    status: 1,
+                    verified: 1,
+                    sub_id: userData.id,
+                    loginProvider: 2
+                  }
+                  token = (0, _issueToken.issueToken)(returneduser)
+                  return _context6.abrupt(
+                    'return',
+                    res.json({
+                      token: token,
+                      user: returneduser
+                    })
+                  )
+
+                case 21:
+                  _context6.prev = 21
+                  _context6.t0 = _context6['catch'](0)
+                  return _context6.abrupt('return', res.json(_context6.t0))
+
+                case 24:
+                case 'end':
+                  return _context6.stop()
+              }
+            }
+          },
+          _callee6,
+          null,
+          [[0, 21]]
+        )
+      })
+    )()
   }
 }

@@ -6,6 +6,7 @@ import {
   ifUserExists,
   editUserProfile
 } from '../domains/user'
+import { verifyIdToken } from './../domains/user/googleAuth'
 import { issueToken } from './../app/auth/jwt/issueToken'
 
 module.exports = {
@@ -24,9 +25,11 @@ module.exports = {
         firstName: req.body.first_name,
         lastName: req.body.last_name,
         organization: req.body.organization,
-        profile: '',
-        status: 0,
-        verified: 0,
+        profile:
+          'https://upnextresources.s3-eu-west-1.amazonaws.com/default_profile.jpg',
+        status: 1,
+        verified: 1,
+        sub_id: null,
         loginProvider: 3
       }
       const user = await createUser(body)
@@ -126,5 +129,122 @@ module.exports = {
     req.logout()
     return res.redirect('/')
     // res.send('logout user')
+  },
+  async loginWithGoogle(req, res) {
+    try {
+      const result = await verifyIdToken(req.body.idToken)
+
+      //check if the user already exists.
+      const user = await ifUserExists(result.email)
+      if (user) {
+        //generate a signed token for the user
+        const body = {
+          user_id: user.user_id,
+          email: user.email,
+          first_name: user.UserProfile.first_name,
+          last_name: user.UserProfile.last_name,
+          organization: user.UserProfile.organization,
+          profile: user.UserProfile.profile,
+          status: user.status,
+          verified: user.verified
+        }
+        const token = issueToken(body)
+        return res.json({ token: token, user: body })
+      }
+
+      // Register a new user and generate a jwt
+      const body = {
+        email: result.email,
+        password: result.sub,
+        firstName: result.given_name,
+        lastName: result.family_name,
+        organization: null,
+        profile: result.picture,
+        status: 1,
+        verified: 1,
+        sub_id: result.sub,
+        loginProvider: 2
+      }
+      const newUser = await createUser(body)
+      const data = {
+        id: newUser.user_id,
+        profile: body
+      }
+      await createUserProfile(data)
+      const returneduser = {
+        user_id: newUser.user_id,
+        email: result.email,
+        first_name: result.given_name,
+        last_name: result.family_name,
+        organization: null,
+        profile: result.picture,
+        status: 1,
+        verified: 1,
+        sub_id: result.sub,
+        loginProvider: 2
+      }
+      const token = issueToken(returneduser)
+      return res.json({ token: token, user: returneduser })
+    } catch (error) {
+      return res.status(500).json(error)
+    }
+  },
+  async loginWithFacebook(req, res) {
+    try {
+      //check if the user already exists.
+      const userData = req.body
+      const user = await ifUserExists(userData.email)
+      if (user) {
+        //generate a signed token for the user
+        const body = {
+          user_id: user.user_id,
+          email: user.email,
+          first_name: user.UserProfile.first_name,
+          last_name: user.UserProfile.last_name,
+          organization: user.UserProfile.organization,
+          profile: user.UserProfile.profile,
+          status: user.status,
+          verified: user.verified
+        }
+        const token = issueToken(body)
+        return res.json({ token: token, user: body })
+      }
+
+      // Register a new user and generate a jwt
+      const body = {
+        email: userData.email,
+        password: userData.id,
+        firstName: userData.first_name,
+        lastName: userData.last_name,
+        organization: null,
+        profile: userData.profile,
+        status: 1,
+        verified: 1,
+        sub_id: userData.id,
+        loginProvider: 2
+      }
+      const newUser = await createUser(body)
+      const data = {
+        id: newUser.user_id,
+        profile: body
+      }
+      await createUserProfile(data)
+      const returneduser = {
+        user_id: newUser.user_id,
+        email: userData.email,
+        first_name: userData.first_name,
+        last_name: userData.last_name,
+        organization: null,
+        profile: userData.profile,
+        status: 1,
+        verified: 1,
+        sub_id: userData.id,
+        loginProvider: 2
+      }
+      const token = issueToken(returneduser)
+      return res.json({ token: token, user: returneduser })
+    } catch (error) {
+      return res.json(error)
+    }
   }
 }
