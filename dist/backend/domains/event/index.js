@@ -185,7 +185,12 @@ var self = (module.exports = {
                 return _index['default'].Event.findAll({
                   where: {
                     user_id: user_id
-                  } // include: [{ model: db.EventDay }]
+                  },
+                  include: [
+                    {
+                      model: _index['default'].EventDay
+                    }
+                  ]
                 })
 
               case 2:

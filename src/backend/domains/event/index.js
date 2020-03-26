@@ -41,8 +41,8 @@ let self = (module.exports = {
 
   async getUserEvents(user_id) {
     return await db.Event.findAll({
-      where: { user_id: user_id }
-      // include: [{ model: db.EventDay }]
+      where: { user_id: user_id },
+      include: [{ model: db.EventDay }]
     })
   },
 
