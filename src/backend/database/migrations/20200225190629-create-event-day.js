@@ -17,10 +17,13 @@ module.exports = {
       date: {
         type: Sequelize.STRING
       },
-      questions: {
+      has_questions: {
         type: Sequelize.BOOLEAN
       },
-      feedback: {
+      has_feedback: {
+        type: Sequelize.BOOLEAN
+      },
+      hide_time: {
         type: Sequelize.BOOLEAN
       },
       createdAt: {

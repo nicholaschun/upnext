@@ -6,8 +6,9 @@ module.exports = function(sequelize, DataTypes) {
     {
       event_id: DataTypes.STRING,
       day_id: DataTypes.STRING,
-      questions: DataTypes.BOOLEAN,
-      feedback: DataTypes.BOOLEAN,
+      has_questions: DataTypes.BOOLEAN,
+      has_feedback: DataTypes.BOOLEAN,
+      hide_time: DataTypes.BOOLEAN,
       date: DataTypes.STRING
     },
     {}

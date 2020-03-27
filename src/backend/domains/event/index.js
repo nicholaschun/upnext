@@ -111,7 +111,8 @@ let self = (module.exports = {
       event_id: payload.event_id,
       event_dates: originArr,
       has_questions: payload.body.has_questions,
-      has_feedback: payload.body.has_feedback
+      has_feedback: payload.body.has_feedback,
+      hide_time: payload.body.hide_time
     }
     const editEventDays = self.editEventDay(dayPayload)
 
@@ -125,16 +126,18 @@ let self = (module.exports = {
           event_id: event_dates[i].event_id,
           day_id: event_dates[i].day_id,
           date: event_dates[i].date,
-          questions: event_dates[i].has_questions,
-          feedback: event_dates[i].has_feedback
+          has_questions: event_dates[i].has_questions,
+          has_feedback: event_dates[i].has_feedback,
+          hide_time: event_dates[i].hide_time
         })
       } else {
         db.EventDay.create({
           event_id: payload.event_id,
           day_id: util.genuuid(),
           date: event_dates[i].date,
-          questions: payload.has_questions,
-          feedback: payload.has_feedback
+          has_questions: payload.has_questions,
+          has_feedback: payload.has_feedback,
+          hide_time: payload.hide_time
         })
       }
     }
@@ -181,8 +184,8 @@ let self = (module.exports = {
         event_id: payload.event_id,
         day_id: null,
         date: null,
-        questions: payload.has_questions,
-        feedback: payload.has_feedback
+        has_questions: payload.has_questions,
+        has_feedback: payload.has_feedback
       }
       sampleDaydata.day_id = Object.keys(day_ids)[i]
       sampleDaydata.date = event_dates[i]
