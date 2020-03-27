@@ -20,6 +20,10 @@ module.exports = function(sequelize, DataTypes) {
 
   Lineup.associate = function(models) {
     // associations can be defined here
+    Lineup.belongsTo(models.EventDay, {
+      foreignKey: 'day_id',
+      targetKey: 'day_id'
+    })
   }
 
   return Lineup
