@@ -39,10 +39,6 @@ routes.put(
 )
 routes.get('/getallevents', _eventController['default'].getAllEvents)
 routes.get('/getevent/:event_id', _eventController['default'].getEventById)
-routes.get(
-  '/geteventbysnippet/:snippet',
-  _eventController['default'].getEventbySnippet
-)
 routes.get('/getuserevents/:user_id', _eventController['default'].getUserEvents)
 routes['delete'](
   '/deleteevent/:event_id',
