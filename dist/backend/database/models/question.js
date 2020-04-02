@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       name: DataTypes.STRING,
       event_id: DataTypes.STRING,
       day_id: DataTypes.STRING,
+      question_id: DataTypes.STRING,
       email: DataTypes.STRING,
       question: DataTypes.TEXT
     },

@@ -14,10 +14,6 @@ var _lineupController = _interopRequireDefault(
   require('../controllers/lineupController')
 )
 
-var _feedbackController = _interopRequireDefault(
-  require('../controllers/feedbackController')
-)
-
 var _validateEvent = require('../request/validation/validateEvent')
 
 /*  contains event routes */
@@ -71,41 +67,27 @@ routes['delete'](
   _lineupController['default'].deleteEventLineup
 )
 /* event feedback and quetions */
+// routes.put(
+//   '/feedback/editfeedback/:feedback_id',
+//   feedbackController.editFeedback
+// )
+// routes.delete(
+//   '/feedback/deletefeedback/:feedback_id',
+//   feedbackController.deleteFeedback
+// )
+// routes.get(
+//   '/questions/getallquestions/:event_id/:day_id',
+//   feedbackController.getQuestions
+// )
+// routes.put(
+//   '/questions/editquestion/:question_id',
+//   feedbackController.editQuestion
+// )
+// routes.delete(
+//   '/questions/deletequestion/:question_id',
+//   feedbackController.deleteQuestion
+// )
 
-routes.post(
-  '/feedback/createfeedback/:event_id/:day_id',
-  (0, _validateEvent.validateEvent)('createFeedback'),
-  _feedbackController['default'].createFeedback
-)
-routes.get(
-  '/feedback/getallfeedback/:event_id/:day_id',
-  _feedbackController['default'].getFeedback
-)
-routes.put(
-  '/feedback/editfeedback/:feedback_id',
-  _feedbackController['default'].editFeedback
-)
-routes['delete'](
-  '/feedback/deletefeedback/:feedback_id',
-  _feedbackController['default'].deleteFeedback
-)
-routes.post(
-  '/questions/createquestions/:event_id/:day_id',
-  (0, _validateEvent.validateEvent)('createQuestion'),
-  _feedbackController['default'].createQuestion
-)
-routes.get(
-  '/questions/getallquestions/:event_id/:day_id',
-  _feedbackController['default'].getQuestions
-)
-routes.put(
-  '/questions/editquestion/:question_id',
-  _feedbackController['default'].editQuestion
-)
-routes['delete'](
-  '/questions/deletequestion/:question_id',
-  _feedbackController['default'].deleteQuestion
-)
 routes.get(
   '/getlineupbyday/:event_id/:day_id',
   _eventController['default'].getLineupByDay

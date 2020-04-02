@@ -10,9 +10,11 @@ var _asyncToGenerator2 = _interopRequireDefault(
 
 var _index = _interopRequireDefault(require('../../database/models/index'))
 
+var _index2 = _interopRequireDefault(require('../../utils/index'))
+
 /*  run all database queries for feedback here */
 module.exports = {
-  createFeedback: function createFeedback(data, event_id) {
+  createFeedback: function createFeedback(data) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee() {
@@ -24,8 +26,10 @@ module.exports = {
                   'return',
                   Promise.resolve(
                     _index['default'].Feedback.create({
+                      feedback_id: _index2['default'].genuuid(),
                       feedback: data.feedback,
-                      event_id: event_id
+                      event_id: data.event_id,
+                      day_id: data.day_id
                     })
                   )
                 )
@@ -39,7 +43,7 @@ module.exports = {
       })
     )()
   },
-  getFeedbackById: function getFeedbackById(id) {
+  getFeedbackById: function getFeedbackById(data) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee2() {
@@ -50,7 +54,8 @@ module.exports = {
                 _context2.next = 2
                 return _index['default'].Feedback.findAll({
                   where: {
-                    event_id: id
+                    event_id: data.event_id,
+                    day_id: data.day_id
                   }
                 })
 

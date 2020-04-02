@@ -7,7 +7,6 @@ const routes = express.Router()
 
 import eventController from '../controllers/eventController'
 import lineupController from '../controllers/lineupController'
-import feedbackController from '../controllers/feedbackController'
 
 import { validateEvent } from '../request/validation/validateEvent'
 
@@ -41,41 +40,27 @@ routes.delete(
 )
 
 /* event feedback and quetions */
-routes.post(
-  '/feedback/createfeedback/:event_id/:day_id',
-  validateEvent('createFeedback'),
-  feedbackController.createFeedback
-)
-routes.get(
-  '/feedback/getallfeedback/:event_id/:day_id',
-  feedbackController.getFeedback
-)
-routes.put(
-  '/feedback/editfeedback/:feedback_id',
-  feedbackController.editFeedback
-)
-routes.delete(
-  '/feedback/deletefeedback/:feedback_id',
-  feedbackController.deleteFeedback
-)
 
-routes.post(
-  '/questions/createquestions/:event_id/:day_id',
-  validateEvent('createQuestion'),
-  feedbackController.createQuestion
-)
-routes.get(
-  '/questions/getallquestions/:event_id/:day_id',
-  feedbackController.getQuestions
-)
-routes.put(
-  '/questions/editquestion/:question_id',
-  feedbackController.editQuestion
-)
-routes.delete(
-  '/questions/deletequestion/:question_id',
-  feedbackController.deleteQuestion
-)
+// routes.put(
+//   '/feedback/editfeedback/:feedback_id',
+//   feedbackController.editFeedback
+// )
+// routes.delete(
+//   '/feedback/deletefeedback/:feedback_id',
+//   feedbackController.deleteFeedback
+// )
+// routes.get(
+//   '/questions/getallquestions/:event_id/:day_id',
+//   feedbackController.getQuestions
+// )
+// routes.put(
+//   '/questions/editquestion/:question_id',
+//   feedbackController.editQuestion
+// )
+// routes.delete(
+//   '/questions/deletequestion/:question_id',
+//   feedbackController.deleteQuestion
+// )
 
 routes.get('/getlineupbyday/:event_id/:day_id', eventController.getLineupByDay)
 

@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       feedback: DataTypes.TEXT,
       event_id: DataTypes.STRING,
+      feedback_id: DataTypes.STRING,
       day_id: DataTypes.STRING
     },
     {}

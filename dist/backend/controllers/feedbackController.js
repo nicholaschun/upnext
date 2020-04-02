@@ -15,7 +15,7 @@ var _question = require('../domains/event/question')
 var _validate = require('./../utils/validate')
 
 module.exports = {
-  createFeedback: function createFeedback(req, res) {
+  sendFeedback: function sendFeedback(req, res) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee() {
@@ -28,10 +28,7 @@ module.exports = {
                   ;(0, _validate.validate)(req, res)
                   _context.prev = 1
                   _context.next = 4
-                  return (0, _feedback.createFeedback)(
-                    req.body,
-                    req.params.event_id
-                  )
+                  return (0, _feedback.createFeedback)(req.body)
 
                 case 4:
                   feedback = _context.sent
@@ -69,7 +66,7 @@ module.exports = {
                 case 0:
                   _context2.prev = 0
                   _context2.next = 3
-                  return (0, _feedback.getFeedbackById)(req.params.event_id)
+                  return (0, _feedback.getFeedbackById)(req.params)
 
                 case 3:
                   feedback = _context2.sent
@@ -95,74 +92,39 @@ module.exports = {
       })
     )()
   },
-  editFeedback: function editFeedback(req, res) {
+  sendQuestion: function sendQuestion(req, res) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee3() {
-        return _regenerator['default'].wrap(function _callee3$(_context3) {
-          while (1) {
-            switch ((_context3.prev = _context3.next)) {
-              case 0:
-              case 'end':
-                return _context3.stop()
-            }
-          }
-        }, _callee3)
-      })
-    )()
-  },
-  deleteFeedback: function deleteFeedback(req, res) {
-    return (0, _asyncToGenerator2['default'])(
-      /*#__PURE__*/
-      _regenerator['default'].mark(function _callee4() {
-        return _regenerator['default'].wrap(function _callee4$(_context4) {
-          while (1) {
-            switch ((_context4.prev = _context4.next)) {
-              case 0:
-              case 'end':
-                return _context4.stop()
-            }
-          }
-        }, _callee4)
-      })
-    )()
-  },
-  createQuestion: function createQuestion(req, res) {
-    return (0, _asyncToGenerator2['default'])(
-      /*#__PURE__*/
-      _regenerator['default'].mark(function _callee5() {
         var question
         return _regenerator['default'].wrap(
-          function _callee5$(_context5) {
+          function _callee3$(_context3) {
             while (1) {
-              switch ((_context5.prev = _context5.next)) {
+              switch ((_context3.prev = _context3.next)) {
                 case 0:
                   ;(0, _validate.validate)(req, res)
-                  _context5.prev = 1
-                  _context5.next = 4
-                  return (0, _question.createQuestion)(
-                    req.body,
-                    req.params.event_id
-                  )
+                  _context3.prev = 1
+                  _context3.next = 4
+                  return (0, _question.createQuestion)(req.body)
 
                 case 4:
-                  question = _context5.sent
-                  return _context5.abrupt('return', res.json(question))
+                  question = _context3.sent
+                  return _context3.abrupt('return', res.json(question))
 
                 case 8:
-                  _context5.prev = 8
-                  _context5.t0 = _context5['catch'](1)
+                  _context3.prev = 8
+                  _context3.t0 = _context3['catch'](1)
                   res.status(500).send({
-                    message: _context5.t0.message || 'Something went wrong'
+                    message: _context3.t0.message || 'Something went wrong'
                   })
 
                 case 11:
                 case 'end':
-                  return _context5.stop()
+                  return _context3.stop()
               }
             }
           },
-          _callee5,
+          _callee3,
           null,
           [[1, 8]]
         )
@@ -172,35 +134,35 @@ module.exports = {
   getQuestions: function getQuestions(req, res) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
-      _regenerator['default'].mark(function _callee6() {
+      _regenerator['default'].mark(function _callee4() {
         var feedback
         return _regenerator['default'].wrap(
-          function _callee6$(_context6) {
+          function _callee4$(_context4) {
             while (1) {
-              switch ((_context6.prev = _context6.next)) {
+              switch ((_context4.prev = _context4.next)) {
                 case 0:
-                  _context6.prev = 0
-                  _context6.next = 3
-                  return (0, _question.getQuestionById)(req.params.event_id)
+                  _context4.prev = 0
+                  _context4.next = 3
+                  return (0, _question.getQuestionById)(req.params)
 
                 case 3:
-                  feedback = _context6.sent
-                  return _context6.abrupt('return', res.json(feedback))
+                  feedback = _context4.sent
+                  return _context4.abrupt('return', res.json(feedback))
 
                 case 7:
-                  _context6.prev = 7
-                  _context6.t0 = _context6['catch'](0)
+                  _context4.prev = 7
+                  _context4.t0 = _context4['catch'](0)
                   res.status(500).send({
-                    message: _context6.t0.message || 'Something went wrong'
+                    message: _context4.t0.message || 'Something went wrong'
                   })
 
                 case 10:
                 case 'end':
-                  return _context6.stop()
+                  return _context4.stop()
               }
             }
           },
-          _callee6,
+          _callee4,
           null,
           [[0, 7]]
         )
@@ -210,32 +172,32 @@ module.exports = {
   editQuestion: function editQuestion(req, res) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
-      _regenerator['default'].mark(function _callee7() {
-        return _regenerator['default'].wrap(function _callee7$(_context7) {
+      _regenerator['default'].mark(function _callee5() {
+        return _regenerator['default'].wrap(function _callee5$(_context5) {
           while (1) {
-            switch ((_context7.prev = _context7.next)) {
+            switch ((_context5.prev = _context5.next)) {
               case 0:
               case 'end':
-                return _context7.stop()
+                return _context5.stop()
             }
           }
-        }, _callee7)
+        }, _callee5)
       })
     )()
   },
   deleteQuestion: function deleteQuestion(req, res) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
-      _regenerator['default'].mark(function _callee8() {
-        return _regenerator['default'].wrap(function _callee8$(_context8) {
+      _regenerator['default'].mark(function _callee6() {
+        return _regenerator['default'].wrap(function _callee6$(_context6) {
           while (1) {
-            switch ((_context8.prev = _context8.next)) {
+            switch ((_context6.prev = _context6.next)) {
               case 0:
               case 'end':
-                return _context8.stop()
+                return _context6.stop()
             }
           }
-        }, _callee8)
+        }, _callee6)
       })
     )()
   }

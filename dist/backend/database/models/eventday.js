@@ -20,6 +20,14 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: 'day_id',
       targetKey: 'day_id'
     })
+    EventDay.hasMany(models.Feedback, {
+      foreignKey: 'day_id',
+      targetKey: 'day_id'
+    })
+    EventDay.hasMany(models.Question, {
+      foreignKey: 'day_id',
+      targetKey: 'day_id'
+    })
   }
 
   return EventDay

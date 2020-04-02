@@ -44,7 +44,8 @@ module.exports = {
           (0, _expressValidator.body)(
             'question',
             'question is required'
-          ).exists()
+          ).exists(),
+          (0, _expressValidator.body)('name', 'name is required').exists()
         ]
       }
     }

@@ -11,8 +11,10 @@ module.exports = {
   validateEvent(method) {
     switch (method) {
       case 'createEvent': {
-        return [body('event_name', 'event name is required').exists(),
-        body('user_id', 'user id is required').exists()]
+        return [
+          body('event_name', 'event name is required').exists(),
+          body('user_id', 'user id is required').exists()
+        ]
       }
       case 'editEvent': {
         return [body('event_name', 'event name is required').exists()]
@@ -21,7 +23,10 @@ module.exports = {
         return [body('feedback', 'feedback is required').exists()]
       }
       case 'createQuestion': {
-        return [body('question', 'question is required').exists()]
+        return [
+          body('question', 'question is required').exists(),
+          body('name', 'name is required').exists()
+        ]
       }
     }
   }

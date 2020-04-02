@@ -10,9 +10,11 @@ var _asyncToGenerator2 = _interopRequireDefault(
 
 var _index = _interopRequireDefault(require('../../database/models/index'))
 
+var _index2 = _interopRequireDefault(require('../../utils/index'))
+
 /*  run all database queries for questions here */
 module.exports = {
-  createQuestion: function createQuestion(data, event_id) {
+  createQuestion: function createQuestion(data) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee() {
@@ -20,20 +22,21 @@ module.exports = {
           while (1) {
             switch ((_context.prev = _context.next)) {
               case 0:
-                console.log(data)
                 return _context.abrupt(
                   'return',
                   Promise.resolve(
                     _index['default'].Question.create({
+                      question_id: _index2['default'].genuuid(),
                       question: data.question,
                       name: data.name,
                       email: data.email,
-                      event_id: event_id
+                      event_id: data.event_id,
+                      day_id: data.day_id
                     })
                   )
                 )
 
-              case 2:
+              case 1:
               case 'end':
                 return _context.stop()
             }
@@ -42,7 +45,7 @@ module.exports = {
       })
     )()
   },
-  getQuestionById: function getQuestionById(id) {
+  getQuestionById: function getQuestionById(data) {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee2() {
@@ -53,7 +56,8 @@ module.exports = {
                 _context2.next = 2
                 return _index['default'].Question.findAll({
                   where: {
-                    event_id: id
+                    event_id: data.event_id,
+                    day_id: data.day_id
                   }
                 })
 
