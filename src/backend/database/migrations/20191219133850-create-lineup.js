@@ -35,6 +35,9 @@ module.exports = {
       duration: {
         type: Sequelize.STRING
       },
+      duration_as_milli: {
+        type: Sequelize.INTEGER
+      },
       facilitator: {
         type: Sequelize.STRING
       },

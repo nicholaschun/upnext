@@ -83,6 +83,7 @@ module.exports = {
                     description: data.lineup[i].description,
                     activity: data.lineup[i].activity,
                     duration: data.lineup[i].duration,
+                    duration_as_milli: data.lineup[i].duration_as_milli,
                     lineup_id: _index2['default'].genuuid()
                   }
                   lineupData.push(sampledata)

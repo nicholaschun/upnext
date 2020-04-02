@@ -13,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       description: DataTypes.TEXT,
       activity: DataTypes.TEXT,
       duration: DataTypes.STRING,
+      duration_as_milli: DataTypes.INTEGER,
       facilitator: DataTypes.STRING
     },
     {}
