@@ -131,11 +131,12 @@ module.exports = {
     // res.send('logout user')
   },
   async loginWithGoogle(req, res) {
+    const payload = req.body
     try {
-      const result = await verifyIdToken(req.body.idToken)
+      // const result = await verifyIdToken(req.body.idToken)
 
       //check if the user already exists.
-      const user = await ifUserExists(result.email)
+      const user = await ifUserExists(payload.email)
       if (user) {
         //generate a signed token for the user
         const body = {
@@ -154,15 +155,15 @@ module.exports = {
 
       // Register a new user and generate a jwt
       const body = {
-        email: result.email,
-        password: result.sub,
-        firstName: result.given_name,
-        lastName: result.family_name,
+        email: payload.email,
+        password: payload.id,
+        firstName: payload.first_name,
+        lastName: payload.last_name,
         organization: null,
-        profile: result.picture,
+        profile: payload.profile,
         status: 1,
         verified: 1,
-        sub_id: result.sub,
+        sub_id: payload.id,
         loginProvider: 2
       }
       const newUser = await createUser(body)
@@ -172,15 +173,14 @@ module.exports = {
       }
       await createUserProfile(data)
       const returneduser = {
-        user_id: newUser.user_id,
-        email: result.email,
-        first_name: result.given_name,
-        last_name: result.family_name,
+        email: payload.email,
+        firstName: payload.first_name,
+        lastName: payload.last_name,
         organization: null,
-        profile: result.picture,
+        profile: payload.profile,
         status: 1,
         verified: 1,
-        sub_id: result.sub,
+        sub_id: payload.id,
         loginProvider: 2
       }
       const token = issueToken(returneduser)

@@ -11,7 +11,7 @@ import events from './backend/routes/events'
 import feedback from './backend/routes/feedback'
 import question from './backend/routes/question'
 
-import providers from './backend/routes/providers'
+import authProviders from './backend/routes/authproviders'
 import userDashboard from './backend/routes/dashboard'
 import guest from './backend/routes/guest'
 import verifySession from './backend/app/auth/verifySession'
@@ -67,7 +67,7 @@ app.use(
   passport.authenticate('jwt', { session: false }),
   question
 )
-app.use(`${process.env.api_base_url}/auth`, providers)
+app.use(`${process.env.api_base_url}/auth`, authProviders)
 
 /* Start express server */
 

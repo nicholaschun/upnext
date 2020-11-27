@@ -2,13 +2,12 @@
 
 import express from 'express'
 import multer from 'multer'
-
-const routes = express.Router()
-
 import eventController from '../controllers/eventController'
 import lineupController from '../controllers/lineupController'
 
-import { validateEvent } from '../request/validation/validateEvent'
+// import { validateEvent } from '../request/validation/validateEvent'
+
+const routes = express.Router()
 
 routes.post(
   '/createevent',

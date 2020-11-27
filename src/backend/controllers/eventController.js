@@ -19,7 +19,7 @@ module.exports = {
   async createEvent(req, res) {
     validate(req, res)
     try {
-      //check to see if user exists
+      // check to see if user exists
       const user = await ifUserIdExists(req.body.user_id)
       if (!user) {
         return res.json('Invalid user id provided')
