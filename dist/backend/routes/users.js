@@ -44,7 +44,7 @@ routes.put(
   '/edituser/:user_id',
   (0, _validateUser.validateUser)('editUser'),
   _userController['default'].editUser
-) //Protected routes
+) // Protected routes
 
 routes.get(
   '/test',

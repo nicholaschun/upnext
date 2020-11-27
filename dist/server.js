@@ -24,7 +24,9 @@ var _feedback = _interopRequireDefault(require('./backend/routes/feedback'))
 
 var _question = _interopRequireDefault(require('./backend/routes/question'))
 
-var _providers = _interopRequireDefault(require('./backend/routes/providers'))
+var _authproviders = _interopRequireDefault(
+  require('./backend/routes/authproviders')
+)
 
 var _dashboard = _interopRequireDefault(require('./backend/routes/dashboard'))
 
@@ -91,7 +93,7 @@ app.use(
   }),
   _question['default']
 )
-app.use(''.concat(process.env.api_base_url, '/auth'), _providers['default'])
+app.use(''.concat(process.env.api_base_url, '/auth'), _authproviders['default'])
 /* Start express server */
 
 app.listen(port, function() {

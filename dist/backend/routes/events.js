@@ -14,9 +14,8 @@ var _lineupController = _interopRequireDefault(
   require('../controllers/lineupController')
 )
 
-var _validateEvent = require('../request/validation/validateEvent')
-
 /*  contains event routes */
+// import { validateEvent } from '../request/validation/validateEvent'
 var routes = _express['default'].Router()
 
 routes.post(

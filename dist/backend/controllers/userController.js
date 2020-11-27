@@ -299,7 +299,7 @@ module.exports = {
     return (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/
       _regenerator['default'].mark(function _callee5() {
-        var result,
+        var payload,
           user,
           _body,
           _token,
@@ -314,20 +314,16 @@ module.exports = {
             while (1) {
               switch ((_context5.prev = _context5.next)) {
                 case 0:
-                  _context5.prev = 0
-                  _context5.next = 3
-                  return (0, _googleAuth.verifyIdToken)(req.body.idToken)
+                  payload = req.body
+                  _context5.prev = 1
+                  _context5.next = 4
+                  return (0, _user.ifUserExists)(payload.email)
 
-                case 3:
-                  result = _context5.sent
-                  _context5.next = 6
-                  return (0, _user.ifUserExists)(result.email)
-
-                case 6:
+                case 4:
                   user = _context5.sent
 
                   if (!user) {
-                    _context5.next = 11
+                    _context5.next = 9
                     break
                   }
 
@@ -351,43 +347,42 @@ module.exports = {
                     })
                   )
 
-                case 11:
+                case 9:
                   // Register a new user and generate a jwt
                   body = {
-                    email: result.email,
-                    password: result.sub,
-                    firstName: result.given_name,
-                    lastName: result.family_name,
+                    email: payload.email,
+                    password: payload.id,
+                    firstName: payload.first_name,
+                    lastName: payload.last_name,
                     organization: null,
-                    profile: result.picture,
+                    profile: payload.profile,
                     status: 1,
                     verified: 1,
-                    sub_id: result.sub,
+                    sub_id: payload.id,
                     loginProvider: 2
                   }
-                  _context5.next = 14
+                  _context5.next = 12
                   return (0, _user.createUser)(body)
 
-                case 14:
+                case 12:
                   newUser = _context5.sent
                   data = {
                     id: newUser.user_id,
                     profile: body
                   }
-                  _context5.next = 18
+                  _context5.next = 16
                   return (0, _user.createUserProfile)(data)
 
-                case 18:
+                case 16:
                   returneduser = {
-                    user_id: newUser.user_id,
-                    email: result.email,
-                    first_name: result.given_name,
-                    last_name: result.family_name,
+                    email: payload.email,
+                    firstName: payload.first_name,
+                    lastName: payload.last_name,
                     organization: null,
-                    profile: result.picture,
+                    profile: payload.profile,
                     status: 1,
                     verified: 1,
-                    sub_id: result.sub,
+                    sub_id: payload.id,
                     loginProvider: 2
                   }
                   token = (0, _issueToken.issueToken)(returneduser)
@@ -399,15 +394,15 @@ module.exports = {
                     })
                   )
 
-                case 23:
-                  _context5.prev = 23
-                  _context5.t0 = _context5['catch'](0)
+                case 21:
+                  _context5.prev = 21
+                  _context5.t0 = _context5['catch'](1)
                   return _context5.abrupt(
                     'return',
                     res.status(500).json(_context5.t0)
                   )
 
-                case 26:
+                case 24:
                 case 'end':
                   return _context5.stop()
               }
@@ -415,7 +410,7 @@ module.exports = {
           },
           _callee5,
           null,
-          [[0, 23]]
+          [[1, 21]]
         )
       })
     )()
