@@ -3,17 +3,42 @@ module.exports = (sequelize, DataTypes) => {
   const Event = sequelize.define(
     'Event',
     {
-      event_id: DataTypes.STRING,
-      event_name: DataTypes.STRING,
-      event_days: DataTypes.INTEGER,
-      event_status: DataTypes.BOOLEAN,
-      event_image: DataTypes.STRING,
-      event_dates: DataTypes.TEXT,
-      event_image_thumb: DataTypes.STRING,
-      user_id: DataTypes.STRING,
-      event_url: DataTypes.STRING,
-      url_snippet: DataTypes.STRING,
-      description: DataTypes.TEXT
+      event_id: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      event_name: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      event_status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: 0
+      },
+      is_public: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: 0
+      },
+      event_image: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      event_image_thumb: {
+        type: DataTypes.STRING
+      },
+      user_id: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      event_url: {
+        type: DataTypes.STRING
+      },
+      url_snippet: {
+        type: DataTypes.STRING
+      },
+      description: {
+        type: DataTypes.TEXT
+      }
     },
     {}
   )

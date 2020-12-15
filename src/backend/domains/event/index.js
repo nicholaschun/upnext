@@ -1,8 +1,9 @@
 /*  run all database queries for events here */
 
 import db from '../../database/models/index'
-import util from '../../utils/index'
-import handleImage from './../../utils/handleFile'
+import { generateEventLink, genuuid } from '../../utils/index'
+import { uploadDataImage } from './../../utils/handleFile'
+import crud from './../crud'
 
 let self = (module.exports = {
   async getAllEvents() {
@@ -46,28 +47,27 @@ let self = (module.exports = {
     })
   },
 
-  async createEvent(data, file) {
-    let eventSnippet = util.generateEventLink(data.event_name)
-    let featured_image = ''
+  async createEvent(req) {
+    const { body, file, user } = req
+    const eventSnippet = generateEventLink(body.event_name)
+    let featured_image =
+      'https://upnextresources.s3-eu-west-1.amazonaws.com/events/event_placeholder.jpg'
+
     if (file) {
-      const { location } = await handleImage.uploadDataImage(file, 'events')
+      const { location } = await uploadDataImage(file, 'events')
       featured_image = location
-    } else {
-      featured_image =
-        'https://upnextresources.s3-eu-west-1.amazonaws.com/events/event_placeholder.jpg'
     }
-    return await db.Event.create({
-      event_id: util.genuuid(),
-      event_name: data.event_name,
-      event_days: JSON.parse(data.event_dates.length),
-      event_status: 0,
-      event_dates: data.event_dates,
+    const data = {
+      event_id: genuuid(),
+      event_name: body.event_name,
       event_image: featured_image,
-      user_id: data.user_id,
+      user_id: user.user.data.user_id,
       event_url: `up-next.co/${eventSnippet}`,
       url_snippet: eventSnippet,
-      description: data.description
-    })
+      is_public: body.is_public,
+      description: body.description
+    }
+    return await crud.create({ model: 'Event', data })
   },
 
   async editEvent(payload) {
@@ -174,12 +174,12 @@ let self = (module.exports = {
   },
 
   async createEventDay(payload) {
-    let event_dates = payload.event_dates
+    let event_dates = payload.event_dates || []
     let day_ids = {}
 
     let eventDayData = []
     for (let i = 0; i < event_dates.length; i++) {
-      day_ids[util.genuuid()] = event_dates[i]
+      day_ids[genuuid()] = event_dates[i]
       let sampleDaydata = {
         event_id: payload.event_id,
         day_id: null,

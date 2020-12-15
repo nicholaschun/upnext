@@ -5,9 +5,6 @@ import { validateUser } from '../request/validation/validateUser'
 
 const routes = express.Router()
 
-routes.post('/register', validateUser('createUser'), userController.createUser)
-routes.post('/login', validateUser('loginUser'), userController.loginUser)
-
 routes.post(
   '/login-token',
   validateUser('loginUser'),

@@ -12,29 +12,28 @@ import {
   getEventBySnippet
 } from '../domains/event/index'
 import { getLineupByDay } from '../domains/event/lineup'
-import { validate } from './../utils/validate'
 import { ifUserIdExists } from '../domains/user'
 
 module.exports = {
   async createEvent(req, res) {
-    validate(req, res)
     try {
-      // check to see if user exists
-      const user = await ifUserIdExists(req.body.user_id)
-      if (!user) {
+      const { user } = req.user
+      const check = await ifUserIdExists(user.data.user_id)
+      if (!check) {
         return res.json('Invalid user id provided')
       }
-      let event = await createEvent(req.body, req.file)
-      event.event_dates = JSON.parse(event.event_dates)
-      let payload = {
-        event_id: event.event_id,
-        event_dates: event.event_dates,
+      console.log('----log---', req.body.event_dates)
+      const event = await createEvent(req)
+      const { event_id } = event
+      const payload = {
+        event_id,
+        event_dates: req.body.event_dates,
         has_questions: 0,
         has_feedback: 0
       }
-      const eventD = await createEventDay(payload)
-      let resultData = { event, event_days: eventD }
-      return res.json(resultData)
+      await createEventDay(payload)
+      // let resultData = { event, event_days: eventD }
+      return res.json(event)
     } catch (error) {
       res.status(500).send({
         message: error.message || 'Something went wrong'

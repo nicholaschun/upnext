@@ -14,23 +14,20 @@ module.exports = {
       event_name: {
         type: Sequelize.STRING
       },
-      event_days: {
-        type: Sequelize.INTEGER
-      },
       event_status: {
         type: Sequelize.BOOLEAN
       },
       event_image: {
         type: Sequelize.STRING
       },
-      event_dates: {
-        type: Sequelize.TEXT
-      },
       event_image_thumb: {
         type: Sequelize.STRING
       },
       user_id: {
         type: Sequelize.STRING
+      },
+      is_public: {
+        type: Sequelize.BOOLEAN
       },
       event_url: {
         type: Sequelize.STRING
