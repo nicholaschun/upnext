@@ -1,7 +1,7 @@
 /*  run all database queries for lineup here */
 
 import db from '../../database/models/index'
-import util from '../../utils/index'
+import { genuuid } from '../../utils/index'
 
 module.exports = {
   async getLineup(day_id) {
@@ -15,30 +15,30 @@ module.exports = {
   async createLineup(data, event_id) {
     // update event day with day info
 
-    db.EventDay.update(
-      {
-        has_questions: data.dayinfo.has_questions,
-        has_feedback: data.dayinfo.has_feedback,
-        hide_time: data.dayinfo.hide_time
-      },
-      { where: { day_id: data.lineup[0].day_id } }
-    )
+    // db.EventDay.update(
+    //   {
+    //     has_questions: data.dayinfo.has_questions,
+    //     has_feedback: data.dayinfo.has_feedback,
+    //     hide_time: data.dayinfo.hide_time
+    //   },
+    //   { where: { day_id: data.lineup[0].day_id } }
+    // )
     //delete all lineup with that day before saving new one
     db.Lineup.destroy({
-      where: { day_id: data.lineup[0].day_id, event_id: event_id }
+      where: { day_id: data[0].day_id, event_id: event_id }
     })
     let lineupData = []
-    for (let i = 0; i < data.lineup.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       let sampledata = {
         event_id: event_id,
-        start_time: data.lineup[i].start_time,
-        end_time: data.lineup[i].end_time,
-        day_id: data.lineup[i].day_id,
-        description: data.lineup[i].description,
-        activity: data.lineup[i].activity,
-        duration: data.lineup[i].duration,
-        duration_as_milli: data.lineup[i].duration_as_milli,
-        lineup_id: util.genuuid()
+        start_time: data[i].start_time,
+        end_time: data[i].end_time,
+        day_id: data[i].day_id,
+        description: data[i].description,
+        activity: data[i].activity,
+        duration: data[i].duration,
+        duration_as_milli: data[i].duration_as_milli,
+        lineup_id: genuuid()
       }
       lineupData.push(sampledata)
     }
