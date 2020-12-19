@@ -25,7 +25,7 @@ module.exports = {
 
   async getEventLineup(req, res) {
     try {
-      const event = await getEventById(req.params.event_id)
+      const event = await getLineup(req.params)
       return res.json(event)
     } catch (error) {
       res.status(500).json({

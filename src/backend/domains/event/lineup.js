@@ -4,10 +4,10 @@ import db from '../../database/models/index'
 import { genuuid } from '../../utils/index'
 
 module.exports = {
-  async getLineup(day_id) {
+  async getLineup(params) {
     return Promise.resolve(
       db.Lineup.findOne({
-        where: { day_id: day_id }
+        where: { day_id: params.day_id, event_id: params.event_id }
       })
     )
   },

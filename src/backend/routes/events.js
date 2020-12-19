@@ -30,36 +30,10 @@ routes.patch('/publishevent/:event_id', eventController.publishEvent)
 routes.patch('/unpublishevent/:event_id', eventController.unpublishEvent)
 
 /* event line up routes appear here */
-routes.post('/:event_id/createlineup', lineupController.createLineup)
-routes.get('/:event_id/geteventlineup', lineupController.getEventLineup)
-routes.put('/:event_id/editlineup/:day_id', lineupController.editEventLineup)
-routes.delete(
-  '/deleteeventlineup/:lineup_id',
-  lineupController.deleteEventLineup
-)
-
-/* event feedback and quetions */
-
-// routes.put(
-//   '/feedback/editfeedback/:feedback_id',
-//   feedbackController.editFeedback
-// )
-// routes.delete(
-//   '/feedback/deletefeedback/:feedback_id',
-//   feedbackController.deleteFeedback
-// )
-// routes.get(
-//   '/questions/getallquestions/:event_id/:day_id',
-//   feedbackController.getQuestions
-// )
-// routes.put(
-//   '/questions/editquestion/:question_id',
-//   feedbackController.editQuestion
-// )
-// routes.delete(
-//   '/questions/deletequestion/:question_id',
-//   feedbackController.deleteQuestion
-// )
+routes.post('/:event_id/lineup', lineupController.createLineup)
+routes.get('/:event_id/lineup/:day_id', lineupController.getEventLineup)
+routes.put('/:event_id/lineup/:day_id', lineupController.editEventLineup)
+routes.delete('/lineup/:lineup_id', lineupController.deleteEventLineup)
 
 routes.get('/getlineupbyday/:event_id/:day_id', eventController.getLineupByDay)
 
