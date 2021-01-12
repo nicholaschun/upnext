@@ -7,18 +7,15 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:10.16.3
+      - image: circleci/node:14.8.0
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
-
     working_directory: ~/repo
-
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -26,15 +23,45 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: npm install
-
+      - run: yarn install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm test
-
+      - run: yarn test
       # build project
-      - run: npm run build
+      - run: yarn run build
+      - persut_to_worksoace:
+          root: .
+          paths:
+            - .
+  deploy:
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+        name: Installing deployment dependencies
+        command: |
+          sudo apt-get -y -qq update
+          sudo apt-get install python-pip python-dev build-essential
+          sudo pip install awsebcli --upgrade
+
+      # Run the deploy to take effect
+      - run:
+          name: Deploying
+          command: eb deploy Upnext-Dev-env
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          context: aws_context
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
