@@ -1,5 +1,4 @@
 import { User } from '../../db/models/index'
-import initializeLocalStrategy from './strategies/local-strategy'
 import initializeJWTStrategy from './strategies/jwt-strategy'
 
 export default passport => {
@@ -12,6 +11,5 @@ export default passport => {
       done(null, user)
     })
   })
-  initializeLocalStrategy()
   initializeJWTStrategy()
 }

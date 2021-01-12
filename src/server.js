@@ -6,7 +6,7 @@ import passport from 'passport'
 
 import routes from './routes'
 import config from './../config'
-import passportConfig from './service/auth/'
+import passportConfig from './services/auth'
 
 const { port, host, auth } = config
 const { sessionSecret, sessionKey } = auth

@@ -25,7 +25,6 @@ export const get = ({ models }) => ({
   const table = models[model]
   return Promise.resolve(
     table.findOne({
-      attributes: { exclude: ['password', 'sub_id', 'id', 'verify_token'] },
       where: { ...conditions },
       include: relations
     })

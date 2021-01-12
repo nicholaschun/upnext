@@ -2,8 +2,9 @@ import express from 'express'
 import passport from 'passport'
 import config from './../../config'
 import events from './events'
+import lineups from './lineups'
 import users from './users'
-import auth from './authproviders'
+import auth from './auth'
 
 const { baseUrl } = config
 
@@ -14,7 +15,16 @@ router.use(
   passport.authenticate('jwt', { session: false }),
   events
 )
-// router.use(`${baseUrl}/users`, users)
-// router.use(`${baseUrl}/auth`, auth)
+router.use(
+  `${baseUrl}/events/lineups`,
+  passport.authenticate('jwt', { session: false }),
+  lineups
+)
+router.use(
+  `${baseUrl}/users`,
+  passport.authenticate('jwt', { session: false }),
+  users
+)
+router.use(`${baseUrl}/auth`, auth)
 
 export default router

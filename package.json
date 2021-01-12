@@ -32,6 +32,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.8.3",
     "@babel/runtime": "^7.8.4",
+    "awaiting": "^3.0.0",
     "awilix": "^4.3.1",
     "aws-sdk": "^2.610.0",
     "axios": "^0.19.2",

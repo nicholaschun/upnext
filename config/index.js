@@ -44,5 +44,6 @@ export default {
       dialect: 'mysql'
     }
   },
+  defaultEventImage: process.env.DEFAULT_EVENT_IMAGE,
   defaultProfileImage: process.env.DEFAULT_PROFILE_IMAGE
 }
