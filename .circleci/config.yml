@@ -33,7 +33,7 @@ jobs:
       - run: yarn test
       # build project
       - run: yarn run build
-      - persut_to_worksoace:
+      - persist_to_worksoace:
           root: .
           paths:
             - .
