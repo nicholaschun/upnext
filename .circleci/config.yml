@@ -33,14 +33,8 @@ jobs:
       - run: yarn test
       # build project
       - run: yarn run build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
   deploy:
     steps:
-      - attach_workspace:
-          at: .
       - run:
         name: Installing deployment dependencies
         command: |
