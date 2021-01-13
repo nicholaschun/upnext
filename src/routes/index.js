@@ -1,6 +1,6 @@
 import express from 'express'
 import passport from 'passport'
-import config from './../../config'
+import config from '../config'
 import events from './events'
 import lineups from './lineups'
 import users from './users'

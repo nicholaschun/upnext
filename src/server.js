@@ -5,7 +5,7 @@ import session from 'express-session'
 import passport from 'passport'
 
 import routes from './routes'
-import config from './../config'
+import config from './config'
 import passportConfig from './services/auth'
 
 const { port, host, auth } = config

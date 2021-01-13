@@ -19,7 +19,7 @@ import {
 } from '../services/auth/core'
 import { createAuthenticatedUser, createEditUser } from '../services/user/core'
 
-import config from './../../config'
+import config from '../config'
 import models from './../db/models/index'
 
 import { createS3Client, createPutToS3 } from '../utils/s3'

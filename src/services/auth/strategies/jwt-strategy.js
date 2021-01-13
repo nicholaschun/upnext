@@ -2,10 +2,10 @@ import passport from 'passport'
 import jwtStrategy from 'passport-jwt'
 import fs from 'fs'
 import path from 'path'
-import config from '../../../../config'
+import config from '../../../config'
 
 const privateKey = fs
-  .readFileSync(path.resolve('./config/keys/private.key'))
+  .readFileSync(path.resolve('./src/config/keys/private.key'))
   .toString('utf8')
 const ExtractJwt = jwtStrategy.ExtractJwt
 const {
