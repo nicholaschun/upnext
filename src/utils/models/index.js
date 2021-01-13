@@ -1,0 +1,5 @@
+export const eventModel = 'Event'
+export const eventDayModel = 'EventDay'
+export const lineupModel = 'Lineup'
+export const userModel = 'User'
+export const userProfileModel = 'UserProfile'
