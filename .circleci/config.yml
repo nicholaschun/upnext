@@ -42,13 +42,15 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-        command: |
-          sudo apt-get -y -qq update
-          sudo apt-get install python-pip python-dev build-essential
-          sudo pip install awsebcli --upgrade
+          name: Installing deployment dependencies
+          command: |
+            sudo apt-get -y -qq update
+            sudo apt-get install python-pip python-dev build-essential
+            sudo pip install awsebcli --upgrade
 
       # Run the deploy to take effect
       - run:
+          name: Deploying
           command: eb deploy Upnext-Dev-env
 
 workflows:
