@@ -1,0 +1,21 @@
+branch-defaults:
+  master:
+    environment: Upnext-Dev-env
+environment-defaults:
+  Upnext-Dev-env:
+    branch: master
+    repository: null
+global:
+  application_name: upnext-dev
+  default_ec2_keyname: null
+  default_platform:
+    arn:aws:elasticbeanstalk:eu-west-1::platform/Node.js running on
+    64bit Amazon Linux/4.10.2
+  default_region: eu-west-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  sc: git
+  workspace_type: Application
