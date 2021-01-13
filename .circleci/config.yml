@@ -38,6 +38,8 @@ jobs:
           paths:
             - .
   deploy:
+    docker:
+      - image: circleci/node:14.8.0
     steps:
       - attach_workspace:
           at: .
