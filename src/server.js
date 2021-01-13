@@ -9,6 +9,7 @@ import config from './config'
 import passportConfig from './services/auth'
 
 const { port, host, auth } = config
+console.log('---load config', config)
 const { sessionSecret, sessionKey } = auth
 const app = express()
 const defaultPort = port
