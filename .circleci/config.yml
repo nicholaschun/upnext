@@ -52,7 +52,9 @@ jobs:
             sudo apt-get -y -qq update
             sudo apt-get install python3-pip python3-dev build-essential
             sudo pip3 install awsebcli --upgrade
-
+            
+      # Hack to actually deploy dist folder
+      - run: yarn build
       # Run the deploy to take effect
       - run:
           name: Deploying
