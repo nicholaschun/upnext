@@ -34,8 +34,8 @@ jobs:
       # build project
       - run: yarn run build
   deploy:
-    machine:
-        enabled: true
+    docker:
+      - image: circleci/node:14.8.0
     working_directory: ~/app
     steps:
       - run:
