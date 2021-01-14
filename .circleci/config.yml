@@ -38,6 +38,7 @@ jobs:
       - image: circleci/node:14.8.0
     working_directory: ~/app
     steps:
+      - checkout
       - run:
           name: Installing deployment dependencies
           command: |
