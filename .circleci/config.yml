@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2.1
+version: 2
 jobs:
   build:
     working_directory: ~/app
@@ -33,18 +33,19 @@ jobs:
       - run: yarn test
       # build project
       - run: yarn run build
-      - persist_to_workspace:
-          root: ~/app
-          paths:
-            - dist
+      # Cache the dist folder for the deploy job
+      - save_cache:
+          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+            paths:
+              - dist
   deploy:
     docker:
       - image: circleci/node:14.8.0
     working_directory: ~/app
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/app
+      - restore_cache:
+          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: Installing deployment dependencies
           command: |
