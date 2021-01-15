@@ -37,7 +37,7 @@ jobs:
       # Run the deploy to take effect
       - run:
           name: Deploying
-          command: eb deploy Upnext-Dev-env
+          command: eb deploy
 
 workflows:
   version: 2
