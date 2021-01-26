@@ -22,18 +22,29 @@ export const createGetOneEvent = ({ getRecord, models }) => async req => {
   const relations = [
     {
       model: models.User
+    },
+    {
+      model: models.EventDay
     }
   ]
   const data = await getRecord({ model: eventModel, conditions, relations })
   return { data, statusCode: 200 }
 }
 
-export const createGetUserEvents = ({ listRecord }) => async req => {
+export const createGetUserEvents = ({ listRecord, models }) => async req => {
   const { params } = req
   const conditions = {
     user_id: params.user_id
   }
-  const data = await listRecord({ model: eventModel, conditions })
+  const relations = [
+    {
+      model: models.User
+    },
+    {
+      model: models.EventDay
+    }
+  ]
+  const data = await listRecord({ model: eventModel, conditions, relations })
   return { data, statusCode: 200 }
 }
 

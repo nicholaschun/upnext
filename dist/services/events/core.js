@@ -118,6 +118,9 @@ var createGetOneEvent = function createGetOneEvent(_ref3) {
                 relations = [
                   {
                     model: models.User
+                  },
+                  {
+                    model: models.EventDay
                   }
                 ]
                 _context2.next = 5
@@ -152,11 +155,12 @@ var createGetOneEvent = function createGetOneEvent(_ref3) {
 exports.createGetOneEvent = createGetOneEvent
 
 var createGetUserEvents = function createGetUserEvents(_ref5) {
-  var listRecord = _ref5.listRecord
+  var listRecord = _ref5.listRecord,
+    models = _ref5.models
   return /*#__PURE__*/ (function() {
     var _ref6 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee3(req) {
-        var params, conditions, data
+        var params, conditions, relations, data
         return _regenerator['default'].wrap(function _callee3$(_context3) {
           while (1) {
             switch ((_context3.prev = _context3.next)) {
@@ -165,20 +169,29 @@ var createGetUserEvents = function createGetUserEvents(_ref5) {
                 conditions = {
                   user_id: params.user_id
                 }
-                _context3.next = 4
+                relations = [
+                  {
+                    model: models.User
+                  },
+                  {
+                    model: models.EventDay
+                  }
+                ]
+                _context3.next = 5
                 return listRecord({
                   model: _models.eventModel,
-                  conditions: conditions
+                  conditions: conditions,
+                  relations: relations
                 })
 
-              case 4:
+              case 5:
                 data = _context3.sent
                 return _context3.abrupt('return', {
                   data: data,
                   statusCode: 200
                 })
 
-              case 6:
+              case 7:
               case 'end':
                 return _context3.stop()
             }
