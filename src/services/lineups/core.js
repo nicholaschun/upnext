@@ -33,8 +33,9 @@ export const createSaveLineup = ({
       end_time: lineup.end_time,
       duration: lineup.duration,
       activity: lineup.activity,
+      description: lineup.description,
       duration_as_milli: lineup.duration_as_milli,
-      facilitator: lineup.duration_as_milli
+      facilitator: lineup.facilitator
     }
     await createRecord({ model: lineupModel, payload: lineupPayload })
   })
