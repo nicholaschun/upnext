@@ -109,9 +109,10 @@ var createSaveLineup = function createSaveLineup(_ref3) {
                                       end_time: lineup.end_time,
                                       duration: lineup.duration,
                                       activity: lineup.activity,
+                                      description: lineup.description,
                                       duration_as_milli:
                                         lineup.duration_as_milli,
-                                      facilitator: lineup.duration_as_milli
+                                      facilitator: lineup.facilitator
                                     }
                                     _context2.next = 6
                                     return createRecord({
