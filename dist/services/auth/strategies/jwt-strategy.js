@@ -11,22 +11,15 @@ var _passport = _interopRequireDefault(require('passport'))
 
 var _passportJwt = _interopRequireDefault(require('passport-jwt'))
 
-var _fs = _interopRequireDefault(require('fs'))
-
-var _path = _interopRequireDefault(require('path'))
-
 var _config = _interopRequireDefault(require('../../../config'))
-
-var privateKey = _fs['default']
-  .readFileSync(_path['default'].resolve('./src/config/keys/private.key'))
-  .toString('utf8')
 
 var ExtractJwt = _passportJwt['default'].ExtractJwt
 var _config$auth = _config['default'].auth,
   jwtIssuer = _config$auth.jwtIssuer,
   jwtAudience = _config$auth.jwtAudience,
   jwtExpiresIn = _config$auth.jwtExpiresIn,
-  jwtSubject = _config$auth.jwtSubject
+  jwtSubject = _config$auth.jwtSubject,
+  privateKey = _config$auth.privateKey
 var opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: privateKey,

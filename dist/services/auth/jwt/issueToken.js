@@ -9,21 +9,14 @@ exports.generateRefreshToken = exports.issueToken = void 0
 
 var _jsonwebtoken = _interopRequireDefault(require('jsonwebtoken'))
 
-var _fs = _interopRequireDefault(require('fs'))
-
-var _path = _interopRequireDefault(require('path'))
-
 var _config = _interopRequireDefault(require('../../../config'))
 
 var _config$auth = _config['default'].auth,
   jwtIssuer = _config$auth.jwtIssuer,
   jwtAudience = _config$auth.jwtAudience,
   jwtExpiresIn = _config$auth.jwtExpiresIn,
-  jwtSubject = _config$auth.jwtSubject
-
-var privateKey = _fs['default']
-  .readFileSync(_path['default'].resolve('./src/config/keys/private.key'))
-  .toString('utf8')
+  jwtSubject = _config$auth.jwtSubject,
+  privateKey = _config$auth.privateKey
 
 var issueToken = function issueToken(body) {
   var payload = {

@@ -27,7 +27,9 @@ var _default = {
     jwtIssuer: process.env.JWT_ISSUER,
     jwtAudience: process.env.JWT_AUDIENCE,
     jwtExpiresIn: process.env.JWT_EXPIRES_IN,
-    jwtSubject: process.env.JWT_SUBJECT
+    jwtSubject: process.env.JWT_SUBJECT,
+    privateKey: process.env.PRIVATE_KEY,
+    publicKey: process.env.PUBLIC_KEY
   },
   baseUrl: process.env.BASE_URL,
   port: process.env.PORT,

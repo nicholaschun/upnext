@@ -1,15 +1,10 @@
 import jwt from 'jsonwebtoken'
-import fs from 'fs'
-import path from 'path'
 
 import config from '../../../config'
 
 const {
-  auth: { jwtIssuer, jwtAudience, jwtExpiresIn, jwtSubject }
+  auth: { jwtIssuer, jwtAudience, jwtExpiresIn, jwtSubject, privateKey }
 } = config
-const privateKey = fs
-  .readFileSync(path.resolve('./src/config/keys/private.key'))
-  .toString('utf8')
 
 export const issueToken = body => {
   const payload = {
