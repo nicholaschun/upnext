@@ -69,37 +69,37 @@ var createSaveLineup = function createSaveLineup(_ref3) {
   return /*#__PURE__*/ (function() {
     var _ref4 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee3(req) {
-        var lineups, params, data
+        var lineups, params, conditions
         return _regenerator['default'].wrap(function _callee3$(_context3) {
           while (1) {
             switch ((_context3.prev = _context3.next)) {
               case 0:
-                ;(lineups = req.body), (params = req.params) // delete existing array of lineups and create a new one
+                ;(lineups = req.body), (params = req.params)
+                conditions = {
+                  day_id: params.day_id,
+                  event_id: params.event_id
+                }
+                _context3.next = 4
+                return deleteRecord({
+                  model: _models.lineupModel,
+                  conditions: conditions
+                })
 
-                data = (0, _awaiting.map)(
+              case 4:
+                _context3.next = 6
+                return (0, _awaiting.map)(
                   lineups,
                   lineups.length,
                   /*#__PURE__*/ (function() {
                     var _ref5 = (0, _asyncToGenerator2['default'])(
                       /*#__PURE__*/ _regenerator['default'].mark(
                         function _callee2(lineup) {
-                          var conditions, lineupPayload, res
+                          var lineupPayload
                           return _regenerator['default'].wrap(
                             function _callee2$(_context2) {
                               while (1) {
                                 switch ((_context2.prev = _context2.next)) {
                                   case 0:
-                                    conditions = {
-                                      day_id: params.day_id,
-                                      event_id: params.event_id
-                                    }
-                                    _context2.next = 3
-                                    return deleteRecord({
-                                      model: _models.lineupModel,
-                                      conditions: conditions
-                                    })
-
-                                  case 3:
                                     lineupPayload = {
                                       event_id: params.event_id,
                                       day_id: params.day_id,
@@ -113,16 +113,13 @@ var createSaveLineup = function createSaveLineup(_ref3) {
                                         lineup.duration_as_milli,
                                       facilitator: lineup.facilitator
                                     }
-                                    _context2.next = 6
+                                    _context2.next = 3
                                     return createRecord({
                                       model: _models.lineupModel,
                                       payload: lineupPayload
                                     })
 
-                                  case 6:
-                                    res = _context2.sent
-
-                                  case 7:
+                                  case 3:
                                   case 'end':
                                     return _context2.stop()
                                 }
@@ -139,12 +136,14 @@ var createSaveLineup = function createSaveLineup(_ref3) {
                     }
                   })()
                 )
+
+              case 6:
                 return _context3.abrupt('return', {
-                  data: data,
+                  data: lineups,
                   statusCode: 201
                 })
 
-              case 3:
+              case 7:
               case 'end':
                 return _context3.stop()
             }

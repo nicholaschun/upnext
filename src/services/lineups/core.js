@@ -1,4 +1,4 @@
-import { map as mapAwait } from 'awaiting'
+import { map as mapList } from 'awaiting'
 
 import { genuuid } from '../../utils/index'
 import { lineupModel } from '../../utils/models'
@@ -18,13 +18,12 @@ export const createSaveLineup = ({
 }) => async req => {
   const { body: lineups, params } = req
 
-  // delete existing array of lineups and create a new one
-  const data = mapAwait(lineups, lineups.length, async lineup => {
-    const conditions = {
-      day_id: params.day_id,
-      event_id: params.event_id
-    }
-    await deleteRecord({ model: lineupModel, conditions })
+  const conditions = {
+    day_id: params.day_id,
+    event_id: params.event_id
+  }
+  await deleteRecord({ model: lineupModel, conditions })
+  await mapList(lineups, lineups.length, async lineup => {
     const lineupPayload = {
       event_id: params.event_id,
       day_id: params.day_id,
@@ -37,10 +36,10 @@ export const createSaveLineup = ({
       duration_as_milli: lineup.duration_as_milli,
       facilitator: lineup.facilitator
     }
-    const res = await createRecord({
+    await createRecord({
       model: lineupModel,
       payload: lineupPayload
     })
   })
-  return { data, statusCode: 201 }
+  return { data: lineups, statusCode: 201 }
 }
