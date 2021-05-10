@@ -76,15 +76,14 @@ var createSaveLineup = function createSaveLineup(_ref3) {
               case 0:
                 ;(lineups = req.body), (params = req.params) // delete existing array of lineups and create a new one
 
-                _context3.next = 3
-                return (0, _awaiting.map)(
+                data = (0, _awaiting.map)(
                   lineups,
                   lineups.length,
                   /*#__PURE__*/ (function() {
                     var _ref5 = (0, _asyncToGenerator2['default'])(
                       /*#__PURE__*/ _regenerator['default'].mark(
                         function _callee2(lineup) {
-                          var conditions, lineupPayload
+                          var conditions, lineupPayload, res
                           return _regenerator['default'].wrap(
                             function _callee2$(_context2) {
                               while (1) {
@@ -121,6 +120,9 @@ var createSaveLineup = function createSaveLineup(_ref3) {
                                     })
 
                                   case 6:
+                                    res = _context2.sent
+
+                                  case 7:
                                   case 'end':
                                     return _context2.stop()
                                 }
@@ -137,15 +139,12 @@ var createSaveLineup = function createSaveLineup(_ref3) {
                     }
                   })()
                 )
-
-              case 3:
-                data = _context3.sent
                 return _context3.abrupt('return', {
                   data: data,
                   statusCode: 201
                 })
 
-              case 5:
+              case 3:
               case 'end':
                 return _context3.stop()
             }
