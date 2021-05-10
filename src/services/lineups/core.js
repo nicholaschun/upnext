@@ -19,7 +19,7 @@ export const createSaveLineup = ({
   const { body: lineups, params } = req
 
   // delete existing array of lineups and create a new one
-  const data = await mapAwait(lineups, lineups.length, async lineup => {
+  const data = mapAwait(lineups, lineups.length, async lineup => {
     const conditions = {
       day_id: params.day_id,
       event_id: params.event_id
@@ -37,7 +37,10 @@ export const createSaveLineup = ({
       duration_as_milli: lineup.duration_as_milli,
       facilitator: lineup.facilitator
     }
-    await createRecord({ model: lineupModel, payload: lineupPayload })
+    const res = await createRecord({
+      model: lineupModel,
+      payload: lineupPayload
+    })
   })
   return { data, statusCode: 201 }
 }
