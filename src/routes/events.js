@@ -22,15 +22,11 @@ routes.get('/:event_id', async (req, res) => {
   return respondWithData(resp, res)
 })
 
-routes.post(
-  '/',
-  multer({ dest: 'temp/' }).single('event_image'),
-  async (req, res) => {
-    const handler = container.resolve('createEvent')
-    const resp = await handler(req)
-    return respondWithData(resp, res)
-  }
-)
+routes.post('/', async (req, res) => {
+  const handler = container.resolve('createEvent')
+  const resp = await handler(req)
+  return respondWithData(resp, res)
+})
 
 routes.patch(
   '/:event_id',

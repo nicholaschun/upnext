@@ -5,6 +5,7 @@ import events from './events'
 import lineups from './lineups'
 import users from './users'
 import auth from './auth'
+import uploadFile from './upload'
 
 const { baseUrl } = config
 
@@ -24,6 +25,12 @@ router.use(
   `${baseUrl}/users`,
   passport.authenticate('jwt', { session: false }),
   users
+)
+
+router.use(
+  `${baseUrl}/uploadfile`,
+  // passport.authenticate('jwt', { session: false }),
+  uploadFile
 )
 router.use(`${baseUrl}/auth`, auth)
 

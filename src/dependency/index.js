@@ -25,6 +25,8 @@ import models from './../db/models/index'
 import { createS3Client, createPutToS3 } from '../utils/s3'
 import { create, get, update, list, remove } from './../utils/crud'
 
+import createUpload from '../services/upload/core'
+
 const container = createContainer({
   injectionMode: InjectionMode.PROXY
 })
@@ -60,7 +62,9 @@ container.register({
   editUser: asFunction(createEditUser).scoped(),
 
   s3Client: asFunction(createS3Client).scoped(),
-  putToS3: asFunction(createPutToS3).scoped()
+  putToS3: asFunction(createPutToS3).scoped(),
+
+  uploadFile: asFunction(createUpload).scoped()
 })
 
 export default container

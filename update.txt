@@ -1,0 +1,43 @@
+---- Payment Integration 1st approach -----
+1. userSettings - table
+   paymentPlan - ['free', 'starter', 'bronze']
+
+2. Add field on user table which maps back to userSettings
+
+3. Run a script to add free paymentPlan to all the users -
+
+
+
+
+---- Payment Integration 2nd approach -----
+
+1. userSettings - table
+   paymentPlan - ['free', 'starter', 'bronze']
+
+2. Add field on user table which maps back to userSettings
+
+3. When a user registers we default to free paymentPlan
+
+
+----- Payment model ---------
+
+free: {
+  event creation,
+  lineup createion
+  view event
+}
+
+starter: {
+  event creation,
+  lineup createion
+  view event,
+  create multiple lineups
+}
+
+bronze: {
+  event creation,
+  lineup createion
+  view event,
+  create multiple lineups
+  upload excel with lineups
+}

@@ -2,7 +2,7 @@ import path from 'path'
 import { map as mapAwait } from 'awaiting'
 
 import { generateEventLink, genuuid, clearTempFolder } from '../../utils/index'
-import { eventModel, eventDayModel } from '../../utils/models'
+import { eventModel, eventDayModel, lineupModel } from '../../utils/models'
 
 export const createGetEvents = ({ listRecord, models }) => async () => {
   const relations = [
@@ -48,27 +48,13 @@ export const createGetUserEvents = ({ listRecord, models }) => async req => {
   return { data, statusCode: 200 }
 }
 
-export const createCreateEvent = ({
-  createRecord,
-  config,
-  putToS3
-}) => async req => {
-  const { defaultEventImage } = config
-  const { body, file, user } = req
+export const createCreateEvent = ({ createRecord }) => async req => {
+  const { body, user } = req
   const eventSnippet = generateEventLink(body.event_name)
   const event_id = genuuid()
-  let featuredImage = defaultEventImage
-  if (file) {
-    const key = `events/${Date.now().toString()}${path.extname(
-      file.originalname
-    )}`
-    const { Location } = await putToS3({ key, file })
-    featuredImage = Location
-  }
   const eventPayload = {
     ...body,
     event_id,
-    event_image: featuredImage,
     user_id: user.user.data.user_id,
     event_url: `up-next.co/${eventSnippet}`,
     url_snippet: eventSnippet
@@ -130,6 +116,8 @@ export const createDeleteEvent = ({ deleteRecord }) => async req => {
     event_id: params.event_id
   }
   const data = await deleteRecord({ model: eventModel, conditions })
+  await deleteRecord({ model: eventDayModel, conditions })
+  await deleteRecord({ model: lineupModel, conditions })
   return { data, statusCode: 200 }
 }
 
