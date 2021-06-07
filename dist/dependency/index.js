@@ -25,6 +25,8 @@ var _s = require('../utils/s3')
 
 var _crud = require('./../utils/crud')
 
+var _core5 = _interopRequireDefault(require('../services/upload/core'))
+
 var container = (0, _awilix.createContainer)({
   injectionMode: _awilix.InjectionMode.PROXY
 })
@@ -36,6 +38,7 @@ container.register({
   listRecord: (0, _awilix.asFunction)(_crud.list).scoped(),
   updateRecord: (0, _awilix.asFunction)(_crud.update).scoped(),
   deleteRecord: (0, _awilix.asFunction)(_crud.remove).scoped(),
+  filterRecord: (0, _awilix.asFunction)(_crud.filter).scoped(),
   getAllEvents: (0, _awilix.asFunction)(_core.createGetEvents).scoped(),
   createEvent: (0, _awilix.asFunction)(_core.createCreateEvent).scoped(),
   getOneEvent: (0, _awilix.asFunction)(_core.createGetOneEvent).scoped(),
@@ -44,6 +47,7 @@ container.register({
   deleteEvent: (0, _awilix.asFunction)(_core.createDeleteEvent).scoped(),
   editEventDay: (0, _awilix.asFunction)(_core.createEditEventDay).scoped(),
   deleteEventDay: (0, _awilix.asFunction)(_core.createDeleteEventDay).scoped(),
+  searchEvent: (0, _awilix.asFunction)(_core.createSearchEvent).scoped(),
   saveLineup: (0, _awilix.asFunction)(_core2.createSaveLineup).scoped(),
   getLineups: (0, _awilix.asFunction)(_core2.createGetLineup).scoped(),
   register: (0, _awilix.asFunction)(_core3.createRegister).scoped(),
@@ -59,7 +63,8 @@ container.register({
   ).scoped(),
   editUser: (0, _awilix.asFunction)(_core4.createEditUser).scoped(),
   s3Client: (0, _awilix.asFunction)(_s.createS3Client).scoped(),
-  putToS3: (0, _awilix.asFunction)(_s.createPutToS3).scoped()
+  putToS3: (0, _awilix.asFunction)(_s.createPutToS3).scoped(),
+  uploadFile: (0, _awilix.asFunction)(_core5['default']).scoped()
 })
 var _default = container
 exports['default'] = _default

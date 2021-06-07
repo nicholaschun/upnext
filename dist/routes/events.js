@@ -15,8 +15,6 @@ var _asyncToGenerator2 = _interopRequireDefault(
 
 var _express = _interopRequireDefault(require('express'))
 
-var _multer = _interopRequireDefault(require('multer'))
-
 var _dependency = _interopRequireDefault(require('./../dependency'))
 
 var _utils = require('./../utils')
@@ -59,7 +57,7 @@ routes.get(
   })()
 )
 routes.get(
-  '/user/:user_id',
+  '/search/:field',
   /*#__PURE__*/ (function() {
     var _ref2 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee2(req, res) {
@@ -68,7 +66,7 @@ routes.get(
           while (1) {
             switch ((_context2.prev = _context2.next)) {
               case 0:
-                handler = _dependency['default'].resolve('getUserEvents')
+                handler = _dependency['default'].resolve('searchEvent')
                 _context2.next = 3
                 return handler(req)
 
@@ -94,7 +92,7 @@ routes.get(
   })()
 )
 routes.get(
-  '/:event_id',
+  '/user/:user_id',
   /*#__PURE__*/ (function() {
     var _ref3 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee3(req, res) {
@@ -103,7 +101,7 @@ routes.get(
           while (1) {
             switch ((_context3.prev = _context3.next)) {
               case 0:
-                handler = _dependency['default'].resolve('getOneEvent')
+                handler = _dependency['default'].resolve('getUserEvents')
                 _context3.next = 3
                 return handler(req)
 
@@ -128,11 +126,8 @@ routes.get(
     }
   })()
 )
-routes.post(
-  '/',
-  (0, _multer['default'])({
-    dest: 'temp/'
-  }).single('event_image'),
+routes.get(
+  '/:event_id',
   /*#__PURE__*/ (function() {
     var _ref4 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee4(req, res) {
@@ -141,7 +136,7 @@ routes.post(
           while (1) {
             switch ((_context4.prev = _context4.next)) {
               case 0:
-                handler = _dependency['default'].resolve('createEvent')
+                handler = _dependency['default'].resolve('getOneEvent')
                 _context4.next = 3
                 return handler(req)
 
@@ -166,11 +161,8 @@ routes.post(
     }
   })()
 )
-routes.patch(
-  '/:event_id',
-  (0, _multer['default'])({
-    dest: 'temp/'
-  }).single('event_image'),
+routes.post(
+  '/',
   /*#__PURE__*/ (function() {
     var _ref5 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee5(req, res) {
@@ -179,7 +171,7 @@ routes.patch(
           while (1) {
             switch ((_context5.prev = _context5.next)) {
               case 0:
-                handler = _dependency['default'].resolve('editEvent')
+                handler = _dependency['default'].resolve('createEvent')
                 _context5.next = 3
                 return handler(req)
 
@@ -204,7 +196,7 @@ routes.patch(
     }
   })()
 )
-routes['delete'](
+routes.patch(
   '/:event_id',
   /*#__PURE__*/ (function() {
     var _ref6 = (0, _asyncToGenerator2['default'])(
@@ -214,7 +206,7 @@ routes['delete'](
           while (1) {
             switch ((_context6.prev = _context6.next)) {
               case 0:
-                handler = _dependency['default'].resolve('deleteEvent')
+                handler = _dependency['default'].resolve('editEvent')
                 _context6.next = 3
                 return handler(req)
 
@@ -239,8 +231,8 @@ routes['delete'](
     }
   })()
 )
-routes.patch(
-  '/day/:day_id',
+routes['delete'](
+  '/:event_id',
   /*#__PURE__*/ (function() {
     var _ref7 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee7(req, res) {
@@ -249,7 +241,7 @@ routes.patch(
           while (1) {
             switch ((_context7.prev = _context7.next)) {
               case 0:
-                handler = _dependency['default'].resolve('editEventDay')
+                handler = _dependency['default'].resolve('deleteEvent')
                 _context7.next = 3
                 return handler(req)
 
@@ -274,7 +266,7 @@ routes.patch(
     }
   })()
 )
-routes['delete'](
+routes.patch(
   '/day/:day_id',
   /*#__PURE__*/ (function() {
     var _ref8 = (0, _asyncToGenerator2['default'])(
@@ -284,7 +276,7 @@ routes['delete'](
           while (1) {
             switch ((_context8.prev = _context8.next)) {
               case 0:
-                handler = _dependency['default'].resolve('deleteEventDay')
+                handler = _dependency['default'].resolve('editEventDay')
                 _context8.next = 3
                 return handler(req)
 
@@ -306,6 +298,41 @@ routes['delete'](
 
     return function(_x15, _x16) {
       return _ref8.apply(this, arguments)
+    }
+  })()
+)
+routes['delete'](
+  '/day/:day_id',
+  /*#__PURE__*/ (function() {
+    var _ref9 = (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/ _regenerator['default'].mark(function _callee9(req, res) {
+        var handler, resp
+        return _regenerator['default'].wrap(function _callee9$(_context9) {
+          while (1) {
+            switch ((_context9.prev = _context9.next)) {
+              case 0:
+                handler = _dependency['default'].resolve('deleteEventDay')
+                _context9.next = 3
+                return handler(req)
+
+              case 3:
+                resp = _context9.sent
+                return _context9.abrupt(
+                  'return',
+                  (0, _utils.respondWithData)(resp, res)
+                )
+
+              case 5:
+              case 'end':
+                return _context9.stop()
+            }
+          }
+        }, _callee9)
+      })
+    )
+
+    return function(_x17, _x18) {
+      return _ref9.apply(this, arguments)
     }
   })()
 )

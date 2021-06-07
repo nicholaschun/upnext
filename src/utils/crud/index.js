@@ -1,3 +1,5 @@
+import { Op } from 'sequelize'
+
 export const create = ({ models }) => ({ model, payload }) => {
   const table = models[model]
   return Promise.resolve(table.create(payload))
@@ -41,6 +43,26 @@ export const remove = ({ models }) => ({ model, conditions }) => {
   return Promise.resolve(
     table.destroy({
       where: { ...conditions }
+    })
+  )
+}
+
+export const filter = ({ models }) => ({
+  model,
+  conditions,
+  relations = null
+}) => {
+  const table = models[model]
+  const { field, searchVal } = conditions
+  const query = {
+    [field]: {
+      [Op.like]: `%${searchVal}%`
+    }
+  }
+  return Promise.resolve(
+    table.findAll({
+      where: { ...query },
+      include: relations
     })
   )
 }

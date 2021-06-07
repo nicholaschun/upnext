@@ -5,11 +5,13 @@ var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, '__esModule', {
   value: true
 })
-exports.remove = exports.update = exports.get = exports.list = exports.create = void 0
+exports.filter = exports.remove = exports.update = exports.get = exports.list = exports.create = void 0
 
 var _defineProperty2 = _interopRequireDefault(
   require('@babel/runtime/helpers/defineProperty')
 )
+
+var _sequelize = require('sequelize')
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object)
@@ -129,3 +131,33 @@ var remove = function remove(_ref9) {
 }
 
 exports.remove = remove
+
+var filter = function filter(_ref11) {
+  var models = _ref11.models
+  return function(_ref12) {
+    var model = _ref12.model,
+      conditions = _ref12.conditions,
+      _ref12$relations = _ref12.relations,
+      relations = _ref12$relations === void 0 ? null : _ref12$relations
+    var table = models[model]
+    var field = conditions.field,
+      searchVal = conditions.searchVal
+    var query = (0, _defineProperty2['default'])(
+      {},
+      field,
+      (0, _defineProperty2['default'])(
+        {},
+        _sequelize.Op.like,
+        '%'.concat(searchVal, '%')
+      )
+    )
+    return Promise.resolve(
+      table.findAll({
+        where: _objectSpread({}, query),
+        include: relations
+      })
+    )
+  }
+}
+
+exports.filter = filter

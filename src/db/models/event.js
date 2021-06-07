@@ -19,9 +19,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: 0
       },
+      is_draft: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: 0
+      },
       event_image: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       event_image_thumb: {
         type: DataTypes.STRING

@@ -19,6 +19,10 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: 'user_id',
       targetKey: 'user_id'
     })
+    User.belongsTo(models.UserSettings, {
+      foreignKey: 'user_id',
+      targetKey: 'user_id'
+    })
     User.hasOne(models.Event, {
       foreignKey: 'user_id',
       targetKey: 'user_id'

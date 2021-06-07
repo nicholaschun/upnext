@@ -148,6 +148,9 @@ var createLogin = function createLogin(_ref3) {
                 relations = [
                   {
                     model: models.UserProfile
+                  },
+                  {
+                    model: models.UserSettings
                   }
                 ]
                 _context2.next = 5
@@ -195,7 +198,8 @@ var createLogin = function createLogin(_ref3) {
                   organization: user.UserProfile.organization,
                   profile: user.UserProfile.profile,
                   status: user.status,
-                  verified: user.verified
+                  verified: user.verified,
+                  user_settings: user.UserSetting
                 }
                 token = (0, _issueToken.issueToken)(body)
                 result = {

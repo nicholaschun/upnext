@@ -5,7 +5,7 @@ var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, '__esModule', {
   value: true
 })
-exports.createDeleteEventDay = exports.createEditEventDay = exports.createDeleteEvent = exports.createEditEvent = exports.createCreateEvent = exports.createGetUserEvents = exports.createGetOneEvent = exports.createGetEvents = void 0
+exports.createSearchEvent = exports.createDeleteEventDay = exports.createEditEventDay = exports.createDeleteEvent = exports.createEditEvent = exports.createCreateEvent = exports.createGetUserEvents = exports.createGetOneEvent = exports.createGetEvents = void 0
 
 var _defineProperty2 = _interopRequireDefault(
   require('@babel/runtime/helpers/defineProperty')
@@ -16,8 +16,6 @@ var _regenerator = _interopRequireDefault(require('@babel/runtime/regenerator'))
 var _asyncToGenerator2 = _interopRequireDefault(
   require('@babel/runtime/helpers/asyncToGenerator')
 )
-
-var _path = _interopRequireDefault(require('path'))
 
 var _awaiting = require('awaiting')
 
@@ -210,61 +208,34 @@ exports.createGetUserEvents = createGetUserEvents
 
 var createCreateEvent = function createCreateEvent(_ref7) {
   var createRecord = _ref7.createRecord,
-    config = _ref7.config,
-    putToS3 = _ref7.putToS3
+    config = _ref7.config
   return /*#__PURE__*/ (function() {
     var _ref8 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee5(req) {
-        var defaultEventImage,
-          body,
-          file,
+        var body,
           user,
+          defaultEventImage,
+          eventImage,
           eventSnippet,
           event_id,
-          featuredImage,
-          key,
-          _yield$putToS,
-          Location,
           eventPayload,
           event_dates,
           data
-
         return _regenerator['default'].wrap(function _callee5$(_context5) {
           while (1) {
             switch ((_context5.prev = _context5.next)) {
               case 0:
+                ;(body = req.body), (user = req.user)
                 defaultEventImage = config.defaultEventImage
-                ;(body = req.body), (file = req.file), (user = req.user)
+                eventImage = body.event_image
                 eventSnippet = (0, _index.generateEventLink)(body.event_name)
                 event_id = (0, _index.genuuid)()
-                featuredImage = defaultEventImage
-
-                if (!file) {
-                  _context5.next = 12
-                  break
-                }
-
-                key = 'events/'
-                  .concat(Date.now().toString())
-                  .concat(_path['default'].extname(file.originalname))
-                _context5.next = 9
-                return putToS3({
-                  key: key,
-                  file: file
-                })
-
-              case 9:
-                _yield$putToS = _context5.sent
-                Location = _yield$putToS.Location
-                featuredImage = Location
-
-              case 12:
                 eventPayload = _objectSpread(
                   _objectSpread({}, body),
                   {},
                   {
+                    event_image: eventImage || defaultEventImage,
                     event_id: event_id,
-                    event_image: featuredImage,
                     user_id: user.user.data.user_id,
                     event_url: 'up-next.co/'.concat(eventSnippet),
                     url_snippet: eventSnippet
@@ -272,8 +243,7 @@ var createCreateEvent = function createCreateEvent(_ref7) {
                 ) // creates event dates
 
                 event_dates = body.event_dates
-                ;(0, _index.clearTempFolder)()
-                _context5.next = 17
+                _context5.next = 9
                 return (0, _awaiting.map)(
                   event_dates,
                   event_dates.length,
@@ -319,22 +289,21 @@ var createCreateEvent = function createCreateEvent(_ref7) {
                   })()
                 )
 
-              case 17:
-                _context5.next = 19
+              case 9:
+                _context5.next = 11
                 return createRecord({
                   model: _models.eventModel,
                   payload: eventPayload
                 })
 
-              case 19:
+              case 11:
                 data = _context5.sent
-                ;(0, _index.clearTempFolder)()
                 return _context5.abrupt('return', {
                   data: data,
                   statusCode: 201
                 })
 
-              case 22:
+              case 13:
               case 'end':
                 return _context5.stop()
             }
@@ -353,77 +322,49 @@ exports.createCreateEvent = createCreateEvent
 
 var createEditEvent = function createEditEvent(_ref10) {
   var updateRecord = _ref10.updateRecord,
-    config = _ref10.config,
-    putToS3 = _ref10.putToS3
+    config = _ref10.config
   return /*#__PURE__*/ (function() {
     var _ref11 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee6(req) {
         var params,
           body,
-          file,
           defaultEventImage,
           conditions,
-          featuredImage,
-          key,
-          _yield$putToS2,
-          Location,
+          eventImage,
           eventPayload,
           data
-
         return _regenerator['default'].wrap(function _callee6$(_context6) {
           while (1) {
             switch ((_context6.prev = _context6.next)) {
               case 0:
-                ;(params = req.params), (body = req.body), (file = req.file)
+                ;(params = req.params), (body = req.body)
                 defaultEventImage = config.defaultEventImage
                 conditions = {
                   event_id: params.event_id
                 }
-                featuredImage = defaultEventImage
-
-                if (!file) {
-                  _context6.next = 11
-                  break
-                }
-
-                key = 'events/'
-                  .concat(Date.now().toString())
-                  .concat(_path['default'].extname(file.originalname))
-                _context6.next = 8
-                return putToS3({
-                  key: key,
-                  file: file
-                })
-
-              case 8:
-                _yield$putToS2 = _context6.sent
-                Location = _yield$putToS2.Location
-                featuredImage = Location
-
-              case 11:
+                eventImage = body.event_image
                 eventPayload = _objectSpread(
                   _objectSpread({}, body),
                   {},
                   {
-                    event_image: featuredImage
+                    event_image: eventImage || defaultEventImage
                   }
                 )
-                _context6.next = 14
+                _context6.next = 7
                 return updateRecord({
                   model: _models.eventModel,
                   conditions: conditions,
                   payload: eventPayload
                 })
 
-              case 14:
+              case 7:
                 data = _context6.sent
-                ;(0, _index.clearTempFolder)()
                 return _context6.abrupt('return', {
                   data: data,
                   statusCode: 200
                 })
 
-              case 17:
+              case 9:
               case 'end':
                 return _context6.stop()
             }
@@ -462,12 +403,26 @@ var createDeleteEvent = function createDeleteEvent(_ref12) {
 
               case 4:
                 data = _context7.sent
+                _context7.next = 7
+                return deleteRecord({
+                  model: _models.eventDayModel,
+                  conditions: conditions
+                })
+
+              case 7:
+                _context7.next = 9
+                return deleteRecord({
+                  model: _models.lineupModel,
+                  conditions: conditions
+                })
+
+              case 9:
                 return _context7.abrupt('return', {
                   data: data,
                   statusCode: 200
                 })
 
-              case 6:
+              case 10:
               case 'end':
                 return _context7.stop()
             }
@@ -551,12 +506,19 @@ var createDeleteEventDay = function createDeleteEventDay(_ref16) {
 
               case 4:
                 data = _context9.sent
+                _context9.next = 7
+                return deleteRecord({
+                  model: _models.lineupModel,
+                  conditions: conditions
+                })
+
+              case 7:
                 return _context9.abrupt('return', {
                   data: data,
                   statusCode: 200
                 })
 
-              case 6:
+              case 8:
               case 'end':
                 return _context9.stop()
             }
@@ -572,3 +534,58 @@ var createDeleteEventDay = function createDeleteEventDay(_ref16) {
 }
 
 exports.createDeleteEventDay = createDeleteEventDay
+
+var createSearchEvent = function createSearchEvent(_ref18) {
+  var filterRecord = _ref18.filterRecord,
+    models = _ref18.models
+  return /*#__PURE__*/ (function() {
+    var _ref19 = (0, _asyncToGenerator2['default'])(
+      /*#__PURE__*/ _regenerator['default'].mark(function _callee10(req) {
+        var s, field, conditions, relations, data
+        return _regenerator['default'].wrap(function _callee10$(_context10) {
+          while (1) {
+            switch ((_context10.prev = _context10.next)) {
+              case 0:
+                ;(s = req.query.s), (field = req.params.field)
+                conditions = {
+                  field: field,
+                  searchVal: s
+                }
+                relations = [
+                  {
+                    model: models.User
+                  },
+                  {
+                    model: models.EventDay
+                  }
+                ]
+                _context10.next = 5
+                return filterRecord({
+                  model: _models.eventModel,
+                  conditions: conditions,
+                  relations: relations
+                })
+
+              case 5:
+                data = _context10.sent
+                return _context10.abrupt('return', {
+                  data: data,
+                  statusCode: 200
+                })
+
+              case 7:
+              case 'end':
+                return _context10.stop()
+            }
+          }
+        }, _callee10)
+      })
+    )
+
+    return function(_x9) {
+      return _ref19.apply(this, arguments)
+    }
+  })()
+}
+
+exports.createSearchEvent = createSearchEvent

@@ -30,6 +30,9 @@ module.exports = {
       is_public: {
         type: Sequelize.BOOLEAN
       },
+      is_draft: {
+        type: Sequelize.BOOLEAN
+      },
       event_url: {
         type: Sequelize.STRING
       },

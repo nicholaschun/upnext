@@ -21,6 +21,8 @@ var _users = _interopRequireDefault(require('./users'))
 
 var _auth = _interopRequireDefault(require('./auth'))
 
+var _upload = _interopRequireDefault(require('./upload'))
+
 var baseUrl = _config['default'].baseUrl
 
 var router = _express['default'].Router()
@@ -45,6 +47,10 @@ router.use(
     session: false
   }),
   _users['default']
+)
+router.use(
+  ''.concat(baseUrl, '/uploadfile'), // passport.authenticate('jwt', { session: false }),
+  _upload['default']
 )
 router.use(''.concat(baseUrl, '/auth'), _auth['default'])
 var _default = router

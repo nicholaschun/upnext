@@ -7,6 +7,7 @@
     "dev": "./node_modules/.bin/nodemon --exec babel-node src/server.js -r dotenv/config dotenv_config_path=./.env",
     "start": "node dist/server.js",
     "build": "rimraf dist && babel ./src --out-dir dist/  --ignore ./node_modules",
+    "migrate": "npx sequelize db:migrate",
     "test": "echo \"Error: no test specified\" && exit 0 && ava"
   },
   "keywords": [],

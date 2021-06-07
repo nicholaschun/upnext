@@ -8,7 +8,8 @@ import {
   createDeleteEvent,
   createGetUserEvents,
   createEditEventDay,
-  createDeleteEventDay
+  createDeleteEventDay,
+  createSearchEvent
 } from '../services/events/core'
 
 import { createSaveLineup, createGetLineup } from '../services/lineups/core'
@@ -23,7 +24,7 @@ import config from '../config'
 import models from './../db/models/index'
 
 import { createS3Client, createPutToS3 } from '../utils/s3'
-import { create, get, update, list, remove } from './../utils/crud'
+import { create, get, update, list, remove, filter } from './../utils/crud'
 
 import createUpload from '../services/upload/core'
 
@@ -40,6 +41,7 @@ container.register({
   listRecord: asFunction(list).scoped(),
   updateRecord: asFunction(update).scoped(),
   deleteRecord: asFunction(remove).scoped(),
+  filterRecord: asFunction(filter).scoped(),
 
   getAllEvents: asFunction(createGetEvents).scoped(),
   createEvent: asFunction(createCreateEvent).scoped(),
@@ -49,6 +51,7 @@ container.register({
   deleteEvent: asFunction(createDeleteEvent).scoped(),
   editEventDay: asFunction(createEditEventDay).scoped(),
   deleteEventDay: asFunction(createDeleteEventDay).scoped(),
+  searchEvent: asFunction(createSearchEvent).scoped(),
 
   saveLineup: asFunction(createSaveLineup).scoped(),
   getLineups: asFunction(createGetLineup).scoped(),

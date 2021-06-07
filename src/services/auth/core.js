@@ -53,6 +53,9 @@ export const createLogin = ({ getRecord, models }) => async req => {
   const relations = [
     {
       model: models.UserProfile
+    },
+    {
+      model: models.UserSettings
     }
   ]
   const user = await getRecord({ model: userModel, conditions, relations })
@@ -70,7 +73,8 @@ export const createLogin = ({ getRecord, models }) => async req => {
         organization: user.UserProfile.organization,
         profile: user.UserProfile.profile,
         status: user.status,
-        verified: user.verified
+        verified: user.verified,
+        user_settings: user.UserSetting
       }
       const token = issueToken(body)
       const result = {
