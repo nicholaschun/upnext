@@ -5,12 +5,11 @@ export default ({ putToS3 }) => async req => {
     file,
     body: { type }
   } = req
-  console.log(type)
   if (file) {
     const key = `${type}/${Date.now().toString()}${path.extname(
       file.originalname
     )}`
     const { Location } = await putToS3({ key, file })
-    return { data: Location, statusCode: 200 }
+    return { data: { location: Location, type }, statusCode: 200 }
   }
 }

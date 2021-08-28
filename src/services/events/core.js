@@ -63,17 +63,19 @@ export const createCreateEvent = ({ createRecord, config }) => async req => {
   }
   // creates event dates
   const { event_dates } = body
-  await mapAwait(event_dates, event_dates.length, async event_date => {
-    const eventDayPayload = {
-      event_id,
-      day_id: genuuid(),
-      date: event_date,
-      has_questions: 0,
-      has_feedback: 0,
-      hide_time: 0
-    }
-    await createRecord({ model: eventDayModel, payload: eventDayPayload })
-  })
+  if (event_dates) {
+    await mapAwait(event_dates, event_dates.length, async event_date => {
+      const eventDayPayload = {
+        event_id,
+        day_id: genuuid(),
+        date: event_date,
+        has_questions: 0,
+        has_feedback: 0,
+        hide_time: 0
+      }
+      await createRecord({ model: eventDayModel, payload: eventDayPayload })
+    })
+  }
   const data = await createRecord({ model: eventModel, payload: eventPayload })
   return { data, statusCode: 201 }
 }
@@ -105,6 +107,25 @@ export const createDeleteEvent = ({ deleteRecord }) => async req => {
   const data = await deleteRecord({ model: eventModel, conditions })
   await deleteRecord({ model: eventDayModel, conditions })
   await deleteRecord({ model: lineupModel, conditions })
+  return { data, statusCode: 200 }
+}
+
+export const createCreateEventDay = ({ createRecord }) => async req => {
+  const { params, body } = req
+  const data = await mapAwait(body, body.length, async event_date => {
+    const eventDayPayload = {
+      event_id: params.event_id,
+      day_id: genuuid(),
+      date: event_date.date,
+      has_questions: 0,
+      has_feedback: 0,
+      hide_time: 0
+    }
+    return await createRecord({
+      model: eventDayModel,
+      payload: eventDayPayload
+    })
+  })
   return { data, statusCode: 200 }
 }
 

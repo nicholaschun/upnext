@@ -4,7 +4,11 @@ import {
   genToken,
   comparePassword
 } from '../../utils/index'
-import { userModel, userProfileModel } from '../../utils/models'
+import {
+  userModel,
+  userProfileModel,
+  userSettingsModel
+} from '../../utils/models'
 import { issueToken } from './jwt/issueToken'
 
 export const createRegister = ({
@@ -35,11 +39,14 @@ export const createRegister = ({
     sub_id: null,
     loginProvider: 3,
     user_id: userId,
-    verify_token: genToken(body.password)
+    verify_token: genToken(body.password),
+    plan: 'free'
   }
   // create user profile
   await createRecord({ model: userProfileModel, payload: userPayload })
   const data = await createRecord({ model: userModel, payload: userPayload })
+  await createRecord({ model: userSettingsModel, payload: userPayload })
+
   return { data, statusCode: 201 }
 }
 
@@ -130,11 +137,14 @@ export const createWithLoginSocial = ({
     verified: 1,
     sub_id: body.id,
     loginProvider: 2,
-    user_id: userId
+    user_id: userId,
+    plan: 'free'
   }
   // create user profile
   await createRecord({ model: userProfileModel, payload: userPayload })
   await createRecord({ model: userModel, payload: userPayload })
+  await createRecord({ model: userSettingsModel, payload: userPayload })
+
   const token = issueToken(userPayload)
   return { data: { token: token, user: userPayload }, statusCode: 200 }
 }

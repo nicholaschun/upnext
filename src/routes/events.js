@@ -51,6 +51,12 @@ routes.patch('/day/:day_id', async (req, res) => {
   return respondWithData(resp, res)
 })
 
+routes.post('/day/:event_id', async (req, res) => {
+  const handler = container.resolve('createEventDay')
+  const resp = await handler(req)
+  return respondWithData(resp, res)
+})
+
 routes.delete('/day/:day_id', async (req, res) => {
   const handler = container.resolve('deleteEventDay')
   const resp = await handler(req)

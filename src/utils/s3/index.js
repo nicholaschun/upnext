@@ -18,6 +18,8 @@ export const createPutToS3 = ({ s3Client, config }) => async ({
   const {
     s3: { bucket }
   } = config
+  console.log('---file', file)
+
   try {
     const resp = await s3Client
       .upload({
@@ -27,6 +29,7 @@ export const createPutToS3 = ({ s3Client, config }) => async ({
         ACL: 'public-read'
       })
       .promise()
+    console.log('---res', resp)
     return resp
   } catch (error) {
     console.log('could not upload file', error)

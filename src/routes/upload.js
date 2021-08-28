@@ -4,10 +4,14 @@ import container from './../dependency'
 import { respondWithData } from './../utils'
 
 const routes = express.Router()
-routes.post('/', multer({ dest: 'temp/' }).single('file'), async (req, res) => {
-  const handler = container.resolve('uploadFile')
-  const resp = await handler(req, res)
-  return respondWithData(resp, res)
-})
+routes.post(
+  '/',
+  multer({ dest: 'temp/' }).single('image'),
+  async (req, res) => {
+    const handler = container.resolve('uploadFile')
+    const resp = await handler(req, res)
+    return respondWithData(resp, res)
+  }
+)
 
 export default routes

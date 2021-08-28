@@ -9,7 +9,8 @@ import {
   createGetUserEvents,
   createEditEventDay,
   createDeleteEventDay,
-  createSearchEvent
+  createSearchEvent,
+  createCreateEventDay
 } from '../services/events/core'
 
 import { createSaveLineup, createGetLineup } from '../services/lineups/core'
@@ -49,6 +50,7 @@ container.register({
   getUserEvents: asFunction(createGetUserEvents).scoped(),
   editEvent: asFunction(createEditEvent).scoped(),
   deleteEvent: asFunction(createDeleteEvent).scoped(),
+  createEventDay: asFunction(createCreateEventDay).scoped(),
   editEventDay: asFunction(createEditEventDay).scoped(),
   deleteEventDay: asFunction(createDeleteEventDay).scoped(),
   searchEvent: asFunction(createSearchEvent).scoped(),
