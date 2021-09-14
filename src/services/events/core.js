@@ -1,6 +1,6 @@
 import { map as mapAwait } from 'awaiting'
 
-import { generateEventLink, genuuid } from '../../utils/index'
+import { generateEventLink, genuuid, formatDate } from '../../utils/index'
 import { eventModel, eventDayModel, lineupModel } from '../../utils/models'
 
 export const createGetEvents = ({ listRecord, models }) => async () => {
@@ -68,7 +68,7 @@ export const createCreateEvent = ({ createRecord, config }) => async req => {
       const eventDayPayload = {
         event_id,
         day_id: genuuid(),
-        date: event_date,
+        date: formatDate(event_date),
         has_questions: 0,
         has_feedback: 0,
         hide_time: 0
@@ -116,7 +116,7 @@ export const createCreateEventDay = ({ createRecord }) => async req => {
     const eventDayPayload = {
       event_id: params.event_id,
       day_id: genuuid(),
-      date: event_date.date,
+      date: formatDate(event_date.date),
       has_questions: 0,
       has_feedback: 0,
       hide_time: 0
@@ -131,6 +131,7 @@ export const createCreateEventDay = ({ createRecord }) => async req => {
 
 export const createEditEventDay = ({ updateRecord }) => async req => {
   const { params, body: payload } = req
+  payload.date = formatDate(payload.date)
   const conditions = {
     day_id: params.day_id
   }

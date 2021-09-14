@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs'
 import uuid from 'uuid'
 import fs from 'fs'
 import path from 'path'
+import momment from 'moment'
 
 export const genToken = val => {
   return crypto
@@ -39,4 +40,8 @@ export const clearTempFolder = async () => {
       })
     }
   })
+}
+
+export const formatDate = (date, format = 'll') => {
+  return momment(date).format(format)
 }
