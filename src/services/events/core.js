@@ -89,7 +89,7 @@ export const createEditEvent = ({ updateRecord, config }) => async req => {
   const { event_image: eventImage } = body
   const eventPayload = {
     ...body,
-    event_image: eventImage || defaultEventImage
+    event_image: eventImage
   }
   const data = await updateRecord({
     model: eventModel,

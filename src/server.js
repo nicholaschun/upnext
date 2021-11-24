@@ -11,8 +11,8 @@ import passportConfig from './services/auth'
 const { port, host, auth } = config
 const { sessionSecret, sessionKey } = auth
 const app = express()
-const defaultPort = port
-const defaultHostname = host
+const defaultPort = port || 4000
+const defaultHostname = host || 'http://localhost'
 
 app.use(
   session({
