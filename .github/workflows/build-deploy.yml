@@ -26,11 +26,10 @@ jobs:
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v18
         with:
-          folder: dist
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: upnext-api
           environment_name: Upnextapi-env
-          version_label: ${{ git rev-parse --short "$GITHUB_SHA" }}
+          version_label: v2
           region: us-east-1
           deployment_package: deploy.zip
