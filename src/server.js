@@ -6,7 +6,7 @@ import passport from 'passport'
 
 import routes from './routes'
 import config from './config'
-import passportConfig from './services/auth'
+// import passportConfig from './services/auth'
 
 const { port, host, auth } = config
 const { sessionSecret, sessionKey } = auth
@@ -26,7 +26,7 @@ app.use(
 app.use(cors())
 app.use(bodyParser.json())
 app.use(passport.initialize())
-passportConfig(passport)
+// passportConfig(passport)
 
 app.use(routes)
 app.listen(port, () => {
