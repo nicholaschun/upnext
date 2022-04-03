@@ -80,7 +80,11 @@ export const createCreateEvent = ({ createRecord, config }) => async req => {
   return { data, statusCode: 201 }
 }
 
-export const createEditEvent = ({ updateRecord, config }) => async req => {
+export const createEditEvent = ({
+  updateRecord,
+  config,
+  getRecord
+}) => async req => {
   const { params, body } = req
   const { defaultEventImage } = config
   const conditions = {
@@ -91,10 +95,14 @@ export const createEditEvent = ({ updateRecord, config }) => async req => {
     ...body,
     event_image: eventImage
   }
-  const data = await updateRecord({
+  await updateRecord({
     model: eventModel,
     conditions,
     payload: eventPayload
+  })
+  const data = await getRecord({
+    model: eventModel,
+    conditions
   })
   return { data, statusCode: 200 }
 }
@@ -129,13 +137,34 @@ export const createCreateEventDay = ({ createRecord }) => async req => {
   return { data, statusCode: 200 }
 }
 
-export const createEditEventDay = ({ updateRecord }) => async req => {
+export const createEditEventDay = ({
+  updateRecord,
+  getRecord
+}) => async req => {
   const { params, body: payload } = req
-  payload.date = formatDate(payload.date)
-  const conditions = {
-    day_id: params.day_id
-  }
-  const data = await updateRecord({ model: eventDayModel, conditions, payload })
+  const data = await getRecord({
+    model: eventDayModel,
+    conditions: {
+      day_id: '3d0b7842-9ed4-4fcb-9233-5b6ad9b9c6f0'
+    }
+  })
+  console.log('---data', data)
+  // payload.date = formatDate(payload.date)
+  // const conditions = {
+  //   day_id: params.day_id
+  // }
+  // console.log('---payload', payload)
+
+  // const update = await getRecord({
+  //   model: eventDayModel,
+  //   conditions
+  //  })
+  // console.log('----update', update)
+  // const data = await getRecord({
+  //   model: eventDayModel,
+  //   conditions
+  // })
+  // console.log('----get data', data)
   return { data, statusCode: 200 }
 }
 
