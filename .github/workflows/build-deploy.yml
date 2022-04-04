@@ -32,3 +32,5 @@ jobs:
           environment_name: Upnextapi-env
           version_label: v2.1
           region: us-east-1
+          deployment_package: deploy.zip
+
