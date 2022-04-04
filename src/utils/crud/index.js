@@ -11,7 +11,6 @@ export const list = ({ models }) => ({
   relations = null
 }) => {
   const table = models[model]
-  console.log('---table', table)
   return Promise.resolve(
     table.findAll({
       where: { ...conditions },

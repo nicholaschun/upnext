@@ -16,18 +16,18 @@ module.exports = function(sequelize, DataTypes) {
 
   EventDay.associate = function(models) {
     // associations can be defined here
-    EventDay.hasMany(models.Lineup, {
-      foreignKey: 'day_id',
-      targetKey: 'day_id'
-    })
-    EventDay.hasMany(models.Feedback, {
-      foreignKey: 'day_id',
-      targetKey: 'day_id'
-    })
-    EventDay.hasMany(models.Question, {
-      foreignKey: 'day_id',
-      targetKey: 'day_id'
-    })
+    // EventDay.hasMany(models.Lineup, {
+    //   foreignKey: 'day_id',
+    //   targetKey: 'day_id'
+    // })
+    // EventDay.hasMany(models.Feedback, {
+    //   foreignKey: 'day_id',
+    //   targetKey: 'day_id'
+    // })
+    // EventDay.hasMany(models.Question, {
+    //   foreignKey: 'day_id',
+    //   targetKey: 'day_id'
+    // })
   }
 
   return EventDay

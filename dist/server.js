@@ -21,7 +21,8 @@ var _routes = _interopRequireDefault(require('./routes'))
 
 var _config = _interopRequireDefault(require('./config'))
 
-// import passportConfig from './services/auth'
+var _auth = _interopRequireDefault(require('./services/auth'))
+
 var port = _config['default'].port,
   host = _config['default'].host,
   auth = _config['default'].auth
@@ -41,8 +42,8 @@ app.use(
 )
 app.use((0, _cors['default'])())
 app.use(_bodyParser['default'].json())
-app.use(_passport['default'].initialize()) // passportConfig(passport)
-
+app.use(_passport['default'].initialize())
+;(0, _auth['default'])(_passport['default'])
 app.use(_routes['default'])
 app.listen(port, function() {
   console.log('Running on '.concat(defaultHostname, ':').concat(defaultPort))

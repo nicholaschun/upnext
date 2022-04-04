@@ -142,29 +142,19 @@ export const createEditEventDay = ({
   getRecord
 }) => async req => {
   const { params, body: payload } = req
+  const conditions = {
+    day_id: params.day_id
+  }
+  payload.date = formatDate(payload.date)
+  const res = await updateRecord({
+    model: eventDayModel,
+    conditions,
+    payload
+  })
   const data = await getRecord({
     model: eventDayModel,
-    conditions: {
-      day_id: '3d0b7842-9ed4-4fcb-9233-5b6ad9b9c6f0'
-    }
+    conditions
   })
-  console.log('---data', data)
-  // payload.date = formatDate(payload.date)
-  // const conditions = {
-  //   day_id: params.day_id
-  // }
-  // console.log('---payload', payload)
-
-  // const update = await getRecord({
-  //   model: eventDayModel,
-  //   conditions
-  //  })
-  // console.log('----update', update)
-  // const data = await getRecord({
-  //   model: eventDayModel,
-  //   conditions
-  // })
-  // console.log('----get data', data)
   return { data, statusCode: 200 }
 }
 

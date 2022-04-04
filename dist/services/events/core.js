@@ -328,7 +328,8 @@ exports.createCreateEvent = createCreateEvent
 
 var createEditEvent = function createEditEvent(_ref10) {
   var updateRecord = _ref10.updateRecord,
-    config = _ref10.config
+    config = _ref10.config,
+    getRecord = _ref10.getRecord
   return /*#__PURE__*/ (function() {
     var _ref11 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee6(req) {
@@ -364,13 +365,20 @@ var createEditEvent = function createEditEvent(_ref10) {
                 })
 
               case 7:
+                _context6.next = 9
+                return getRecord({
+                  model: _models.eventModel,
+                  conditions: conditions
+                })
+
+              case 9:
                 data = _context6.sent
                 return _context6.abrupt('return', {
                   data: data,
                   statusCode: 200
                 })
 
-              case 9:
+              case 11:
               case 'end':
                 return _context6.stop()
             }
@@ -535,20 +543,21 @@ var createCreateEventDay = function createCreateEventDay(_ref14) {
 exports.createCreateEventDay = createCreateEventDay
 
 var createEditEventDay = function createEditEventDay(_ref17) {
-  var updateRecord = _ref17.updateRecord
+  var updateRecord = _ref17.updateRecord,
+    getRecord = _ref17.getRecord
   return /*#__PURE__*/ (function() {
     var _ref18 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee10(req) {
-        var params, payload, conditions, data
+        var params, payload, conditions, res, data
         return _regenerator['default'].wrap(function _callee10$(_context10) {
           while (1) {
             switch ((_context10.prev = _context10.next)) {
               case 0:
                 ;(params = req.params), (payload = req.body)
-                payload.date = (0, _index.formatDate)(payload.date)
                 conditions = {
                   day_id: params.day_id
                 }
+                payload.date = (0, _index.formatDate)(payload.date)
                 _context10.next = 5
                 return updateRecord({
                   model: _models.eventDayModel,
@@ -557,13 +566,21 @@ var createEditEventDay = function createEditEventDay(_ref17) {
                 })
 
               case 5:
+                res = _context10.sent
+                _context10.next = 8
+                return getRecord({
+                  model: _models.eventDayModel,
+                  conditions: conditions
+                })
+
+              case 8:
                 data = _context10.sent
                 return _context10.abrupt('return', {
                   data: data,
                   statusCode: 200
                 })
 
-              case 7:
+              case 10:
               case 'end':
                 return _context10.stop()
             }

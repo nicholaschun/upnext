@@ -46,11 +46,13 @@ var createAuthenticatedUser = function createAuthenticatedUser() {
 exports.createAuthenticatedUser = createAuthenticatedUser
 
 var createEditUser = function createEditUser(_ref2) {
-  var updateRecord = _ref2.updateRecord
+  var updateRecord = _ref2.updateRecord,
+    getRecord = _ref2.getRecord,
+    models = _ref2.models
   return /*#__PURE__*/ (function() {
     var _ref3 = (0, _asyncToGenerator2['default'])(
       /*#__PURE__*/ _regenerator['default'].mark(function _callee2(req) {
-        var body, params, conditions, payload, data
+        var body, params, conditions, payload, result
         return _regenerator['default'].wrap(function _callee2$(_context2) {
           while (1) {
             switch ((_context2.prev = _context2.next)) {
@@ -75,13 +77,20 @@ var createEditUser = function createEditUser(_ref2) {
                 })
 
               case 5:
-                data = _context2.sent
-                return _context2.abrupt('return', {
-                  data: data,
-                  statusCode: 200
+                _context2.next = 7
+                return getRecord({
+                  model: _models.userProfileModel,
+                  conditions: conditions
                 })
 
               case 7:
+                result = _context2.sent
+                return _context2.abrupt('return', {
+                  data: result,
+                  statusCode: 200
+                })
+
+              case 9:
               case 'end':
                 return _context2.stop()
             }

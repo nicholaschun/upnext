@@ -44,29 +44,27 @@ var createPutToS3 = function createPutToS3(_ref2) {
                 case 0:
                   ;(key = _ref3.key), (file = _ref3.file)
                   bucket = config.s3.bucket
-                  console.log('---file', file)
-                  _context.prev = 3
-                  _context.next = 6
+                  _context.prev = 2
+                  _context.next = 5
                   return s3Client
                     .upload({
                       Bucket: bucket,
                       Key: key,
-                      Body: _fs['default'].createReadStream(file.path),
-                      ACL: 'public-read'
+                      Body: _fs['default'].createReadStream(file.path)
                     })
                     .promise()
 
-                case 6:
+                case 5:
                   resp = _context.sent
-                  console.log('---res', resp)
                   return _context.abrupt('return', resp)
 
-                case 11:
-                  _context.prev = 11
-                  _context.t0 = _context['catch'](3)
+                case 9:
+                  _context.prev = 9
+                  _context.t0 = _context['catch'](2)
                   console.log('could not upload file', _context.t0)
+                  throw _context.t0
 
-                case 14:
+                case 13:
                 case 'end':
                   return _context.stop()
               }
@@ -74,7 +72,7 @@ var createPutToS3 = function createPutToS3(_ref2) {
           },
           _callee,
           null,
-          [[3, 11]]
+          [[2, 9]]
         )
       })
     )
